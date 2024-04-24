@@ -14,4 +14,6 @@
     - videos
   - css - system custom css
   - js - system custom js
+    - data
+      - data collections
 - html files on root
