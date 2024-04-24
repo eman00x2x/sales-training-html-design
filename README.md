@@ -1,8 +1,8 @@
 # sales-training-system
 Sales and Training System Design
 
--Cdn
-  -vendor
+- > Cdn
+  - > vendor
     -bootstrap-5.3.3
       -css
         - bootstrap css collections
