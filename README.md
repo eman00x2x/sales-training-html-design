@@ -126,7 +126,7 @@ Use Google Chart for our Charts
   - Templates - video with buttons 
 
 # Others
-- Registration From Page
+- Registration Form Page
   - Congratulations for registering page
   - Resend email verification page
   - Email Verification Template - letter to be sent
