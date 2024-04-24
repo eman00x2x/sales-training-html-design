@@ -24,7 +24,8 @@
 
 
 # HTML Designing Plan
-Will start per Applications
+Start per Applications
+Use Google Chart for our Charts
 
 # Administrator
 - Dashboard
