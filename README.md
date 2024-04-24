@@ -45,7 +45,7 @@
                         }
                         html += "<tr>";
                     }
-                    $('.organizations .data').html(html);
+                    $('.organizations .data-container').html(html);
                 });
             }
         </script>
@@ -73,7 +73,7 @@
                                 <th class="align-middle">CREATED AT</th>
                             </tr>
                         </thead>
-                        <tbody class="data"></tbody>
+                        <tbody class="data-container"></tbody>
                     </table>
                 </div>
             </div>
