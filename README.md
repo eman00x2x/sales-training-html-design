@@ -16,4 +16,8 @@
   - js - system custom js
     - data
       - data collections
+- Admin
+- Advertisements
+- Manage
+- Organization
 - html files on folders designated to them
