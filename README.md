@@ -1,6 +1,7 @@
 # sales-training-system
 Sales and Training System Design
 
+# Folder Structure
 - Cdn
   -  vendor ** libraries
     - bootstrap-5.3.3
