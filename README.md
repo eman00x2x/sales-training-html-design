@@ -7,9 +7,9 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Organizations</title>
     
         <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
         
@@ -17,10 +17,6 @@
         <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
 
         <script type="text/javascript">
-
-            $('.header').load('header.html');
-            $('.footer').load('footer.html');
-            $('.sidebar').load('sidebar.html');
 
             $(document).ready(function () {
                 getOrganizationsData();
@@ -37,17 +33,22 @@
                         html += "<tr>";
                         for (let key in data) {
 
-                            if(key == "created_at") {
-                                let date = new Date(0);
-                                date.setUTCSeconds(data[key]);
-                                data[key] = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                            switch(key) {
+                                case 'created_at':
+                                    let date = new Date(0);
+                                    date.setUTCSeconds(data[key]);
+                                    data[key] = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                                    break;
+                                case 'logo':
+                                    data[key] = "<img src='" + data[key] + "' style='width:64px;' />";
+                                    break;
                             }
 
-                            html += "<td>" + data[key] + "</td>";
+                            html += "<td class='align-middle'>" + data[key] + "</td>";
                         }
                         html += "<tr>";
                     }
-                    $('.organization-data').html(html);
+                    $('.organizations .data').html(html);
                 });
             }
         </script>
@@ -58,17 +59,32 @@
 
     <div class='header'></div>
     <div class='sidebar'></div>
-    <div class='content'>
-        <!-- all content body should be here -->
+    <div class='container'>
+        <div class='content'>
+            <!-- all content body should be here -->
 
-        <div class='list'><!-- list data -->
-            <table class='table organization-data'></table>
+            <div class='list'><!-- list data -->
+                <div class='table-responsive'>
+                    <table class='table table-bordered organizations'>
+                        <thead>
+                            <tr>
+                                <th class="align-middle">ID</th>
+                                <th class="align-middle">NAME</th>
+                                <th class="align-middle">DESCRIPTION</th>
+                                <th class="align-middle">LOGO</th>
+                                <th class="align-middle">PRIVILEGES</th>
+                                <th class="align-middle">CREATED AT</th>
+                            </tr>
+                        </thead>
+                        <tbody class="data"></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
     <div class='footer'></div>
 
 </body>
-
 </html>
 ```
 
