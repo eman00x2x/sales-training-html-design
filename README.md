@@ -2,8 +2,7 @@
 Sales and Training System Design
 
 - Cdn
-  -  vendor
-    - > libraries
+  -  vendor > libraries
     - bootstrap-5.3.3
       - css
         - bootstrap css collections
