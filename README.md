@@ -1,6 +1,3 @@
-# sales-training-system
-Sales and Training System Design
-
 # Folder Structure
 - Cdn
   -  vendor ** libraries
