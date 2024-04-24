@@ -20,4 +20,4 @@
 - Advertisements
 - Manage
 - Organization
-- html files on folders designated to them
+> html files on folders designated to them
