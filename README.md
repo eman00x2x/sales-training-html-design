@@ -85,6 +85,8 @@
 </html>
 ```
 
+# How to view working html files
+Setup a server and navigate to http://localhost/sales-training-html-design/Admin/organization.list.html
 
 # Folder Structure
 - Cdn
