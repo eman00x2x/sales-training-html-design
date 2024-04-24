@@ -113,7 +113,6 @@
   
 > HTML files should be in the folders designated for them
 
-
 # HTML Designing Plan
 Start per Applications
 Use Google Chart for our Charts
@@ -121,7 +120,7 @@ Use Google Chart for our Charts
 # Administrator
 - Dashboard
   - Charts
-    - Transactions per month
+    - [] Transactions per month
     - User Registration per month
 - Organization
   - Create, Update, Delete
