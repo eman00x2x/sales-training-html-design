@@ -17,6 +17,10 @@
 
         <script type="text/javascript">
 
+            $('.header').load('header.html');
+            $('.footer').load('footer.html');
+            $('.sidebar').load('sidebar.html');
+
             $(document).ready(function () {
                 getOrganizationsData();
             });
