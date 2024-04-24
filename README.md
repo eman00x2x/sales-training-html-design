@@ -117,7 +117,7 @@
 > Every day at 10 AM, 2 PM, and 5 PM, please make a commit.
 - Please do not commit unfinished tasks.
 - Complete at least two tasks every day.
-- Message here the files completed daily at 5 PM.
+- Message in group chat the files completed daily at 5 PM.
 - I will mark tasks that are accepted with an 'X'.
 - Tasks not accepted will have an issue created for them.
 - Revisions should be made after the issue has been created.
