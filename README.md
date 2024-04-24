@@ -1,7 +1,7 @@
 # Folder Structure
 - Cdn
-  -  vendor ** libraries **
-    - bootstrap-5.3.3
+  -  vendor ** libraries **...
+    -- bootstrap-5.3.3
       - css
         - bootstrap css collections
       - js
