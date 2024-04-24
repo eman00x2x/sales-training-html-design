@@ -1,7 +1,10 @@
 # Sample html file
-> - with dynamic header, footer and sidebar
-> - with sample data retrieved from .json file
-> - view file from /Admin/organization.list.html
+- with dynamic header, footer and sidebar
+- with sample data retrieved from .json file
+
+- How to view working html files
+  - Setup a server and navigate to http://localhost/sales-training-html-design/Admin/organization.list.html
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -84,9 +87,6 @@
 </body>
 </html>
 ```
-
-# How to view working html files
-Setup a server and navigate to http://localhost/sales-training-html-design/Admin/organization.list.html
 
 # Folder Structure
 - Cdn
