@@ -1,3 +1,34 @@
+# sample html file with dynamic header sidebar and footer
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="../js/vendor/jquery-3.7.1/jquery.3.7.1.min.js" />
+    
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('.header').load('header.html');
+        $('.sidebar').load('sidebar.html');
+        $('.footer').load('footer.html');
+      });
+    </script>
+
+</head>
+<body>
+
+<div class='header'></div>
+<div class='sidebar'></div>
+<div class='footer'></div>
+    
+</body>
+</html>
+```
+
+
 # Folder Structure
 - Cdn
   -  vendor ** libraries **
