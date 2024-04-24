@@ -1,4 +1,6 @@
-# sample html file with dynamic header sidebar and footer
+# Sample html file
+> with dynamic header, footer and sidebar
+> with sample data retrieved from .json file
 ```
 <!DOCTYPE html>
 <html lang="en">
