@@ -1,11 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
     
+        <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+        
+        <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+        <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                getOrganizationsData();
+            });
+
+            function getOrganizationsData() {
+                let html = '';
+
+                $.getJSON('../Cdn/js/data/organization.json', function (response) {
+                    console.log(response);
+                    const org = response.data;
+                    for (let i = 0; i < org.length; i++) {
+                        var data = org[i];
+                        html += "<tr>";
+                        for (let key in data) {
+
+                            if(key == "created_at") {
+                                let date = new Date(0);
+                                date.setUTCSeconds(data[key]);
+                                data[key] = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                            }
+
+                            html += "<td>" + data[key] + "</td>";
+                        }
+                        html += "<tr>";
+                    }
+                    $('.organization-data').html(html);
+                });
+            }
+        </script>
+    
+</head>
+
+<body>
+
+    <div class='header'></div>
+    <div class='sidebar'></div>
+    <div class='content'>
+        <!-- all content body should be here -->
+
+        <div class='list'><!-- list data -->
+            <table class='table organization-data'></table>
+        </div>
+    </div>
+    <div class='footer'></div>
+
 </body>
+
 </html>
