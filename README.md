@@ -120,7 +120,7 @@ Use Google Chart for our Charts
 # Administrator
 - Dashboard
   - Charts
-    - [] Transactions per month
+    - [ ] Transactions per month
     - User Registration per month
 - Organization
   - Create, Update, Delete
