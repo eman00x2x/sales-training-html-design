@@ -27,6 +27,10 @@
 Will start per Applications
 
 # Administrator
+- Dashboard
+  - Charts
+    - Transactions per month
+    - User Registration per month
 - Organization
   - Create, Update, Delete
   - List, view
@@ -50,9 +54,18 @@ Will start per Applications
   -  List, view
 
 # Organization
+- Dashboard
+  - Charts
+    - Registered user per month
 - My Account
   - View, Update
   - Change Password
+- Users Management
+  - List of registered users
+    - Create, Update, Delete
+    - View
+      - List of uploaded requirements or files
+      - View, download and print file
 - My Collections
   - Videos
     - List of video groups
@@ -67,12 +80,54 @@ Will start per Applications
   - detaild view
 - Market Place
   - Videos
-    - List of unpurchased video groups/collections
+    - List of unpurchased video collections
     - view video group/collections
     - add to cart
   - Ebooks
-    - List of unpurchased ebooks group/collections
+    - List of unpurchased ebooks collections
     - view ebook group/collections
     - add to cart
   - Checkout
     - Cart Items, Total amount, payment gateway selections
+
+# User Accounts
+- Dashboard
+  - ??
+- My Account
+  - View, Update
+  - Change Email
+    - Resend Email Verification
+    - Email Verification Template
+  - Change Password
+- Video Collections
+  - List of video groups
+    - Watch video
+      - Add Comments
+      - Add Ratings
+    - Examination
+- Ebook Collections
+  - List of ebook groups
+    - Read Ebook
+      - Add Comments
+      - Add Ratings
+    - Examination
+- Complete Account Profile
+- Professions
+  - Affiliate
+    - ??
+  - Sales Person
+    - list of video collections for sales persons training
+    - Examination
+    - Requiremetns Upload
+
+# Advertisements
+- Ads
+  - Templates - video with buttons 
+
+# Others
+- Registration From Page
+  - Congratulations for registering page
+  - Resend email verification page
+  - Email Verification Template - letter to be sent
+- Email Verification Page - link from email will redirect here
+
