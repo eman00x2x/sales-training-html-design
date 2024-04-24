@@ -1,6 +1,5 @@
 # Sample html file
 with dynamic header, footer and sidebar
-
 with sample data retrieved from .json file
 
 ## How to view working html files
