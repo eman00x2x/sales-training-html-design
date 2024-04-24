@@ -238,11 +238,9 @@ Use Google Chart for our Charts
     - [ ] Examination
     - [ ] Requiremetns Upload
 
-## Advertisements
-- Ads
-  - [ ] Templates - video with buttons 
-
-## Others
+## Website
+- Home page
+  - [ ] Video ads with buttons in side menu
 - [ ] Registration Form Page
   - [ ] Congratulations for registering page
   - [ ] Resend email verification page
