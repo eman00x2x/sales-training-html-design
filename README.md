@@ -113,11 +113,11 @@
   
 > HTML files should be in the folders designated for them
 
-# HTML Designing Plan
+# HTML Designing Tasks
 Start per Applications
 Use Google Chart for our Charts
 
-# Administrator
+## Administrator
 - Dashboard
   - Charts
     - [ ] Transactions per month
@@ -165,7 +165,7 @@ Use Google Chart for our Charts
   - [ ] List
   - [ ] view
 
-# Organization
+## Organization
 - Dashboard
   - Charts
     - [ ] Registered user per month
@@ -207,7 +207,7 @@ Use Google Chart for our Charts
     - [ ] Cart Items, Total amount
       - [ ] Payment gateway selections
 
-# User Accounts
+## User Accounts
 - Dashboard
   - ??
 - My Account
@@ -238,11 +238,11 @@ Use Google Chart for our Charts
     - [ ] Examination
     - [ ] Requiremetns Upload
 
-# Advertisements
+## Advertisements
 - Ads
   - [ ] Templates - video with buttons 
 
-# Others
+## Others
 - [ ] Registration Form Page
   - [ ] Congratulations for registering page
   - [ ] Resend email verification page
