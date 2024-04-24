@@ -16,4 +16,4 @@
   - js - system custom js
     - data
       - data collections
-- html files on root
+- html files on folders designated to them
