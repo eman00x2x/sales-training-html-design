@@ -2,7 +2,7 @@
 > - with dynamic header, footer and sidebar
 > - with sample data retrieved from .json file
 > - view file from /Admin/organization.list.html
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 
