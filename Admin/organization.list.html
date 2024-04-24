@@ -20,14 +20,12 @@
             function getOrganizationsData() {
                 let html = '';
 
-                $.getJSON('../Cdn/js/data/organization.json', function (response) {
-                    console.log(response);
+                $.getJSON('../Cdn/js/data/organization.json', function (response) {console.log(response);
                     const org = response.data;
                     for (let i = 0; i < org.length; i++) {
-                        var data = org[i];
+                        let data = org[i];
                         html += "<tr>";
                         for (let key in data) {
-
                             switch(key) {
                                 case 'created_at':
                                     let date = new Date(0);
@@ -38,7 +36,6 @@
                                     data[key] = "<img src='" + data[key] + "' style='width:64px;' />";
                                     break;
                             }
-
                             html += "<td class='align-middle'>" + data[key] + "</td>";
                         }
                         html += "<tr>";
