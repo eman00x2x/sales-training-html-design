@@ -169,20 +169,20 @@ Use Google Chart for our Charts
 - Dashboard
   - Charts
     - [ ] Registered user per month
-- My Account
+- My Account **assigned to rogu**
   - [ ] View
   - [ ] Update
   - [ ] Change Password
-- Users Management
+- Users Management **assigned to rogu**
   - [ ] List of registered users
   - [ ] Create
   - [ ] Update
   - [ ] Delete
+  - [ ] View
+    - [ ] List of uploaded requirements or files
     - [ ] View
-      - [ ] List of uploaded requirements or files
-      - [ ] View
-      - [ ] Download
-- My Collections
+    - [ ] Download
+- My Collections **assigned to Rimel**
   - Videos
     - [ ] List of video groups
       - [ ] list of videos in a group
@@ -191,10 +191,10 @@ Use Google Chart for our Charts
     - [ ] List of ebook groups
       - [ ] list of ebooks in a group
       - [ ] View ebook
-- Transactions
+- Transactions **assigned to Vien**
   - [ ] list
   - [ ] detaild view
-- Market Place
+- Market Place **assigned to Andrei**
   - Videos
     - [ ] List of unpurchased video collections
     - [ ] view video group/collections
@@ -210,27 +210,27 @@ Use Google Chart for our Charts
 ## User Accounts
 - Dashboard
   - ??
-- My Account
+- My Account **assigned to Vien**
   - [ ] View
   - [ ] Update
   - [ ] Change Email
     - [ ] Resend Email Verification
     - [ ] Email Verification Template
   - [ ] Change Password
-- Video Collections
+- Video Collections **assigned to rogu**
   - [ ] List of video groups
     - [ ] Watch video
       - [ ] Add Comments
       - [ ] Add Ratings
     - [ ] Examination
-- Ebook Collections
+- Ebook Collections **assigned to Rimel**
   - [ ] List of ebook groups
     - [ ] Read Ebook
       - [ ] Add Comments
       - [ ] Add Ratings
     - [ ] Examination
 - [ ] Complete Account Profile
-- Professions
+- Professions **assigned to Andrei**
   - [ ] Affiliate
     - ??
   - [ ] Sales Person
@@ -239,6 +239,7 @@ Use Google Chart for our Charts
     - [ ] Requiremetns Upload
 
 ## Website
+**assigned to rogu**
 - Home page
   - [ ] Video ads with buttons in side menu
 - [ ] Registration Form Page
