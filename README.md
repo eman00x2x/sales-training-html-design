@@ -20,6 +20,8 @@
 
         <script type="text/javascript">
 
+           /** Please avoid copying examples directly, as it may negatively impact your design. While this approach can sometimes work, it may not always produce the desired outcome. */
+
             $(document).ready(function () {
                 getOrganizationsData();
             });
