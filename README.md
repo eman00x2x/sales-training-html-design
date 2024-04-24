@@ -1,8 +1,9 @@
 # Sample html file
-- with dynamic header, footer and sidebar
-- with sample data retrieved from .json file
+with dynamic header, footer and sidebar
 
-- How to view working html files
+with sample data retrieved from .json file
+
+## How to view working html files
   - Setup a server and navigate to http://localhost/sales-training-html-design/Admin/organization.list.html
 
 ```html
