@@ -21,3 +21,13 @@
 - Manage
 - Organization
 > html files on folders designated to them
+
+
+# HTML Designing Plan
+Will start per Applications
+
+# Administrator
+- Organization
+-   Create, Update, Delete
+-   List
+-   
