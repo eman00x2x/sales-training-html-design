@@ -121,104 +121,131 @@ Use Google Chart for our Charts
 - Dashboard
   - Charts
     - [ ] Transactions per month
-    - User Registration per month
+    - [ ] User Registration per month
 - Organization
-  - Create, Update, Delete
-  - List, view
+  - [ ] Create
+  - [ ] Update
+  - [ ] Delete
+  - [ ] List
+  - [ ] view
 - Accounts with profile
-  - Create, Update, Delete
-  - List, view
+  - [ ] Create
+  - [ ] Update
+  - [ ] Delete
+  - [ ] List
+  - [ ] view
 - Ebook Groups
-  - Create, Update, Delete
-  - List, view
+  - [ ] Create
+  - [ ] Update
+  - [ ] Delete
+  - [ ] List
+  - [ ] view
 - Video Groups
-  - Create, Update, Delete
-  - List, view
+  - [ ] Create
+  - [ ] Update
+  - [ ] Delete
+  - [ ] List
+  - [ ] view
 - Ebooks
-  - Create, Update, Delete
-  - List, view
+  - [ ] Create
+  - [ ] Update
+  - [ ] Delete
+  - [ ] List
+  - [ ] view
   - Chapters
-    - Create, Update, Delete
-    - List, view
+    - [ ] Create
+    - [ ] Update
+    - [ ] Delete
+    - [ ] List
+    - [ ] view
 - Videos
-  -  Create, Update, Delete
-  -  List, view
+  - [ ] Create
+  - [ ] Update
+  - [ ] Delete
+  - [ ] List
+  - [ ] view
 
 # Organization
 - Dashboard
   - Charts
-    - Registered user per month
+    - [ ] Registered user per month
 - My Account
-  - View, Update
-  - Change Password
+  - [ ] View
+  - [ ] Update
+  - [ ] Change Password
 - Users Management
-  - List of registered users
-    - Create, Update, Delete
-    - View
-      - List of uploaded requirements or files
-      - View, download and print file
+  - [ ] List of registered users
+  - [ ] Create
+  - [ ] Update
+  - [ ] Delete
+    - [ ] View
+      - [ ] List of uploaded requirements or files
+      - [ ] View
+      - [ ] Download
 - My Collections
   - Videos
-    - List of video groups
-      - list of videos in a group
-      - view video
+    - [ ] List of video groups
+      - [ ] list of videos in a group
+      - [ ] View video
   - Ebooks
-    - List of ebook groups
-      - list of ebooks in a group
-      - view ebook
+    - [ ] List of ebook groups
+      - [ ] list of ebooks in a group
+      - [ ] View ebook
 - Transactions
-  - list
-  - detaild view
+  - [ ] list
+  - [ ] detaild view
 - Market Place
   - Videos
-    - List of unpurchased video collections
-    - view video group/collections
-    - add to cart
+    - [ ] List of unpurchased video collections
+    - [ ] view video group/collections
+    - [ ] add to cart
   - Ebooks
-    - List of unpurchased ebooks collections
-    - view ebook group/collections
-    - add to cart
+    - [ ] List of unpurchased ebooks collections
+    - [ ] view ebook group/collections
+    - [ ] add to cart
   - Checkout
-    - Cart Items, Total amount, payment gateway selections
+    - [ ] Cart Items, Total amount
+      - [ ] Payment gateway selections
 
 # User Accounts
 - Dashboard
   - ??
 - My Account
-  - View, Update
-  - Change Email
-    - Resend Email Verification
-    - Email Verification Template
-  - Change Password
+  - [ ] View
+  - [ ] Update
+  - [ ] Change Email
+    - [ ] Resend Email Verification
+    - [ ] Email Verification Template
+  - [ ] Change Password
 - Video Collections
-  - List of video groups
-    - Watch video
-      - Add Comments
-      - Add Ratings
-    - Examination
+  - [ ] List of video groups
+    - [ ] Watch video
+      - [ ] Add Comments
+      - [ ] Add Ratings
+    - [ ] Examination
 - Ebook Collections
-  - List of ebook groups
-    - Read Ebook
-      - Add Comments
-      - Add Ratings
-    - Examination
-- Complete Account Profile
+  - [ ] List of ebook groups
+    - [ ] Read Ebook
+      - [ ] Add Comments
+      - [ ] Add Ratings
+    - [ ] Examination
+- [ ] Complete Account Profile
 - Professions
-  - Affiliate
+  - [ ] Affiliate
     - ??
-  - Sales Person
-    - list of video collections for sales persons training
-    - Examination
-    - Requiremetns Upload
+  - [ ] Sales Person
+    - [ ] list of video collections for sales persons training
+    - [ ] Examination
+    - [ ] Requiremetns Upload
 
 # Advertisements
 - Ads
-  - Templates - video with buttons 
+  - [ ] Templates - video with buttons 
 
 # Others
-- Registration Form Page
-  - Congratulations for registering page
-  - Resend email verification page
-  - Email Verification Template - letter to be sent
-- Email Verification Page - link from email will redirect here
+- [ ] Registration Form Page
+  - [ ] Congratulations for registering page
+  - [ ] Resend email verification page
+  - [ ] Email Verification Template - letter to be sent
+- [ ] Email Verification Page - link from email will redirect here
 
