@@ -122,43 +122,43 @@ Use Google Chart for our Charts
   - Charts
     - [ ] Transactions per month
     - [ ] User Registration per month
-- Organization
+- Organization **assigned to rogu**
   - [ ] Create
   - [ ] Update
   - [ ] Delete
   - [ ] List
   - [ ] view
-- Accounts with profile
+- Accounts with profile **assigned to rogu**
   - [ ] Create
   - [ ] Update
   - [ ] Delete
   - [ ] List
   - [ ] view
-- Ebook Groups
+- Ebook Groups **assigned to Rimel**
   - [ ] Create
   - [ ] Update
   - [ ] Delete
   - [ ] List
   - [ ] view
-- Video Groups
+- Video Groups **assigned to Rimel**
   - [ ] Create
   - [ ] Update
   - [ ] Delete
   - [ ] List
   - [ ] view
-- Ebooks
+- Ebooks **assigned to Vien**
   - [ ] Create
   - [ ] Update
   - [ ] Delete
   - [ ] List
   - [ ] view
-  - Chapters
+  - Chapters **assigned to Vien**
     - [ ] Create
     - [ ] Update
     - [ ] Delete
     - [ ] List
     - [ ] view
-- Videos
+- Videos **assigned to Andrei**
   - [ ] Create
   - [ ] Update
   - [ ] Delete
