@@ -22,6 +22,9 @@
 
 <div class='header'></div>
 <div class='sidebar'></div>
+<div class='content'>
+    <!-- all content body should be here -->
+</div>
 <div class='footer'></div>
     
 </body>
@@ -51,7 +54,8 @@
 - Advertisements
 - Manage
 - Organization
-> html files on folders designated to them
+  
+> HTML files should be in the folders designated for them
 
 
 # HTML Designing Plan
