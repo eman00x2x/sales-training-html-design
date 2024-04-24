@@ -1,13 +1,13 @@
 # Folder Structure
 - Cdn
   -  vendor ** libraries **#
-    - bootstrap-5.3.3
-      - css
-        - bootstrap css collections
-      - js
-        - bootstrap js collections
-    - jquery-3.7.1
-      - jquery.3.7.1.min.js
+      - bootstrap-5.3.3
+        - css
+          - bootstrap css collections
+        - js
+          - bootstrap js collections
+     - jquery-3.7.1
+        - jquery.3.7.1.min.js
   - images
     - profiles
     - ebooks
