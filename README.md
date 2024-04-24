@@ -24,7 +24,11 @@
              * as it may negatively impact your design. 
              * While this approach can sometimes work,
              * it may not always produce the desired outcome.
-           **/
+             **/
+
+            $('.header').load('header.html');
+            $('.sidebar').load('sidebar.html');
+            $('.footer').load('footer.html');
 
             $(document).ready(function () {
                 getOrganizationsData();
