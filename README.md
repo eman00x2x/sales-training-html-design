@@ -114,12 +114,18 @@
 > HTML files should be in the folders designated for them
 
 # HTML Designing Tasks
-Start per Applications
-Use Google Chart for our Charts
+> Every day at 10 AM, 2 PM, and 5 PM, please make a commit.
+- Please do not commit unfinished tasks.
+- Complete at least two tasks every day.
+- Message here the files completed daily at 5 PM.
+- I will mark tasks that are accepted with an 'X'.
+- Tasks not accepted will have an issue created for them.
+- Revisions should be made after the issue has been created.
 
 ## Administrator
 - Dashboard
   - Charts
+    - Use Google Chart
     - [ ] Transactions per month
     - [ ] User Registration per month
 - Organization **assigned to rogu**
@@ -168,6 +174,7 @@ Use Google Chart for our Charts
 ## Organization
 - Dashboard
   - Charts
+    - Use Google Chart
     - [ ] Registered user per month
 - My Account **assigned to rogu**
   - [ ] View
