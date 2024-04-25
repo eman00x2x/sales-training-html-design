@@ -40,26 +40,20 @@
                     return obj;
                 }, {});
 
-                const constraints = {
-                    name: {
-                        type: "string",
-                        length: {
-                            minimum: 4
-                        }
-                    },
-                    lastname: {
-                        type: "string",
-                        length: {
-                            minimum: 4
-                        }
-                    }
-                };
-
                 const validator = validate({
                     name: data.name,
                     lastname: data.lastname
-                }, constraints);
-
+                }, {
+                    name: {
+                        type: "string",
+                        length: { minimum: 4 }
+                    },
+                    lastname: {
+                        type: "string",
+                        length: { minimum: 4 }
+                    }
+                });
+                
                 if(validator !== undefined) {
                     for(key in validator) {
                         message.push(validator[key]);
