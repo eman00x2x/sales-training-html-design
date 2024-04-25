@@ -7,44 +7,69 @@
     margin: 0;
   }
 
-  body {
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
- 
-  img, picture, video, canvas, svg {
-    display: block;
-    max-width: 100%;
-  }
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
 
-  input, button, textarea, select {
-    font: inherit;
-  }
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
 
-  p, h1, h2, h3, h4, h5, h6 {
-    overflow-wrap: break-word;
-  }
+input, button, textarea, select {
+  font: inherit;
+}
 
-  #root, #__next {
-    isolation: isolate;
-  }
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
 
 
 .row-content {
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-  
+display: flex;
+align-items: center;
+margin-bottom: 5px;
 }
 
 .dropdown {
-  margin-right: 10px; 
+margin-right: 10px; 
+outline: 1px solid #DEE3E7;
+border-radius: 5px;
+outline: 1px solid #000000;
+}   
+
+.form-outline {
+margin-right: 5px;
 }
 
-.filter-button {
-  margin-left: 5px;
-  background-color: transparent; 
+.btn-filter {
+margin-left: 5px;
+background-color: transparent; 
+outline: 1px solid #000000;
+border-radius: 5px;
+}
+
+.table-responsive {
+  border-radius: 16px;
+}
+
+.table-bordered.video-group th.description {
+  max-width: 200px; /* Adjust the maximum width as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.table-bordered.video-group th {
+  background-color: #131C39;
+  color: #fff;
   border: none;
+  height: 50px; /* Adjust the height as needed */
+  /* You can also use other height units like pixels (px) or em */
 }
-
 
