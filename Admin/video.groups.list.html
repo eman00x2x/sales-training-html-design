@@ -9,12 +9,11 @@
     <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
     <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
     <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
 
     <script type="text/javascript">
 
         //SAMPLE DATA OF VIDEO GROUPS
-
-
 
         $(document).ready(function () {
             $('.header').load('header.html');
@@ -68,9 +67,7 @@
                                 let description = data[key];
                                 // Checking if the description is not empty
                                 if (description) {
-                                    // Truncating description text if it exceeds 50 characters
-                                    let truncatedDescription = description.length > 50 ? description.substring(0, 50) + "..." : description;
-                                    html += "<td class='align-middle description'>" + truncatedDescription + "</td>";
+                                    html += "<td class='align-middle description'>" + niceTrim(description, 50) + "</td>";
                                 } else {
                                     html += "<td class='align-middle description'></td>";
                                 }
