@@ -12,6 +12,7 @@
     <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
     <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"></script>
     <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
 
     <script type="text/javascript">
       $(document).ready(function () {
@@ -23,16 +24,6 @@
 
       function editModal() {
         $(".form").load("organization.update.html");
-      }
-
-      function convertDate(dateData) {
-        let date = new Date(0);
-        date.setUTCSeconds(dateData);
-        return date.toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
       }
 
       function getOrganizationsData() {
@@ -188,7 +179,10 @@
 
           <!-- MODAL -->
           <div class="modal" id="organization_edit" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="form-content">
+            <div
+              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+              id="form-content"
+            >
               <div class="modal-content">
                 <div class="form"></div>
               </div>
