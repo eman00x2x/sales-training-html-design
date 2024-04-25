@@ -1,11 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin | Video Groups</title>
+    <link rel="stylesheet" href="../Cdn//css//admin.video.group.list.css">
+    <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+
+    <script type="text/javascript">
+
+        //SAMPLE DATA OF VIDEO GROUPS
+
+
+        $(document).ready(function () {
+            $('.header').load('header.html');
+            $('.sidebar').load('sidebar.html');
+            $('.footer').load('footer.html');
+            getVideoGroupData();
+        });
+
+        function getVideoGroupData() {
+            let html = '';
+
+            $.getJSON('../Cdn/js/data/video.groups.json', function (response) {
+                console.log(response);
+                const org = response.data;
+                for (let i = 0; i < org.length; i++) {
+                    let data = org[i];
+                    html += "<tr>";
+                    for (let key in data) {
+                        switch (key) {
+                        }
+                        html += "<td class='align-middle'>" + data[key] + "</td>";
+                    }
+                    html += "<td class='align-middle'><button class='btn btn-primary btn-sm view-btn'>View</button> <button class='btn btn-info btn-sm edit-btn'>Edit</button> <button class='btn btn-danger btn-sm delete-btn'>Delete</button></td>";
+                    html += "<tr>";
+                }
+                $('.video-group .data-container').html(html);
+            });
+        }
+    </script>
+
 </head>
+
 <body>
-    
+    <div class="container-fluid">
+        <div class="row flex-nowrap" style="height: 100vh">
+            <!-- SIDEBAR -->
+            <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
+            <main class="col py-3">
+                <!-- HEADER -->
+                <div class="header"></div>
+
+                <!-- CONTENT -->
+                <div class='content'>
+                    <!-- all content body should be here -->
+                    <div>
+                        <!-- ViDEO UPPER CONTENT -->
+                        <h1>VIDEO GROUP</h1>
+                        <div class="row-content">
+                            <!-- Upper Content -->
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Sort by
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">TITLE</a></li>
+                                    <li><a class="dropdown-item" href="#">DESCRIPTION</a></li>
+                                    <li><a class="dropdown-item" href="#">DATE</a></li>
+                                </ul>
+                            </div>
+                            <div class="" data-mdb-input-init>
+                                <input placeholder="Search by item name..." class="form-control w-100"
+                                    id="datatable-search-input">
+                            </div>
+
+                            <button class="filter-button">
+                                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="35pt" height="35.000000pt"
+                                    class="filter" viewBox="0 0 53.000000 43.000000"
+                                    preserveAspectRatio="xMidYMid meet">
+                                    <g transform="translate(0.000000,43.000000) scale(0.100000,-0.100000)"
+                                        fill="#000000" stroke="none">
+                                        <path
+                                            d="M17 412 c-15 -16 -17 -45 -17 -199 0 -162 2 -182 18 -196 16 -15 49 -17 250 -17 227 0 231 0 246 22 13 18 16 55 16 199 0 158 -2 178 -18 192 -16 15 -49 17 -249 17 -210 0 -231 -2 -246 -18z m485 -9 c16 -14 18 -34 18 -186 0 -145 -3 -173 -17 -189 -15 -16 -36 -18 -236 -18 -191 0 -223 2 -239 17 -16 14 -18 34 -18 186 0 145 3 173 17 189 15 16 36 18 236 18 191 0 223 -2 239 -17z" />
+                                        <path
+                                            d="M297 349 c-13 -18 -24 -20 -103 -18 -49 1 -89 -2 -89 -6 0 -4 40 -7 89 -6 79 2 90 0 103 -18 18 -27 45 -27 68 -1 10 11 26 19 34 18 9 -1 16 2 16 7 0 6 -6 9 -13 7 -8 -2 -23 6 -34 17 -24 27 -53 27 -71 0z m58 -24 c0 -25 -40 -33 -49 -10 -9 24 2 37 27 33 14 -2 22 -10 22 -23z" />
+                                        <path
+                                            d="M143 241 c-10 -10 -25 -21 -33 -24 -12 -4 -12 -6 2 -6 10 -1 22 -10 28 -21 14 -26 55 -26 73 1 13 18 24 20 113 18 55 -1 97 2 94 6 -3 4 -47 7 -99 6 -84 -2 -95 0 -108 18 -18 26 -47 27 -70 2z m60 -13 c7 -21 -4 -38 -23 -38 -23 0 -34 16 -26 35 7 18 43 20 49 3z" />
+                                        <path
+                                            d="M251 129 c-16 -17 -29 -20 -82 -18 -35 2 -64 -1 -64 -6 0 -5 30 -7 67 -6 58 2 68 0 78 -18 14 -27 55 -27 73 0 12 16 24 20 56 18 22 -2 41 1 41 6 0 5 -19 8 -41 6 -32 -2 -44 2 -56 18 -18 27 -47 27 -72 0z m62 -11 c7 -21 -4 -38 -23 -38 -23 0 -34 16 -26 35 7 18 43 20 49 3z" />
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class='list'>
+                        <!-- Table List -->
+                        <div class='table-responsive'>
+                            <table class='table table-bordered video-group'>
+                                <thead>
+                                    <tr>
+                                        <th class="align-middle">#</th>
+                                        <th class="align-middle">TITLE</th>
+                                        <th class="align-middle">DESCRIPTION</th>
+                                        <th class="align-middle">DURATION</th>
+                                        <th class="align-middle">COST</th>
+                                        <th class="align-middle">ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="data-container"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOOTER -->
+                <div class="footer"></div>
+            </main>
+        </div>
+    </div>
 </body>
+
 </html>

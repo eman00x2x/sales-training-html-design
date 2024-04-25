@@ -1,0 +1,65 @@
+,::before, *::after {
+    box-sizing: border-box;
+  }
+
+  
+{
+  margin: 0;}
+
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+ 
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  input, button, textarea, select {
+    font: inherit;
+  }
+
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+
+  #root, #__next {
+    isolation: isolate;
+  }
+
+
+.row-content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.dropdown {
+  margin-right: 10px; 
+  outline: 1px solid #DEE3E7;
+  border-radius: 5px;
+}   
+
+.filter {
+  margin-left: 5px;
+  background-color: transparent; 
+  outline: 2px solid #DEE3E7;
+  border-radius: 5px;
+}
+
+.add-btn{
+    background: #131C39;
+    padding: 10px 40px;
+    border-radius: 5px;
+}
+
+.table-responsive {
+    border-radius: 10px;
+}
+
+.table-bordered.ebooks th {
+    background-color: #131C39;
+    color: #fff;
+}
+

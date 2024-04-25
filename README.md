@@ -8,6 +8,21 @@
 - Form submission
   - http://localhost/sales-training-html-design/examples/form-submit.html
 
+### Standard element classes naming convention
+#### ` buttons `
+- btn-save
+- btn-cancel
+- btn-delete
+- btn-filter
+- btn-sort
+- btn-dismiss
+- btn-reload
+- btn-upload
+
+#### ` containers `
+- form-container
+- response
+- {action}-container
 
 ### Folder Structure
 - Cdn

@@ -1,11 +1,141 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../Cdn/css/ebooks.list.css">
+
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"> </script>
+    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.header').load('header.html');
+            $('.sidebar').load('sidebar.html');
+            $('.footer').load('footer.html');
+            getEbooksData();
+        });
+
+        function getEbooksData() {
+            let html = '';
+
+            $.getJSON('../Cdn/js/data/ebooks.json', function (response) {
+                console.log(response)
+                const data = response.data;
+                for (let i = 0; i < data.length; i++) {
+                    const ebook = data[i];
+                    html += "<tr>";
+                    html += "<td class='align-middle text-center'>" + ebook.ebook_id + "</td>";
+                    html += "<td class='align-middle text-center'><img src='" + ebook.thumbnail_image + "' style='width:5em;' /></td>";
+                    html += "<td class='align-middle'>" + ebook.title + "</td>";
+                    html += "<td class='align-middle'>" + ebook.author + "</td>";
+                    html += "<td class='align-middle'>" + ebook.isbn + "</td>";
+                    html += "<td class='align-middle'>" + ebook.category + "</td>";
+                    html += "<td class='align-middle text-center'><button class='btn btn-primary btn-sm view-btn'>View</button> <button class='btn btn-warning btn-sm edit-btn'>Edit</button> <button class='btn btn-danger btn-sm delete-btn'>Delete</button></td>"
+                    html += "</tr>";
+                }
+                $('.ebooks .data-container').html(html);
+            });
+        }
+
+    </script>
 </head>
+
 <body>
-    
+    <div class="container-fluid">
+        <div class="row flex-nowrap" style="height: 100vh">
+            <!-- SIDEBAR -->
+            <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
+            <main class="col py-3">
+                <!-- HEADER -->
+                <div class="header"></div>
+
+                <!-- CONTENT -->
+                <div class='container'>
+                    <div class='content'>
+                        <div class="d-flex flex-row justify-content-start align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512">
+                                <path fill="currentColor"
+                                    d="M202.24 74C166.11 56.75 115.61 48.3 48 48a31.36 31.36 0 0 0-17.92 5.33A32 32 0 0 0 16 79.9V366c0 19.34 13.76 33.93 32 33.93c71.07 0 142.36 6.64 185.06 47a4.11 4.11 0 0 0 6.94-3V106.82a15.89 15.89 0 0 0-5.46-12A143 143 0 0 0 202.24 74m279.68-20.7A31.33 31.33 0 0 0 464 48c-67.61.3-118.11 8.71-154.24 26a143.31 143.31 0 0 0-32.31 20.78a15.93 15.93 0 0 0-5.45 12v337.13a3.93 3.93 0 0 0 6.68 2.81c25.67-25.5 70.72-46.82 185.36-46.81a32 32 0 0 0 32-32v-288a32 32 0 0 0-14.12-26.61" />
+                            </svg>
+                            <h1>EBOOKS</h1>
+                        </div>
+
+                        <div class="row-content">
+                            <!-- Upper Content -->
+                            <div class="d-flex col">
+                                <div class="dropdown">
+                                    <button class="btn btn-light dropdown-toggle" type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Sort by
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">TITLE</a></li>
+                                        <li><a class="dropdown-item" href="#">DESCRIPTION</a></li>
+                                        <li><a class="dropdown-item" href="#">DATE</a></li>
+                                    </ul>
+                                </div>
+                                <div class="form-outline " data-mdb-input-init>
+                                    <input placeholder="Search by item name..." class="form-control"
+                                        id="datatable-search-input">
+                                </div>
+
+                                <button class="filter border-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em"
+                                        viewBox="0 0 24 24">
+                                        <path fill="none" stroke="black" stroke-linecap="round" stroke-miterlimit="10"
+                                            stroke-width="1"
+                                            d="M21.25 12H8.895m-4.361 0H2.75m18.5 6.607h-5.748m-4.361 0H2.75m18.5-13.214h-3.105m-4.361 0H2.75m13.214 2.18a2.18 2.18 0 1 0 0-4.36a2.18 2.18 0 0 0 0 4.36Zm-9.25 6.607a2.18 2.18 0 1 0 0-4.36a2.18 2.18 0 0 0 0 4.36Zm6.607 6.608a2.18 2.18 0 1 0 0-4.361a2.18 2.18 0 0 0 0 4.36Z" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="d-flex-col">
+                                <button class="add-btn border-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                        viewBox="0 0 20 20">
+                                        <path fill="white"
+                                            d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2zm-1 11a10 10 0 1 1 0-20a10 10 0 0 1 0 20m0-2a8 8 0 1 0 0-16a8 8 0 0 0 0 16" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
+
+                    <div class='list'>
+                        <div class='table-responsive'>
+                            <table class='table table-bordered ebooks'>
+                                <thead>
+                                    <tr>
+                                        <th class="align-middle text-center">ID</th>
+                                        <th class="align-middle text-center">E-book Thumbnail</th>
+                                        <th class="align-middle text-center">Title</th>
+                                        <th class="align-middle text-center">Author</th>
+                                        <th class="align-middle text-center">ISBN</th>
+                                        <th class="align-middle text-center">Category</th>
+                                        <th class="align-middle text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="data-container">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer"></div>
+        </main>
+    </div>
+    </div>
 </body>
+
 </html>
