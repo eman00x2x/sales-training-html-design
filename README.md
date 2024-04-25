@@ -2,13 +2,13 @@
   - Setup a server and navigate to http://localhost/sales-training-html-design/Admin/organization.list.html
 
 ### Sample html files
-- Data retrieval from .json file
-- Dynamic Modal
-- Retrieval of unique id from .json file
-  - http://localhost/sales-training-html-design/examples/retrieved-data-from-json.html
+  - Data retrieval from .json file
+  - Dynamic Modal
+  - Retrieval of unique id from .json file
+    - http://localhost/sales-training-html-design/examples/retrieved-data-from-json.html
 
-- Form submission
-  - http://localhost/sales-training-html-design/examples/form-submit.html
+  - Form submission
+    - http://localhost/sales-training-html-design/examples/form-submit.html
 
 ### Standard element classes naming convention
 #### ` buttons `
@@ -114,7 +114,7 @@
   - Charts
     - Use Google Chart
     - [ ] Registered user per month
-- My Account **assigned to angela**
+- My Account **assigned to camille**
   - [ ] View
   - [ ] Update
   - [ ] Change Password
@@ -127,7 +127,7 @@
     - [ ] List of uploaded requirements or files
     - [ ] View
     - [ ] Download
-- My Collections **assigned to Rimel**
+- My Collections **assigned to Camille**
   - Videos
     - [ ] List of video groups
       - [ ] list of videos in a group
