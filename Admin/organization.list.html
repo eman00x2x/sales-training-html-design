@@ -1,90 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Organizations</title>
-    
-        <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
-        
-        <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
-        <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <link
+      href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../Cdn/css/organization.list.css" />
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"></script>
+    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
 
-        <script type="text/javascript">
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $(".header").load("header.html");
+        $(".sidebar").load("sidebar.html");
+        $(".footer").load("footer.html");
+        getOrganizationsData();
+      });
 
-            /** Please avoid copying examples directly, 
-             * as it may negatively impact your design. 
-             * While this approach can sometimes work,
-             * it may not always produce the desired outcome.
-           **/
+      function editModal() {
+        $(".form").load("organization.update.html");
+      }
 
-            $('.header').load('header.html');
-            $('.sidebar').load('sidebar.html');
-            $('.footer').load('footer.html');
+      function convertDate(dateData) {
+        let date = new Date(0);
+        date.setUTCSeconds(dateData);
+        return date.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
 
-            $(document).ready(function () {
-                getOrganizationsData();
-            });
+      function getOrganizationsData() {
+        let html = "";
 
-            function getOrganizationsData() {
-                let html = '';
+        $.getJSON("../Cdn/js/data/organization.json", function (response) {
+          console.log(response);
+          const org = response.data;
 
-                $.getJSON('../Cdn/js/data/organization.json', function (response) {console.log(response);
-                    const org = response.data;
-                    for (let i = 0; i < org.length; i++) {
-                        let data = org[i];
-                        html += "<tr>";
-                        for (let key in data) {
-                            switch(key) {
-                                case 'created_at':
-                                    let date = new Date(0);
-                                    date.setUTCSeconds(data[key]);
-                                    data[key] = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-                                    break;
-                                case 'logo':
-                                    data[key] = "<img src='" + data[key] + "' style='width:64px;' />";
-                                    break;
-                            }
-                            html += "<td class='align-middle'>" + data[key] + "</td>";
-                        }
-                        html += "<tr>";
-                    }
-                    $('.organizations .data-container').html(html);
-                });
-            }
-        </script>
-    
-</head>
+          for (let i = 0; i < org.length; i++) {
+            let data = org[i];
 
-<body>
+            html += "<tr>";
+            html +=
+              "<td class='align-middle text-center'>" +
+              data.organization_id +
+              "</td>";
+            html +=
+              "<td class='align-middle text-center' style='max-width: 50px'><img src='" +
+              data.logo +
+              "' style='width:10em;' /></td>";
+            html += "<td class='align-middle'>" + data.name + "</td>";
+            html +=
+              "<td class='align-middle text-truncate' style='max-width: 150px'>" +
+              data.description +
+              "</td>";
+            html +=
+              "<td class='align-middle'>" +
+              convertDate(data.created_at) +
+              "</td>";
+            html +=
+              "<td class='align-middle'><button class='btn btn-primary btn-sm view-btn'>View</button> <button onclick='editModal()' data-bs-toggle='modal' data-bs-target='#organization_edit' class='btn btn-warning btn-sm edit-btn'>Edit</button> <button class='btn btn-danger btn-sm delete-btn'>Delete</button></td>";
+            html += "</tr>";
+          }
+          $(".organizations .data-container").html(html);
+        });
+      }
+    </script>
+  </head>
 
-    <div class='header'></div>
-    <div class='sidebar'></div>
-    <div class='container'>
-        <div class='content'>
+  <body>
+    <div class="container-fluid">
+      <div class="row flex-nowrap" style="height: 100vh">
+        <!-- SIDEBAR -->
+        <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
+        <main class="col py-3">
+          <!-- HEADER -->
+          <div class="header"></div>
+
+          <!-- CONTENT -->
+          <div class="content">
             <!-- all content body should be here -->
+            <div>
+              <div
+                class="d-flex flex-row align-items-center justify-content-start mt-2"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="2.5em"
+                  height="2.5em"
+                  viewBox="0 0 32 32"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M11 7a5 5 0 1 1 5.999 4.9V15h5.268A2.733 2.733 0 0 1 25 17.732V20.1a5.002 5.002 0 0 1-1 9.9a5 5 0 0 1-1-9.9v-2.368a.733.733 0 0 0-.733-.733H9.733a.733.733 0 0 0-.733.733V20.1A5.002 5.002 0 0 1 8 30a5 5 0 0 1-1-9.9v-2.368a2.733 2.733 0 0 1 2.733-2.733H15v-3.1A5 5 0 0 1 11 7"
+                  />
+                </svg>
+                <span class="fw-bold fs-2 ms-2">ORGANIZATION</span>
+              </div>
 
-            <div class='list'><!-- list data -->
-                <div class='table-responsive'>
-                    <table class='table table-bordered organizations'>
-                        <thead>
-                            <tr>
-                                <th class="align-middle">ID</th>
-                                <th class="align-middle">NAME</th>
-                                <th class="align-middle">DESCRIPTION</th>
-                                <th class="align-middle">LOGO</th>
-                                <th class="align-middle">PRIVILEGES</th>
-                                <th class="align-middle">CREATED AT</th>
-                            </tr>
-                        </thead>
-                        <tbody class="data-container"></tbody>
-                    </table>
+              <div
+                class="d-flex justify-content-start align-items-center mb-3 mt-2 w-50"
+              >
+                <!-- Upper Content -->
+                <div class="btn-group border border-secondary-subtle">
+                  <button
+                    type="button"
+                    class="btn btn-light dropdown-toggle fw-semibold text-lg-start"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    SORT BY
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" href="#">Organization Name</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Created Date</a>
+                    </li>
+                  </ul>
                 </div>
+                <input
+                  type="email"
+                  class="ms-1 form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Search by Organization Name"
+                />
+              </div>
             </div>
-        </div>
-    </div>
-    <div class='footer'></div>
+            <div class="list">
+              <!-- Table List -->
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped organizations">
+                  <thead>
+                    <tr>
+                      <th
+                        class="align-middle text-center fw-semibold text-white"
+                        style="background-color: #1c1c39"
+                      >
+                        #
+                      </th>
+                      <th
+                        class="align-middle text-center fw-semibold text-white"
+                        style="background-color: #1c1c39"
+                      >
+                        Organization Logo
+                      </th>
+                      <th
+                        class="align-middle fw-semibold text-white"
+                        style="background-color: #1c1c39"
+                      >
+                        Organization Name
+                      </th>
+                      <th
+                        class="align-middle fw-semibold text-white"
+                        style="background-color: #1c1c39"
+                      >
+                        Organization Description
+                      </th>
+                      <th
+                        class="align-middle fw-semibold text-white"
+                        style="background-color: #1c1c39"
+                      >
+                        Created Date
+                      </th>
+                      <th
+                        class="align-middle fw-semibold text-white"
+                        style="background-color: #1c1c39"
+                      >
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="data-container"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
 
-</body>
+          <!-- FOOTER -->
+          <div class="footer"></div>
+
+          <!-- MODAL -->
+          <div class="modal" id="organization_edit" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" id="form-content">
+              <div class="modal-content">
+                <div class="form"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
 </html>

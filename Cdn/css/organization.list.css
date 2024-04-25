@@ -1,0 +1,33 @@
+/* Bootstrap 5 CSS and icons included */
+
+
+.upload_dropzone {
+  color: #1c1c39;
+  background-color: #f3f5f7;
+  outline: 2px dashed #1c1c39;
+  outline-offset: -12px;
+  transition: outline-offset 0.2s ease-out, outline-color 0.3s ease-in-out,
+    background-color 0.2s ease-out;
+}
+
+.upload_dropZone.highlight {
+  outline-offset: -4px;
+  outline-color: var(--colorPrimaryNormal, #0576bd);
+  background-color: var(--colorPrimaryEighth, #c8dadf);
+}
+.upload_svg {
+  fill: var(--colorPrimaryNormal, #0576bd);
+}
+.btn-upload {
+  color: #fff;
+  background-color: var(--colorPrimaryNormal);
+}
+.btn-upload:hover,
+.btn-upload:focus {
+  color: #fff;
+  background-color: var(--colorPrimaryGlare);
+}
+.upload_img {
+  width: calc(33.333% - (2rem / 3));
+  object-fit: contain;
+}
