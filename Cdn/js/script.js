@@ -24,17 +24,22 @@ $(document).on('click', '.btn-save', function (e) {
 	$('html, body').animate({ scrollTop: 0 }, 'slow');
 	
 	setTimeout(function () {
-		$('.response').html("<p>Submitted but nothing happened! form data " + form.serialize() + " see <a href='../Cdn/js/script.js'>../Cdn/js/script.js</a></p>");
-		
-		$('.btn-save').css({
-			'cursor': 'pointer',
-			'pointer-events': 'auto'
-		});
+		if (message = validateInput(form.serializeArray())) {
+			$('.response').html(message);
+		} else {
 
-		$('.btn-save').show();
-		$("#form :input").removeAttr('readonly');
+			$('.response').html("<p>Submitted but nothing happened! form data " + form.serialize() + " see <a href='../Cdn/js/script.js'>../Cdn/js/script.js</a></p>");
+			
+			$('.btn-save').css({
+				'cursor': 'pointer',
+				'pointer-events': 'auto'
+			});
 
-	}, 2000);
+			$('.btn-save').show();
+			$("#form :input").removeAttr('readonly');
+
+		}
+	}, 30);
 	
 	/* $.post(form.attr('action'), form.serialize(), function (data, status) {
 
