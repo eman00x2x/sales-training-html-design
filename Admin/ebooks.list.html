@@ -22,9 +22,43 @@
             getEbooksData();
         });
 
-        function viewModal() {
+        $(document).on("click", ".btn-add", function () {
             $(".form").load("ebooks.create.html");
+        });
+
+        $(document).on("click", ".btn-edit", function () {
+            var ebookId = $(this).data('ebook-id');
+            var url = "ebooks.update.html?id=" + ebookId;
+            window.history.pushState({}, '', url);
+            $("#ebooks_update .form").load(url);
+        });
+
+        $(document).on("click", ".btn-delete", function () {
+            $(".form").load("ebooks.delete.html");
+        });
+
+        function displayActionButtons(ebookId) {
+            return `<td class='align-middle text-center'>
+          <button class='btn btn-sm btn-view border border-primary btn-view text-primary' data-title="View Organization">
+            <svg xmlns='http://www.w3.org/2000/svg' width='2em' height='2em' viewBox='0 0 32 32'> 
+              <circle cx='16' cy='16' r='4' fill='currentColor'/>
+              <path fill='currentColor' d='M30.94 15.66A16.69 16.69 0 0 0 16 5A16.69 16.69 0 0 0 1.06 15.66a1 1 0 0 0 0 .68A16.69 16.69 0 0 0 16 27a16.69 16.69 0 0 0 14.94-10.66a1 1 0 0 0 0-.68M16 22.5a6.5 6.5 0 1 1 6.5-6.5a6.51 6.51 0 0 1-6.5 6.5'/>
+            </svg>
+          </button>
+          <button data-bs-toggle='modal' data-bs-target='#ebooks_update' data-ebook-id='${ebookId}' class='btn btn-sm btn-edit' style="border: 1; border-color: #C68914; color: #c68914" data-title="Update Organization Details">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
+              <path fill="currentColor" d="m7 17.013l4.413-.015l9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583zM18.045 4.458l1.589 1.583l-1.597 1.582l-1.586-1.585zM9 13.417l6.03-5.973l1.586 1.586l-6.029 5.971L9 15.006z"/>
+              <path fill="currentColor" d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01c-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2"/>
+            </svg>
+          </button>
+          <button data-bs-toggle='modal' data-bs-target='#ebooks_delete' class='btn btn-sm delete-btn btn-delete text-danger border border-danger' data-title="Delete Organization">
+            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em"" viewBox="0 0 24 24">
+              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m18 9l-.84 8.398c-.127 1.273-.19 1.909-.48 2.39a2.5 2.5 0 0 1-1.075.973C15.098 21 14.46 21 13.18 21h-2.36c-1.279 0-1.918 0-2.425-.24a2.5 2.5 0 0 1-1.076-.973c-.288-.48-.352-1.116-.48-2.389L6 9m7.5 6.5v-5m-3 5v-5m-6-4h4.615m0 0l.386-2.672c.112-.486.516-.828.98-.828h3.038c.464 0 .867.342.98.828l.386 2.672m-5.77 0h5.77m0 0H19.5"/>
+            </svg>
+          </button>
+        </td>`;
         }
+
 
         function getEbooksData() {
             let html = '';
@@ -41,7 +75,7 @@
                     html += "<td class='align-middle'>" + ebook.author + "</td>";
                     html += "<td class='align-middle'>" + ebook.isbn + "</td>";
                     html += "<td class='align-middle'>" + ebook.category + "</td>";
-                    html += "<td class='align-middle text-center'><button class='btn btn-primary btn-sm view-btn'>View</button> <button class='btn btn-warning btn-sm edit-btn'>Edit</button> <button class='btn btn-danger btn-sm delete-btn'>Delete</button></td>"
+                    html += displayActionButtons(ebook.ebook_id);
                     html += "</tr>";
                 }
                 $('.ebooks .data-container').html(html);
@@ -100,7 +134,7 @@
                                 </button>
                             </div>
                             <div class="d-flex-col">
-                                <button class="btn-add border-0" onclick='viewModal()' data-bs-toggle='modal' data-bs-target='#ebooks_create'>
+                                <button class="btn-add border-0" data-bs-toggle='modal' data-bs-target='#ebooks_create'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
                                         viewBox="0 0 20 20">
                                         <path fill="white"
@@ -115,7 +149,7 @@
 
                     <div class='list'>
                         <div class='table-responsive'>
-                            <table class='table table-bordered ebooks'>
+                            <table class='table table-bordered ebooks table-striped'>
                                 <thead>
                                     <tr>
                                         <th class="align-middle text-center">ID</th>
@@ -137,18 +171,32 @@
 
         <!-- FOOTER -->
         <div class="footer"></div>
-        </main>
-    </div>
-    </div>
-    <!-- MODAL -->
-    <div class="modal" id="ebooks_create" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered" id="form-content">
-            <div class="modal-content">
-                <div class="form"></div>
+        <!-- ADD MODAL -->
+        <div class="modal" id="ebooks_create" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered" id="form-content">
+                <div class="modal-content">
+                    <div class="form"></div>
+                </div>
             </div>
         </div>
+        <!-- EDIT MODAL -->
+        <div class="modal" id="ebooks_update" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered" id="form-content">
+                <div class="modal-content">
+                    <div class="form"></div>
+                </div>
+            </div>
+        </div>
+        <!-- DELETE MODAL -->
+        <div class="modal" id="ebooks_delete" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered" id="form-content">
+                <div class="modal-content">
+                    <div class="form"></div>
+                </div>
+            </div>
+            </main>
+        </div>
     </div>
-    </main>
 </body>
 
 </html>
