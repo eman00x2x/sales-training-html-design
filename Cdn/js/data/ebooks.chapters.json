@@ -1,5 +1,36 @@
 {
-	"data": [
-	
-	]
+  "data": [
+    {
+      "ebook_group_id": 1,
+      "name": "Lorem Ipsum1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend non magna vel accumsan.",
+      "duration": [30, 60, 90, 180, 365],
+      "cost": 1500.0,
+      "created_at": 1713923521
+    },
+    {
+      "ebook_group_id": 2,
+      "name": "Lorem Ipsum2",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend non magna vel accumsan.",
+      "duration": [30, 60, 90, 180, 365],
+      "cost": 1500.0,
+      "created_at": 1713923521
+    },
+    {
+      "ebook_group_id": 3,
+      "name": "Lorem Ipsum3",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend non magna vel accumsan.",
+      "duration": [30, 60, 90, 180, 365],
+      "cost": 1500.0,
+      "created_at": 1713923521
+    },
+    {
+      "ebook_group_id": 4,
+      "name": "Lorem Ipsum4",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend non magna vel accumsan.",
+      "duration": [30, 60, 90, 180, 365],
+      "cost": 1500.0,
+      "created_at": 1713923521
+    }
+  ]
 }
