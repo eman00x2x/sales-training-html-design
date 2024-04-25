@@ -28,6 +28,9 @@
     isolation: isolate;
   }
 
+.head-text{
+    margin-left: 10px;
+}
 
 .row-content {
   display: flex;
@@ -48,7 +51,7 @@
   border-radius: 5px;
 }
 
-.add-btn{
+.btn-add{
     background: #131C39;
     padding: 10px 40px;
     border-radius: 5px;
