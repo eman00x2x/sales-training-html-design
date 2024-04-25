@@ -13,27 +13,31 @@
     <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
 
     <script>
-        $(document).ready(function () {
-            var urlParams = new URLSearchParams(window.location.search);
-            var ebookId = urlParams.get('id');
-
-            $.getJSON('../Cdn/js/data/ebooks.json', function (response) {
-                var ebookData = response.data.find(function (ebook) {
-                    return ebook.ebook_id == ebookId;
-                });
-
-                $('#title').val(ebookData.title);
-                $('#subtitle').val(ebookData.sub_title);
-                $('#author').val(ebookData.author);
-                $('#category').val(ebookData.category);
-                $('#description').val(ebookData.description);
-                $('#ebook-group').val(ebookData.ebook_group_id);
-                $('#code').val(ebookData.code);
-            });
-        });
+        
         $(document).on('hidden.bs.modal', '#ebooks_update', function () {
             window.history.pushState({}, '', 'ebooks.list.html');
         });
+
+        $(document).ready(function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const ebookId = urlParams.get("id");
+
+            $.getJSON("../Cdn/js/data/ebooks.json", function (response) {
+                let ebooks = response.data,
+                    ebookData = ebooks.find((item) => item.ebook_id == ebookId);
+
+
+                $('.ebookTitle').val(ebookData.title);
+                $('.ebookSubtitle').val(ebookData.sub_title);
+                $('.ebookAuthor').val(ebookData.author);
+                $('.ebookCategory').val(ebookData.category);
+                $('.ebookDescription').val(ebookData.description);
+                $('.ebookGroup').val(ebookData.ebook_group_id);
+                $('.ebookCode').val(ebookData.code);
+            });
+        });
+
+
     </script>
 </head>
 
@@ -70,11 +74,11 @@
                 <div class="row align-items-end">
                     <div class="col-6">
                         <label for="title" class="label">Title</label>
-                        <input type="text" name="" id="title" class="form-control">
+                        <input type="text" name="" id="title" class="form-control ebookTitle" value="">
                     </div>
                     <div class="col-6">
                         <label for="subtitle" class="label">Subtitle</label>
-                        <input type="text" name="" id="subtitle" class="form-control">
+                        <input type="text" name="" id="subtitle" class="form-control ebookSubtitle" value="">
                     </div>
                 </div>
             </div>
@@ -82,27 +86,27 @@
                 <div class="row align-items-end">
                     <div class="col-6">
                         <label for="author" class="label">Author</label>
-                        <input type="text" name="" id="author" class="form-control">
+                        <input type="text" name="" id="author" class="form-control ebookAuthor" value="">
                     </div>
                     <div class="col-6">
                         <label for="category" class="label">Category</label>
-                        <input type="text" name="" id="category" class="form-control">
+                        <input type="text" name="" id="category" class="form-control ebookCategory" value="">
                     </div>
                 </div>
             </div>
             <div class="d-flex flex-column form-group">
                 <label for="description" class="label">Description</label>
-                <input type="text" name="" id="description" class="form-control">
+                <input type="text" name="" id="description" class="form-control  ebookDescription" value="">
             </div>
             <div class="d-flex flex-column form-group">
                 <div class="row align-items-end">
                     <div class="col-6">
                         <label for="ebook-group" class="label">E-Book Group</label>
-                        <input type="text" name="" id="ebook-group" class="form-control">
+                        <input type="text" name="" id="ebook-group" class="form-control ebookGroup" value="">
                     </div>
                     <div class="col-6">
                         <label for="code" class="label">Code</label>
-                        <input type="text" name="" id="code" class="form-control">
+                        <input type="text" name="" id="code" class="form-control ebookCode" value="">
                     </div>
                 </div>
             </div>
