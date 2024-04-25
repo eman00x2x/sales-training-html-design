@@ -25,6 +25,15 @@ $(document).on('click', '.btn-save', function (e) {
 	
 	setTimeout(function () {
 		$('.response').html("<p>Submitted but nothing happened! form data " + form.serialize() + " see <a href='../Cdn/js/script.js'>../Cdn/js/script.js</a></p>");
+		
+		$('.btn-save').css({
+			'cursor': 'pointer',
+			'pointer-events': 'auto'
+		});
+
+		$('.btn-save').show();
+		$("#form :input").removeAttr('readonly');
+
 	}, 2000);
 	
 	/* $.post(form.attr('action'), form.serialize(), function (data, status) {
@@ -58,10 +67,6 @@ $(document).on('click', '.btn-save', function (e) {
 		}
 
 	}); */
-
-	if (localStorage.getItem('items') !== null) {
-		localStorage.clear();
-	}
 
 	return false;
 });
