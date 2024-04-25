@@ -2,13 +2,13 @@
   - Setup a server and navigate to http://localhost/sales-training-html-design/Admin/organization.list.html
 
 ### Sample html files
-- Data retrieval from .json file
-- Dynamic Modal
-- Retrieval of unique id from .json file
-  - http://localhost/sales-training-html-design/examples/retrieved-data-from-json.html
+  - Data retrieval from .json file
+  - Dynamic Modal
+  - Retrieval of unique id from .json file
+    - http://localhost/sales-training-html-design/examples/retrieved-data-from-json.html
 
-- Form submission
-  - http://localhost/sales-training-html-design/examples/form-submit.html
+  - Form submission
+    - http://localhost/sales-training-html-design/examples/form-submit.html
 
 ### Standard element classes naming convention
 #### ` buttons `
