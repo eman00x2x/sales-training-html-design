@@ -1,103 +1,32 @@
 ## How to view working html files
   - Setup a server and navigate to http://localhost/sales-training-html-design/Admin/organization.list.html
 
-### Sample html file
-  > - with dynamic header, footer and sidebar
-  > - with sample data retrieved from .json file
-```html
-<!DOCTYPE html>
-<html lang="en">
+### Sample html files
+- Data retrieval from .json file
+- Dynamic Modal
+- Retrieval of unique id from .json file
+  - http://localhost/sales-training-html-design/examples/retrieved-data-from-json.html
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organizations</title>
-    
-        <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
-        
-        <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
-        <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+- Form submission
+  - http://localhost/sales-training-html-design/examples/form-submit.html
 
-        <script type="text/javascript">
+### Standard element classes naming convention
+#### ` buttons `
+- btn-save
+- btn-cancel
+- btn-delete
+- btn-filter
+- btn-sort
+- btn-dismiss
+- btn-reload
+- btn-upload
 
-           /** Please avoid copying examples directly, 
-             * as it may negatively impact your design. 
-             * While this approach can sometimes work,
-             * it may not always produce the desired outcome.
-             **/
+#### ` containers `
+- form-container
+- response
+- {action}-container
 
-            $('.header').load('header.html');
-            $('.sidebar').load('sidebar.html');
-            $('.footer').load('footer.html');
-
-            $(document).ready(function () {
-                getOrganizationsData();
-            });
-
-            function getOrganizationsData() {
-                let html = '';
-
-                $.getJSON('../Cdn/js/data/organization.json', function (response) {
-                    const org = response.data;
-                    for (let i = 0; i < org.length; i++) {
-                        let data = org[i];
-                        html += "<tr>";
-                        for (let key in data) {
-                            switch(key) {
-                                case 'created_at':
-                                    let date = new Date(0);
-                                    date.setUTCSeconds(data[key]);
-                                    data[key] = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-                                    break;
-                                case 'logo':
-                                    data[key] = "<img src='" + data[key] + "' style='width:64px;' />";
-                                    break;
-                            }
-                            html += "<td class='align-middle'>" + data[key] + "</td>";
-                        }
-                        html += "<tr>";
-                    }
-                    $('.organizations .data-container').html(html);
-                });
-            }
-        </script>
-    
-</head>
-
-<body>
-
-    <div class='header'></div>
-    <div class='sidebar'></div>
-    <div class='container'>
-        <div class='content'>
-            <!-- all content body should be here -->
-
-            <div class='list'><!-- list data -->
-                <div class='table-responsive'>
-                    <table class='table table-bordered organizations'>
-                        <thead>
-                            <tr>
-                                <th class="align-middle">ID</th>
-                                <th class="align-middle">NAME</th>
-                                <th class="align-middle">DESCRIPTION</th>
-                                <th class="align-middle">LOGO</th>
-                                <th class="align-middle">PRIVILEGES</th>
-                                <th class="align-middle">CREATED AT</th>
-                            </tr>
-                        </thead>
-                        <tbody class="data-container"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class='footer'></div>
-
-</body>
-</html>
-```
-
-# Folder Structure
+### Folder Structure
 - Cdn
   -  vendor ** libraries **
       - bootstrap-5.3.3
@@ -141,7 +70,7 @@
   - [ ] Create
   - [ ] Update
   - [ ] Delete
-  - [ ] List
+  - [ ] List [#1](https://github.com/eman00x2x/sales-training-html-design/issues/1)
   - [ ] view
 - Accounts with profile **assigned to rogu**
   - [ ] Create
@@ -185,11 +114,11 @@
   - Charts
     - Use Google Chart
     - [ ] Registered user per month
-- My Account **assigned to rogu**
+- My Account **assigned to angela**
   - [ ] View
   - [ ] Update
   - [ ] Change Password
-- Users Management **assigned to rogu**
+- Users Management **assigned to jamiel**
   - [ ] List of registered users
   - [ ] Create
   - [ ] Update
@@ -210,7 +139,7 @@
 - Transactions **assigned to Vien**
   - [ ] list
   - [ ] detaild view
-- Market Place **assigned to Andrei**
+- Market Place **assigned to kc**
   - Videos
     - [ ] List of unpurchased video collections
     - [ ] view video group/collections
@@ -233,13 +162,13 @@
     - [ ] Resend Email Verification
     - [ ] Email Verification Template
   - [ ] Change Password
-- Video Collections **assigned to rogu**
+- Video Collections **assigned to jamiel**
   - [ ] List of video groups
     - [ ] Watch video
       - [ ] Add Comments
       - [ ] Add Ratings
     - [ ] Examination
-- Ebook Collections **assigned to Rimel**
+- Ebook Collections **assigned to kc**
   - [ ] List of ebook groups
     - [ ] Read Ebook
       - [ ] Add Comments
@@ -255,7 +184,7 @@
     - [ ] Requiremetns Upload
 
 ## Website
-**assigned to rogu**
+**assigned to jamiel**
 - Home page
   - [ ] Video ads with buttons in side menu
 - [ ] Registration Form Page

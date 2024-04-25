@@ -1,11 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <script type="text/javascript">
+        $(document).ready(function () {
+          const urlParams = new URLSearchParams(window.location.search);
+          const grp_id = urlParams.get("id");
+  
+          $.getJSON("../Cdn/js/data/video.groups.json", function (response) {
+            let vid_grp = response.data,
+              f = vid_grp.find((item) => item.vid_group_id == grp_id);
+  
+            $(".vidgrpName").val(f.name);
+            $(".vidgrpDesc").val(f.description);
+            $(".vidgrpDuration").val(f.duration);
+            $(".vidgrpCost").val(f.cost);
+          });
+        });
+      </script>
 </head>
+
 <body>
-    
+    <div class="modal-header">
+        <h5 class="modal-title">EDIT VIDEO GROUP</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form action="">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Name</label>
+                <input type="text" class="vidgrpName form-control" id="exampleFormControlInput1" value=""/>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                <textarea class="form-control vidgrpDesc"  id="exampleFormControlTextarea1" rows="3" value=""></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Duration</label>
+                <input type="text" class="form-control vidgrpDuration" id="exampleFormControlInput1" value=""/>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Cost</label>
+                <input type="text" class="form-control vidgrpCost" id="exampleFormControlInput1" value=""/>
+            </div>
+            <div class="text-end">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </form>
+    </div>
 </body>
+
 </html>

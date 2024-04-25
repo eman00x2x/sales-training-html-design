@@ -1,11 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Organization Details</title>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const org_id = urlParams.get("id");
+
+        $.getJSON("../Cdn/js/data/organization.json", function (response) {
+          let org = response.data,
+            orgData = org.find((item) => item.organization_id == org_id);
+
+          $(".orgLogo").attr("src", orgData.logo);
+          $(".orgName").val(orgData.name);
+          $(".orgDesc").val(orgData.description);
+          // $('#dynamicModal .response-data-container').html(JSON.stringify(org[f]));
+        });
+      });
+
+      $(document).on("hidden.bs.modal", "#ebooks_update", function () {
+        window.history.pushState({}, "", "organization.list.html");
+      });
+    </script>
+  </head>
+  <body>
+    <div class="modal-header">
+      <div class="d-flex justify-content-center align-items-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="2em"
+          height="2em"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M21 12a1 1 0 0 0-1 1v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h6a1 1 0 0 0 0-2H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-6a1 1 0 0 0-1-1m-15 .76V17a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .71-.29l6.92-6.93L21.71 8a1 1 0 0 0 0-1.42l-4.24-4.29a1 1 0 0 0-1.42 0l-2.82 2.83l-6.94 6.93a1 1 0 0 0-.29.71m10.76-8.35l2.83 2.83l-1.42 1.42l-2.83-2.83ZM8 13.17l5.93-5.93l2.83 2.83L10.83 16H8Z"
+          />
+        </svg>
+        <h5 class="ms-2 modal-title">Update Organization Details</h5>
+      </div>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div
+      class="modal-body"
+      style="max-height: calc(100vh - 200px); overflow-y: auto"
+    >
+      <form action="">
+        <input type="hidden" name="csrf_token" id="csrf_token" value="" />
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Update Organization Logo</label
+          >
+          <img class="orgLogo mb-3" width="100%" alt="" />
+          <label for="formFile" class="form-label"
+            >Update Organization Logo</label
+          >
+          <input class="form-control" type="file" id="formFile" />
+        </div>
+        <div class="mb-3">
+          <label for="orgName" class="form-label"
+            >Update Organization Name</label
+          >
+          <input
+            type="text"
+            class="orgName form-control"
+            id="orgName"
+            value=""
+          />
+        </div>
+        <div class="mb-3">
+          <label for="orgDesc" class="form-label"
+            >Update Organization Description</label
+          >
+          <textarea
+            class="orgDesc form-control"
+            id="orgDesc"
+            value=""
+            rows="5"
+          ></textarea>
+        </div>
+        <div class="text-end">
+          <button
+            type="button"
+            class="btn border border-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="button" class="btn btn-save btn-success">
+            Update Changes
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
 </html>

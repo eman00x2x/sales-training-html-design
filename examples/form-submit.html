@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizations</title>
+    
+        <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+        
+        <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+        <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+        <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+        <script src="../Cdn/js/script.js"></script>
+
+        <script type="text/javascript">
+
+            /** Please avoid copying examples directly, 
+             * as it may negatively impact your design. 
+             * While this approach can sometimes work,
+             * it may not always produce the desired outcome.
+           **/
+
+            $(document).ready(function () {
+                $('.header').load('header.html');
+                $('.sidebar').load('sidebar.html');
+                $('.footer').load('footer.html');
+            });
+
+            /**
+             * Validator Documentation https://validatejs.org/#validators-length
+             **/
+
+            function validateInput(input) {
+
+                let message = [];
+
+                const data = input.reduce(function (obj, item) {
+                    obj[item.name] = item.value;
+                    return obj;
+                }, {});
+
+                const validator = validate({
+                    name: data.name,
+                    lastname: data.lastname
+                }, {
+                    name: {
+                        type: "string",
+                        length: { minimum: 4 }
+                    },
+                    lastname: {
+                        type: "string",
+                        length: { minimum: 4 }
+                    }
+                });
+                
+                if(validator !== undefined) {
+                    for(key in validator) {
+                        message.push(validator[key]);
+                    }
+                    return message.join(", ");
+                }
+
+                return false;
+
+            }
+
+        </script>
+    
+</head>
+
+<body>
+
+    <div class='header'></div>
+    <div class='sidebar'></div>
+
+    <div class='container'>
+        <div class='content'>
+            <!-- all content body should be here -->
+
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="response"></div>
+
+                    <form id="form" action="" method="post">
+
+                        <input type="hidden" name="csrf_token" id="csrf_token" value="" />
+
+                        <div class="form-floating mb-3">
+                            <input type="text" name="name" id="name" value="" class="form-control" autocomplete="off" />
+                            <label for="name">Your Name</label>
+                        </div>
+                    
+                        <div class="form-floating mb-3">
+                            <input type="text" name="lastname" id="lastname" value="" class="form-control" autocomplete="off" />
+                            <label for="lastname">Your Last Name</label>
+                        </div>
+                    </form>
+                    
+                    <span class="btn btn-primary btn-save">Save Form</span>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class='footer'></div>
+
+</body>
+</html>
