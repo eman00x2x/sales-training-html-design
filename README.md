@@ -114,7 +114,7 @@
   - Charts
     - Use Google Chart
     - [ ] Registered user per month
-- My Account **assigned to angela**
+- My Account **assigned to camille**
   - [ ] View
   - [ ] Update
   - [ ] Change Password
@@ -127,7 +127,7 @@
     - [ ] List of uploaded requirements or files
     - [ ] View
     - [ ] Download
-- My Collections **assigned to Rimel**
+- My Collections **assigned to Camille**
   - Videos
     - [ ] List of video groups
       - [ ] list of videos in a group
