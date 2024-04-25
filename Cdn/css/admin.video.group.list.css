@@ -59,7 +59,7 @@ border-radius: 5px;
 }
 
 .table-bordered.video-group th.description {
-  max-width: 200px; /* Adjust the maximum width as needed */
+  max-width: 200px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
