@@ -3,6 +3,8 @@
 
 ### Sample html files
 - Data retrieval from .json file
+- Dynamic Modal
+- Retrieval of unique id from .json file
   - http://localhost/sales-training-html-design/examples/retrieved-data-from-json.html
 
 - Form submission
