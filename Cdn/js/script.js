@@ -16,6 +16,14 @@ const convertDate = (dateData) => {
   });
 };
 
+const niceTrim = (data, length) => {
+	if (data.length < length) {
+      return data;
+    } else {
+      return data.substring(0, length - 3) + "...";
+    }
+};
+
 $(document).on("click", ".btn-save", function (e) {
   e.preventDefault();
 

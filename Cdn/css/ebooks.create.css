@@ -15,7 +15,11 @@
     font-size: 15px;
 }
 
-.btn{
+.btn-cancel{
+    width: 100px;
+}
+
+.btn-save{
     width: 100px;
 }
 
