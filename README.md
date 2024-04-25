@@ -70,7 +70,7 @@
   - [ ] Create
   - [ ] Update
   - [ ] Delete
-  - [ ] List #1
+  - [ ] List [#1](https://github.com/eman00x2x/sales-training-html-design/issues/1)
   - [ ] view
 - Accounts with profile **assigned to rogu**
   - [ ] Create
