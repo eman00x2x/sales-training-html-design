@@ -114,11 +114,11 @@
   - Charts
     - Use Google Chart
     - [ ] Registered user per month
-- My Account **assigned to rogu**
+- My Account **assigned to angela**
   - [ ] View
   - [ ] Update
   - [ ] Change Password
-- Users Management **assigned to rogu**
+- Users Management **assigned to jamiel**
   - [ ] List of registered users
   - [ ] Create
   - [ ] Update
@@ -139,7 +139,7 @@
 - Transactions **assigned to Vien**
   - [ ] list
   - [ ] detaild view
-- Market Place **assigned to Andrei**
+- Market Place **assigned to kc**
   - Videos
     - [ ] List of unpurchased video collections
     - [ ] view video group/collections
@@ -162,13 +162,13 @@
     - [ ] Resend Email Verification
     - [ ] Email Verification Template
   - [ ] Change Password
-- Video Collections **assigned to rogu**
+- Video Collections **assigned to jamiel**
   - [ ] List of video groups
     - [ ] Watch video
       - [ ] Add Comments
       - [ ] Add Ratings
     - [ ] Examination
-- Ebook Collections **assigned to Rimel**
+- Ebook Collections **assigned to kc**
   - [ ] List of ebook groups
     - [ ] Read Ebook
       - [ ] Add Comments
@@ -184,7 +184,7 @@
     - [ ] Requiremetns Upload
 
 ## Website
-**assigned to rogu**
+**assigned to jamiel**
 - Home page
   - [ ] Video ads with buttons in side menu
 - [ ] Registration Form Page
