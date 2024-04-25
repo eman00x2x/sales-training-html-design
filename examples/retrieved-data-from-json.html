@@ -29,10 +29,22 @@
                 
             });
 
+            $(document).on('click', '.btn-edit', function() {
+
+                id = $(this).data('id');
+                $.getJSON('../Cdn/js/data/organization.json', function (data) {
+                    let response = data.data;
+                    f = response.keys(response).find(key => response[key].organization_id === id);
+                    
+                    $('#dynamicModal .response-data-container').html(JSON.stringify(response[f]));
+                });
+
+            });
+
             function getOrganizationsData() {
                 let html = '';
 
-                $.getJSON('../Cdn/js/data/organization.json', function (response) {console.log(response);
+                $.getJSON('../Cdn/js/data/organization.json', function (response) {
                     const org = response.data;
                     for (let i = 0; i < org.length; i++) {
                         let data = org[i];
@@ -50,6 +62,8 @@
                             }
                             html += "<td class='align-middle'>" + data[key] + "</td>";
                         }
+
+                        html += "<td class='align-middle'><span class='btn btn-primary btn-edit' data-id='" + data.organization_id + "' data-bs-toggle='modal' data-bs-target='#dynamicModal'>edit</span></td>";
                         html += "<tr>";
                     }
                     $('.organizations .data-container').html(html);
@@ -60,6 +74,15 @@
 </head>
 
 <body>
+
+    <!-- MODAL -->
+    <div class="modal" id="dynamicModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" id="form-content">
+            <div class="modal-content">
+                <div class="response-data-container"></div>
+            </div>
+        </div>
+    </div>
 
     <div class='header'></div>
     <div class='sidebar'></div>
