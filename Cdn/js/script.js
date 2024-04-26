@@ -56,7 +56,7 @@ $(document).on("click", ".btn-save", function (e) {
   setTimeout(function () {
     if ((message = validateInput(form.serializeArray()))) {
       const errorAlert =
-        "<div class='response alert alert-danger alert-dismissible fade show' role='alert'><span>Follow the format for fields: " +
+        "<div class='response alert alert-danger alert-dismissible fade show mt-3' role='alert'><span>Follow the format for fields: " +
         message +
         "</span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
       $(".response").html(errorAlert);
