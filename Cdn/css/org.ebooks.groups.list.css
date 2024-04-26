@@ -1,0 +1,97 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+.row-content {
+display: flex;
+align-items: center;
+margin-bottom: 5px;
+}
+
+.dropdown {
+margin-right: 10px; 
+outline: 1px solid #DEE3E7;
+border-radius: 5px;
+outline: 1px solid #000000;
+}   
+
+.form-outline {
+margin-right: 5px;
+}
+
+.btn-filter {
+margin-left: 5px;
+background-color: transparent; 
+outline: 1px solid #000000;
+border-radius: 5px;
+}
+
+.card-body {
+    background: linear-gradient(90deg, rgba(19,28,57,1) 0%, rgba(10,60,144,1) 100%);
+}
+
+.propType {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 2px;
+}
+
+.sold-text {
+    font-size: 14px; 
+    color: white; 
+}
+
+.checked {
+    color: orange;
+}
+
+.rating-container {
+    display: inline-block; 
+    margin-bottom: 10px;
+}
+
+.info-container {
+    display: flex;
+    align-items: center; 
+}
+
+.info-box {
+    width: 90px; 
+    height: 30px; 
+    margin-left: 50px;
+    color: white;
+    border-radius: 14px;
+    border: 2px solid white;
+    text-align: center;
+}
+
+.caroProp {
+    margin-bottom: 50px;
+}
+

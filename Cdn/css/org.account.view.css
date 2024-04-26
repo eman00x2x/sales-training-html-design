@@ -1,0 +1,60 @@
+.form-input-flex {
+    display: flex;
+    margin-bottom: 20px;
+    column-gap: 10px;
+    margin-left: 10px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 13px 22px;
+    border-radius: 5px;
+    border: 1px solid #DDE3EC;
+    background: #FFFFFF;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.form-input-info {
+    width: 500px;
+    padding: 13px 22px;
+    border-radius: 5px;
+    border: 1px solid #DDE3EC;
+    background: #FFFFFF;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.form-label {
+    color: #1C1C1C;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+
+.suffix-input input {
+    width: 120px;
+}
+
+.suffix-input input::placeholder {
+    font-size: 12px;
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-icon-container {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    right: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; 
+}

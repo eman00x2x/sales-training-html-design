@@ -1,0 +1,78 @@
+/* Bootstrap 5 CSS and icons included */
+
+.upload_dropzone {
+  color: #1c1c39;
+  background-color: #f3f5f7;
+  outline: 2px dashed #1c1c39;
+  outline-offset: -12px;
+  transition: outline-offset 0.2s ease-out, outline-color 0.3s ease-in-out,
+    background-color 0.2s ease-out;
+}
+
+.upload_dropZone.highlight {
+  outline-offset: -4px;
+  outline-color: var(--colorPrimaryNormal, #0576bd);
+  background-color: var(--colorPrimaryEighth, #c8dadf);
+}
+.upload_svg {
+  fill: var(--colorPrimaryNormal, #0576bd);
+}
+.btn-upload {
+  color: #fff;
+  background-color: var(--colorPrimaryNormal);
+}
+.btn-upload:hover,
+.btn-upload:focus {
+  color: #fff;
+  background-color: var(--colorPrimaryGlare);
+}
+.upload_img {
+  width: calc(33.333% - (2rem / 3));
+  object-fit: contain;
+}
+
+.btn-view:hover {
+  background-color: #0a58ca !important;
+  color: white !important;
+}
+
+.btn-edit:hover {
+  background-color: #c68914 !important;
+  color: white !important;
+}
+
+.btn-delete:hover {
+  background-color: #b02a37 !important;
+  color: white !important;
+}
+
+[data-title]:hover:after {
+  opacity: 1;
+  transition: all 0.1s ease 0.5s;
+  visibility: visible;
+}
+
+[data-title]:after {
+  content: attr(data-title);
+  background-color: white !important;
+  color: #111;
+  font-size: 11px;
+  position: absolute;
+  padding: 1px 5px 2px 5px;
+  bottom: -2.5em;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px black;
+  opacity: 5;
+  border: 1px solid white;
+  z-index: 99999;
+  font-weight: 500 !important;
+  visibility: hidden;
+}
+
+[data-title] {
+  position: relative;
+}

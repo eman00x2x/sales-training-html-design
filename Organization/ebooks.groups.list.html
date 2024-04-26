@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Organization | E-book Groups</title>
+
+    <link rel="stylesheet" href="../Cdn/css/org.ebooks.groups.list.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+
+    <script src="../Cdn/js/script.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('.header').load('/Admin/header.html');
+            $('.sidebar').load('/Admin/sidebar.html');
+            $('.footer').load('/Admin/footer.html');
+        });
+
+        function myFunction() {
+            document.getElementById("dropdown").classList.toggle("show");
+        }
+
+        window.onclick = function (event) {
+            if (!event.target.matches('.btn btn-light dropdown-toggle')) {
+                var dropdowns = document.getElementsByClassName("dropdown-menu");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row flex-nowrap" style="height: 100vh">
+            <!-- SIDEBAR -->
+            <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
+            <main class="col py-3">
+                <!-- HEADER -->
+                <div class="header"></div>
+
+                <!-- CONTENT -->
+                <div class='content'>
+                    <!-- all content body should be here -->
+                    <div>
+                        <!-- VIDEO UPPER CONTENT -->
+                        <div class="" style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M11 4.717c-2.286-.58-4.16-.756-7.045-.71A1.99 1.99 0 0 0 2 6v11c0 1.133.934 2.022 2.044 2.007 2.759-.038 4.5.16 6.956.791V4.717Zm2 15.081c2.456-.631 4.198-.829 6.956-.791A2.013 2.013 0 0 0 22 16.999V6a1.99 1.99 0 0 0-1.955-1.993c-2.885-.046-4.76.13-7.045.71v15.081Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+
+                            <h1 style="margin-left: 6px; font-weight: bold;">E-BOOK GROUPS</h1>
+                        </div>
+
+                        <div class="row-content">
+                            <!-- Upper Content -->
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Sort by
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">TITLE</a></li>
+                                    <li><a class="dropdown-item" href="#">DATE</a></li>
+                                    <li><a class="dropdown-item" href="#">COST</a></li>
+                                </ul>
+                            </div>
+                            <div class="form-outline" data-mdb-input-init style="width: 30%;">
+                                <input placeholder="Search by E-books Group title..." class="form-control"
+                                    id="datatable-search-input" style="border-color: black;">
+                            </div>
+                        </div>
+
+                        <hr style="">
+                    </div>
+
+                    <div class="caroProp pt-1">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <!-- First Card -->
+                                    <div class="col-md-4">
+                                        <div class="card h-75">
+                                            <img src="https://media.istockphoto.com/id/941224020/vector/open-book-thin-line-icon-vector-design-illustration.jpg?s=612x612&w=0&k=20&c=ed4RbZQh24buDkXEcfEZ4N3aK1cbcG5sRctz13NdA8M="
+                                                class="card-img-top featImg" alt="...">
+                                            <div class="card-body">
+
+                                                <div class="info-container">
+                                                    <div class="content">
+                                                        <p class="propType fw-bold w-100">E-BOOK GROUP NAME</p>
+
+                                                        <div class="rating-container">
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="sold-text">12k sold</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="info-box"> P 1,000 </div>
+                                                </div>
+
+                                                <p style="font-size: 13px; color: white;">Lorem ipsum dolor sit amet
+                                                    consectetur. Donec elit
+                                                    sit fermentum risus aliquam eget consectetur. Id interdum
+                                                    condimentum
+                                                    dui
+                                                    potenti. Auctor ultrices quisque vitae neque ultrices magna feugiat
+                                                    placerat
+                                                    cras. Tempus at faucibus morbi lacinia et donec. Massa vitae mattis
+                                                    elit
+                                                    ultrices. Consequat quam mauris tempus imperdiet sed tellus aliquam
+                                                    ultricies duis. Egestas pharetra dictum senectus ut dignissim
+                                                    malesuada.
+                                                    Nullam at ac amet varius consectetur sit morbi. Mattis donec arcu
+                                                    dignissim
+                                                    mauris risus in consequat tincidunt aliquet.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Second Card -->
+                                    <div class="col-md-4">
+                                        <div class="card h-75">
+                                            <img src="https://media.istockphoto.com/id/941224020/vector/open-book-thin-line-icon-vector-design-illustration.jpg?s=612x612&w=0&k=20&c=ed4RbZQh24buDkXEcfEZ4N3aK1cbcG5sRctz13NdA8M="
+                                                class="card-img-top featImg" alt="...">
+                                            <div class="card-body">
+                                                <div class="info-container">
+                                                    <div class="content">
+                                                        <p class="propType fw-bold w-100">E-BOOK GROUP NAME</p>
+
+                                                        <div class="rating-container">
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="sold-text">12k sold</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="info-box"> P 1,000 </div>
+                                                </div>
+
+                                                <p style="font-size: 13px; color: white;">Lorem ipsum dolor sit amet
+                                                    consectetur. Donec elit
+                                                    sit fermentum risus aliquam eget consectetur. Id interdum
+                                                    condimentum
+                                                    dui
+                                                    potenti. Auctor ultrices quisque vitae neque ultrices magna feugiat
+                                                    placerat
+                                                    cras. Tempus at faucibus morbi lacinia et donec. Massa vitae mattis
+                                                    elit
+                                                    ultrices. Consequat quam mauris tempus imperdiet sed tellus aliquam
+                                                    ultricies duis. Egestas pharetra dictum senectus ut dignissim
+                                                    malesuada.
+                                                    Nullam at ac amet varius consectetur sit morbi. Mattis donec arcu
+                                                    dignissim
+                                                    mauris risus in consequat tincidunt al
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Third Card -->
+                                    <div class="col-md-4">
+                                        <div class="card h-75">
+                                            <img src="https://media.istockphoto.com/id/941224020/vector/open-book-thin-line-icon-vector-design-illustration.jpg?s=612x612&w=0&k=20&c=ed4RbZQh24buDkXEcfEZ4N3aK1cbcG5sRctz13NdA8M="
+                                                class="card-img-top featImg" alt="...">
+                                            <div class="card-body">
+
+                                                <div class="info-container">
+                                                    <div class="content">
+                                                        <p class="propType fw-bold w-100">E-BOOK GROUP NAME</p>
+
+                                                        <div class="rating-container">
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="sold-text">12k sold</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="info-box"> P 1,000 </div>
+                                                </div>
+
+                                                <p style="font-size: 13px; color: white;">Lorem ipsum dolor sit amet
+                                                    consectetur. Donec elit
+                                                    sit fermentum risus aliquam eget consectetur. Id interdum
+                                                    condimentum
+                                                    dui
+                                                    potenti. Auctor ultrices quisque vitae neque ultrices magna feugiat
+                                                    placerat
+                                                    cras. Tempus at faucibus morbi lacinia et donec. Massa vitae mattis
+                                                    elit
+                                                    ultrices. Consequat quam mauris tempus imperdiet sed tellus aliquam
+                                                    ultricies duis. Egestas pharetra dictum senectus ut dignissim
+                                                    malesuada.
+                                                    Nullam at ac amet varius consectetur sit morbi. Mattis donec arcu
+                                                    dignissim
+                                                    mauris risus in consequat tincidunt al
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div style="display: flex; align-items: center;">
+                        <p style="margin-right: auto;">Showing 1 out of 10 pages</p>
+                        <nav aria-label="...">
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <span class="page-link">Previous</span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active">
+                                    <span class="page-link">
+                                        2
+                                    </span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+
+                    <!-- FOOTER -->
+                    <div class="footer"></div>
+                    <!-- MODAL -->
+                    <div class="modal" id="video_group_create" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered" id="form-content">
+                            <div class="modal-content">
+                                <div class="form"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal" id="video_group_update" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered" id="form-content">
+                            <div class="modal-content">
+                                <div class="form"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal" id="video_group_delete" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered" id="form-content">
+                            <div class="modal-content">
+                                <div class="form"></div>
+                            </div>
+                        </div>
+                    </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
