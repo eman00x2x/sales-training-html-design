@@ -26,36 +26,13 @@
 
     $(document).on('click', '.btn-edit', function (e) {
       id = $(this).data('id');
-      $.getJSON('../Cdn/js/data/organization.json', function (data) {
-        let response = data.data;
-        f = response.keys(response).find(key => response[key].organization_id === id);
-
-        window.location.href = "organization.update.html?id=" + id;
-
-        // $('#dynamicModal .response-data-container').html(JSON.stringify(response[f]));
-      });
+      window.location.href = "organization.update.html?id=" + id;
     });
 
     $(document).on('click', '.btn-delete', function (e) {
       id = $(this).data('id');
-      $.getJSON('../Cdn/js/data/organization.json', function (data) {
-        let response = data.data;
-        f = response.keys(response).find(key => response[key].organization_id === id);
-
-        window.location.href = "organization.delete.html?id=" + id;
-      });
+      window.location.href = "organization.delete.html?id=" + id;
     });
-
-    // $(document).on('keyup', '.search', function (e) {
-    //   const value = e.target.value.trim();
-
-    //   $.getJSON('../Cdn/js/data/organization.json', function (data) {
-    //     let response = data.data;
-    //     f = Array.from(response.keys(response).filter(key => response[key].name.toLowerCase().includes(value.toLowerCase())))
-
-    //     dataTable(f, response)
-    //   });
-    // });
 
     function displayActionButtons(id) {
       return `<td class='align-middle'>
@@ -78,37 +55,6 @@
           </span>
         </td>`;
     }
-
-    // function dataTable(f, response) {
-    //   let html = "";
-
-    //   for (let item in f) {
-    //     let data = response[item];
-
-    //     html += "<tr>";
-    //     html +=
-    //       "<td class='align-middle text-center'>" +
-    //       data.organization_id +
-    //       "</td>";
-    //     html +=
-    //       "<td class='align-middle text-center' style='max-width: 50px'><img src='" +
-    //       data.logo +
-    //       "' style='width:10em;' /></td>";
-    //     html += "<td class='align-middle'>" + data.name + "</td>";
-    //     html +=
-    //       "<td class='align-middle text-truncate' style='max-width: 150px'>" +
-    //       data.description +
-    //       "</td>";
-    //     html +=
-    //       "<td class='align-middle'>" +
-    //       convertDate(data.created_at) +
-    //       "</td>";
-    //     html += displayActionButtons(data.organization_id);
-    //     html += "</tr>";
-    //   }
-
-    //   $(".organizations .data-container").html(html);
-    // }
 
     function getOrganizationsData() {
       let html = "";

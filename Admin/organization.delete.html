@@ -15,13 +15,15 @@
   <script src="../Cdn/js/script.js"></script>
 
   <script type="text/javascript">
+    let id = ""
+
     $(document).ready(function () {
       $(".header").load("header.html");
       $(".sidebar").load("sidebar.html");
       $(".footer").load("footer.html");
 
       let params = new URL(document.location.toString()).searchParams;
-      let id = params.get("id");
+      id = params.get("id");
 
       $.getJSON('../Cdn/js/data/organization.json', function (data) {
         let response = data.data;
@@ -37,15 +39,30 @@
       window.location.href = "organization.list.html"
     });
 
+    // $(document).on("click", ".btn-delete", function (e) {
+    //   console.log(id)
+    //   $.ajax({
+    //     url: '../Cdn/js/data/organization.json',
+    //     type: 'DELETE',
+    //     data: { "data": [{ organization_id: id }] }, //<-----this should be an object.
+    //     contentType: 'application/json',  // <---add this
+    //     dataType: 'text',                // <---update this
+    //     success: function (result) { console.log("yes", result) },
+    //     error: function (result) { console.log("aw", result) }
+    //   });
+
+    //   // window.location.href = "organization.list.html"
+    // });
+
     $(document).on("change", "#logo", function (e) {
       var URL = window.URL || window.webkitURL;
       var file = e.target.files[0];
-
-
       if (file) {
         $(".orgLogo").attr("src", URL.createObjectURL(file));
       }
     });
+
+
 
     /**
      * Validator Documentation https://validatejs.org/#validators-length
@@ -111,7 +128,7 @@
               <button type="button" class="btn border border-secondary-subtle btn-light" data-bs-dismiss="modal">
                 Close
               </button>
-              <button type="button" class="btn btn-danger">Delete</button>
+              <button type="button" class="btn btn-delete btn-danger">Delete</button>
             </div>
           </div>
         </form>
@@ -160,8 +177,7 @@
                   <button id="back" type="button" class="btn border border-secondary" data-bs-dismiss="modal">
                     Back
                   </button>
-                  <button type="button" class="btn btn-delete btn-danger" data-bs-toggle='modal'
-                    data-bs-target='#dynamicModal'>
+                  <button type="button" class="btn btn-danger" data-bs-toggle='modal' data-bs-target='#dynamicModal'>
                     Continue Deletion
                   </button>
                 </div>
