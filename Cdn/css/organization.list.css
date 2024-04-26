@@ -14,18 +14,22 @@
   outline-color: var(--colorPrimaryNormal, #0576bd);
   background-color: var(--colorPrimaryEighth, #c8dadf);
 }
+
 .upload_svg {
   fill: var(--colorPrimaryNormal, #0576bd);
 }
+
 .btn-upload {
   color: #fff;
   background-color: var(--colorPrimaryNormal);
 }
+
 .btn-upload:hover,
 .btn-upload:focus {
   color: #fff;
   background-color: var(--colorPrimaryGlare);
 }
+
 .upload_img {
   width: calc(33.333% - (2rem / 3));
   object-fit: contain;
