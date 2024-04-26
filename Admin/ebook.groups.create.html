@@ -94,8 +94,8 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex  align-items-center">
-                                <i class="bi bi-plus-circle h1 m-0 me-2"></i>
-                                <h1 class="m-0">Add E-Book Group</h1>
+                                <i class="bi bi-plus-circle fs-2"></i>
+                                <h5 class="ms-2 modal-title font-bold">Add E-Book Group</h5>
                             </div>
                             <hr>
                             <div class="response"></div>
@@ -104,27 +104,26 @@
 
                                 <input type="hidden" name="csrf_token" id="csrf_token" value="" />
                                 <label for="name">Ebook Group Name</label>
-                                <div class="form-floating mb-3">
+                                <div class="mb-3">
                                     <input type="text" name="name" id="name" value="" class="form-control"
                                         autocomplete="off" />
                                 </div>
                                 <label for="description">Description of Ebook</label>
-                                <div class="form-floating mb-3">
-                                    <input type="text" name="description" id="description" value="" class="form-control"
-                                        autocomplete="off" />
+                                <div class="mb-3">
+                                    <textarea name="description" id="description" class="form-control" rows="3" autocomplete="off"></textarea>
                                 </div>
                                 <label for="duration">Duration</label>
-                                <div class="form-floating mb-3">
+                                <div class="mb-3">
                                     <input type="text" name="duration" id="duration" value="" class="form-control"
                                         autocomplete="off" />
                                 </div>
                                 <label for="cost">Cost</label>
-                                <div class="form-floating mb-3">
+                                <div class="mb-3">
                                     <input type="text" name="cost" id="cost" value="" class="form-control"
                                         autocomplete="off" />
                                 </div>
                             </form>
-                            <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-end">
                                 <span class="btn btn-secondary btn-cancel me-2">Cancel</span>
                                 <span class="btn btn-primary btn-save ">Save Form</span>
                             </div>
