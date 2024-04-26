@@ -4,55 +4,107 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>ADMIN | UPDATE VIDEO GROUP</title>
+    <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function () {
-          const urlParams = new URLSearchParams(window.location.search);
-          const grp_id = urlParams.get("id");
-  
-          $.getJSON("../Cdn/js/data/video.groups.json", function (response) {
-            let vid_grp = response.data,
-              f = vid_grp.find((item) => item.vid_group_id == grp_id);
-  
-            $(".vidgrpName").val(f.name);
-            $(".vidgrpDesc").val(f.description);
-            $(".vidgrpDuration").val(f.duration);
-            $(".vidgrpCost").val(f.cost);
-          });
+            $('.header').load('header.html');
+            $('.sidebar').load('sidebar.html');
+            $('.footer').load('footer.html');
+            getVideoGroupData();
         });
-      </script>
+
+        $(document).on('click', '.btn-edit', function () {
+
+            id = $(this).data('id');
+            $.getJSON('../Cdn/js/data/video.groups.json', function (data) {
+                let response = data.data;
+                f = response.keys(response).find(key => response[key].ebook_group_id === id);
+
+                $('#dynamicModal .response-data-container').html(JSON.stringify(response[f]));
+            });
+        });
+
+        function  getVideoGroupData() {
+                let html = '';
+
+                $.getJSON('../Cdn/js/data/video.groups.json', function (response) {
+                    const org = response.data;
+                    for (let i = 0; i < org.length; i++) {
+                        let data = org[i];
+                        html += "<tr>";
+                        for (let key in data) {
+                            switch(key) {
+                                case 'created_at':
+                                    let date = new Date(0);
+                                    date.setUTCSeconds(data[key]);
+                                    data[key] = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                                    break;
+                                case 'logo':
+                                    data[key] = "<img src='" + data[key] + "' style='width:64px;' />";
+                                    break;
+                            }
+                            html += "<td class='align-middle'>" + data[key] + "</td>";
+                        }
+
+                        html += "<td class='align-middle'><span class='btn btn-primary btn-edit' data-id='" + data.vid_group_id + "' data-bs-toggle='modal' data-bs-target='#dynamicModal'>edit</span></td>";
+                        html += "<tr>";
+                    }
+                    $('.video-group .data-container').html(html);
+                });
+            }
+
+    </script>
 </head>
 
 <body>
-    <div class="modal-header">
-        <h5 class="modal-title">EDIT VIDEO GROUP</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- MODAL -->
+    <div class="modal" id="dynamicModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" id="form-content">
+            <div class="modal-content">
+                <div class="response-data-container"></div>
+            </div>
+        </div>
     </div>
-    <div class="modal-body">
-        <form action="">
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Name</label>
-                <input type="text" class="vidgrpName form-control" id="exampleFormControlInput1" value=""/>
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                <textarea class="form-control vidgrpDesc"  id="exampleFormControlTextarea1" rows="3" value=""></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Duration</label>
-                <input type="text" class="form-control vidgrpDuration" id="exampleFormControlInput1" value=""/>
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Cost</label>
-                <input type="text" class="form-control vidgrpCost" id="exampleFormControlInput1" value=""/>
-            </div>
-            <div class="text-end">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    Close
-                </button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </form>
+    <div class="container-fluid">
+        <div class="row flex-nowrap" style="height: 100vh">
+            <!-- SIDEBAR -->
+            <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
+            <main class="col py-3">
+                <!-- HEADER -->
+                <div class="header"></div>
+
+                <!-- CONTENT -->
+                <div class='content'>
+                    <!-- all content body should be here -->
+
+                    <div class='list'><!-- list data -->
+                        <div class='table-responsive'>
+                            <table class='table table-bordered video-group'>
+                                <thead>
+                                    <tr>
+                                        <th class="align-middle">ID</th>
+                                        <th class="align-middle">NAME</th>
+                                        <th class="align-middle">DESCRIPTION</th>
+                                        <th class="align-middle">DURATION</th>
+                                        <th class="align-middle">COST</th>
+                                        <th class="align-middle">CREATED AT</th>
+                                        <th class="align-middle">ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="data-container"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- FOOTER -->
+                <div class="footer"></div>
+            </main>
+        </div>
     </div>
 </body>
 

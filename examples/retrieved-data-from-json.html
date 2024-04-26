@@ -35,7 +35,7 @@
                 $.getJSON('../Cdn/js/data/organization.json', function (data) {
                     let response = data.data;
                     f = response.keys(response).find(key => response[key].organization_id === id);
-                    
+
                     $('#dynamicModal .response-data-container').html(JSON.stringify(response[f]));
                 });
 

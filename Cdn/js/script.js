@@ -24,10 +24,21 @@ const niceTrim = (data, length) => {
   }
 };
 
+const formatFileSize = (bytes, decimalPoint = 2) => {
+  if (bytes == 0) return "0 Bytes";
+  var k = 1000,
+    dm = decimalPoint || 2,
+    sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"],
+    i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
+};
+
 $(document).on("click", ".btn-save", function (e) {
   e.preventDefault();
 
   const form = $("#form");
+
+  console.log(form.serializeArray());
 
   $(".btn-save").css({
     cursor: "wait",
@@ -44,7 +55,11 @@ $(document).on("click", ".btn-save", function (e) {
 
   setTimeout(function () {
     if ((message = validateInput(form.serializeArray()))) {
-      $(".response").html(message);
+      const errorAlert =
+        "<div class='response alert alert-danger alert-dismissible fade show mt-3' role='alert'><span>Follow the format for fields: " +
+        message +
+        "</span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
+      $(".response").html(errorAlert);
     } else {
       $(".response").html(
         "<p>Submitted but nothing happened! form data " +

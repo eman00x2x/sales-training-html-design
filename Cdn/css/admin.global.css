@@ -1,78 +1,39 @@
-,::before, *::after {
-    box-sizing: border-box;
-  }
-
-  
-{
-  margin: 0;}
-
-  body {
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
- 
-  img, picture, video, canvas, svg {
-    display: block;
-    max-width: 100%;
-  }
-
-  input, button, textarea, select {
-    font: inherit;
-  }
-
-  p, h1, h2, h3, h4, h5, h6 {
-    overflow-wrap: break-word;
-  }
-
-  #root, #__next {
-    isolation: isolate;
-  }
-
-.head-text{
-    margin-left: 10px;
-}
-
-.row-content {
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-}
-
-.dropdown {
-  margin-right: 10px; 
-  outline: 1px solid #DEE3E7;
-  border-radius: 5px;
-}   
-
-.filter {
-  margin-left: 5px;
-  background-color: transparent; 
-  outline: 2px solid #DEE3E7;
-  border-radius: 5px;
-}
-
-.btn-add{
-    background: #131C39;
-    padding: 10px 40px;
-    border-radius: 5px;
-}
-
-.table{
-  overflow:hidden;
-}
-
-.table-responsive {
-    border-radius: 10px;
-}
-
-.table-bordered.ebooks th {
-    background-color: #131C39;
-    color: #fff;
+/* Bootstrap 5 CSS and icons included */
+.upload_dropzone {
+  color: #1c1c39;
+  background-color: #f3f5f7;
+  outline: 2px dashed #1c1c39;
+  outline-offset: -12px;
+  transition: outline-offset 0.2s ease-out, outline-color 0.3s ease-in-out,
+    background-color 0.2s ease-out;
 }
 
 .btn-view:hover {
   background-color: #0a58ca !important;
   color: white !important;
+}
+
+.head-text{
+    margin-left: 10px;
+}
+
+.dropdown {
+  outline: 1px solid #DEE3E7;
+}   
+
+.filter {
+  background-color: transparent; 
+  outline: 2px solid #DEE3E7;
+}
+
+.btn-add{
+    background: #131C39;
+    padding: 10px 40px;
+}
+
+.table-bordered.ebooks th {
+    background-color: #131C39;
+    color: #fff;
 }
 
 .btn-edit:hover {
@@ -115,4 +76,3 @@
 [data-title] {
   position: relative;
 }
-
