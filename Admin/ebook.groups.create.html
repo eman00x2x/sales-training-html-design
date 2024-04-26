@@ -7,7 +7,7 @@
     <title>Admin | Ebook Groups</title>
     <link rel="stylesheet" href="../Cdn/css/admin.video.group.list.css">
     <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
     <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
     <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
@@ -93,37 +93,42 @@
 
                     <div class="card">
                         <div class="card-body">
-
+                            <div class="d-flex  align-items-center">
+                                <i class="bi bi-plus-circle h1 m-0 me-2"></i>
+                                <h1 class="m-0">Add E-Book Group</h1>
+                            </div>
+                            <hr>
                             <div class="response"></div>
 
                             <form id="form" action="" method="post">
 
                                 <input type="hidden" name="csrf_token" id="csrf_token" value="" />
-
+                                <label for="name">Ebook Group Name</label>
                                 <div class="form-floating mb-3">
                                     <input type="text" name="name" id="name" value="" class="form-control"
                                         autocomplete="off" />
-                                    <label for="name">Ebook Group Name</label>
                                 </div>
-
+                                <label for="description">Description of Ebook</label>
                                 <div class="form-floating mb-3">
                                     <input type="text" name="description" id="description" value="" class="form-control"
                                         autocomplete="off" />
-                                    <label for="description">Description of Ebook</label>
                                 </div>
+                                <label for="duration">Duration</label>
                                 <div class="form-floating mb-3">
                                     <input type="text" name="duration" id="duration" value="" class="form-control"
                                         autocomplete="off" />
-                                    <label for="duration">Duration</label>
                                 </div>
+                                <label for="cost">Cost</label>
                                 <div class="form-floating mb-3">
                                     <input type="text" name="cost" id="cost" value="" class="form-control"
                                         autocomplete="off" />
-                                    <label for="cost">Cost</label>
                                 </div>
                             </form>
-
-                            <span class="btn btn-primary btn-save">Save Form</span>
+                            <div class="d-flex justify-content-center">
+                                <span class="btn btn-secondary btn-cancel me-2">Cancel</span>
+                                <span class="btn btn-primary btn-save ">Save Form</span>
+                            </div>
+                           
 
                         </div>
                     </div>
