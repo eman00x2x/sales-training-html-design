@@ -1,0 +1,30 @@
+.label-thumbnail{
+    font-size: 10px;
+}
+
+.label{
+    font-size: 10px;
+    margin-top: 10px;
+}
+
+.form-control{
+    margin: 5px 0;
+}
+
+.form-control{
+    font-size: 15px;
+}
+
+.btn-cancel{
+    width: 100px;
+}
+
+.btn-save{
+    width: 100px;
+}
+
+label{
+    width: 100%;
+    cursor: pointer;
+}
+

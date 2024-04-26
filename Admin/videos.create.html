@@ -1,11 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Videos Create</title>
+
+    <link
+      href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../Cdn/css/videos.list.css" />
+
+    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
+
+    <script type="text/javascript">
+      /** Please avoid copying examples directly,
+       * as it may negatively impact your design.
+       * While this approach can sometimes work,
+       * it may not always produce the desired outcome.
+       **/
+
+      $(document).ready(function () {
+        $(".header").load("header.html");
+        $(".sidebar").load("sidebar.html");
+        $(".footer").load("footer.html");
+      });
+
+      /**
+       * Validator Documentation https://validatejs.org/#validators-length
+       **/
+
+      function validateInput(input) {
+        let message = [];
+
+        const data = input.reduce(function (obj, item) {
+          obj[item.name] = item.value;
+          return obj;
+        }, {});
+
+        const validator = validate(
+          {
+            title: data.title,
+            description: data.description,
+            category: data.category,
+            link: data.link,
+          },
+          {
+            title: {
+              type: "string",
+              length: { minimum: 4 },
+            },
+            description: {
+              type: "string",
+              length: { minimum: 100 },
+            },
+            category: {
+              type: "string",
+              length: { minimum: 4 },
+            },
+            link: {
+              type: "string",
+              length: { minimum: 10 },
+            },
+          }
+        );
+
+        if (validator !== undefined) {
+          for (key in validator) {
+            message.push(validator[key]);
+          }
+          return message.join(", ");
+        }
+
+        return false;
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row flex-nowrap" style="height: 100vh">
+        <!-- SIDEBAR -->
+        <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
+
+        <main class="col py-3">
+          <!-- HEADER -->
+          <div class="header"></div>
+          <div class="container">
+            <div class="content">
+              <!-- all content body should be here -->
+              <div class="card">
+                <div class="card-body">
+                  <div class="response"></div>
+
+                  <form id="form" action="" method="post">
+                    <input
+                      type="hidden"
+                      name="csrf_token"
+                      id="csrf_token"
+                      value=""
+                    />
+                    
+                    <p class="label-thumbnail mt-3">Video Thumbnail</p>
+                    <label for="fileInput">
+                      <div class="img-upload border" id="uploadPlaceholder">
+                        <div
+                          class="d-flex flex-column justify-content-center align-items-center p-4"
+                        >
+                          <div>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="6em"
+                              height="6em"
+                              viewBox="0 0 1024 1024"
+                            >
+                              <path
+                                fill="black"
+                                d="M544 864V672h128L512 480L352 672h128v192H320v-1.6c-5.376.32-10.496 1.6-16 1.6A240 240 0 0 1 64 624c0-123.136 93.12-223.488 212.608-237.248A239.81 239.81 0 0 1 512 192a239.87 239.87 0 0 1 235.456 194.752c119.488 13.76 212.48 114.112 212.48 237.248a240 240 0 0 1-240 240c-5.376 0-10.56-1.28-16-1.6v1.6z"
+                              />
+                            </svg>
+                          </div>
+                          <p>Upload Image Here</p>
+                        </div>
+                      </div>
+                    </label>
+                    <input type="file" id="fileInput" style="display: none" />
+
+                    <div class="mt-3 d-flex flex-column form-group">
+                      <label for="title" class="label">Title</label>
+                      <input
+                        type="text"
+                        name=""
+                        id="title"
+                        class="form-control videoTitle"
+                        value=""
+                      />
+                    </div>
+                    <div class="d-flex flex-column form-group">
+                      <label for="description" class="label">Description</label>
+                      <input
+                        type="text"
+                        name=""
+                        id="description"
+                        class="form-control videoDescription"
+                        value=""
+                      />
+                    </div>
+                    <div class="d-flex flex-column form-group">
+                      <label for="category" class="label">Category</label>
+                      <input
+                        type="text"
+                        name=""
+                        id="category"
+                        class="form-control videoCategory"
+                        value=""
+                      />
+                    </div>
+                    <div class="d-flex flex-column form-group">
+                      <label for="link" class="label">Link</label>
+                      <input
+                        type="text"
+                        name=""
+                        id="link"
+                        class="form-control videoLink"
+                        value=""
+                      />
+                    </div>
+                  </form>
+
+                  <span class="btn mt-3 btn-primary btn-save">Save Form</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div class="footer"></div>
+  </body>
 </html>
