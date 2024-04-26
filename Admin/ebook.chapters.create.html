@@ -80,44 +80,45 @@
                 <!-- HEADER -->
                 <div class="header"></div>
                 <div class="modal-body">
-                    <div class="response"></div>
                     <form class="p-4" id="form" method="post" action="">
                         <input type="hidden" name="csrf_token" id="csrf_token" value="" />
                         <div class="d-flex align-items-center">
                             <div class="d-flex flex-row justify-content-center align-items-center">
-                                <i class="bi bi-book"></i>
-                                <p class="text-dark mb-0 mx-2 fw-bold">ADD E-BOOK CHAPTER</p>
+                                <i class="bi bi-plus-square-fill fs-2"></i>
+                                <h5 class="ms-2 modal-title fw-bold">
+                                    Add E-book Chapter
+                                </h5>
                             </div>
                         </div>
                         <hr class="m-0">
-
+                        <div class="response"></div>
                         <input type="file" id="fileInput" style="display: none;">
                         <div class="d-flex flex-column form-group">
-                            <div class="row align-items-end">
+                            <div class="row align-items-end mt-3">
                                 <div class="col-6">
-                                    <label for="chapter_number" class="label">Chapter #</label>
+                                    <label for="chapter_number" class="form-label fw-semibold">Chapter #</label>
                                     <input type="text" name="chapter_number" id="chapter_number" class="form-control" value=""
                                         autocomplete="off">
                                 </div>
                                 <div class="col-6">
-                                    <label for="chapter_title" class="label">Chapter Title</label>
+                                    <label for="chapter_title" class="form-label fw-semibold">Chapter Title</label>
                                     <input type="text" name="chapter_title" id="chapter_title" class="form-control"
                                         value="" autocomplete="off">
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex flex-column form-group mt-4">
-                            <label for="author" class="label">Author</label>
+                            <label for="author" class="form-label fw-semibold">Author</label>
                             <input type="text" name="author" id="author" class="form-control" value=""
                                 autocomplete="off">
                         </div>
                         <div class="d-flex flex-column form-group mt-4">
-                            <label for="description" class="label">Description</label>
+                            <label for="description" class="form-label fw-semibold">Description</label>
                             <textarea name="description" id="description" class="form-control" value=""
                                 autocomplete="off" wrap=physical rows="5"></textarea>
                         </div>
                         <div class="d-flex gap-2 justify-content-end mt-3">
-                            <button class="btn-cancel btn btn-danger btn-md" type="button" data-bs-dismiss="modal">
+                            <button class="btn border border-secondary" type="button" data-bs-dismiss="modal">
                                 Back
                             </button>
                             <button class="btn-save btn btn-success btn-md">
