@@ -1,33 +1,120 @@
-<div class="modal-body">
-    <form action="">
-      <input type="hidden" name="csrf_token" id="csrf_token" value="" />
-      <div
-        class="modal-body d-flex flex-column justify-content-center align-items-center"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="15em"
-          height="15em"
-          viewBox="0 0 20 20"
-          color="#AB0909"
-        >
-          <path
-            fill="currentColor"
-            d="M8.5 4h3a1.5 1.5 0 0 0-3 0m-1 0a2.5 2.5 0 0 1 5 0h5a.5.5 0 0 1 0 1h-1.054l-1.194 10.344A3 3 0 0 1 12.272 18H7.728a3 3 0 0 1-2.98-2.656L3.554 5H2.5a.5.5 0 0 1 0-1zM9 8a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0zm2.5-.5a.5.5 0 0 0-.5.5v6a.5.5 0 0 0 1 0V8a.5.5 0 0 0-.5-.5"
-          />
-        </svg>
-        <h1 style="font-weight: bold; font-size: 30px">
-          Delete this video Group?
-        </h1>
-        <p style="font-size: 15px">
-          Are you sure you want to delete this video group?
-        </p>
-        <div class="text-end">
-          <button type="button" class="btn border border-secondary-subtle btn-light" data-bs-dismiss="modal">
-            Close
-          </button>
-          <button type="button" class="btn btn-danger">Delete</button>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADMIN | UPDATE VIDEO GROUP</title>
+  <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+  <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+  <script src="../Cdn/js/script.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.header').load('header.html');
+      $('.sidebar').load('sidebar.html');
+      $('.footer').load('footer.html');
+      getVideoGroupData();
+    });
+
+    $(document).on('click', '.btn-delete', function () {
+      var id = $(this).data('id');
+      var $btn = $(this);
+
+      $.getJSON('../Cdn/js/data/video.groups.json', function (data) {
+        var response = data.data;
+        var f = Object.keys(response).find(key => response[key].vid_group_id === id);
+        console.log('Deleting video group with ID:', id);
+        $btn.closest('tr').remove();
+        $('#dynamicModal .response-data-container').html(JSON.stringify(response[f]));
+      });
+    });
+
+    $(document).on('click', '#continue-deletion', function () {
+      $('.data-container').empty();
+      $('#dynamicModal').modal('hide'); 
+    });
+
+    function getVideoGroupData() {
+      let html = '';
+
+      $.getJSON('../Cdn/js/data/video.groups.json', function (response) {
+        const org = response.data;
+        for (let i = 0; i < org.length; i++) {
+          let data = org[i];
+          html += "<tr>";
+          for (let key in data) {
+            switch (key) {
+              case 'created_at':
+                let date = new Date(0);
+                date.setUTCSeconds(data[key]);
+                data[key] = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                break;
+              case 'logo':
+                data[key] = "<img src='" + data[key] + "' style='width:64px;' />";
+                break;
+            }
+            html += "<td class='align-middle'>" + data[key] + "</td>";
+          }
+
+          html += "<td class='align-middle'><span class='btn btn-danger btn-delete' data-id='" + data.vid_group_id + "' data-bs-toggle='modal' data-bs-target='#dynamicModal'>Delete</span></td>";
+          html += "<tr>";
+        }
+        $('.video-group .data-container').html(html);
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <!-- MODAL -->
+  <div class="modal" id="dynamicModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" id="form-content">
+      <div class="modal-content">
+        <div class="response-data-container"></div>
+        <div class="modal-footer">
+          <button id="continue-deletion" type="button" class="btn btn-primary">Continue Deletion</button>
         </div>
       </div>
-    </form>
+    </div>
   </div>
+  <div class="container-fluid">
+    <div class="row flex-nowrap" style="height: 100vh">
+      <!-- SIDEBAR -->
+      <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
+      <main class="col py-3">
+        <!-- HEADER -->
+        <div class="header"></div>
+
+        <!-- CONTENT -->
+        <div class='content'>
+          <!-- all content body should be here -->
+
+          <div class='list'>
+            <div class='table-responsive'>
+              <table class='table table-bordered video-group'>
+                <thead>
+                  <tr>
+                    <th class="align-middle">ID</th>
+                    <th class="align-middle">NAME</th>
+                    <th class="align-middle">DESCRIPTION</th>
+                    <th class="align-middle">DURATION</th>
+                    <th class="align-middle">COST</th>
+                    <th class="align-middle">CREATED AT</th>
+                    <th class="align-middle">ACTIONS</th>
+                  </tr>
+                </thead>
+                <tbody class="data-container"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- FOOTER -->
+        <div class="footer"></div>
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>

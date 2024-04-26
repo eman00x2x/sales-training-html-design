@@ -2,41 +2,140 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Videos</title>
+    <link rel="stylesheet" href="../Cdn/css/admin.video.group.list.css">
+    <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
+
+
+    <script type="text/javascript">
+
+        //SAMPLE DATA OF VIDEO GROUPS
+
+        $(document).ready(function () {
+            $('.header').load('header.html');
+            $('.sidebar').load('sidebar.html');
+            $('.footer').load('footer.html');
+
+        });
+
+        function validateInput(input) {
+            let message = [];
+
+            const data = input.reduce(function (obj, item) {
+                if (item.name === 'duration') {
+                    if (item.value.trim() !== '') {
+                        obj[item.name] = item.value.split(',').map(Number);
+                    } else {
+                        obj[item.name] = [];
+                    }
+                } else if (item.name === 'cost') {
+                    obj[item.name] = parseFloat(item.value);
+                } else {
+                    obj[item.name] = item.value;
+                }
+                return obj;
+            }, {});
+
+            const validator = validate(data, {
+                name: {
+                    presence: { allowEmpty: false },
+                    type: "string",
+                    length: { minimum: 4 },
+                },
+                description: {
+                    presence: { allowEmpty: false },
+                    type: "string",
+                    length: { minimum: 4 }
+                },
+                duration: {
+                    presence: { allowEmpty: false },
+                    type: "array",
+                    length: { minimum: 1 }
+                },
+                cost: {
+                    presence: { allowEmpty: false },
+                    type: "number",
+                    numericality: { greaterThanOrEqualTo: 0 }
+                }
+            });
+
+            if (validator !== undefined) {
+                for (key in validator) {
+                    message.push(validator[key]);
+                }
+                return message.join(", ");
+            }
+
+            return false;
+        }
+    </script>
+
 </head>
 
 <body>
-    <div class="modal-header">
-        <h5 class="modal-title">ADD VIDEO GROUPS</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-        <form action="">
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Name</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" />
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Duration</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" />
-            </div>
-            <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Cost</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" />
-            </div>
-            <div class="text-end">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    Close
-                </button>
-                <button type="button" class="btn btn-primary">Add Group</button>
-            </div>
-        </form>
+    <div class="container-fluid">
+        <div class="row flex-nowrap" style="height: 100vh">
+            <!-- SIDEBAR -->
+            <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
+            <main class="col py-3">
+                <!-- HEADER -->
+                <div class="header"></div>
+
+                <!-- CONTENT -->
+                <div class='content'>
+                    <!-- all content body should be here -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-plus-circle fs-2"></i>
+                                <h5 class="ms-2 modal-title font-bold">Add Video Group</h5>
+                            </div>
+                            <hr>
+                            <div class="response" style="margin-top: 5px;"></div>
+
+                            <form id="form" action="" method="post">
+                                <input type="hidden" name="csrf_token" id="csrf_token" value="" />
+                                <label for="name">Video Group Name</label>
+                                <div class=" mb-3">
+                                    <input type="text" name="name" id="name" value="" class="form-control"
+                                        autocomplete="off" />
+                                </div>
+                                <label for="description">Description of this Video Group</label>
+                                <div class=" mb-3">
+                                    <textarea name="description" id="description" class="form-control" rows="3" autocomplete="off"></textarea>
+                                </div>
+                                <label for="duration">Duration</label>
+                                <div class=" mb-3">
+                                    <input type="text" name="duration" id="duration" value="" class="form-control"
+                                        autocomplete="off" />
+                                </div>
+                                <label for="cost">Cost</label>
+                                <div class=" mb-3">
+                                    <input type="text" name="cost" id="cost" value="" class="form-control"
+                                        autocomplete="off" />
+                                </div>
+                            </form>
+
+                            <div class="d-flex justify-content-end">
+                                <span class="btn btn-secondary btn-cancel me-2">Cancel</span>
+                                <span class="btn btn-primary btn-save ">Save Form</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- FOOTER -->
+                <div class="footer"></div>
+            </main>
+        </div>
     </div>
 </body>
 

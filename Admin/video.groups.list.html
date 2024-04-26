@@ -22,38 +22,18 @@
             getVideoGroupData();
         });
         $(document).on("click", ".btn-add", function () {
-        $(".form").load("video.groups.create.html");
-      });
-      $(document).on("click", ".btn-edit", function () {
-        const id = $(this).data("vid-group-id");
-        const url = "video.groups.list.html?id=" + id;
-        window.history.pushState({}, "", url);
-        $(".form").load("video.groups.update.html");
-      });
-      $(document).on("click", ".btn-delete", function () {
-        $(".form").load("video.groups.delete.html");
-      });
-      function displayActionButtons(id) {
-        return `<td class='align-middle'>
-          <button class='btn btn-sm btn-view border border-primary btn-view text-primary' data-title="View Video Group">
-            <svg xmlns='http://www.w3.org/2000/svg' width='2em' height='2em' viewBox='0 0 32 32'> 
-              <circle cx='16' cy='16' r='4' fill='currentColor'/>
-              <path fill='currentColor' d='M30.94 15.66A16.69 16.69 0 0 0 16 5A16.69 16.69 0 0 0 1.06 15.66a1 1 0 0 0 0 .68A16.69 16.69 0 0 0 16 27a16.69 16.69 0 0 0 14.94-10.66a1 1 0 0 0 0-.68M16 22.5a6.5 6.5 0 1 1 6.5-6.5a6.51 6.51 0 0 1-6.5 6.5'/>
-            </svg>
-          </button>
-          <button data-bs-toggle='modal' data-bs-target='#video_group_update' data-vid-group-id='${id}' class='btn btn-sm btn-edit' style="border: 1; border-color: #C68914; color: #c68914" data-title="Update Video Group Details">
-            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
-              <path fill="currentColor" d="m7 17.013l4.413-.015l9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583zM18.045 4.458l1.589 1.583l-1.597 1.582l-1.586-1.585zM9 13.417l6.03-5.973l1.586 1.586l-6.029 5.971L9 15.006z"/>
-              <path fill="currentColor" d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01c-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2"/>
-            </svg>
-          </button>
-          <button data-bs-toggle='modal' data-bs-target='#video_group_delete' class='btn btn-sm delete-btn btn-delete text-danger border border-danger' data-title="Delete Video Group">
-            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em"" viewBox="0 0 24 24">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m18 9l-.84 8.398c-.127 1.273-.19 1.909-.48 2.39a2.5 2.5 0 0 1-1.075.973C15.098 21 14.46 21 13.18 21h-2.36c-1.279 0-1.918 0-2.425-.24a2.5 2.5 0 0 1-1.076-.973c-.288-.48-.352-1.116-.48-2.389L6 9m7.5 6.5v-5m-3 5v-5m-6-4h4.615m0 0l.386-2.672c.112-.486.516-.828.98-.828h3.038c.464 0 .867.342.98.828l.386 2.672m-5.77 0h5.77m0 0H19.5"/>
-            </svg>
-          </button>
-        </td>`;
-      }
+            $(".form").load("video.groups.create.html");
+        });
+        $(document).on("click", ".btn-edit", function () {
+            const id = $(this).data("vid-group-id");
+            const url = "video.groups.list.html?id=" + id;
+            window.history.pushState({}, "", url);
+            $(".form").load("video.groups.update.html");
+        });
+        $(document).on("click", ".btn-delete", function () {
+            $(".form").load("video.groups.delete.html");
+        });
+
 
         function getVideoGroupData() {
             let html = '';
@@ -66,6 +46,10 @@
                     html += "<tr style='height: 100px'>";
                     for (let key in data) {
                         switch (key) {
+                            case 'created_at':
+                                let date = new Date(0);
+                                date.setUTCSeconds(data[key]);
+                                data[key] = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
                             case "description":
                                 let description = data[key];
                                 // Checking if the description is not empty
@@ -80,9 +64,6 @@
                         }
 
                     }
-                    html += displayActionButtons(data.vid_group_id)
-
-
                 }
                 $('.video-group .data-container').html(html);
             });
@@ -142,8 +123,6 @@
                                         d="M21.25 12H8.895m-4.361 0H2.75m18.5 6.607h-5.748m-4.361 0H2.75m18.5-13.214h-3.105m-4.361 0H2.75m13.214 2.18a2.18 2.18 0 1 0 0-4.36a2.18 2.18 0 0 0 0 4.36Zm-9.25 6.607a2.18 2.18 0 1 0 0-4.36a2.18 2.18 0 0 0 0 4.36Zm6.607 6.608a2.18 2.18 0 1 0 0-4.361a2.18 2.18 0 0 0 0 4.36Z" />
                                 </svg>
                             </button>
-                            <button class="btn btn-primary ml-auto btn-add" data-bs-toggle="modal"
-                                data-bs-target="#video_group_create" style="margin-left: auto; padding-inline: 5em; padding-block: 10px; background-color: #131C39; border: none;"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 20 20"><path fill="currentColor" d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2zm-1 11a10 10 0 1 1 0-20a10 10 0 0 1 0 20m0-2a8 8 0 1 0 0-16a8 8 0 0 0 0 16"/></svg></button>
                         </div>
 
                         <hr style="">
@@ -159,7 +138,7 @@
                                         <th class="align-middle">DESCRIPTION</th>
                                         <th class="align-middle">DURATION</th>
                                         <th class="align-middle">COST</th>
-                                        <th class="align-middle">ACTIONS</th>
+                                        <th class="align-middle">CREATED AT</th>
                                     </tr>
                                 </thead>
                                 <tbody class="data-container"></tbody>

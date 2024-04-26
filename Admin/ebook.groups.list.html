@@ -1,11 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin | E-BOOK Groups</title>
+    <link rel="stylesheet" href="../Cdn/css/admin.ebook.group.list.css">
+    <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
+
+    <script type="text/javascript">
+
+        //SAMPLE DATA OF Ebook GROUPS
+
+        $(document).ready(function () {
+            $('.header').load('header.html');
+            $('.sidebar').load('sidebar.html');
+            $('.footer').load('footer.html');
+            getEbookGroupData();
+        });
+        $(document).on("click", ".btn-add", function () {
+            $(".form").load("ebook.groups.create.html");
+        });
+        $(document).on("click", ".btn-edit", function () {
+            const id = $(this).data("ebook-group-id");
+            const url = "ebook.groups.list.html?id=" + id;
+            window.history.pushState({}, "", url);
+            $(".form").load("e-book.groups.update.html");
+        });
+        $(document).on("click", ".btn-delete", function () {
+            $(".form").load("ebook.groups.delete.html");
+        });
+
+
+        function getEbookGroupData() {
+            let html = '';
+
+            $.getJSON('../Cdn/js/data/ebook.groups.json', function (response) {
+                console.log(response);
+                const org = response.data;
+                for (let i = 0; i < org.length; i++) {
+                    let data = org[i];
+                    html += "<tr style='height: 100px'>";
+                    for (let key in data) {
+                        switch (key) {
+                            case 'created_at':
+                                let date = new Date(0);
+                                date.setUTCSeconds(data[key]);
+                                data[key] = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                            case "description":
+                                let description = data[key];
+                                // Checking if the description is not empty
+                                if (description) {
+                                    html += "<td class='align-middle description'>" + niceTrim(description, 50) + "</td>";
+                                } else {
+                                    html += "<td class='align-middle description'></td>";
+                                }
+                                break;
+                            default:
+                                html += "<td class='align-middle'>" + data[key] + "</td>";
+                        }
+
+                    }
+                }
+                $('.ebook-group .data-container').html(html);
+            });
+        }
+    </script>
+
 </head>
+
 <body>
-    
+    <div class="container-fluid">
+        <div class="row flex-nowrap" style="height: 100vh">
+            <!-- SIDEBAR -->
+            <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
+            <main class="col py-3">
+                <!-- HEADER -->
+                <div class="header"></div>
+
+                <!-- CONTENT -->
+                <div class='content'>
+                    <!-- all content body should be here -->
+                    <div>
+                        <!--  E-BOOK UPPER CONTENT -->
+                        <div class="" style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" viewBox="0 0 24 24">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.5">
+                                    <path
+                                        d="M21 7.6v12.8a.6.6 0 0 1-.6.6H7.6a.6.6 0 0 1-.6-.6V7.6a.6.6 0 0 1 .6-.6h12.8a.6.6 0 0 1 .6.6" />
+                                    <path
+                                        d="M18 4H4.6a.6.6 0 0 0-.6.6V18m8.909-6.455a.6.6 0 0 0-.909.515v3.88a.6.6 0 0 0 .909.515l3.233-1.94a.6.6 0 0 0 0-1.03z" />
+                                </g>
+                            </svg>
+                            <h1 style="margin-left: 6px; font-weight: bold;"> E-BOOK GROUP</h1>
+                        </div>
+
+                        <div class="row-content">
+                            <!-- Upper Content -->
+                            <div class="dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Sort by
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">TITLE</a></li>
+                                    <li><a class="dropdown-item" href="#">DESCRIPTION</a></li>
+                                    <li><a class="dropdown-item" href="#">DATE</a></li>
+                                </ul>
+                            </div>
+                            <div class="form-outline" data-mdb-input-init style="width: 30%;">
+                                <input placeholder="Search by item name..." class="form-control"
+                                    id="datatable-search-input" style="border-color: black;">
+                            </div>
+                            <button class="btn-filter border-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
+                                    <path fill="none" stroke="black" stroke-linecap="round" stroke-miterlimit="10"
+                                        stroke-width="1"
+                                        d="M21.25 12H8.895m-4.361 0H2.75m18.5 6.607h-5.748m-4.361 0H2.75m18.5-13.214h-3.105m-4.361 0H2.75m13.214 2.18a2.18 2.18 0 1 0 0-4.36a2.18 2.18 0 0 0 0 4.36Zm-9.25 6.607a2.18 2.18 0 1 0 0-4.36a2.18 2.18 0 0 0 0 4.36Zm6.607 6.608a2.18 2.18 0 1 0 0-4.361a2.18 2.18 0 0 0 0 4.36Z" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <hr style="">
+                    </div>
+                    <div class='list'>
+                        <!-- Table List -->
+                        <div class='table-responsive'>
+                            <table class='table table-bordered table-striped ebook-group'>
+                                <thead>
+                                    <tr>
+                                        <th class="align-middle" style="text-align: center;">#</th>
+                                        <th class="align-middle">TITLE</th>
+                                        <th class="align-middle">DESCRIPTION</th>
+                                        <th class="align-middle">DURATION</th>
+                                        <th class="align-middle">COST</th>
+                                        <th class="align-middle">CREATED AT</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="data-container"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center;">
+                        <p style="margin-right: auto;">Showing 1 out of 10 pages</p>
+                        <nav aria-label="...">
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <span class="page-link">Previous</span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active">
+                                    <span class="page-link">
+                                        2
+                                    </span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+
+                    <!-- FOOTER -->
+                    <div class="footer"></div>
+            </main>
+        </div>
+    </div>
 </body>
+
 </html>

@@ -1,5 +1,4 @@
 /* Bootstrap 5 CSS and icons included */
-
 .upload_dropzone {
   color: #1c1c39;
   background-color: #f3f5f7;
@@ -9,31 +8,19 @@
     background-color 0.2s ease-out;
 }
 
-.upload_dropZone.highlight {
-  outline-offset: -4px;
-  outline-color: var(--colorPrimaryNormal, #0576bd);
-  background-color: var(--colorPrimaryEighth, #c8dadf);
-}
-.upload_svg {
-  fill: var(--colorPrimaryNormal, #0576bd);
-}
-.btn-upload {
-  color: #fff;
-  background-color: var(--colorPrimaryNormal);
-}
-.btn-upload:hover,
-.btn-upload:focus {
-  color: #fff;
-  background-color: var(--colorPrimaryGlare);
-}
-.upload_img {
-  width: calc(33.333% - (2rem / 3));
-  object-fit: contain;
-}
-
 .btn-view:hover {
   background-color: #0a58ca !important;
   color: white !important;
+}
+
+.btn-add{
+    background: #131C39;
+    padding: 10px 40px;
+}
+
+.table-bordered.ebooks th {
+    background-color: #131C39;
+    color: #fff;
 }
 
 .btn-edit:hover {

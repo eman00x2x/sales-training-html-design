@@ -1,11 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../Cdn/css/ebooks.list.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+    <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $(".header").load("header.html");
+            $(".sidebar").load("sidebar.html");
+            $(".footer").load("footer.html");
+        });
+
+        function validateInput(input) {
+
+            let message = [];
+
+            const data = input.reduce(function (obj, item) {
+                obj[item.name] = item.value;
+                return obj;
+            }, {});
+
+            const validator = validate({
+                chapter_number: data.chapter_number,
+                chapter_title: data.chapter_title,
+                author: data.author,
+                description: data.description
+            }, {
+                chapter_number: {
+                    presence: { allowEmpty: false },
+                    type: "string",
+                },
+                chapter_title: {
+                    presence: { allowEmpty: false },
+                    type: "string",
+                    length: { maximum: 50 }
+                },
+                author: {
+                    presence: { allowEmpty: false },
+                    type: "string",
+                    length: { maximum: 50 }
+                },
+                description: {
+                    presence: { allowEmpty: false },
+                    type: "string",
+                    length: { maximum: 100 }
+                }
+            });
+
+            if (validator !== undefined) {
+                for (key in validator) {
+                    message.push(validator[key]);
+                }
+                return message.join(", ");
+            }
+
+            return false;
+
+        }
+    </script>
 </head>
+
 <body>
-    
+    <div class="container-fluid">
+        <div class="row flex-nowrap" style="height: 100vh; overflow-y: auto;">
+            <!-- SIDEBAR -->
+            <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
+            <main class="col py-3">
+                <!-- HEADER -->
+                <div class="header"></div>
+                <div class="modal-body">
+                    <form class="p-4" id="form" method="post" action="">
+                        <input type="hidden" name="csrf_token" id="csrf_token" value="" />
+                        <div class="d-flex align-items-center">
+                            <div class="d-flex flex-row justify-content-center align-items-center">
+                                <i class="bi bi-plus-square-fill fs-2"></i>
+                                <h5 class="ms-2 modal-title fw-bold">
+                                    Add E-book Chapter
+                                </h5>
+                            </div>
+                        </div>
+                        <hr class="m-0">
+                        <div class="response"></div>
+                        <input type="file" id="fileInput" style="display: none;">
+                        <div class="d-flex flex-column form-group">
+                            <div class="row align-items-end mt-3">
+                                <div class="col-6">
+                                    <label for="chapter_number" class="form-label fw-semibold">Chapter #</label>
+                                    <input type="text" name="chapter_number" id="chapter_number" class="form-control" value=""
+                                        autocomplete="off">
+                                </div>
+                                <div class="col-6">
+                                    <label for="chapter_title" class="form-label fw-semibold">Chapter Title</label>
+                                    <input type="text" name="chapter_title" id="chapter_title" class="form-control"
+                                        value="" autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column form-group mt-4">
+                            <label for="author" class="form-label fw-semibold">Author</label>
+                            <input type="text" name="author" id="author" class="form-control" value=""
+                                autocomplete="off">
+                        </div>
+                        <div class="d-flex flex-column form-group mt-4">
+                            <label for="description" class="form-label fw-semibold">Description</label>
+                            <textarea name="description" id="description" class="form-control" value=""
+                                autocomplete="off" wrap=physical rows="5"></textarea>
+                        </div>
+                        <div class="d-flex gap-2 justify-content-end mt-3">
+                            <button class="btn border border-secondary" type="button" data-bs-dismiss="modal">
+                                Back
+                            </button>
+                            <button class="btn-save btn btn-success btn-md">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <!-- FOOTER -->
+                <div class="footer"></div>
+            </main>
+        </div>
+    </div>
 </body>
+
+
 </html>
