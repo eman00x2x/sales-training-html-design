@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin | Video Groups</title>
-    <link rel="stylesheet" href="../Cdn/css/admin.video.group.list.css">
+    <link rel="stylesheet" href="../Cdn/css/admin.global.css">
     <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
     <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
     <script src="../Cdn/js/script.js"></script>
@@ -21,51 +22,60 @@
             $('.footer').load('footer.html');
             getVideoGroupData();
         });
-        $(document).on("click", ".btn-add", function () {
-            $(".form").load("video.groups.create.html");
+        $(document).on('click', '.btn-edit', function (e) {
+            id = $(this).data('id');
+            window.location.href = "video.groups.update.html?id=" + id;
         });
-        $(document).on("click", ".btn-edit", function () {
-            const id = $(this).data("vid-group-id");
-            const url = "video.groups.list.html?id=" + id;
-            window.history.pushState({}, "", url);
-            $(".form").load("video.groups.update.html");
-        });
-        $(document).on("click", ".btn-delete", function () {
-            $(".form").load("video.groups.delete.html");
-        });
+        function displayActionButtons(id) {
+            return `<td class='align-middle'>
+          <span class='btn btn-sm btn-view border border-primary btn-view text-primary' data-title="View Video Group">
+            <i class="bi bi-eye h4"></i>
+          </span>
+          <span data-id='${id}' class='btn btn-sm btn-edit' style="border: 1; border-color: #C68914; color: #c68914" data-title="Update Video Group Details">
+            <i class="bi bi-pencil-square h4"></i>
+          </span>
+          <span data-id='${id}' class='btn btn-sm text-danger border border-danger btn-delete ' data-title="Delete Video Group">
+            <i class="bi bi-trash h4"></i>
+          </span>
+        </td>`;
+        }
 
 
         function getVideoGroupData() {
-            let html = '';
+            let html = "";
 
-            $.getJSON('../Cdn/js/data/video.groups.json', function (response) {
-                console.log(response);
+            $.getJSON("../Cdn/js/data/video.groups.json", function (response) {
                 const org = response.data;
+
                 for (let i = 0; i < org.length; i++) {
                     let data = org[i];
-                    html += "<tr style='height: 100px'>";
-                    for (let key in data) {
-                        switch (key) {
-                            case 'created_at':
-                                let date = new Date(0);
-                                date.setUTCSeconds(data[key]);
-                                data[key] = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-                            case "description":
-                                let description = data[key];
-                                // Checking if the description is not empty
-                                if (description) {
-                                    html += "<td class='align-middle description'>" + niceTrim(description, 50) + "</td>";
-                                } else {
-                                    html += "<td class='align-middle description'></td>";
-                                }
-                                break;
-                            default:
-                                html += "<td class='align-middle'>" + data[key] + "</td>";
-                        }
 
-                    }
+                    html += "<tr>";
+                    html +=
+                        "<td class='align-middle text-center'>" +
+                        data.vid_group_id +
+                        "</td>";
+                    html += "<td class='align-middle'>" + data.name + "</td>";
+                    html +=
+                        "<td class='align-middle text-truncate' style='max-width: 150px'>" +
+                        data.description +
+                        "</td>";
+                    html +=
+                        "<td class='align-middle text-truncate' style='max-width: 150px'>" +
+                        data.duration +
+                        "</td>";
+                    html +=
+                        "<td class='align-middle text-truncate' style='max-width: 150px'>" +
+                        data.cost +
+                        "</td>";
+                    html +=
+                        "<td class='align-middle'>" +
+                        convertDate(data.created_at) +
+                        "</td>";
+                    html += displayActionButtons(data.vid_group_id);
+                    html += "</tr>";
                 }
-                $('.video-group .data-container').html(html);
+                $(".video-group .data-container").html(html);
             });
         }
     </script>
@@ -82,51 +92,46 @@
                 <div class="header"></div>
 
                 <!-- CONTENT -->
-                <div class='content'>
-                    <!-- all content body should be here -->
-                    <div>
-                        <!-- VIDEO UPPER CONTENT -->
-                        <div class="" style="display: flex; align-items: center; margin-bottom: 10px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" viewBox="0 0 24 24">
-                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="1.5">
-                                    <path
-                                        d="M21 7.6v12.8a.6.6 0 0 1-.6.6H7.6a.6.6 0 0 1-.6-.6V7.6a.6.6 0 0 1 .6-.6h12.8a.6.6 0 0 1 .6.6" />
-                                    <path
-                                        d="M18 4H4.6a.6.6 0 0 0-.6.6V18m8.909-6.455a.6.6 0 0 0-.909.515v3.88a.6.6 0 0 0 .909.515l3.233-1.94a.6.6 0 0 0 0-1.03z" />
-                                </g>
-                            </svg>
-                            <h1 style="margin-left: 6px; font-weight: bold;">VIDEO GROUP</h1>
+                <div class='container'>
+                    <div class='content'>
+                        <div class="d-flex flex-row justify-content-start align-items-center">
+                            <i class="bi bi-film h1"></i>
+                            <h1 class="head-text">VIDEO GROUPS</h1>
                         </div>
 
-                        <div class="row-content">
+                        <div class="row-content d-flex align-items-center mb-2">
                             <!-- Upper Content -->
-                            <div class="dropdown">
-                                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Sort by
+                            <div class="d-flex col">
+                                <div class="dropdown rounded-2">
+                                    <button class="btn btn-light dropdown-toggle" type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Sort by
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">TITLE</a></li>
+                                        <li><a class="dropdown-item" href="#">DESCRIPTION</a></li>
+                                        <li><a class="dropdown-item" href="#">DATE</a></li>
+                                    </ul>
+                                </div>
+                                <div class="form-outline mx-2" data-mdb-input-init>
+                                    <input placeholder="Search by item name..." class="form-control"
+                                        id="datatable-search-input">
+                                </div>
+
+                                <button class="filter border-0 rounded-2">
+                                    <i class="bi bi-filter fs-4"></i>
                                 </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">TITLE</a></li>
-                                    <li><a class="dropdown-item" href="#">DESCRIPTION</a></li>
-                                    <li><a class="dropdown-item" href="#">DATE</a></li>
-                                </ul>
                             </div>
-                            <div class="form-outline" data-mdb-input-init style="width: 30%;">
-                                <input placeholder="Search by item name..." class="form-control"
-                                    id="datatable-search-input" style="border-color: black;">
+                            <div class="d-flex-col">
+                                <a href="video.groups.create.html" class="btn-add border-0 rounded-2">
+                                    <i class="bi bi-plus-circle" style="color:white"></i>
+                                </a>
                             </div>
-                            <button class="btn-filter border-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
-                                    <path fill="none" stroke="black" stroke-linecap="round" stroke-miterlimit="10"
-                                        stroke-width="1"
-                                        d="M21.25 12H8.895m-4.361 0H2.75m18.5 6.607h-5.748m-4.361 0H2.75m18.5-13.214h-3.105m-4.361 0H2.75m13.214 2.18a2.18 2.18 0 1 0 0-4.36a2.18 2.18 0 0 0 0 4.36Zm-9.25 6.607a2.18 2.18 0 1 0 0-4.36a2.18 2.18 0 0 0 0 4.36Zm6.607 6.608a2.18 2.18 0 1 0 0-4.361a2.18 2.18 0 0 0 0 4.36Z" />
-                                </svg>
-                            </button>
                         </div>
 
-                        <hr style="">
                     </div>
+                    <hr>
+
                     <div class='list'>
                         <!-- Table List -->
                         <div class='table-responsive'>
@@ -139,60 +144,18 @@
                                         <th class="align-middle">DURATION</th>
                                         <th class="align-middle">COST</th>
                                         <th class="align-middle">CREATED AT</th>
+                                        <th class="align-middle">ACTIONS</th>
                                     </tr>
                                 </thead>
                                 <tbody class="data-container"></tbody>
                             </table>
                         </div>
                     </div>
-
-                    <div style="display: flex; align-items: center;">
-                        <p style="margin-right: auto;">Showing 1 out of 10 pages</p>
-                        <nav aria-label="...">
-                            <ul class="pagination">
-                                <li class="page-item disabled">
-                                    <span class="page-link">Previous</span>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item active">
-                                    <span class="page-link">
-                                        2
-                                    </span>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-
-
                     <!-- FOOTER -->
                     <div class="footer"></div>
-                    <!-- MODAL -->
-                    <div class="modal" id="video_group_create" tabindex="-1">
-                        <div class="modal-dialog modal-dialog-centered" id="form-content">
-                            <div class="modal-content">
-                                <div class="form"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal" id="video_group_update" tabindex="-1">
-                        <div class="modal-dialog modal-dialog-centered" id="form-content">
-                            <div class="modal-content">
-                                <div class="form"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal" id="video_group_delete" tabindex="-1">
-                        <div class="modal-dialog modal-dialog-centered" id="form-content">
-                            <div class="modal-content">
-                                <div class="form"></div>
-                            </div>
-                        </div>
-                    </div>
-            </main>
+
+                </div>
+
         </div>
     </div>
 </body>

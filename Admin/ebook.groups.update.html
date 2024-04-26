@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ADMIN | UPDATE E-Book GROUP</title>
+    <title>ADMIN | UPDATE EBOOK GROUP</title>
     <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
     <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
     <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
@@ -15,61 +15,28 @@
             $('.header').load('header.html');
             $('.sidebar').load('sidebar.html');
             $('.footer').load('footer.html');
-            getEBookGroupData();
+           
         });
 
-        $(document).on('click', '.btn-edit', function () {
+        $(document).ready(function () {
 
-            id = $(this).data('id');
-            $.getJSON('../Cdn/js/data/ebook.groups.json', function (data) {
+            let params = new URL(document.location.toString()).searchParams;
+            let id = params.get("id");
+
+            $.getJSON(`../Cdn/js/data/ebook.groups.json`, function (data) {
                 let response = data.data;
-                f = response.keys(response).find(key => response[key].ebook_group_id === id);
-
-                $('#dynamicModal .response-data-container').html(JSON.stringify(response[f]));
+                f = response.keys(response).find(key => response[key].ebook_group_id == id);           
+                    $('#name').val(response[f].name);
+                    $('#description').val(response[f].description);
+                    $('#duration').val(response[f].duration);
+                    $('#cost').val(response[f].cost);
             });
         });
-
-        function  getEBookGroupData() {
-                let html = '';
-
-                $.getJSON('../Cdn/js/data/ebook.groups.json', function (response) {
-                    const org = response.data;
-                    for (let i = 0; i < org.length; i++) {
-                        let data = org[i];
-                        html += "<tr>";
-                        for (let key in data) {
-                            switch(key) {
-                                case 'created_at':
-                                    let date = new Date(0);
-                                    date.setUTCSeconds(data[key]);
-                                    data[key] = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-                                    break;
-                                case 'logo':
-                                    data[key] = "<img src='" + data[key] + "' style='width:64px;' />";
-                                    break;
-                            }
-                            html += "<td class='align-middle'>" + data[key] + "</td>";
-                        }
-
-                        html += "<td class='align-middle'><span class='btn btn-primary btn-edit' data-id='" + data.ebook_group_id + "' data-bs-toggle='modal' data-bs-target='#dynamicModal'>edit</span></td>";
-                        html += "<tr>";
-                    }
-                    $('.ebook-group .data-container').html(html);
-                });
-            }
 
     </script>
 </head>
 
 <body>
-    <!-- MODAL -->
-    <div class="modal" id="dynamicModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered" id="form-content">
-            <div class="modal-content">
-                <div class="response-data-container"></div>
-            </div>
-        </div>
-    </div>
     <div class="container-fluid">
         <div class="row flex-nowrap" style="height: 100vh">
             <!-- SIDEBAR -->
@@ -81,25 +48,47 @@
                 <!-- CONTENT -->
                 <div class='content'>
                     <!-- all content body should be here -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-plus-circle fs-2"></i>
+                                <h5 class="ms-2 modal-title font-bold">Edit Ebook Group</h5>
+                            </div>
+                            <hr>
+                            <div class="response" style="margin-top: 5px;"></div>
 
-                    <div class='list'><!-- list data -->
-                        <div class='table-responsive'>
-                            <table class='table table-bordered ebook-group'>
-                                <thead>
-                                    <tr>
-                                        <th class="align-middle">ID</th>
-                                        <th class="align-middle">NAME</th>
-                                        <th class="align-middle">DESCRIPTION</th>
-                                        <th class="align-middle">DURATION</th>
-                                        <th class="align-middle">COST</th>
-                                        <th class="align-middle">CREATED AT</th>
-                                        <th class="align-middle">ACTIONS</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="data-container"></tbody>
-                            </table>
+                            <form id="form" action="" method="post">
+                                <input type="hidden" name="csrf_token" id="csrf_token" value="" />
+                                <label for="name">EBOOK Group Name</label>
+                                <div class=" mb-3">
+                                    <input type="text" name="name" id="name" value="" class="form-control"
+                                        autocomplete="off" />
+                                </div>
+                                <label for="description">Description of this EBOOK Group</label>
+                                <div class=" mb-3">
+                                    <textarea name="description" id="description" class="form-control" rows="3"
+                                        autocomplete="off"></textarea>
+                                </div>
+                                <label for="duration">Duration</label>
+                                <div class=" mb-3">
+                                    <input type="text" name="duration" id="duration" value="" class="form-control"
+                                        autocomplete="off" />
+                                </div>
+                                <label for="cost">Cost</label>
+                                <div class=" mb-3">
+                                    <input type="text" name="cost" id="cost" value="" class="form-control"
+                                        autocomplete="off" />
+                                </div>
+                            </form>
+
+                            <div class="d-flex justify-content-end">
+                                <span class="btn btn-secondary btn-cancel me-2">Cancel</span>
+                                <span class="btn btn-primary btn-save ">Save Form</span>
+                            </div>
+
                         </div>
                     </div>
+
                 </div>
                 <!-- FOOTER -->
                 <div class="footer"></div>
