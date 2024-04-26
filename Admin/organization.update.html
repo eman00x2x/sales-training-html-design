@@ -67,7 +67,7 @@
           },
           description: {
             type: "string",
-            length: { maximum: 100 },
+            length: { minimum: 10, maximum: 300 },
           },
         }
       );
@@ -111,7 +111,7 @@
               <form id="form" action="" method="post">
                 <input type="hidden" name="csrf_token" id="csrf_token" value="" />
                 <div class="mb-3">
-                  <label for="logo" class="form-label fw-semibold">Organization Logo</label>
+                  <label for="logo" class="form-label fw-semibold">Update Organization Logo</label>
                   <fieldset class="upload_dropzone text-center p-4 rounded">
                     <legend class="visually-hidden">Image uploader</legend>
                     <i class="bi bi-cloud-arrow-up-fill h1"></i>
@@ -127,11 +127,11 @@
                   <div class="mt-3 org_logo"></div>
                 </div>
                 <div class="mb-3">
-                  <label for="name" class="form-label fw-semibold">Organization Name</label>
+                  <label for="name" class="form-label fw-semibold">Update Organization Name</label>
                   <input type="text" class="form-control" id="name" name="name" />
                 </div>
                 <div class="mb-3">
-                  <label for="description" class="form-label fw-semibold">Organization Description</label>
+                  <label for="description" class="form-label fw-semibold">Update Organization Description</label>
                   <textarea class="form-control" id="description" rows="5" name="description"></textarea>
                 </div>
                 <div class="text-end">

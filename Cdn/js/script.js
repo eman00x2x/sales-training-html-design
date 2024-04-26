@@ -61,11 +61,10 @@ $(document).on("click", ".btn-save", function (e) {
         "</span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
       $(".response").html(errorAlert);
     } else {
-      $(".response").html(
-        "<p>Submitted but nothing happened! form data " +
-          form.serialize() +
-          " see <a href='../Cdn/js/script.js'>../Cdn/js/script.js</a></p>"
-      );
+      const successAlert = "<div class='response alert alert-success alert-dismissible fade show mt-3' role='alert'><span>Submitted but nothing happened! form data" +
+        form.serialize() +
+        ". See <a href='../Cdn/js/script.js'>../Cdn/js/script.js</a></span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
+      $(".response").html(successAlert);
     }
 
     $(".btn-save").css({

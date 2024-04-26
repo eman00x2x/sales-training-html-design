@@ -13,19 +13,6 @@
   color: white !important;
 }
 
-.head-text{
-    margin-left: 10px;
-}
-
-.dropdown {
-  outline: 1px solid #DEE3E7;
-}   
-
-.filter {
-  background-color: transparent; 
-  outline: 2px solid #DEE3E7;
-}
-
 .btn-add{
     background: #131C39;
     padding: 10px 40px;
