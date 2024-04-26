@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization | Video Groups</title>
+    <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../Cdn/css/org.unpurchased.video.groups.css" />
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"></script>
+    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".header").load("../Admin/header.html");
+            $(".sidebar").load("../Admin/sidebar.html");
+            $(".footer").load("../Admin/footer.html");
+            getVideoGroupData('', '', '');
+
+        });
+        function getVideoGroupData(sortByCriteria, sortDirection, searchQuery) {
+            console.log('Sort By Criteria:', sortByCriteria);
+            console.log('Sort Direction:', sortDirection);
+            console.log('Search Query:', searchQuery);
+            let html = '';
+            $.getJSON('../Cdn/js/data/video.groups.json', function (response) {
+                const groups = response.data;
+                const filteredGroups = groups.filter(group => group.name.toLowerCase().includes(searchQuery.toLowerCase()));
+
+                if (sortByCriteria === 'title') {
+                    filteredGroups.sort((a, b) => a.name.localeCompare(b.name));
+
+                } else if (sortByCriteria === 'cost') {
+                    filteredGroups.sort((a, b) => a.cost - b.cost);
+                }
+                // Reverse the sorting order if sortDirection is 'desc'
+                if (sortDirection === 'desc') {
+                    filteredGroups.reverse();
+                }
+
+
+                filteredGroups.forEach(group => {
+                    html += `
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-sm-12 mb-2">
+                        <a href="../view.unpurchased.video.groups.html?vid_group_id=${group.vid_group_id}" class="card h-100" style="transition: transform 0.3s ease; text-decoration: none;">
+                            <div class="image-container align-self-center" style="width: 100%; height: 200px; overflow: hidden;">
+                                <img src="../Cdn/images/R.jpg" class="card-img-top fixed-image" alt="Image" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                            </div>
+                            <div class="card-body text-white" style="background: linear-gradient(90deg, rgba(19,28,57,1) 0%, rgba(10,60,144,1) 100%); transition: transform 0.3s ease;">
+                                <h5 class="card-title">${group.name}</h5> 
+                                <p class="card-text">
+                                    <span class="border border-white rounded-3 px-2 fw-bold">
+                                        &#8369; ${group.cost}
+                                    </span>
+                                    <div class="rating">
+                                        <i class="bi bi-star-fill" style="color: gold;"></i>
+                                        <i class="bi bi-star-fill" style="color: gold;"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <span class="sold-text">12k sold</span>
+                                    </div>
+                                    
+                                </p>
+                                <p class="card-text overflow-hidden">${group.description}</p>
+                            </div>
+                        </a>
+                    </div>
+            `;
+                });
+
+                $('.video-group-container').html(html);
+            });
+        }
+
+        //sorting
+        let currentSortByCriteria = '';
+        let currentSortDirection = 'asc';
+
+        function setSortByCriteria(criteria) {
+            currentSortByCriteria = criteria;
+            searchVideoGroups();
+        }
+
+        function searchVideoGroups() {
+            const searchQuery = document.getElementById('searchInput').value;
+            getVideoGroupData(currentSortByCriteria, currentSortDirection, searchQuery); // Fixed the variable name here
+        }
+
+        function toggleSorting() {
+            currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
+
+            const sortIcon = document.getElementById('sortIcon');
+            sortIcon.className = currentSortDirection === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down';
+
+            searchVideoGroups();
+        }
+
+        //pagination
+    </script>
+    <style>
+        .card-text {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+        }
+
+        .card:hover {
+
+            box-shadow: 5px 6px 6px 2px #e9ecef;
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row flex-nowrap" style="height: 100vh">
+            <!-- SIDEBAR -->
+            <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
+            <main class="col py-3">
+                <!-- HEADER -->
+                <div class="header"></div>
+
+                <!-- CONTENT -->
+                <div class="content">
+                    <!-- all content body should be here -->
+                    <div>
+                        <div class="d-flex flex-row align-items-center justify-content-start mt-2">
+                            <i class="bi bi-play-circle-fill" style="font-size: 2.5rem;"></i>
+                            <span class="fw-bold fs-2 ms-2">VIDEO GROUPS</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center mb-3 mt-2">
+                            <div class="d-flex justify-content-start align-items-center w-50">
+                                <div class="btn-group border border-secondary-subtle">
+                                    <button type="button"
+                                        class="btn btn-light dropdown-toggle fw-semibold text-lg-start"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        SORT BY
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="#"
+                                                onclick="setSortByCriteria('title')">Title</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#"
+                                                onclick="setSortByCriteria('cost')">Cost</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="btn-group border border-secondary-subtle mx-1">
+                                    <button class="btn btn-light btn-filter" style="padding: 5px 5px !important;"
+                                        onclick="toggleSorting()">
+                                        <h5 class="m-0"><i id="sortIcon" class="bi bi-arrow-up px-1 "
+                                                style="color: black;"></i></h5>
+                                    </button>
+                                </div>
+                                <input type="text" class="ms-1 form-control" id="searchInput"
+                                    onkeyup="searchVideoGroups()" placeholder="Search by Video Groups Title" />
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row video-group-container ">
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center">
+                            <p style="margin-right: auto">Showing 1 out of 10 pages</p>
+                            <nav aria-label="...">
+                                <ul class="pagination">
+                                    <li class="page-item disabled">
+                                        <span class="page-link">Previous</span>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item active">
+                                        <span class="page-link"> 2 </span>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
