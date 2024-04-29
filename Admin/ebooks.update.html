@@ -40,7 +40,7 @@
 
             $.getJSON('../Cdn/js/data/ebooks.json', function (response) {
                 var book = response.data.find(function (item) {
-                    return item.ebook_chapter_id == bookId;
+                    return item.ebook_id == bookId;
                 });
                 if (book) {
                     $('#title').val(book.title);
