@@ -20,6 +20,13 @@
       getOrganizationsData();
     });
 
+    $(window).on('resize', function () {
+      if ($(window).width() > 500)
+        $('.sidebar').removeClass('offcanvas offcanvas-start');
+      else
+        $('.sidebar').addClass('offcanvas offcanvas-start');
+    });
+
     $(document).on('click', '.btn-add', function (e) {
       window.location.href = "organization.create.html";
     });
@@ -35,15 +42,18 @@
     });
 
     function displayActionButtons(id) {
-      return `<td class='align-middle'>
-          <span class='btn btn-sm btn-view border border-primary btn-view text-primary' data-title="View Organization">
-            <i class="bi bi-eye h4"></i>
+      return `<td class='d-flex flex-column gap-1'>
+          <span class='btn btn-sm btn-view border border-primary text-primary d-flex justify-content-start align-items-center' data-title="View Organization">
+            <i class="bi bi-eye fs-4"></i>
+            <span class="ms-1 fs-6">View</span>
           </span>
-          <span data-id='${id}' class='btn btn-sm btn-edit' style="border: 1; border-color: #C68914; color: #c68914" data-title="Update Organization Details">
-            <i class="bi bi-pencil-square h4"></i>
+          <span data-id='${id}' class='btn btn-sm btn-edit border border-primary text-primary d-flex justify-content-start align-items-center' data-title="Update Organization Details">
+            <i class="bi bi-pencil-square fs-4"></i>
+            <span class="ms-1 fs-6">Update</span>
           </span>
-          <span data-id='${id}' class='btn btn-sm text-danger border border-danger btn-delete ' data-title="Delete Organization">
-            <i class="bi bi-trash h4"></i>
+          <span data-id='${id}' class='btn btn-sm border-primary text-primary btn-delete d-flex justify-content-start align-items-center' data-title="Delete Organization">
+            <i class="bi bi-trash fs-4"></i>
+            <span class="ms-1 fs-6">Delete</span>
           </span>
         </td>`;
     }
@@ -97,10 +107,13 @@
   <div class="container-fluid">
     <div class="row flex-nowrap" style="height: 100vh">
       <!-- SIDEBAR -->
-      <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
+      <div class="sidebar px-sm-2 px-0 bg-light col-md-3 col-lg-2" data-bs-backdrop="static" tabindex="-1" id="sidebar">
+      </div>
       <main class="col py-3">
         <!-- HEADER -->
-        <div class="header"></div>
+        <div class="header">
+
+        </div>
 
         <!-- CONTENT -->
         <div class="content">
