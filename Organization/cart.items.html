@@ -1,11 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organizations</title>
+    <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="../Cdn/css/organization.list.css" /> -->
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"></script>
+    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".sidebar").load("navbar.html");
+            displayCartItems();
+
+            function displayCartItems() {
+                let cartItemJSON = sessionStorage.getItem('cartItems');
+                if (cartItemJSON) {
+                    let cartItems = JSON.parse(cartItemJSON);
+
+                    let html = '';
+                    let totalPrice = 0;
+
+                    cartItems.forEach(cartItem => {
+                        totalPrice += cartItem.price;
+                        html += `
+                <tr class="item-row" style="height: 4rem;">
+                    <td style="width: 50px; height: 100px;"><img src="../Cdn/images/R.jpg" alt="Item Image" style="width:100%; height:100%; object-fit: cover;"></td>
+                    <td>${cartItem.name}</td>
+                    <td class="text-truncate" style="max-width: 200px;">${cartItem.description}</td>
+                    <td>${cartItem.price}</td>
+                    <td><button type="button" class="btn btn-outline-danger delete-btn"><i class="bi bi-trash"></i> Delete</button></td>
+                </tr>
+            `;
+                    });
+                    $('.total-price').text(totalPrice);
+                    $('.data-container').html(html);
+
+                    $('.delete-btn').click(function () {
+                        let index = $(this).closest('.item-row').index();
+                        cartItems.splice(index, 1);
+                        sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+                        displayCartItems();
+                    });
+                }
+            }
+        });
+
+    </script>
+
 </head>
-<body>
-    
+
+<body id="body-pd">
+    <div id="navbar-container"></div>
+    <div class="container-fluid">
+            <main class="col py-3">
+
+                <!-- CONTENT -->
+                <div class="content">
+                    <!-- all content body should be here -->
+                    <div class="d-flex flex-row align-items-center justify-content-start mt-2">
+                        <i class="bi bi-cart-fill"></i><span class="fw-bold fs-2 ms-2">CART</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mb-3 mt-2">
+                        <div class="d-flex justify-content-start align-items-center w-50">
+                            <div class="btn-group border border-secondary-subtle">
+                                <button type="button" class="btn btn-light dropdown-toggle fw-semibold text-lg-start"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    SORT BY
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="#">Title</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Cost</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <input type="email" class="ms-1 form-control" id="exampleFormControlInput1"
+                                placeholder="Search by Item Name" />
+                        </div>
+
+                    </div>
+                    <div class="list">
+                        <!-- Table List -->
+                        <div class="table-responsive">
+                            <table class="table table-secondary cart">
+                                <thead>
+                                    <tr>
+                                        <th class="align-middle fw-semibold text-black" style=" width: 200px;"
+                                            style="border-top-left-radius: 20px;">
+                                            ITEM IMAGE
+                                        </th>
+                                        <th class="align-middle fw-semibold text-black" style=" width: 150px;">
+                                            ITEM NAME
+                                        </th>
+                                        <th class="align-middle fw-semibold text-black">
+                                            ITEM DESCRIPTION
+                                        </th>
+                                        <th class="align-middle fw-semibold text-black">
+                                            PRICE
+                                        </th>
+                                        <th class="align-middle fw-semibold text-black"
+                                            style="border-top-right-radius: 20px;">
+                                            ACTION
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="data-container">
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td class="total-price"></td>
+                                        <td>
+                                            <button onclick="window.location.href='payment.selection.html'"
+                                                class="btn btn-primary">Checkout</button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- FOOTER -->
+                <div class="footer"></div>
+
+            </main>
+    </div>
+    <script>
+
+
+        function toggleMenu() {
+            const menu = document.getElementById("nav-bar");
+            const toggleButton = document.getElementById("header-toggle");
+            const bodypd = document.getElementById("body-pd");
+            const headerpd = document.getElementById("header");
+
+            if (menu && toggleButton && bodypd && headerpd) {
+                menu.classList.toggle('show');
+                toggleButton.classList.toggle('bi-x');
+                bodypd.classList.toggle('body-pd');
+                headerpd.classList.toggle('body-pd');
+            }
+        }
+
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(htmlContent => {
+                document.getElementById("navbar-container").innerHTML = htmlContent;
+                document.getElementById("header-toggle").addEventListener('click', toggleMenu);
+            })
+            .catch(error => console.error(error));
+    </script>
 </body>
+
 </html>

@@ -1,11 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organizations</title>
+    <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="../Cdn/css/organization.list.css" /> -->
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"></script>
+    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".sidebar").load("navbar.html");
+
+        });
+        $(document).ready(function () {
+            // Retrieve cart items from sessionStorage
+            let cartItemsJSON = sessionStorage.getItem('cartItems');
+            if (cartItemsJSON) {
+                let cartItems = JSON.parse(cartItemsJSON);
+                let html = ''; // Initialize an empty string to store the HTML content
+
+                // Loop through each cart item and generate the HTML for the card
+                cartItems.forEach(cartItem => {
+                    html += `
+                    <div class="col-md-4">
+                        <img src="../Cdn/images/R.jpg" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">${cartItem.name}</h5>
+                            <p class="card-text">${cartItem.description}</p>
+                            <p class="card-text"><small class="text-body-secondary">Last updated 3
+                                    mins ago</small>${cartItem.price}</p>
+                        </div>
+                    </div>
+            `;
+                });
+
+                // Append the generated HTML to the container element
+                $('.row1').html(html);
+            } else {
+                // Handle case where there are no cart items
+            }
+        });
+
+    </script>
+
+<body id="body-pd">
+    <div id="navbar-container"></div>
+
+    <div class="container-fluid">
+        <main class="col py-3">
+            <!-- CONTENT -->
+            <div class="content">
+                <!-- all content body should be here -->
+                <div class="container border">
+                    <div class="row">
+                        <div class="col-md-6 border">
+                            <h3>Your Order</h3>
+                            <p>Your Item(s)</p>
+                            <!-- card -->
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row row1 g-0">
+
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="subtotal d-flex justify-content-between">
+                                <p>subtotal</p>
+                                <p>subtotal</p>
+                            </div>
+                            <div class="subtotal d-flex justify-content-between">
+                                <p>subtotal</p>
+                                <p>subtotal</p>
+                            </div>
+                            <div class="subtotal d-flex justify-content-between">
+                                <p>subtotal</p>
+                                <p>subtotal</p>
+                            </div>
+                            <hr>
+                            <div class="subtotal d-flex justify-content-between">
+                                <p>subtotal</p>
+                                <p>subtotal</p>
+                            </div>
+                            <hr>
+                            <div class="reminders text-center">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A ullam delectus natus
+                                    quidem, voluptatibus iste. Sapiente rem ullam unde perferendis.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 border">
+                            <h3>Buyer Information</h3>
+                            <form>
+                                <div class="email">
+                                    <label for="inputEmail" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" placeholder="Enter your email">
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="account-info form-group">
+                                            <label for="accountInput1" class="form-label">Account Information
+                                                1</label>
+                                            <input type="text" class="form-control" id="accountInput1"
+                                                placeholder="Input 1">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="account-info form-group">
+                                            <input type="text" class="form-control" id="accountInput1"
+                                                placeholder="Input 1">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="account-info form-group">
+                                            <input type="text" class="form-control" id="accountInput2"
+                                                placeholder="Input 2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="name">
+                                    <label for="" class="form-label">Full Name</label>
+                                    <input type="" class="form-control" placeholder="Enter Full Name">
+                                </div>
+                                <div class="billing-address">
+                                    <label for="" class="form-label">Billing Address</label>
+                                    <input type="" class="form-control" placeholder="">
+                                    <input type="" class="form-control" placeholder="">
+                                </div>
+                                <div class="button">
+                                    <button type="button" class="btn btn-outline-danger w-100">Danger</button>
+                                    <button type="button" class="btn btn-primary w-100">Primary</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById("nav-bar");
+            const toggleButton = document.getElementById("header-toggle");
+            const bodypd = document.getElementById("body-pd");
+            const headerpd = document.getElementById("header");
+
+            if (menu && toggleButton && bodypd && headerpd) {
+                menu.classList.toggle('show');
+                toggleButton.classList.toggle('bi-x');
+                bodypd.classList.toggle('body-pd');
+                headerpd.classList.toggle('body-pd');
+            }
+        }
+
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(htmlContent => {
+                document.getElementById("navbar-container").innerHTML = htmlContent;
+                document.getElementById("header-toggle").addEventListener('click', toggleMenu);
+            })
+            .catch(error => console.error(error));
+    </script>
 </body>
+
 </html>

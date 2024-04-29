@@ -1,300 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Organizations</title>
-    <link
-      href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../Cdn/css/organization.list.css" />
-    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
-    <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"></script>
-    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
-    <script src="../Cdn/js/script.js"></script>
 
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $(".header").load("../Admin/header.html");
-        $(".sidebar").load("../Admin/sidebar.html");
-        $(".footer").load("../Admin/footer.html");
-        getOrganizationsData();
-      });
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Organizations | Video Group</title>
+  <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- <link rel="stylesheet" href="../Cdn/css/organization.list.css" /> -->
+  <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+  <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"></script>
+  <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">   
 
-      $(document).on("click", ".btn-add", function () {
-        $(".form").load("organization.create.html");
-      });
+  <script src="../Cdn/js/script.js"></script>
 
-      $(document).on("click", ".btn-edit", function () {
-        const id = $(this).data("org-id");
-        const url = "organization.list.html?id=" + id;
-        window.history.pushState({}, "", url);
-        $(".form").load("organization.update.html");
-      });
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(".sidebar").load("navbar.html");
 
-      $(document).on("click", ".btn-delete", function () {
-        $(".form").load("organization.delete.html");
-      });
+      let params = new URL(document.location.toString()).searchParams;
+      let id = params.get("vid_group_id");
 
-      function displayActionButtons(id) {
-        return `<td class='align-middle'>
-          <button class='btn btn-sm btn-view border border-primary btn-view text-primary' data-title="View Organization">
-            <svg xmlns='http://www.w3.org/2000/svg' width='2em' height='2em' viewBox='0 0 32 32'> 
-              <circle cx='16' cy='16' r='4' fill='currentColor'/>
-              <path fill='currentColor' d='M30.94 15.66A16.69 16.69 0 0 0 16 5A16.69 16.69 0 0 0 1.06 15.66a1 1 0 0 0 0 .68A16.69 16.69 0 0 0 16 27a16.69 16.69 0 0 0 14.94-10.66a1 1 0 0 0 0-.68M16 22.5a6.5 6.5 0 1 1 6.5-6.5a6.51 6.51 0 0 1-6.5 6.5'/>
-            </svg>
-          </button>
-          <button data-bs-toggle='modal' data-bs-target='#organization_edit' data-org-id='${id}' class='btn btn-sm btn-edit' style="border: 1; border-color: #C68914; color: #c68914" data-title="Update Organization Details">
-            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
-              <path fill="currentColor" d="m7 17.013l4.413-.015l9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583zM18.045 4.458l1.589 1.583l-1.597 1.582l-1.586-1.585zM9 13.417l6.03-5.973l1.586 1.586l-6.029 5.971L9 15.006z"/>
-              <path fill="currentColor" d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01c-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2"/>
-            </svg>
-          </button>
-          <button data-bs-toggle='modal' data-bs-target='#organization_delete' class='btn btn-sm delete-btn btn-delete text-danger border border-danger' data-title="Delete Organization">
-            <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em"" viewBox="0 0 24 24">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m18 9l-.84 8.398c-.127 1.273-.19 1.909-.48 2.39a2.5 2.5 0 0 1-1.075.973C15.098 21 14.46 21 13.18 21h-2.36c-1.279 0-1.918 0-2.425-.24a2.5 2.5 0 0 1-1.076-.973c-.288-.48-.352-1.116-.48-2.389L6 9m7.5 6.5v-5m-3 5v-5m-6-4h4.615m0 0l.386-2.672c.112-.486.516-.828.98-.828h3.038c.464 0 .867.342.98.828l.386 2.672m-5.77 0h5.77m0 0H19.5"/>
-            </svg>
-          </button>
-        </td>`;
+      let cartItemsJSON = sessionStorage.getItem('cartItems');
+      let cartItems = cartItemsJSON ? JSON.parse(cartItemsJSON) : [];
+
+      let itemInCart = cartItems.find(item => item.vid_group_id === id);
+      if (itemInCart) {
+        $('#add-to-cart').html('<i class="bi bi-cart-fill"></i> Added to cart');
+        console.log('Item is in cart.');
+      } else {
+        console.log('Item is not in cart.');
       }
 
-      function getOrganizationsData() {
-        let html = "";
+      $.getJSON('../Cdn/js/data/video.groups.json', function (data) {
+        let response = data.data;
+        f = response.keys(response).find(key => response[key].vid_group_id == id);
 
-        $.getJSON("../Cdn/js/data/organization.json", function (response) {
-          console.log(response);
-          const org = response.data;
+        $('#videogrouptitle').text(response[f].name);
+        $('.description').text(response[f].description);
 
-          for (let i = 0; i < org.length; i++) {
-            let data = org[i];
+        $('#add-to-cart').click(function () {
+          let itemName = response[f].name;
+          let itemDescription = response[f].description;
+          let itemPrice = response[f].cost;
+          let newItem = {
+            vid_group_id: id,
+            name: itemName,
+            description: itemDescription,
+            price: itemPrice
+          };
 
-            html += "<tr>";
-            html +=
-              "<td class='align-middle text-center'>" +
-              data.organization_id +
-              "</td>";
-            html +=
-              "<td class='align-middle text-center' style='max-width: 50px'><img src='" +
-              data.logo +
-              "' style='width:10em;' /></td>";
-            html += "<td class='align-middle'>" + data.name + "</td>";
-            html +=
-              "<td class='align-middle text-truncate' style='max-width: 150px'>" +
-              data.description +
-              "</td>";
-            html +=
-              "<td class='align-middle'>" +
-              convertDate(data.created_at) +
-              "</td>";
-            html += displayActionButtons(data.organization_id);
-            html += "</tr>";
+          let existingItemIndex = cartItems.findIndex(item => item.vid_group_id === id);
+          if (existingItemIndex !== -1) {
+            cartItems.splice(existingItemIndex, 1);
+            $('#add-to-cart').html('<i class="bi bi-cart-fill"></i> Add to cart');
+            console.log("Item removed from cart.");
+          } else {
+            cartItems.push(newItem);
+            $('#add-to-cart').html('<i class="bi bi-cart-fill"></i> Added to cart');
+            console.log("Item added to cart.");
           }
-          $(".organizations .data-container").html(html);
+
+          sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
         });
-      }
-    </script>
-  </head>
-
-  <body>
-    <div class="container-fluid">
-      <div class="row flex-nowrap" style="height: 100vh">
-        <!-- SIDEBAR -->
-        <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
-        <main class="col py-3">
-          <!-- HEADER -->
-          <div class="header"></div>
-
-          <!-- CONTENT -->
-          <div class="content">
-            <!-- all content body should be here -->
-            <div>
-              <div
-                class="d-flex flex-row align-items-center justify-content-start mt-2"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="2.5em"
-                  height="2.5em"
-                  viewBox="0 0 32 32"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M11 7a5 5 0 1 1 5.999 4.9V15h5.268A2.733 2.733 0 0 1 25 17.732V20.1a5.002 5.002 0 0 1-1 9.9a5 5 0 0 1-1-9.9v-2.368a.733.733 0 0 0-.733-.733H9.733a.733.733 0 0 0-.733.733V20.1A5.002 5.002 0 0 1 8 30a5 5 0 0 1-1-9.9v-2.368a2.733 2.733 0 0 1 2.733-2.733H15v-3.1A5 5 0 0 1 11 7"
-                  />
-                </svg>
-                <span class="fw-bold fs-2 ms-2">ORGANIZATION</span>
-              </div>
-
-              <div
-                class="d-flex justify-content-between align-items-center mb-3 mt-2"
-              >
-                <div
-                  class="d-flex justify-content-start align-items-center w-50"
-                >
-                  <div class="btn-group border border-secondary-subtle">
-                    <button
-                      type="button"
-                      class="btn btn-light dropdown-toggle fw-semibold text-lg-start"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      SORT BY
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li>
-                        <a class="dropdown-item" href="#">Organization Name</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#">Created Date</a>
-                      </li>
-                    </ul>
+      });
+      $.getJSON('../Cdn/js/data/videos.json', function (videosData) {
+        let videosResponse = videosData.data;
+        let videos = videosResponse.filter(video => video.vid_group_id == id);
+        console.log("Retrieved Videos Data:", videos);
+        // Display videos
+        let videoListHtml = '';
+        videos.forEach(video => {
+          videoListHtml += `
+        <div class="col-4">
+                    <img src="${video.thumbnail_image}"" height="100%" width="100%">
                   </div>
-                  <input
-                    type="email"
-                    class="ms-1 form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="Search by Organization Name"
-                  />
+                  <div class="col-8 lh-1 p-2">
+                    <p class="fw-bold">${video.title}</p>
+                    <span>${video.description}</span>
+            </div>
+          <hr>
+      `;
+        });
+        $('.video-list').html(videoListHtml);
+      });
+    });
+  </script>
+
+
+</head>
+
+<body id="body-pd">
+  <div id="navbar-container"></div>
+  <div class="container-fluid ">
+      <main class="col py-3">
+        <!-- HEADER -->
+
+        <!-- CONTENT -->
+        <div class="container">
+          <!-- all content body should be here -->
+          <div class="d-flex flex-row align-items-center justify-content-start mt-2">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+              <ol class="breadcrumb fs-6">
+                <li class="breadcrumb-item "><a href="unpurchased.video.groups.html"
+                    class="text-decoration-none text-secondary ">VIDEO GROUP</a></li>
+                <li class="breadcrumb-item fw-bold text-black" aria-current="page">VIEW VIDEO GROUP</li>
+              </ol>
+            </nav>
+          </div>
+
+
+          <div class="d-flex justify-content-center align-items-center mb-3 mt-2 border-3 border rounded p-3">
+            <div class="img" style="width: 200px; height: 150px;">
+              <img src="../Cdn/images/R.jpg" alt="" style="max-width: 100%; max-height: 100%; object-fit: cover;">
+              <!-- <img id="coverImage" alt="" style="max-width: 100%; max-height: 100%; object-fit: cover;"> -->
+            </div>
+          </div>
+
+          <div class="d-flex flex-row  justify-content-start mt-2">
+            <div class="d-flex flex-column justify-content-start mt-2 w-75">
+              <div class="videogroup">
+                <h2 id="videogrouptitle"></h2>
+                <div class="rating">
+                  <span class="sold-text">5.0</span>
+                  <i class="bi bi-star-fill" style="color: gold;"></i>
+                  <i class="bi bi-star-fill" style="color: gold;"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span class="sold-text">(167,000 ratings)</span>
                 </div>
-                <button
-                  type="button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#organization_add"
-                  class="btn text-white px-5 btn-add"
-                  data-title="Add Organization"
-                  style="background-color: #131c39 !important"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1.5em"
-                    height="1.5em"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M11 9h4v2h-4v4H9v-4H5V9h4V5h2zm-1 11a10 10 0 1 1 0-20a10 10 0 0 1 0 20m0-2a8 8 0 1 0 0-16a8 8 0 0 0 0 16"
-                    />
-                  </svg>
-                </button>
+                <div class="description lh-1" style="text-align:justify !important;">
+                </div>
               </div>
-            </div>
-            <div class="list">
-              <!-- Table List -->
-              <div class="table-responsive">
-                <table class="table table-bordered table-striped organizations">
-                  <thead>
-                    <tr>
-                      <th
-                        class="align-middle text-center fw-semibold text-white"
-                        style="background-color: #1c1c39"
-                      >
-                        #
-                      </th>
-                      <th
-                        class="align-middle text-center fw-semibold text-white"
-                        style="background-color: #1c1c39"
-                      >
-                        Organization Logo
-                      </th>
-                      <th
-                        class="align-middle fw-semibold text-white"
-                        style="background-color: #1c1c39"
-                      >
-                        Organization Name
-                      </th>
-                      <th
-                        class="align-middle fw-semibold text-white"
-                        style="background-color: #1c1c39"
-                      >
-                        Organization Description
-                      </th>
-                      <th
-                        class="align-middle fw-semibold text-white"
-                        style="background-color: #1c1c39"
-                      >
-                        Created Date
-                      </th>
-                      <th
-                        class="align-middle fw-semibold text-white"
-                        style="background-color: #1c1c39"
-                      >
-                        Actions
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody class="data-container"></tbody>
-                </table>
+              <hr>
+              <div class="videos pt-2">
+                <h2>Videos</h2>
+                <hr>
+                <div class="row video-list"
+                  style="height: 30em; overflow: auto; text-align: justify !important; scrollbar-width: thin; scrollbar-color: #ccc #f5f5f5;">
+                </div>
               </div>
+              <div class="reviews">
+                <h2 class="pt-3">Featured Review</h2>
+                <div class="row justify-content-between align-items-center">
+                  <div class="col-auto ml-auto text-right d-flex align-items-center">
+                    <div class="rounded-circle"
+                      style="width: 50px; height: 50px;background-image: url('../Cdn/images/profilebini.jpg'); background-size: cover;">
+                    </div>
+                    <h5 class="ml-2 px-3">BINI_ph</h5>
+                  </div>
+                  <div class="col-auto">
+                    <div class="rating">
+                      <span class="fw-bold fs-5">2.0</span>
+                      <i class="bi bi-star-fill" style="color: gold;"></i>
+                      <i class="bi bi-star-fill" style="color: gold;"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="comment pt-3" style="text-align: justify;">
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam alias similique molestias voluptate
+                    ab iusto deleniti, dolorum tempore pariatur dolorem quo distinctio et quod. Laudantium!</p>
+                </div>
+              </div>
+
+
+
             </div>
+            <div class="d-flex flex-row mx-5 mt-2 w-50">
+              <div class="col-12 mb-2">
+                <div class="image-container align-self-center" style="width: 100%; height: 200px; overflow: hidden;">
+                  <img src="../Cdn/images/enroll.jpg" class="card-img-top fixed-image" alt="Image"
+                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px 20px 0 0;">
+                </div>
+                <div class="card-body p-4 text-center" style="background: #d9d9d9; border-radius: 0 0 20px 20px;">
+                  <h5 class="card-title">Subscribe to
+                    Philproperties Top Lesson
+                    for only ₱1,000 </h5>
+                  <p class="card-text">
+                    Get this course, plus 11,000+ of our top-rated Lessons
+                  </p>
+                  <button class="btn btn-outline-dark btn-add" id="add-to-cart">
+                    <i class="bi bi-cart-fill"></i> Add to cart
+                  </button>
 
-            <!-- TABLE FOOTER -->
-            <div style="display: flex; align-items: center">
-              <p style="margin-right: auto">Showing 1 out of 10 pages</p>
-              <nav aria-label="...">
-                <ul class="pagination">
-                  <li class="page-item disabled">
-                    <span class="page-link">Previous</span>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item active">
-                    <span class="page-link"> 2 </span>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-
-          <!-- FOOTER -->
-          <div class="footer"></div>
-
-          <!-- ADD MODAL -->
-          <div class="modal" id="organization_add" tabindex="-1">
-            <div
-              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-              id="form-content"
-            >
-              <div class="modal-content">
-                <div class="form"></div>
+                </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- EDIT MODAL -->
-          <div class="modal" id="organization_edit" tabindex="-1">
-            <div
-              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-              id="form-content"
-            >
-              <div class="modal-content">
-                <div class="form"></div>
-              </div>
-            </div>
-          </div>
+        <!-- FOOTER -->
+        <div class="footer"></div>
 
-          <!-- DELETE MODAL -->
-          <div
-            class="modal"
-            id="organization_delete"
-            tabindex="-1"
-          >
-            <div
-              class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-              id="form-content"
-            >
-              <div
-                class="modal-content"
-              >
-                <div class="form"></div>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-    </div>
-  </body>
+      </main>
+  </div>
+  <script>
+
+    function toggleMenu() {
+      const menu = document.getElementById("nav-bar");
+      const toggleButton = document.getElementById("header-toggle");
+      const bodypd = document.getElementById("body-pd");
+      const headerpd = document.getElementById("header");
+
+      if (menu && toggleButton && bodypd && headerpd) {
+        menu.classList.toggle('show');
+        toggleButton.classList.toggle('bi-x');
+        bodypd.classList.toggle('body-pd');
+        headerpd.classList.toggle('body-pd');
+      }
+    }
+
+    fetch("navbar.html")
+      .then(response => response.text())
+      .then(htmlContent => {
+        document.getElementById("navbar-container").innerHTML = htmlContent;
+        document.getElementById("header-toggle").addEventListener('click', toggleMenu);
+      })
+      .catch(error => console.error(error));
+  </script>
+</body>
+
 </html>
