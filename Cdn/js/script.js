@@ -34,7 +34,7 @@ const formatFileSize = (bytes, decimalPoint = 2) => {
 };
 
 const getParams = (p) => { 
-  let params = new URL(document.location.toString()).searchParams
+  let params = new URLSearchParams(window.location.search)
   if (params.has(p) === true) {
     return params.get(p);
   } else { 
