@@ -24,12 +24,19 @@
             getEbooksData();
         });
 
+        $(window).on('resize', function () {
+            if ($(window).width() >= 768)
+                $('.sidebar').removeClass('offcanvas offcanvas-start');
+            else
+                $('.sidebar').addClass('offcanvas offcanvas-start');
+        });
+
         $(document).on("click", ".btn-add", function () {
             window.location.href = "videos.create.html";
         });
 
         $(document).on("click", ".btn-view", function () {
-          var id = $(this).data('id');
+            var id = $(this).data('id');
             window.location.href = "videos.view.html?id=" + id;
         });
 
@@ -60,7 +67,7 @@
                     const video = data[i];
                     html += "<tr>";
                     html += "<td class='align-middle text-center'>" + video.video_id + "</td>";
-                    html += "<td class='d-flex h-100 w-100 justify-content-center align-items-center'><img src='" + video.thumbnail_image + "' style='width:10em;' /></td>";
+                    html += "<td class='d-flex h-100 w-100 justify-content-center align-items-center text-center'><img src='" + video.thumbnail_image + "' style='width:10em;' /></td>";
                     html += "<td class='align-middle text-center text-capitalize'>" + video.title + "</td>";
                     html += "<td class='align-middle truncate-text'>" + "<p>" + video.description + "</p>" + "</td>";
                     html += "<td class='align-middle text-center text-capitalize'>" + video.category + "</td>";
@@ -75,10 +82,14 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row flex-nowrap" style="height: 100vh">
+    <div class="container-fluid p-0 overflow-hidden">
+        <div class="row">
             <!-- SIDEBAR -->
-            <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
+            <div class="col-md-3 col-lg-2">
+                <div class="col-md-3 col-lg-2 col-lg-2 sidebar position-fixed h-100"
+                    style="background-color: #1c1c39 !important;" data-bs-backdrop="static" tabindex="-1" id="sidebar">
+                </div>
+            </div>
             <main class="col py-3">
                 <!-- HEADER -->
                 <div class="header"></div>

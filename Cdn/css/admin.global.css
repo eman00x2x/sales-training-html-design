@@ -21,8 +21,8 @@
 
 
 .table-bordered th {
-    background-color: #131C39;
-    color: #fff;
+    background-color: #131C39 !important;
+    color: #fff !important;
 }
 
 [data-title]:hover:after {

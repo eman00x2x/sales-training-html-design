@@ -5,7 +5,7 @@
             "account_id": 1,
             "ebook_id": 1,
             "ebook_chapter_id": 1,
-            "status": "Pending",
+            "status": 1,
             "started_at": 1713923521,
             "end_at": 1713923521,
             "created_at": 1713923521
@@ -15,7 +15,7 @@
             "account_id": 2,
             "ebook_id": 2,
             "ebook_chapter_id": 3,
-            "status": "Pending",
+            "status": 0,
             "started_at": 1713923521,
             "end_at": 1713923521,
             "created_at": 1713923521
@@ -25,7 +25,7 @@
             "account_id": 3,
             "ebook_id": 3,
             "ebook_chapter_id": 5,
-            "status": "Pending",
+            "status": 0,
             "started_at": 1713923521,
             "end_at": 1713923521,
             "created_at": 1713923521
@@ -35,7 +35,7 @@
             "account_id": 4,
             "ebook_id": 4,
             "ebook_chapter_id": 7,
-            "status": "Pending",
+            "status": 1,
             "started_at": 1713923521,
             "end_at": 1713923521,
             "created_at": 1713923521
@@ -45,7 +45,7 @@
             "account_id": 5,
             "ebook_id": 5,
             "ebook_chapter_id": 9,
-            "status": "Pending",
+            "status": 1,
             "started_at": 1713923521,
             "end_at": 1713923521,
             "created_at": 1713923521
@@ -55,7 +55,7 @@
             "account_id": 6,
             "ebook_id": 6,
             "ebook_chapter_id": 11,
-            "status": "Pending",
+            "status": 1,
             "started_at": 1713923521,
             "end_at": 1713923521,
             "created_at": 1713923521
@@ -65,7 +65,7 @@
             "account_id": 7,
             "ebook_id": 7,
             "ebook_chapter_id": 13,
-            "status": "Pending",
+            "status": 0,
             "started_at": 1713923521,
             "end_at": 1713923521,
             "created_at": 1713923521
@@ -75,7 +75,7 @@
             "account_id": 8,
             "ebook_id": 8,
             "ebook_chapter_id": 15,
-            "status": "Pending",
+            "status": 0,
             "started_at": 1713923521,
             "end_at": 1713923521,
             "created_at": 1713923521
@@ -85,7 +85,7 @@
             "account_id": 9,
             "ebook_id": 9,
             "ebook_chapter_id": 17,
-            "status": "Pending",
+            "status": 1,
             "started_at": 1713923521,
             "end_at": 1713923521,
             "created_at": 1713923521
@@ -95,7 +95,7 @@
             "account_id": 10,
             "ebook_id": 10,
             "ebook_chapter_id": 19,
-            "status": "Pending",
+            "status": 1,
             "started_at": 1713923521,
             "end_at": 1713923521,
             "created_at": 1713923521
@@ -105,7 +105,7 @@
             "account_id": 11,
             "ebook_id": 11,
             "ebook_chapter_id": 21,
-            "status": "Pending",
+            "status": 0,
             "started_at": 1713923521,
             "end_at": 1713923521,
             "created_at": 1713923521
@@ -115,7 +115,7 @@
             "account_id": 12,
             "ebook_id": 12,
             "ebook_chapter_id": 23,
-            "status": "Pending",
+            "status": 0,
             "started_at": 1713923521,
             "end_at": 1713923521,
             "created_at": 1713923521
@@ -125,7 +125,7 @@
             "account_id": 13,
             "ebook_id": 13,
             "ebook_chapter_id": 25,
-            "status": "Pending",
+            "status": 1,
             "started_at": 1713923521,
             "end_at": 1713923521,
             "created_at": 1713923521
@@ -135,7 +135,7 @@
             "account_id": 14,
             "ebook_id": 14,
             "ebook_chapter_id": 27,
-            "status": "Pending",
+            "status": 1,
             "started_at": 1713923521,
             "end_at": 1713923521,
             "created_at": 1713923521
@@ -145,7 +145,7 @@
             "account_id": 15,
             "ebook_id": 15,
             "ebook_chapter_id": 29,
-            "status": "Pending",
+            "status": 1,
             "started_at": 1713923521,
             "end_at": 1713923521,
             "created_at": 1713923521

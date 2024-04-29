@@ -41,6 +41,13 @@
       });
     });
 
+    $(window).on('resize', function () {
+      if ($(window).width() >= 768)
+        $('.sidebar').removeClass('offcanvas offcanvas-start');
+      else
+        $('.sidebar').addClass('offcanvas offcanvas-start');
+    });
+
     $(document).on("click", "#back", function (e) {
       window.location.href = "videos.list.html"
     });
@@ -73,10 +80,14 @@
     </div>
   </div>
 
-  <div class="container-fluid">
-    <div class="row flex-nowrap" style="height: 100vh">
+  <div class="container-fluid p-0 overflow-hidden">
+    <div class="row">
       <!-- SIDEBAR -->
-      <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
+      <div class="col-md-3 col-lg-2">
+        <div class="col-md-3 col-lg-2 col-lg-2 sidebar position-fixed h-100"
+          style="background-color: #1c1c39 !important;" data-bs-backdrop="static" tabindex="-1" id="sidebar">
+        </div>
+      </div>
       <main class="col py-3">
         <!-- HEADER -->
         <div class="header"></div>
