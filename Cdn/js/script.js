@@ -35,7 +35,7 @@ const formatFileSize = (bytes, decimalPoint = 2) => {
 
 const getParams = (p) => { 
   let params = new URL(document.location.toString()).searchParams
-  if (params.has($p) === true) {
+  if (params.has(p) === true) {
     return params.get(p);
   } else { 
     alert("Undefined parameter '" + p  + "'");
