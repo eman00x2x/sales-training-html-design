@@ -49,3 +49,8 @@
 [data-title] {
   position: relative;
 }
+
+.nav-link:hover{
+  background-color: white;
+  color: #131C39 !important;
+}
