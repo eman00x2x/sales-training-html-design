@@ -1,3 +1,19 @@
+# Design Major Revision
+  - Your design does not meet the requirements
+  - We will use the Tabler Design
+  - Preview: https://preview.tabler.io/layout-vertical-transparent.html
+  - The selected layout is the Vertical Transparent Layout
+  - Installation 
+    - insert the following css and js in html header
+      - CSS
+        - <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
+        - <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
+      - JS
+        - <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js"></script>
+  - Documentation
+    - https://tabler.io/docs/getting-started
+    - or view-source then copy the code from the preview https://preview.tabler.io/layout-vertical-transparent.html
+
 ## How to view working html files
   - Setup a server and navigate to http://localhost/sales-training-html-design/Admin/organization.list.html
 
