@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Second Page</title>
+
+  <link rel="stylesheet" href="/Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css">
+  <script src="/Cdn/vendor/popper-2.11.8/popper.min.js"></script>
+  <script src="/Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">   
+  <link rel="stylesheet" href="/Cdn/css/organization.user.list.css">
+ 
+  <script>
+    
+    $(document).ready(function () {
+        let params = new URL(document.location.toString()).searchParams;
+        let id = params.get("id");
+        console.log(id);
+
+        $.getJSON('../Cdn/js/data/profiles.json', function (data) {
+            let response = data.data;
+            let userData = response.find(item => item.profile_id == id);
+            console.log(userData);
+        });
+    });
+
+
+  </script>
+</head>
+<body id="body-pd"> 
+  <div id="navbar-container"></div>
+
+  <script>
+    function toggleMenu() {
+        const menu = document.getElementById("nav-bar");
+        const toggleButton = document.getElementById("header-toggle");
+        const bodypd = document.getElementById("body-pd");
+        const headerpd = document.getElementById("header");
+
+        if (menu && toggleButton && bodypd && headerpd) {
+            menu.classList.toggle('show');
+            toggleButton.classList.toggle('bi-x');
+            bodypd.classList.toggle('body-pd');
+            headerpd.classList.toggle('body-pd');
+        }
+    }
+
+    fetch("navbar.html")
+        .then(response => response.text())
+        .then(htmlContent => {
+            document.getElementById("navbar-container").innerHTML = htmlContent;
+            document.getElementById("header-toggle").addEventListener('click', toggleMenu);
+        })
+        .catch(error => console.error(error));
+  </script>
+</body>
+</html>
