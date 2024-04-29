@@ -42,19 +42,12 @@
     });
 
     function displayActionButtons(id) {
-      return `<td class='d-flex flex-column gap-1'>
-          <span class='btn btn-sm btn-view border border-primary text-primary d-flex justify-content-start align-items-center' data-title="View Organization">
-            <i class="bi bi-eye fs-4"></i>
-            <span class="ms-1 fs-6">View</span>
-          </span>
-          <span data-id='${id}' class='btn btn-sm btn-edit border border-primary text-primary d-flex justify-content-start align-items-center' data-title="Update Organization Details">
-            <i class="bi bi-pencil-square fs-4"></i>
-            <span class="ms-1 fs-6">Update</span>
-          </span>
-          <span data-id='${id}' class='btn btn-sm border-primary text-primary btn-delete d-flex justify-content-start align-items-center' data-title="Delete Organization">
-            <i class="bi bi-trash fs-4"></i>
-            <span class="ms-1 fs-6">Delete</span>
-          </span>
+      return `<td class='align-middle'>
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <button type="button" class="btn btn-md btn-view btn-outline-primary"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
+          <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class="ms-2">Edit</span></button>
+          <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
+        </div>
         </td>`;
     }
 
@@ -78,7 +71,7 @@
             "' style='width:10em;' /></td>";
           html += "<td class='align-middle'>" + data.name + "</td>";
           html +=
-            "<td class='align-middle text-truncate' style='max-width: 150px'>" +
+            "<td class='align-middle text-truncate' style='max-width: 550px'>" +
             data.description +
             "</td>";
           html +=
@@ -145,10 +138,10 @@
                 <input type="text" class="search ms-1 form-control" id="search"
                   placeholder="Search by Organization Name" name="search" value="" />
               </div>
-              <button type="button" class="btn text-white px-5 btn-add" data-title="Add Organization"
-                style="background-color: #131c39 !important">
-                <i class="bi bi-plus-circle fs-5"></i>
-              </button>
+              <button type="button" class="btn btn-md btn-add btn-view btn-outline-primary">
+                <i class="bi bi-plus-circle"></i><span
+                  class="ms-2">Add</span>
+                </button>
             </div>
           </div>
 
