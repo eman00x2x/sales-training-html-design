@@ -33,21 +33,16 @@
             window.location.href = "ebooks.update.html?id=" + id;
         });
 
-        $(document).on("click", ".btn-delete", function () {
-            $(".form").load("ebooks.delete.html");
+        $(document).on('click', '.btn-delete', function (e) {
+            id = $(this).data('id');
+            window.location.href = "ebooks.delete.html?id=" + id;
         });
 
         function displayActionButtons(id) {
             return `<td class='align-middle text-center'>
-        <button class='btn btn-sm btn-view border border-primary btn-view text-primary' data-title="View Organization">
-            <i class="bi bi-eye h4"></i>
-        </button>
-        <button class='btn btn-sm btn-edit' data-id='${id}' style="border: 1; border-color: #C68914; color: #c68914">
-            <i class="bi bi-pencil-square h4"></i>
-        </button>
-        <button data-bs-toggle='modal' data-bs-target='#ebooks_delete' class='btn btn-sm delete-btn btn-delete text-danger border border-danger' data-title="Delete Organization">
-            <i class="bi bi-trash h4"></i>
-        </button>
+                <button type="button" class="btn btn-md btn-view btn-outline-primary"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
+                <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class="ms-2">Edit</span></button>
+                <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
     </td>`;
         }
 
@@ -62,7 +57,7 @@
                     const ebook = data[i];
                     html += "<tr>";
                     html += "<td class='align-middle text-center'>" + ebook.ebook_id + "</td>";
-                    html += "<td class='d-flex justify-content-center'><img src='" + ebook.thumbnail_image + "' style='width:5em;' /></td>";
+                    html += "<td class='d-flex justify-content-center'><img src='" + ebook.thumbnail_image + "' style='width:10em;' /></td>";
                     html += "<td class='align-middle'>" + ebook.title + "</td>";
                     html += "<td class='align-middle'>" + ebook.author + "</td>";
                     html += "<td class='align-middle'>" + ebook.isbn + "</td>";
@@ -91,7 +86,7 @@
                     <div class='content'>
                         <div class="d-flex align-center justify-content-start">
                             <i class="bi bi-book h1 "></i>
-                            <span class="fw-bold fs-2 ms-2">E-BOOKS</span>
+                            <span class="fw-bold fs-2 ms-2">E-Books</span>
                         </div>
 
                         <div class="row-content d-flex align-items-center mb-2">
@@ -110,16 +105,16 @@
                                 </div>
                                 <div class="form-outline mx-2" data-mdb-input-init>
                                     <input placeholder="Search by item name..." class="form-control"
-                                        id="datatable-search-input">
+                                        id="datatable-search-input" name="search">
                                 </div>
 
-                                <button class="filter border border-secondary-subtle rounded-2">
+                                <button class="filter border border-secondary-subtle rounded-2" name="filter">
                                     <i class="bi bi-filter fs-4"></i>
                                 </button>
                             </div>
                             <div class="d-flex-col">
-                                <button class="btn-add border-0 rounded-2">
-                                    <i class="bi bi-plus-circle" style="color:white"></i>
+                                <button type="button" class="btn btn-md btn-add btn-view btn-outline-primary">
+                                    <i class="bi bi-plus-circle"></i><span class="ms-2">Add</span>
                                 </button>
                             </div>
                         </div>
@@ -128,8 +123,8 @@
                     <hr>
 
                     <div class='list'>
-                        <div class='table-responsive rounded-3'>
-                            <table class='table table-bordered ebooks table-striped overflow-hidden'>
+                        <div class='table-responsive rounded-3 overflow-hidden'>
+                            <table class='table table-bordered ebooks table-striped'>
                                 <thead>
                                     <tr>
                                         <th class="align-middle text-center">ID</th>
