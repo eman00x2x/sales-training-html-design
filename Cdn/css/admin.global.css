@@ -49,3 +49,10 @@
 [data-title] {
   position: relative;
 }
+
+.truncate-text p {
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
