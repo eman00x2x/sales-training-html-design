@@ -7,12 +7,12 @@
     - insert the following css and js in html header
       - CSS
       ```
-        - <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
-        - <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
+        <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
+        <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
       ```
       - JS
       ```
-        - <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js"></script>
+        <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js"></script>
       ```
   - Documentation
     - https://tabler.io/docs/getting-started
