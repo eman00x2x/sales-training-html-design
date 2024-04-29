@@ -17,6 +17,13 @@
 
     <script type="text/javascript">
 
+        $(window).on('resize', function () {
+            if ($(window).width() >= 768)
+                $('.sidebar').removeClass('offcanvas offcanvas-start');
+            else
+                $('.sidebar').addClass('offcanvas offcanvas-start');
+        });
+
         $(document).ready(function () {
             $('.header').load('header.html');
             $('.sidebar').load('sidebar.html');
@@ -29,13 +36,13 @@
         });
 
         $(document).on("click", ".btn-view", function () {
-            var id = $(this).data('id');
-            var title = $(this).data('ebook-title');
+            let id = $(this).data('id');
+            let title = $(this).data('ebook-title');
             window.location.href = "ebook.chapters.list.html?id=" + id + "&title=" + title;
         });
 
         $(document).on("click", ".btn-edit", function () {
-            var id = $(this).data('id');
+            let id = $(this).data('id');
             window.location.href = "ebooks.update.html?id=" + id;
         });
 
@@ -58,9 +65,10 @@
             let html = '';
 
             $.getJSON('../Cdn/js/data/ebooks.json', function (response) {
-                const data = response.data;
+                console.log(response)
+                let data = response.data;
                 for (let i = 0; i < data.length; i++) {
-                    const ebook = data[i];
+                    let ebook = data[i];
                     html += "<tr>";
                     html += "<td class='align-middle text-center'>" + ebook.ebook_id + "</td>";
                     html += "<td class='d-flex justify-content-center'><img src='" + ebook.thumbnail_image + "' style='width:10em;' /></td>";
@@ -71,7 +79,7 @@
                     html += displayActionButtons(ebook.ebook_id, ebook.title);
                     html += "</tr>";
                 }
-                $('.ebooks .data-container').html(html);
+                $('.data-container').html(html);
             });
         }
 
@@ -79,11 +87,15 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row flex-nowrap" style="height: 100vh">
+    <div class="container-fluid p-0 overflow-hidden">
+        <div class="row flex">
             <!-- SIDEBAR -->
-            <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light" style="width:250px; background-color: #1c1c39 !important;" data-bs-backdrop="static" tabindex="-1" id="sidebar"></div>
-            <main class="col py-3">
+            <div class="col-md-3 col-lg-2">
+                <div class="col-md-3 col-lg-2 col-lg-2 sidebar position-fixed h-100"
+                    style="background-color: #1c1c39 !important;" data-bs-backdrop="static" tabindex="-1" id="sidebar">
+                </div>
+            </div>
+            <main class="col py-3 md-9">
                 <!-- HEADER -->
                 <div class="header"></div>
 
@@ -119,7 +131,7 @@
                                 </button>
                             </div>
                             <div class="d-flex-col">
-                                <button type="button" class="btn btn-md btn-add btn-view btn-outline-primary">
+                                <button type="button" class="btn btn-md btn-add btn-outline-primary">
                                     <i class="bi bi-plus-circle"></i><span class="ms-2">Add</span>
                                 </button>
                             </div>
@@ -130,7 +142,7 @@
 
                     <div class='list'>
                         <div class='table-responsive rounded-3 overflow-hidden'>
-                            <table class='table table-bordered ebooks table-striped'>
+                            <table class='table table-bordered table-striped'>
                                 <thead>
                                     <tr>
                                         <th class="align-middle text-center">ID</th>
