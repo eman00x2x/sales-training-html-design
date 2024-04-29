@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add E-Book Chapter</title>
+    <title>Add E-Book</title>
     <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../Cdn/css/ebooks.list.css">
+    <link rel="stylesheet" href="../Cdn/css/admin.global.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
     <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"> </script>
     <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
     <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
     <script src="../Cdn/js/script.js"></script>
@@ -22,6 +23,28 @@
             $(".footer").load("footer.html");
         });
 
+        $(document).on("click", ".btn-back", function () {
+            window.location.href = "ebooks.list.html";
+        });
+
+        $(document).on("change", "#thumbnail", function (e) {
+            var URL = window.URL || window.webkitURL;
+            var file = e.target.files[0];
+
+            const imageTag =
+                "<h6>Uploaded Files</h6><div class='d-flex flex-row justify-content-start align-items-center rounded shadow-sm p-2 bg-white rounded border border-secondary-subtle'><img src='" +
+                URL.createObjectURL(file) +
+                "'class='border border-secondary-subtle p-2 rounded' name='org_logo' style='height: 100px'/><div class='d-flex flex-column'><span class='ms-4 fw-semibold'>" +
+                e.target.files[0].name +
+                "</span> <span class='ms-4 fw-normal'>" +
+                formatFileSize(e.target.files[0].size) +
+                "</span><div></div>";
+
+            if (file) {
+                $(".thumbnail_image").html(imageTag);
+            }
+        });
+
         function validateInput(input) {
 
             let message = [];
@@ -32,16 +55,24 @@
             }, {});
 
             const validator = validate({
-                chapter_number: data.chapter_number,
-                chapter_title: data.chapter_title,
+                thumbnail: data.thumbnail,
+                title: data.title,
+                subtitle: data.subtitle,
                 author: data.author,
-                description: data.description
+                category: data.category,
+                description: data.description,
+                group: data.group,
+                code: data.code,
             }, {
-                chapter_number: {
+                logo: {
+                    type: "image/png,image/jpeg",
+                },
+                title: {
                     presence: { allowEmpty: false },
                     type: "string",
+                    length: { maximum: 20 }
                 },
-                chapter_title: {
+                subtitle: {
                     presence: { allowEmpty: false },
                     type: "string",
                     length: { maximum: 50 }
@@ -51,10 +82,23 @@
                     type: "string",
                     length: { maximum: 50 }
                 },
+                category: {
+                    presence: { allowEmpty: false },
+                },
                 description: {
                     presence: { allowEmpty: false },
                     type: "string",
                     length: { maximum: 100 }
+                },
+                group: {
+                    presence: { allowEmpty: false },
+                    type: "string",
+                    length: { maximum: 10 }
+                },
+                code: {
+                    presence: { allowEmpty: false },
+                    type: "string",
+                    length: { maximum: 12 }
                 }
             });
 
@@ -75,58 +119,84 @@
     <div class="container-fluid">
         <div class="row flex-nowrap" style="height: 100vh; overflow-y: auto;">
             <!-- SIDEBAR -->
-            <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
+            <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light" style="width:250px; background-color: #1c1c39 !important;" data-bs-backdrop="static" tabindex="-1" id="sidebar"></div>
             <main class="col py-3">
                 <!-- HEADER -->
                 <div class="header"></div>
-                <div class="modal-body">
-                    <form class="p-4" id="form" method="post" action="">
-                        <input type="hidden" name="csrf_token" id="csrf_token" value="" />
-                        <div class="d-flex align-items-center">
-                            <div class="d-flex flex-row justify-content-center align-items-center">
-                                <i class="bi bi-plus-square-fill fs-2"></i>
-                                <h5 class="ms-2 modal-title fw-bold">
-                                    Add E-book Chapter
-                                </h5>
+                <form class="p-4" id="form" method="post" action="">
+                    <input type="hidden" name="csrf_token" id="csrf_token" value="" />
+                    <div class="d-flex align-items-center">
+                        <div class="d-flex flex-row justify-content-center align-items-center">
+                            <i class="bi bi-journal-plus fs-2"></i>
+                            <h5 class="ms-2 fw-bold my-auto">
+                                Add E-book Chapter
+                            </h5>
+                        </div>
+                    </div>
+                    <hr class="m-0">
+                    <div class="response"></div>
+                    <input type="file" id="fileInput" style="display: none;">
+                    <div class="d-flex flex-column form-group mt-4">
+                        <div class="row align-items-end">
+                            <div class="col-6">
+                                <label for="chapter" class="form-label fw-semibold">Title</label>
+                                <input type="text" name="chapter" id="chapter" class="form-control" value=""
+                                    autocomplete="off">
+                            </div>
+                            <div class="col-6">
+                                <label for="subtitle" class="form-label fw-semibold">Subtitle</label>
+                                <input type="text" name="subtitle" id="subtitle" class="form-control" value=""
+                                    autocomplete="off">
                             </div>
                         </div>
-                        <hr class="m-0">
-                        <div class="response"></div>
-                        <input type="file" id="fileInput" style="display: none;">
-                        <div class="d-flex flex-column form-group">
-                            <div class="row align-items-end mt-3">
-                                <div class="col-6">
-                                    <label for="chapter_number" class="form-label fw-semibold">Chapter #</label>
-                                    <input type="text" name="chapter_number" id="chapter_number" class="form-control" value=""
-                                        autocomplete="off">
-                                </div>
-                                <div class="col-6">
-                                    <label for="chapter_title" class="form-label fw-semibold">Chapter Title</label>
-                                    <input type="text" name="chapter_title" id="chapter_title" class="form-control"
-                                        value="" autocomplete="off">
-                                </div>
+                    </div>
+                    <div class="d-flex flex-column form-group">
+                        <div class="row align-items-end mt-4">
+                            <div class="col-6">
+                                <label for="author" class="form-label fw-semibold">Author</label>
+                                <input type="text" name="author" id="author" class="form-control" value=""
+                                    autocomplete="off">
+                            </div>
+                            <div class="col-6">
+                                <label for="category" class="form-label fw-semibold">Category</label>
+                                <select id="category" class="form-select" name="category">
+                                    <option value="" selected disabled>Select category</option>
+                                    <option value="sales">Sales</option>
+                                    <option value="real-estate">Real-Estate</option>
+                                    <option value="properties">Properties</option>
+                                    <option value="necessities">Necessities</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="d-flex flex-column form-group mt-4">
-                            <label for="author" class="form-label fw-semibold">Author</label>
-                            <input type="text" name="author" id="author" class="form-control" value=""
-                                autocomplete="off">
+                    </div>
+                    <div class="d-flex flex-column form-group mt-4">
+                        <label for="description" class="form-label fw-semibold">Description</label>
+                        <textarea name="description" id="description" class="form-control" value="" autocomplete="off"
+                            wrap=physical rows="5"></textarea>
+                    </div>
+                    <div class="d-flex flex-column form-group">
+                        <div class="row align-items-end mt-4">
+                            <div class="col-6">
+                                <label for="group" class="form-label fw-semibold">E-Book Group</label>
+                                <input type="text" name="group" id="group" class="form-control" value=""
+                                    autocomplete="off">
+                            </div>
+                            <div class="col-6">
+                                <label for="code" class="form-label fw-semibold">Code</label>
+                                <input type="text" name="code" id="code" class="form-control" value=""
+                                    autocomplete="off">
+                            </div>
                         </div>
-                        <div class="d-flex flex-column form-group mt-4">
-                            <label for="description" class="form-label fw-semibold">Description</label>
-                            <textarea name="description" id="description" class="form-control" value=""
-                                autocomplete="off" wrap=physical rows="5"></textarea>
-                        </div>
-                        <div class="d-flex gap-2 justify-content-end mt-3">
-                            <button class="btn border border-secondary" type="button" data-bs-dismiss="modal">
-                                Back
-                            </button>
-                            <button class="btn-save btn btn-success btn-md">
-                                Submit
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="d-flex gap-2 justify-content-end mt-3">
+                        <button class="btn btn-light btn-back border border-secondary" type="button">
+                            Back
+                        </button>
+                        <button class="btn-save btn btn-success btn-md">
+                            Submit
+                        </button>
+                    </div>
+                </form>
                 <!-- FOOTER -->
                 <div class="footer"></div>
             </main>
