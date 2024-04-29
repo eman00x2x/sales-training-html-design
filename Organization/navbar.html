@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <title>Navbar</title>
+    <link rel="stylesheet" href="/Cdn/css/organization.navbar.css">  
+
+</head>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+      $(".header").load("../Admin/header.html");
+      $(".sidebar").load("navbar.html");
+      $(".footer").load("../Admin/footer.html");
+
+      const profileJson = "../Cdn/js/data/profiles.json";
+      const accountJson = "../Cdn/js/data/accounts.json";
+      fetch(profileJson)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((OrganizationUserData) => {
+          fetch(accountJson)
+            .then((response) => response.json())
+            .then((accountData) => {
+              printAccountInfo(OrganizationUserData, accountData);
+            })
+            .catch((error) =>
+              console.error("Error fetching account data:", error)
+            );
+        })
+        .catch((error) => {
+          console.error(
+            "There was a problem with the fetch operation:",
+            error
+          );
+        });
+
+      function printAccountInfo(OrganizationUserData, accountData) {
+        let tableBody = $(".userTable tbody");
+        tableBody.empty();
+        OrganizationUserData.data.forEach((profileData, index) => {
+          let fullName = `${profileData.name.prefix} ${profileData.name.firstname} ${profileData.name.lastname} ${profileData.name.suffix}`;
+          let permanentAddress = profileData.address[0].permanent;
+          let fullAddress = `${permanentAddress.region}, ${permanentAddress.province}, ${permanentAddress.municipality}, ${permanentAddress.barangay}`;
+          let row = `<tr>
+                      <td>${index + 1}</td>
+                      <td><img src="${profileData.profile_image}" alt="Profile Image" id="profileImg"/></td>
+                      <td>${fullName}</td>
+                      <td>${fullAddress}</td>
+                      <td class="accType"></td>
+                      <td><button class="btn btn-sm btn-primary">Edit</button></td>
+                  </tr>`;
+          tableBody.append(row);
+
+          let accTypeCell = tableBody.find(".accType").eq(index);
+          accountData.data.forEach((account, index) => {
+            if (profileData.account_id === account.account_id) {
+              accTypeCell.text(account.account_type);
+            }
+          });
+        });
+      }
+    });
+  </script>
+
+
+<body>
+
+<div id="body-pd">
+    <header class="header" id="header">
+
+
+        <div class="header_toggle">
+            <i class='bi bi-list' id="header-toggle"></i>
+            <span class="admin-management">ORGANIZATION MANAGEMENT</span>
+        </div>
+
+        <div id="notification-icon" class="notification-container d-flex">
+            <a href="" class="btn"> <i class="bi bi-bell-fill h4"></i>
+            <a href="">
+                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle avatar"
+                    alt="Avatar" />
+            </a>
+
+        </div>
+       
+
+    </header>
+
+    <div class="l-navbar" id="nav-bar">
+
+        <nav class="nav sidebar">
+
+            <div>
+
+                <a href="admintry.php" class="nav_logo ps-2">
+                    <img src="../Cdn/images/navLogo.png" class="logoImg" alt="Manage Account Icon">
+                </a>
+                <div class="nav_list">
+
+                    <li class="nav-item">
+                        <a href="admintry.php" class="nav_link nav-link mb-0" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="Dashboard">
+                            <i class="bi bi-grid-1x2-fill h4 pe-3"></i>
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="adminactivitylogs.php" class="nav_link nav-link mb-0" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="Activity Logs">
+                            <i class="bi bi-diagram-3-fill h4 pe-3"></i>
+                            Organization
+                        </a>
+                    </li>
+
+                    <li class="nav-item has-submenu">
+                        <a href="try.php" class="nav_link nav-link mb-0 " data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="Data Management">
+                            <i class="bi bi-people-fill h4 pe-3 "></i>
+                            Accounts <i class="fa-solid fa-caret-down"></i> 
+
+                        </a>
+                        <ul class="submenu collapse">
+
+                            <li><a class="nav-link text-white" href="adminMasterfileTry.php" data-bs-toggle="tooltip"
+                                    data-bs-placement="top" title="Manage Employee"><i class='bx bx-user nav_icon'></i>
+                                    Employees </a></li>
+                            <li><a class="nav-link text-white" href="adminMasterfileDeptTry.php"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Manage Department"><i
+                                        class='bx bx-buildings nav_icon'></i> Department </a></li>
+                            <li><a class="nav-link text-white" href="adminMasterfileLeave.php" data-bs-toggle="tooltip"
+                                    data-bs-placement="top" title="Manage Leave"><i class='bx bx-time nav_icon'></i>
+                                    Leave </a></li>
+                            <li><a class="nav-link text-white" href="adminPAYROLLPERIODS.php" data-bs-toggle="tooltip"
+                                    data-bs-placement="top" title="Manage Payroll Period"><i
+                                        class='bx bx-calendar nav_icon'></i> Payroll Period </a></li>
+                            <li><a class="nav-link text-white" href="adminPositions.php" data-bs-toggle="tooltip"
+                                    data-bs-placement="top" title="Manage"><i class='fa-solid fa-sitemap nav_icon'></i>
+                                    Positions </a></li>
+                            <li><a class="nav-link text-white" href="adminSalaryGrades.php" data-bs-toggle="tooltip"
+                                    data-bs-placement="top" title="Manage Employee"><i
+                                        class="fa-solid fa-file-invoice-dollar nav_icon"></i> Salary Grades</a></li>
+                        </ul>
+
+                    <li class="nav-item has-submenu">
+                        <a href="adminMasterfile.php" class="nav_link nav-link" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="Manage Attendance">
+                            <i class="bi bi-book-fill h4 mt-1 pe-2"></i>
+                            <span>E Book Groups <i class="fa-solid fa-caret-down"></i></span>
+
+
+                        </a>
+
+
+                        <ul class="submenu collapse">
+                            <li><a class="nav-link text-white" href="adminATTENDANCErecordsTry.php"><i
+                                        class='fa-solid fa-clipboard nav_icon'></i> Records</a></li>
+                            <li><a class="nav-link text-white" href="adminEveningService.php"><i
+                                        class='fa-solid fa-clock nav_icon'></i> Evening Service</a></li>
+                            <li><a class="nav-link text-white" href="adminLeaves.php"><i
+                                        class="fa-solid fa-users nav-icon"></i> Leaves </a></li>
+                            <li><a class="nav-link text-white" href="manualtime.php"><i
+                                        class="fa-solid fa-clock nav_icon"></i> Time In/Out </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-submenu">
+                        <a href="adminMasterfile.php" class="nav_link nav-link " data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="Payroll Management">
+                            <i class="bi bi-play-btn-fill h4 mt-1 pe-2"></i>
+
+                            <span>Video Groups<i class="fa-solid fa-caret-down"></i></span>
+
+                        </a>
+
+                        <ul class="submenu collapse">
+                            <li><a class="nav-link text-white" href="adminPayperperiod.php"><i
+                                        class='fa-solid fa-user nav_icon'></i> Payroll</a></li>
+                            <li><a class="nav-link text-white" href="adminMasterLoans.php"><i
+                                        class='fa-solid fa-landmark nav_icon'></i> Add Loans </a></li>
+                            <li><a class="nav-link text-white" href="adminADDLOANSTYPE.php"><i
+                                        class="fa-solid fa-money-check-dollar nav-icon"></i> Add Loan Type</a></li>
+                            <li><a class="nav-link text-white" href="adminPAYROLLProcess.php"><i
+                                        class="fa-solid fa-users nav-icon"></i> Payroll Process </a></li>
+                            <li><a class="nav-link text-white" href="adminPAYROLLInfo.php"><i
+                                        class="fa-solid fa-users nav-icon"></i> Payroll Information </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item ">
+                        <a href="adminMasterfile.php" class="nav_link nav-link " data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="Reports">
+                            <i class="bi bi-book h4 mt-1 pe-3"></i>E-Books
+
+                        </a>
+                        
+
+                    <li>
+                        <a href="Announcement.php" class="nav_link nav-link mb-0" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="  Announcement">
+                            <i class="bi bi-play-btn h4 mt-1 pe-2"></i> Videos
+                        </a>
+                    </li>
+
+                    <a href="../employeenew/try.php" class="nav_link nav-link mb-0" data-bs-toggle="tooltip"
+                        data-bs-placement="top" title="  Employee Module">
+                        <i class="bi bi-card-list h4 mt-1 pe-3"></i><span>Transactions</span>
+                    </a>
+                    </li>
+
+                </div>
+
+
+            </div>
+
+            <a href="../LOGOUT.php" class="nav_link nav-link"> <i class="bi bi-box-arrow-right h4"></i>
+              Sign Out
+        </nav>
+    </div>
+
+</div>
+  
+
+
+   
+
+   
+
+   
+
+
+
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const showNavbar = (toggleId, navId, bodyId, headerId) => {
+        const toggle = document.getElementById(toggleId),
+            nav = document.getElementById(navId),
+            bodypd = document.getElementById(bodyId),
+            headerpd = document.getElementById(headerId);
+
+        if (toggle && nav && bodypd && headerpd) {
+            toggle.addEventListener('click', () => {
+                nav.classList.toggle('show');
+                toggle.classList.toggle('bi-x');
+                bodypd.classList.toggle('body-pd');
+                headerpd.classList.toggle('body-pd');
+            });
+        }
+    }
+
+    showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header');
+
+    const linkColor = document.querySelectorAll('.nav_link');
+
+    function colorLink() {
+        linkColor.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+    }
+
+    linkColor.forEach(l => l.addEventListener('click', colorLink));
+
+    document.querySelectorAll('.sidebar .nav-link').forEach(function (element) {
+        element.addEventListener('click', function (e) {
+            let nextEl = element.nextElementSibling;
+            let parentEl = element.parentElement;
+
+            if (nextEl) {
+                e.preventDefault();
+                nextEl.classList.toggle('show');
+
+                var opened_submenu = parentEl.parentElement.querySelector('.submenu.show');
+                if (opened_submenu && opened_submenu !== nextEl) {
+                    opened_submenu.classList.remove('show');
+                }
+            }
+        }); 
+    });
+});
+
+
+console.log("hey nababasa")
+</script>
+</body>
+
+
+</html>
