@@ -1,140 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../Cdn/css/ebooks.create.css" />
 
-    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
-    <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"></script>
-    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Video</title>
+  <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../Cdn/css/admin.global.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
-    <script>
-      $(document).on("hidden.bs.modal", "#videos_update", function () {
-        window.history.pushState({}, "", "videos.list.html");
-      });
+  <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+  <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"> </script>
+  <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+  <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+  <script src="../Cdn/js/script.js"></script>
 
-      $(document).ready(function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        const videoId = urlParams.get("id");
+  <script type="text/javascript">
 
-        $.getJSON("../Cdn/js/data/videos.json", function (response) {
-          let video = response.data,
-            videoData = video.find((item) => item.video_id == videoId);
+    $(document).ready(function () {
+      $(".header").load("header.html");
+      $(".sidebar").load("sidebar.html");
+      $(".footer").load("footer.html");
+    });
 
-          $(".videoTitle").val(videoData.title);
-          $(".videoDescription").val(videoData.description);
-          $(".videoCategory").val(videoData.category);
-          $(".videoLink").val(videoData.link);
+    $(document).on("click", ".btn-cancel", function () {
+      window.location.href = "videos.list.html";
+    });
+
+    $(document).ready(function () {
+      var urlParams = new URLSearchParams(window.location.search);
+      var videoId = urlParams.get('id');
+
+      $.getJSON('../Cdn/js/data/videos.json', function (response) {
+        var video = response.data.find(function (item) {
+          return item.video_id == videoId;
         });
-      });
-    </script>
-  </head>
+        if (video) {
+          $('#title').val(video.title);
+          $('#category').val(video.category);
+          $('#description').val(video.description);
+          $('#link').val(video.link);
 
-  <body>
-    <div class="modal-body">
-      <form class="p-4">
-        <div class="d-flex align-items-center">
-          <div
-            class="d-flex flex-row justify-content-center align-items-center"
-            id="uploadPlaceholder"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="2em"
-              height="2em"
-              viewBox="0 0 512 512"
-              class="mr-2"
-            >
-              <path
-                fill="currentColor"
-                d="M202.24 74C166.11 56.75 115.61 48.3 48 48a31.36 31.36 0 0 0-17.92 5.33A32 32 0 0 0 16 79.9V366c0 19.34 13.76 33.93 32 33.93c71.07 0 142.36 6.64 185.06 47a4.11 4.11 0 0 0 6.94-3V106.82a15.89 15.89 0 0 0-5.46-12A143 143 0 0 0 202.24 74m279.68-20.7A31.33 31.33 0 0 0 464 48c-67.61.3-118.11 8.71-154.24 26a143.31 143.31 0 0 0-32.31 20.78a15.93 15.93 0 0 0-5.45 12v337.13a3.93 3.93 0 0 0 6.68 2.81c25.67-25.5 70.72-46.82 185.36-46.81a32 32 0 0 0 32-32v-288a32 32 0 0 0-14.12-26.61"
-              />
-            </svg>
-            <p class="text-dark mb-0 mx-2 fw-bold">UPDATE VIDEO</p>
-          </div>
+          var thumbnailImage = "<h6>Uploaded Files</h6><div class='d-flex flex-row justify-content-start align-items-center rounded shadow-sm p-2 bg-white rounded border border-secondary-subtle'><img src='" + video.thumbnail_image + "' class='border border-secondary-subtle p-2 rounded' name='org_logo' style='height: 100px'/><div class='d-flex flex-column'><span class='ms-4 fw-semibold'>" + video.thumbnail_image.split('/').pop() + "</span></div></div>";
+          $(".thumbnail_image").html(thumbnailImage);
+        } else {
+          console.log("Book not found with ID: " + videoId);
+        }
+      });
+    });
+
+
+    $(document).on("change", "#thumbnail", function (e) {
+      var URL = window.URL || window.webkitURL;
+      var file = e.target.files[0];
+
+      const imageTag =
+        "<h6>Uploaded Files</h6><div class='d-flex flex-row justify-content-start align-items-center rounded shadow-sm p-2 bg-white rounded border border-secondary-subtle'><img src='" +
+        URL.createObjectURL(file) +
+        "'class='border border-secondary-subtle p-2 rounded' name='org_logo' style='height: 100px'/><div class='d-flex flex-column'><span class='ms-4 fw-semibold'>" +
+        e.target.files[0].name +
+        "</span> <span class='ms-4 fw-normal'>" +
+        formatFileSize(e.target.files[0].size) +
+        "</span><div></div>";
+
+      if (file) {
+        $(".thumbnail_image").html(imageTag);
+      }
+    });
+
+    $(window).on('resize', function () {
+      if ($(window).width() >= 768)
+        $('.sidebar').removeClass('offcanvas offcanvas-start');
+      else
+        $('.sidebar').addClass('offcanvas offcanvas-start');
+    });
+
+    function validateInput(input) {
+
+      let message = [];
+
+      const data = input.reduce(function (obj, item) {
+        obj[item.name] = item.value;
+        return obj;
+      }, {});
+
+      const validator = validate({
+        thumbnail: data.thumbnail,
+        title: data.title,
+        category: data.category,
+        description: data.description,
+        link: data.link,
+      }, {
+        logo: {
+          type: "image/png,image/jpeg",
+        },
+        title: {
+          presence: { allowEmpty: false },
+          type: "string",
+          length: { maximum: 100 }
+        },
+        category: {
+          presence: { allowEmpty: false },
+        },
+        description: {
+          presence: { allowEmpty: false },
+          type: "string",
+          length: { maximum: 350 }
+        },
+        link: {
+          presence: { allowEmpty: false },
+          type: "string",
+          length: { maximum: 100 }
+        },
+      });
+
+      if (validator !== undefined) {
+        for (key in validator) {
+          message.push(validator[key]);
+        }
+        return message.join(", ");
+      }
+
+      return false;
+
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container-fluid p-0 overflow-hidden">
+    <div class="row">
+      <!-- SIDEBAR -->
+      <div class="col-md-3 col-lg-2">
+        <div class="col-md-3 col-lg-2 col-lg-2 sidebar position-fixed h-100"
+          style="background-color: #1c1c39 !important;" data-bs-backdrop="static" tabindex="-1" id="sidebar">
         </div>
-        <hr class="m-0" />
-        <p class="label-thumbnail mt-3">Video Thumbnail</p>
-        <label for="fileInput">
-          <div class="img-upload border" id="uploadPlaceholder">
-            <div
-              class="d-flex flex-column justify-content-center align-items-center p-4"
-            >
-              <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="6em"
-                  height="6em"
-                  viewBox="0 0 1024 1024"
-                >
-                  <path
-                    fill="black"
-                    d="M544 864V672h128L512 480L352 672h128v192H320v-1.6c-5.376.32-10.496 1.6-16 1.6A240 240 0 0 1 64 624c0-123.136 93.12-223.488 212.608-237.248A239.81 239.81 0 0 1 512 192a239.87 239.87 0 0 1 235.456 194.752c119.488 13.76 212.48 114.112 212.48 237.248a240 240 0 0 1-240 240c-5.376 0-10.56-1.28-16-1.6v1.6z"
-                  />
-                </svg>
-              </div>
-              <p>Upload Image Here</p>
+      </div>
+      <main class="col py-3">
+        <!-- HEADER -->
+        <div class="header"></div>
+        <form class="p-4" id="form" method="post" action="">
+          <input type="hidden" name="csrf_token" id="csrf_token" value="" />
+          <div class="d-flex align-items-center">
+            <div class="d-flex flex-row justify-content-center align-items-center">
+              <i class="bi bi-pencil-square fs-2"></i>
+              <h5 class="ms-2 fw-bold">
+                Update Video
+              </h5>
             </div>
           </div>
-        </label>
-        <input type="file" id="fileInput" style="display: none" />
-        <div class="d-flex flex-column form-group">
-          <label for="title" class="label">Title</label>
-          <input
-            type="text"
-            name=""
-            id="title"
-            class="form-control videoTitle"
-            value=""
-          />
-        </div>
-        <div class="d-flex flex-column form-group">
-          <label for="description" class="label">Description</label>
-          <input
-            type="text"
-            name=""
-            id="description"
-            class="form-control videoDescription"
-            value=""
-          />
-        </div>
-        <div class="d-flex flex-column form-group">
-          <label for="category" class="label">Category</label>
-          <input
-            type="text"
-            name=""
-            id="category"
-            class="form-control videoCategory"
-            value=""
-          />
-        </div>
-        <div class="d-flex flex-column form-group">
-          <label for="link" class="label">Link</label>
-          <input
-            type="text"
-            name=""
-            id="link"
-            class="form-control videoLink"
-            value=""
-          />
-        </div>
-        <div class="d-flex justify-content-end mt-3">
-          <button
-            class="btn-cancel btn mx-2 btn-danger"
-            data-bs-dismiss="modal"
-            type="button"
-          >
-            Back
-          </button>
-          <button class="btn-save btn btn-success" type="button">Submit</button>
-        </div>
-      </form>
+          <hr class="m-0">
+          <div class="response"></div>
+          <div class="mb-3">
+            <label for="thumbnail" class="form-label fw-semibold mt-3">Thumbnail Image</label>
+            <fieldset class="upload_dropzone text-center p-4">
+              <legend class="visually-hidden">Image uploader</legend>
+              <i class="bi bi-cloud-arrow-up-fill h1" style="font-size: 5vw;"></i>
+              <p class="small my-1">
+                Drag &amp; Drop background image(s) inside dashed region<br /><i>or</i>
+              </p>
+              <input id="thumbnail" name="thumbnail" class="position-absolute invisible" type="file"
+                accept="image/jpeg, image/png, image/svg+xml" />
+              <label class="btn btn-upload mb-3 bg-primary text-white" for="thumbnail">Choose
+                file(s)</label>
+              <div class="upload_gallery d-flex flex-wrap justify-content-center gap-3 mb-0"></div>
+            </fieldset>
+            <div class="mt-3 thumbnail_image"></div>
+          </div>
+          <input type="file" id="fileInput" style="display: none;">
+          <div class="d-flex flex-column form-group">
+            <div class="row align-items-end">
+              <div class="col-6">
+                <label for="title" class="form-label fw-semibold">Title</label>
+                <input type="text" name="title" id="title" class="form-control" value="" autocomplete="off">
+              </div>
+              <div class="col-6">
+                <label for="category" class="form-label fw-semibold">Category</label>
+                <select id="category" class="form-select" name="category">
+                  <option value="" selected disabled>Select category</option>
+                  <option value="selling">Selling</option>
+                  <option value="real-estate">Real-Estate</option>
+                  <option value="properties">Properties</option>
+                  <option value="necessities">Necessities</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex flex-column form-group mt-4">
+            <label for="description" class="form-label fw-semibold">Description</label>
+            <textarea name="description" id="description" class="form-control" value="" autocomplete="off" wrap=physical
+              rows="5"></textarea>
+          </div>
+          <div class="d-flex flex-column form-group">
+            <label for="link" class="form-label fw-semibold">Link</label>
+            <input type="text" name="link" id="link" class="form-control" value="" autocomplete="off">
+          </div>
+          <div class="d-flex gap-2 justify-content-end mt-3">
+            <button class="btn btn-light btn-cancel border border-secondary" type="button">
+              Back
+            </button>
+            <button class="btn-save btn btn-success btn-md">
+              Submit
+            </button>
+          </div>
+        </form>
+        <!-- FOOTER -->
+        <div class="footer"></div>
+      </main>
     </div>
-  </body>
+  </div>
+</body>
+
+
 </html>

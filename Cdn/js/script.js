@@ -33,6 +33,15 @@ const formatFileSize = (bytes, decimalPoint = 2) => {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
 };
 
+const getParams = (p) => { 
+  let params = new URLSearchParams(window.location.search)
+  if (params.has(p) === true) {
+    return params.get(p);
+  } else { 
+    alert("Undefined parameter '" + p  + "'");
+  }
+}
+
 $(document).on("click", ".btn-save", function (e) {
   e.preventDefault();
 

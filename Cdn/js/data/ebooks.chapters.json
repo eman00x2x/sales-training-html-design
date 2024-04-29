@@ -1,35 +1,213 @@
 {
   "data": [
     {
-      "ebook_group_id": 1,
-      "name": "Lorem Ipsum1",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend non magna vel accumsan.",
-      "duration": [30, 60, 90, 180, 365],
-      "cost": 1500.0,
+      "ebook_chapter_id": 1,
+      "ebook_id": 1,
+      "chapter": "Chapter 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
       "created_at": 1713923521
     },
     {
-      "ebook_group_id": 2,
-      "name": "Lorem Ipsum2",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend non magna vel accumsan.",
-      "duration": [30, 60, 90, 180, 365],
-      "cost": 1500.0,
+      "ebook_chapter_id": 2,
+      "ebook_id": 1,
+      "chapter": "Chapter 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
       "created_at": 1713923521
     },
     {
-      "ebook_group_id": 3,
-      "name": "Lorem Ipsum3",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend non magna vel accumsan.",
-      "duration": [30, 60, 90, 180, 365],
-      "cost": 1500.0,
+      "ebook_chapter_id": 3,
+      "ebook_id": 2,
+      "chapter": "Chapter 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
       "created_at": 1713923521
     },
     {
-      "ebook_group_id": 4,
-      "name": "Lorem Ipsum4",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend non magna vel accumsan.",
-      "duration": [30, 60, 90, 180, 365],
-      "cost": 1500.0,
+      "ebook_chapter_id": 4,
+      "ebook_id": 2,
+      "chapter": "Chapter 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 5,
+      "ebook_id": 3,
+      "chapter": "Chapter 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 6,
+      "ebook_id": 3,
+      "chapter": "Chapter 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 7,
+      "ebook_id": 4,
+      "chapter": "Chapter 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 8,
+      "ebook_id": 4,
+      "chapter": "Chapter 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 9,
+      "ebook_id": 5,
+      "chapter": "Chapter 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 10,
+      "ebook_id": 5,
+      "chapter": "Chapter 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 11,
+      "ebook_id": 6,
+      "chapter": "Chapter 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 12,
+      "ebook_id": 6,
+      "chapter": "Chapter 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 13,
+      "ebook_id": 7,
+      "chapter": "Chapter 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 14,
+      "ebook_id": 7,
+      "chapter": "Chapter 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 15,
+      "ebook_id": 8,
+      "chapter": "Chapter 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 16,
+      "ebook_id": 8,
+      "chapter": "Chapter 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 17,
+      "ebook_id": 9,
+      "chapter": "Chapter 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 18,
+      "ebook_id": 9,
+      "chapter": "Chapter 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 19,
+      "ebook_id": 10,
+      "chapter": "Chapter 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 20,
+      "ebook_id": 10,
+      "chapter": "Chapter 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 21,
+      "ebook_id": 11,
+      "chapter": "Chapter 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 22,
+      "ebook_id": 11,
+      "chapter": "Chapter 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 23,
+      "ebook_id": 12,
+      "chapter": "Chapter 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 24,
+      "ebook_id": 12,
+      "chapter": "Chapter 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 25,
+      "ebook_id": 13,
+      "chapter": "Chapter 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 26,
+      "ebook_id": 13,
+      "chapter": "Chapter 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 27,
+      "ebook_id": 14,
+      "chapter": "Chapter 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 28,
+      "ebook_id": 14,
+      "chapter": "Chapter 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 29,
+      "ebook_id": 15,
+      "chapter": "Chapter 1",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
+      "created_at": 1713923521
+    },
+    {
+      "ebook_chapter_id": 30,
+      "ebook_id": 15,
+      "chapter": "Chapter 2",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas placerat erat, ut luctus lectus pretium vitae. Donec aliquam, purus in tempus imperdiet, turpis neque cursus diam, a maximus ipsum elit id nunc. Etiam nisl velit, molestie quis nunc vel, lobortis sollicitudin turpis. Morbi vehicula arcu at ligula ornare, a euismod dui semper.",
       "created_at": 1713923521
     }
   ]

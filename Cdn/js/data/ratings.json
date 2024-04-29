@@ -1,0 +1,124 @@
+{
+    "data": [
+        {
+            "rating_id": 1,
+            "account_id": 1,
+            "rate": 5,
+            "id": 1,
+            "type": "EBOOK",
+            "created_at": 1713923521
+        },
+        {
+            "rating_id": 2,
+            "account_id": 2,
+            "rate": 5,
+            "id": 1,
+            "type": "EBOOK",
+            "created_at": 1713923521
+        },
+        {
+            "rating_id": 3,
+            "account_id": 3,
+            "rate": 5,
+            "id": 2,
+            "type": "VIDEO",
+            "created_at": 1713923521
+        },
+        {
+            "rating_id": 4,
+            "account_id": 4,
+            "rate": 5,
+            "id": 2,
+            "type": "VIDEO",
+            "created_at": 1713923521
+        },
+        {
+            "rating_id": 5,
+            "account_id": 5,
+            "rate": 5,
+            "id": 3,
+            "type": "EBOOK",
+            "created_at": 1713923521
+        },
+        {
+            "rating_id": 6,
+            "account_id": 6,
+            "rate": 5,
+            "id": 3,
+            "type": "EBOOK",
+            "created_at": 1713923521
+        },
+        {
+            "rating_id": 7,
+            "account_id": 7,
+            "rate": 5,
+            "id": 4,
+            "type": "VIDEO",
+            "created_at": 1713923521
+        },
+        {
+            "rating_id": 8,
+            "account_id": 8,
+            "rate": 5,
+            "id": 4,
+            "type": "VIDEO",
+            "created_at": 1713923521
+        },
+        {
+            "rating_id": 9,
+            "account_id": 9,
+            "rate": 5,
+            "id": 5,
+            "type": "EBOOK",
+            "created_at": 1713923521
+        },
+        {
+            "rating_id": 10,
+            "account_id": 10,
+            "rate": 5,
+            "id": 5,
+            "type": "EBOOK",
+            "created_at": 1713923521
+        },
+        {
+            "rating_id": 11,
+            "account_id": 11,
+            "rate": 5,
+            "id": 6,
+            "type": "VIDEO",
+            "created_at": 1713923521
+        },
+        {
+            "rating_id": 12,
+            "account_id": 12,
+            "rate": 5,
+            "id": 6,
+            "type": "VIDEO",
+            "created_at": 1713923521
+        },
+        {
+            "rating_id": 13,
+            "account_id": 13,
+            "rate": 5,
+            "id": 7,
+            "type": "EBOOK",
+            "created_at": 1713923521
+        },
+        {
+            "rating_id": 14,
+            "account_id": 14,
+            "rate": 5,
+            "id": 7,
+            "type": "EBOOK",
+            "created_at": 1713923521
+        },
+        {
+            "rating_id": 15,
+            "account_id": 15,
+            "rate": 5,
+            "id": 7,
+            "type": "EBOOK",
+            "created_at": 1713923521
+        }
+    ]
+}

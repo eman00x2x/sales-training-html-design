@@ -1,3 +1,9 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  
+}
+
 /* Bootstrap 5 CSS and icons included */
 .upload_dropzone {
   color: #1c1c39;
@@ -8,19 +14,15 @@
     background-color 0.2s ease-out;
 }
 
-.btn-view:hover, .btn-edit:hover, .btn-delete:hover {
+.btn-view:hover, .btn-edit:hover {
   background-color: #0a58ca !important;
   color: white !important;
 }
 
-.btn-add{
-    background: #131C39;
-    padding: 10px 40px;
-}
 
-.table-bordered.ebooks th {
-    background-color: #131C39;
-    color: #fff;
+.table-bordered th {
+    background-color: #131C39 !important;
+    color: #fff !important;
 }
 
 [data-title]:hover:after {
@@ -53,3 +55,15 @@
 [data-title] {
   position: relative;
 }
+
+.truncate-text p {
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.nav-link:hover{
+  background-color: white;
+  color: #131C39 !important;
+}
+

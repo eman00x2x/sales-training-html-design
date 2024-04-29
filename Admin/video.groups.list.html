@@ -26,17 +26,15 @@
             id = $(this).data('id');
             window.location.href = "video.groups.update.html?id=" + id;
         });
+        $(document).on('click', '.btn-delete', function (e) {
+            id = $(this).data('id');
+            window.location.href = "video.groups.delete.html?id=" + id;
+        });
         function displayActionButtons(id) {
             return `<td class='align-middle'>
-          <span class='btn btn-sm btn-view border border-primary btn-view text-primary' data-title="View Video Group">
-            <i class="bi bi-eye h4"></i>
-          </span>
-          <span data-id='${id}' class='btn btn-sm btn-edit' style="border: 1; border-color: #C68914; color: #c68914" data-title="Update Video Group Details">
-            <i class="bi bi-pencil-square h4"></i>
-          </span>
-          <span data-id='${id}' class='btn btn-sm text-danger border border-danger btn-delete ' data-title="Delete Video Group">
-            <i class="bi bi-trash h4"></i>
-          </span>
+                <button type="button" class="btn btn-md btn-view btn-outline-primary"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
+          <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class="ms-2">Edit</span></button>
+          <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
         </td>`;
         }
 
@@ -96,7 +94,7 @@
                     <div class='content'>
                         <div class="d-flex flex-row justify-content-start align-items-center">
                             <i class="bi bi-film h1"></i>
-                            <h1 class="head-text">VIDEO GROUPS</h1>
+                            <h1 class="head-text" style="margin-left: 1rem;">VIDEO GROUPS</h1>
                         </div>
 
                         <div class="row-content d-flex align-items-center mb-2">

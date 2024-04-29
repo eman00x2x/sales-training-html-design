@@ -17,6 +17,13 @@
 
     <script type="text/javascript">
 
+        $(window).on('resize', function () {
+            if ($(window).width() >= 768)
+                $('.sidebar').removeClass('offcanvas offcanvas-start');
+            else
+                $('.sidebar').addClass('offcanvas offcanvas-start');
+        });
+
         $(document).ready(function () {
             $(".header").load("header.html");
             $(".sidebar").load("sidebar.html");
@@ -28,8 +35,8 @@
         });
 
         $(document).ready(function () {
-            var urlParams = new URLSearchParams(window.location.search);
-            var bookId = urlParams.get('id');
+            const urlParams = new URLSearchParams(window.location.search);
+            const bookId = urlParams.get('id');
 
             $.getJSON('../Cdn/js/data/ebooks.json', function (response) {
                 var book = response.data.find(function (item) {
@@ -46,6 +53,7 @@
 
                     var thumbnailImage = "<h6>Uploaded Files</h6><div class='d-flex flex-row justify-content-start align-items-center rounded shadow-sm p-2 bg-white rounded border border-secondary-subtle'><img src='" + book.thumbnail_image + "' class='border border-secondary-subtle p-2 rounded' name='org_logo' style='height: 100px'/><div class='d-flex flex-column'><span class='ms-4 fw-semibold'>" + book.thumbnail_image.split('/').pop() + "</span></div></div>";
                     $(".thumbnail_image").html(thumbnailImage);
+
                 } else {
                     console.log("Book not found with ID: " + bookId);
                 }
@@ -54,8 +62,8 @@
 
 
         $(document).on("change", "#thumbnail", function (e) {
-            var URL = window.URL || window.webkitURL;
-            var file = e.target.files[0];
+            const URL = window.URL || window.webkitURL;
+            const file = e.target.files[0];
 
             const imageTag =
                 "<h6>Uploaded Files</h6><div class='d-flex flex-row justify-content-start align-items-center rounded shadow-sm p-2 bg-white rounded border border-secondary-subtle'><img src='" +
@@ -73,7 +81,7 @@
 
         function validateInput(input) {
 
-            let message = [];
+            const message = [];
 
             const data = input.reduce(function (obj, item) {
                 obj[item.name] = item.value;
@@ -90,9 +98,6 @@
                 group: data.group,
                 code: data.code,
             }, {
-                logo: {
-                    type: "image/png,image/jpeg",
-                },
                 title: {
                     presence: { allowEmpty: false },
                     type: "string",
@@ -142,11 +147,15 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row flex-nowrap" style="height: 100vh; overflow-y: auto;">
+    <div class="container-fluid p-0 overflow-hidden">
+        <div class="row">
             <!-- SIDEBAR -->
-            <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
-            <main class="col py-3">
+            <div class="col-md-3 col-lg-2">
+                <div class="col-md-3 col-lg-2 col-lg-2 sidebar position-fixed h-100"
+                    style="background-color: #1c1c39 !important;" data-bs-backdrop="static" tabindex="-1" id="sidebar">
+                </div>
+            </div>
+            <main class="col py-3 md-9">
                 <!-- HEADER -->
                 <div class="header"></div>
                 <form class="p-4" id="form" method="post" action="">
@@ -154,7 +163,7 @@
                     <div class="d-flex align-items-center">
                         <div class="d-flex flex-row justify-content-center align-items-center">
                             <i class="bi bi-pencil-square fs-2"></i>
-                            <h5 class="ms-2 fw-bold">
+                            <h5 class="ms-2 fw-bold my-auto">
                                 Update E-book
                             </h5>
                         </div>
@@ -183,12 +192,12 @@
                             <div class="col-6">
                                 <label for="title" class="form-label fw-semibold">Title</label>
                                 <input type="text" name="title" id="title" class="form-control" value=""
-                                    autocomplete="off">
+                                    autocompconste="off">
                             </div>
                             <div class="col-6">
                                 <label for="subtitle" class="form-label fw-semibold">Subtitle</label>
                                 <input type="text" name="subtitle" id="subtitle" class="form-control" value=""
-                                    autocomplete="off">
+                                    autocompconste="off">
                             </div>
                         </div>
                     </div>
@@ -197,7 +206,7 @@
                             <div class="col-6">
                                 <label for="author" class="form-label fw-semibold">Author</label>
                                 <input type="text" name="author" id="author" class="form-control" value=""
-                                    autocomplete="off">
+                                    autocompconste="off">
                             </div>
                             <div class="col-6">
                                 <label for="category" class="form-label fw-semibold">Category</label>
@@ -213,7 +222,7 @@
                     </div>
                     <div class="d-flex flex-column form-group mt-4">
                         <label for="description" class="form-label fw-semibold">Description</label>
-                        <textarea name="description" id="description" class="form-control" value="" autocomplete="off"
+                        <textarea name="description" id="description" class="form-control" value="" autocompconste="off"
                             wrap=physical rows="5"></textarea>
                     </div>
                     <div class="d-flex flex-column form-group">
@@ -221,17 +230,17 @@
                             <div class="col-6">
                                 <label for="group" class="form-label fw-semibold">E-Book Group</label>
                                 <input type="text" name="group" id="group" class="form-control" value=""
-                                    autocomplete="off">
+                                    autocompconste="off">
                             </div>
                             <div class="col-6">
                                 <label for="code" class="form-label fw-semibold">Code</label>
                                 <input type="text" name="code" id="code" class="form-control" value=""
-                                    autocomplete="off">
+                                    autocompconste="off">
                             </div>
                         </div>
                     </div>
                     <div class="d-flex gap-2 justify-content-end mt-3">
-                        <button class="btn btn-cancel border border-secondary" type="button">
+                        <button class="btn btn-light btn-cancel border border-secondary" type="button">
                             Back
                         </button>
                         <button class="btn-save btn btn-success btn-md">
