@@ -128,6 +128,12 @@
   - [ ] Delete
   - [ ] List
   - [ ] view
+- Premiums **assigned to Rimel**
+  - [ ] Create
+  - [ ] Update
+  - [ ] Delete
+  - [ ] List
+  - [ ] view
 
 ## Organization
 - Dashboard
@@ -147,30 +153,6 @@
     - [ ] List of uploaded requirements or files
     - [ ] View
     - [ ] Download
-- My Collections **assigned to Camille**
-  - Videos
-    - [ ] List of video groups
-      - [ ] list of videos in a group
-      - [ ] View video
-  - Ebooks
-    - [ ] List of ebook groups
-      - [ ] list of ebooks in a group
-      - [ ] View ebook
-- Transactions **assigned to Vien**
-  - [ ] list
-  - [ ] detaild view
-- Market Place **assigned to kc**
-  - Videos
-    - [ ] List of unpurchased video collections
-    - [ ] view video group/collections
-    - [ ] add to cart
-  - Ebooks
-    - [ ] List of unpurchased ebooks collections
-    - [ ] view ebook group/collections
-    - [ ] add to cart
-  - Checkout
-    - [ ] Cart Items, Total amount
-      - [ ] Payment gateway selections
 
 ## User Accounts
 - Dashboard
@@ -202,14 +184,50 @@
     - [ ] list of video collections for sales persons training
     - [ ] Examination
     - [ ] Requiremetns Upload
+- My Collections **assigned to Camille**
+  - Videos
+    - [ ] List of video groups
+      - [ ] list of videos in a group
+      - [ ] View video
+  - Ebooks
+    - [ ] List of ebook groups
+      - [ ] list of ebooks in a group
+      - [ ] View ebook
+- Transactions **assigned to Vien**
+  - [ ] list
+  - [ ] Detaild view
+  - [ ] Invoice
+- Market Place **assigned to kc**
+  - [ ] List of Premiums
+  - [ ] Preview Ebooks and Video Collections (Groups)
+  - [ ] add to cart
+  - Checkout
+    - [ ] Cart Items, Total amount
+      - [ ] Payment gateway selections
+- Email
+  - [ ] Create
+  - [ ] Selection of Email Templates
 
 ## Website
 **assigned to jamiel**
-- Home page
-  - [ ] Video ads with buttons in side menu
 - [ ] Registration Form Page
   - [ ] Congratulations for registering page
   - [ ] Resend email verification page
   - [ ] Email Verification Template - letter to be sent
 - [ ] Email Verification Page - link from email will redirect here
+
+## EMAIL
+- [ ] Email Templates atleast 10
+  - Distributions
+    - kc 2 templates
+    - jamiel 2 templates
+    - Vien 2 templates
+    - Rimel 4 templates
+
+## ADVERTISEMENTS
+- [ ] Ads Templates atleast 10
+  - Distributions
+    - Camille 2 templates
+    - Andrei 2 templates
+    - rogu 6 templates
 
