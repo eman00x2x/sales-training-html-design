@@ -5,37 +5,64 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Header</title>
-  <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
-  <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
-  <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
-  <ul class="nav justify-content-between justify-content-md-end align-items-center">
-    <li class="nav-item d-block d-md-none">
-      <button class="btn border border-primary btn-view" type="button" data-bs-toggle="offcanvas"
-        data-bs-target="#sidebar" aria-controls="sidebar">
-        <i class="bi bi-list fs-4 fw-bold "></i>
+  <div class="navbar navbar-expand-md d-print-none">
+
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+        aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
       </button>
-    </li>
-    <div class="d-flex justify-content-start align-items-center">
-      <li class="nav-item">
-        <a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
-            viewBox="0 0 24 24">
-            <g fill="none">
-              <path
-                d="M24 0v24H0V0zM12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036c-.01-.003-.019 0-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z" />
-              <path fill="currentColor"
-                d="M12 2a7 7 0 0 0-7 7v3.528a1 1 0 0 1-.105.447l-1.717 3.433A1.1 1.1 0 0 0 4.162 18h15.676a1.1 1.1 0 0 0 .984-1.592l-1.716-3.433a1 1 0 0 1-.106-.447V9a7 7 0 0 0-7-7m0 19a3.001 3.001 0 0 1-2.83-2h5.66A3.001 3.001 0 0 1 12 21" />
-            </g>
-          </svg></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#"><img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle"
-            style="width: 40px" alt="Avatar" /></a>
-      </li>
+      <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+        <a href="#"></a>
+      </h1>
+      <div class="navbar-nav flex-row order-md-last">
+        <!-- NOTIFICATION -->
+        <div class="nav-item dropdown d-md-flex me-3">
+          <a class="nav-link px-0 hide-theme-dark cursor-pointer show" data-bs-toggle="dropdown" aria-expanded="true">
+            <i class="bi bi-bell-fill"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card show" data-bs-popper="static">
+            <div class="notification-wrapper">
+              <a href="#" class="dropdown-item">
+                <div class="w-50 d-flex flex-column">
+                  <span class="small fw-bold">Lorem Ipsum</span>
+                  <span class="small text-truncate">Good day Sir Manny. I am lightning</span>
+                </div>
+                <span class="w-50 small text-muted d-block text-wrap text-end">February 22, 2024 1:14 am</span>
+              </a>
+            </div>
+            <hr class="dropdown-divider">
+              <span class="btn dropdown-item text-center text-muted-dark">Mark all as read</span>
+            <hr class="dropdown-divider">
+              <a href="#" class="btn dropdown-item text-center text-muted-dark">View all notification</a>
+          </div>
+        </div>
+
+        <!-- AVATAR -->
+        <div class="nav-item dropdown">
+          <span class="nav-link d-flex lh-1 text-reset p-0 cursor-pointer" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <span class="avatar avatar-sm"
+              style="background-image: url(https://image.philproperties.ph/blank-profile.png)"></span>
+            <div class="d-none d-xl-block ps-2">
+              <small class="text-muted d-block mb-1">Logged as</small> <span class="text-default">Administrator</span>
+            </div>
+          </span>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            <a class="ajax dropdown-item" href="https://manage.philproperties.ph/?request=users&amp;task=view&amp;id=2">
+              <i class="dropdown-icon ti ti-user me-2"></i> Profile
+            </a>
+            <div class="dropdown-divider m-0 p-0"></div>
+            <a class="dropdown-item doLogOut" href="?option=doLogOut">
+              <i class="dropdown-icon ti ti-logout-2 me-2"></i> Sign out
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-  </ul>
+  </div>
 </body>
 
 </html>
