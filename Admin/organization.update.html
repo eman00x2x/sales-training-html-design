@@ -4,13 +4,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Update Organization Details</title>
-  <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <title>Add Organization Details</title>
+  <!-- BOOSTRAP ICONS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- TABLER -->
+  <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
+  <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
   <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
   <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
-  <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"></script>
-  <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+  <script src="../Cdn/js/script.js"></script>
+  <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
   <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
   <script src="../Cdn/js/script.js"></script>
 
@@ -92,18 +95,18 @@
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="row flex-nowrap" style="height: 100vh">
-      <!-- SIDEBAR -->
-      <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
-      <main class="col py-3">
-        <!-- HEADER -->
-        <div class="header"></div>
+  <div class="page">
+    <!-- SIDEBAR -->
+    <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
+      style="background-color: #1c1c39 !important;" data-bs-theme="dark"></aside>
 
-        <!-- CONTENT -->
-        <div class="content">
-          <!-- all content body should be here -->
+    <div class="page-wrapper">
+      <!-- HEADER -->
+      <div class="header"></div>
 
+      <!-- CONTENT -->
+      <div class="page-body content">
+        <div class="container-fluid">
           <div class="card">
             <div class="card-body">
               <div
@@ -142,11 +145,11 @@
             </div>
           </div>
         </div>
-
-        <!-- FOOTER -->
-        <div class="footer"></div>
-      </main>
+      </div>
     </div>
+
+    <!-- FOOTER -->
+    <div class="footer container-fluid"></div>
   </div>
 </body>
 
