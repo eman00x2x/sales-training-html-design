@@ -1,115 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organization User List</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Second Page</title>
 
-
-    <link rel="stylesheet" href="/Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="/Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css"
+    />
     <script src="/Cdn/vendor/popper-2.11.8/popper.min.js"></script>
     <script src="/Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">   
-    <link rel="stylesheet" href="/Cdn/css/organization.user.list.css">
+    <!-- <script src="/Cdn/vendor/bootstrap-5.3.3/js/bootstrap.bundle.js"></script> -->
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="/Cdn/css/organization.user.list.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler.min.css">
+    <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
+  
+    <script>
   
 
-  <script type="text/javascript">
+      $(document).on("click", "#back", function (e) {
+      window.location.href = "user.list.html"
+    });
 
-$(document).ready(function () {
-      
-      });
+    $(document).on("change", "#logo", function (e) {
+      var URL = window.URL || window.webkitURL;
+      var file = e.target.files[0];
 
+      const imageTag =
+        "<h6>Uploaded Files</h6><div class='d-flex flex-row justify-content-start align-items-center rounded shadow-sm p-2 bg-white rounded border border-secondary-subtle'><img src='" +
+        URL.createObjectURL(file) +
+        "'class='border border-secondary-subtle p-2 rounded' name='org_logo' style='height: 100px'/><div class='d-flex flex-column'><span class='ms-4 fw-semibold'>" +
+        e.target.files[0].name +
+        "</span> <span class='ms-4 fw-normal'>" +
+        formatFileSize(e.target.files[0].size) +
+        "</span><div></div>";
 
+      if (file) {
+        $(".org_logo").html(imageTag);
+      }
+    });
 
-
-  </script>
-
-
-
-</head>
-<body id="body-pd">
     
 
+      function validateInput(input) {
+        let message = [];
 
-  <div id="navbar-container">
+        const data = input.reduce(function (obj, item) {
+          obj[item.name] = item.value;
+          return obj;
+        }, {});
 
-  </div>
+        const validator = validate(
+          {
+            logo: data.logo,
+            lastname: data.lastname,
+            firstname: data.fname,
+            mname: data.mname,
+          },
+          {
+            logo: {
+              type: "image/png,image/jpeg",
+            },
+            lastname: {
+              type: "string",
+              length: { minimum: 4 },
+            },
 
+            firstname: {
+              type: "string",
+              length: { minimum: 4 },
+            },
 
-  <div class="container">
+            lastname: {
+              type: "string",
+              length: { minimum: 4 },
+            },
+          }
+        );
 
-    <div class="content">
-      
-      <div class="addUser border rounded">
-        <div class="title p-3 ps-2"><h3>Add User</h3>
-           <hr>
-        </div>
-        
-          <form action="" class="px-3 py-2">
+        if (validator !== undefined) {
+          for (key in validator) {
+            message.push(validator[key]);
+          }
+          return message.join(", ");
+        }
 
-             <div class="row">
-              <div class="col-lg-12 col-sm-12">
-                <label for="email "> <span class="fw-semibold">Email</span></label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="col-lg-12 col-sm-12">
-                <label for="username">  <span class="fw-semibold"> Username</span></label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="col-lg-12 col-sm-12">
-                <label for="pass">  <span class="fw-semibold">Password </span></label>
-                <input type="text" class="form-control">
-              </div>
-              <div class="col-lg-12 col-sm-12">
-                <label for="username">  <span class="fw-semibold"> Retype Password</span></label>
-                <input type="text" class="form-control">
-              </div>
-             </div>
-
-             <div class="d-flex gap-1 justify-content-end">
-              <div><button class="btn border-primary     ">Back</button></div>
-
-              <div><button class="btn btn-success">Save</button></div>
-
-
-             </div>
-
-
-          </form>
-
-
-      </div>
-
-
-    </div>
-  </div>
-
-
-
-
-
-  <script>
-     function toggleMenu() {
-      const menu = document.getElementById("nav-bar");
-      const toggleButton = document.getElementById("header-toggle");
-      const bodypd = document.getElementById("body-pd");
-      const headerpd = document.getElementById("header");
-
-      if (menu && toggleButton && bodypd && headerpd) {
-        menu.classList.toggle('show');
-        toggleButton.classList.toggle('bi-x');
-        bodypd.classList.toggle('body-pd');
-       headerpd.classList.toggle('body-pd');
+        return false;
       }
-    }
+    </script>
+  </head>
+  <body id="body-pd">
+    <div id="navbar-container"></div>
 
-    fetch("navbar.html")
-      .then(response => response.text())
-      .then(htmlContent => {
-        document.getElementById("navbar-container").innerHTML = htmlContent;
-        document.getElementById("header-toggle").addEventListener('click', toggleMenu);
-      })
-      .catch(error => console.error(error));
-  </script>
-</body>
+    <div class="container content pt-3">
+      <div class="card px-3 py-2">
+        <div class="card-header bg-white">
+          <h1 class="text-primary"><i class="bi bi-person-circle"></i> Add User Information</h1>
+      
+
+        </div>
+       
+
+        <div class="card-body">
+          <div class="response "></div>
+       <form id="form" action="" method="post">
+         
+              <div class="">
+               
+
+                  <div class="row">
+
+                      <div class="col-lg-4 col-sm-12 border border-dark">
+                        <div class="mb-3">
+                          <!-- <label for="logo" class="form-label fw-semibold">Organization Logo</label> -->
+                          <fieldset class="upload_dropzone text-center p-4 rounded">
+                            <legend class="visually-hidden">Image uploader</legend>
+                            <i class="bi bi-cloud-arrow-up-fill h1"></i>
+                            <p class="small my-1">
+                              Drag &amp; Drop background image(s) inside dashed
+                              region<br /><i>or</i>
+                            </p>
+                            <input id="logo" name="logo" class="position-absolute invisible" type="file"
+                              accept="image/jpeg, image/png, image/svg+xml" />
+                            <label class="btn btn-upload mb-3 bg-primary text-white" for="logo">Choose file(s)</label>
+                            <div class="upload_gallery d-flex flex-wrap justify-content-center gap-3 mb-0"></div>
+                          </fieldset>
+                          <div class="mt-3 org_logo"></div>
+                        </div>
+
+                      </div>
+
+
+                      <div class="col-lg-8 col-sm-12">
+                        <div class="row flex-row flex-wrap ">
+                       
+                          <div class="col-lg-4 col-sm-12 pt-2">
+                            <label for="surname"> Surname:</label>
+                            <input type="text" name="lastname" id="lastname" value="" class="form-control" autocomplete="off" />
+                          </div>
+                          <div class="col-lg-4 col-sm-12 pt-2">
+                            <label for="surname"> First Name</label>
+                            <input type="text" name="name" id="name" value="" class="form-control" autocomplete="off" />
+                          </div> 
+        
+                          <div class="col-lg-4 col-sm-12 pt-2">
+                            <label for="surname"> Middle Name</label>
+                            <input type="text" name="mname" id="mname" value="" class="form-control" autocomplete="off" />
+                          </div>
+                          <div class="col-lg-12 col-sm-12 pt-2">
+                            <label for="contact"> Address</label>
+                            <input type="text" name="address" id="address" autocomplete="off" class="form-control" />
+                          </div> 
+                          <div class="col-lg-6 col-sm-12 pt-2">
+                            <label for="contact"> Contact No</label>
+                            <input type="text" name="contact" id="contact" autocomplete="off" class="form-control" />
+                          </div> 
+                          <!-- <div class="col-lg-8 col-sm-12 pt-2">
+                            <label>Edit Profile Image</label>
+                            <input type="file" class="form-control" id="logo"/>
+                            
+                          </div> -->
+                          <div class="col-lg-6 col-sm-12 pt-2">
+                            <label for="type"> Account Type</label>
+                            <input name="type" id="type"  class="form-control" autocomplete="off">
+                          </div>
+                       
+        
+                          
+                        
+                       </div>
+                      </div>
+
+                  </div>
+
+                 
+
+
+           
+                <!--  -->
+              </div>
+
+      
+
+            <div class="d-flex justify-content-end pt-3 gap-1">
+              <button id="back" type="button" class="btn border border-secondary" data-bs-dismiss="modal">
+                Back
+              </button>              <button type="button" class="btn btn-save btn-success">
+               Save
+              </button>
+            </div>
+          </form> 
+        
+
+         
+        
+        
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("nav-bar");
+        const toggleButton = document.getElementById("header-toggle");
+        const bodypd = document.getElementById("body-pd");
+        const headerpd = document.getElementById("header");
+
+        if (menu && toggleButton && bodypd && headerpd) {
+          menu.classList.toggle("show");
+          toggleButton.classList.toggle("bi-x");
+          bodypd.classList.toggle("body-pd");
+          headerpd.classList.toggle("body-pd");
+        }
+      }
+
+      fetch("navbar.html")
+        .then((response) => response.text())
+        .then((htmlContent) => {
+          document.getElementById("navbar-container").innerHTML = htmlContent;
+          document
+            .getElementById("header-toggle")
+            .addEventListener("click", toggleMenu);
+        })
+        .catch((error) => console.error(error));
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
+
+  </body>
 </html>
