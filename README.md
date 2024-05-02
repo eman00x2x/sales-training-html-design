@@ -1,6 +1,5 @@
 # Javascript specific page
-  - All javascript for a specific page should be in /Cdn/js folder
-  - javascript specific page filename format should be in dot notation.
+  - All JavaScript files for a specific page should be located in the /Cdn/js folder, following the filename format in dot notation. For example:
     - organization.create.js
     - organization.list.js
   - example of javascript specific page
