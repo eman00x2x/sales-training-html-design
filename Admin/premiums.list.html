@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADMIN | Video Groups</title>
+    <title>ADMIN | Premium</title>
     <!-- BOOSTRAP ICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- TABLER -->
@@ -16,33 +16,29 @@
     <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
     <script type="text/javascript">
 
-        //SAMPLE DATA OF VIDEO GROUPS
+        //SAMPLE DATA OF Premium GROUPS
 
         $(document).ready(function () {
             $('.header').load('header.html');
             $('.sidebar').load('sidebar.html');
             $('.footer').load('footer.html');
-            getVideoGroupData();
+            getPremiumsData();
         });
         $(document).on('click', '.btn-edit', function (e) {
             id = $(this).data('id');
-            window.location.href = "video.groups.update.html?id=" + id;
+            window.location.href = "premiums.update.html?id=" + id;
         });
         $(document).on('click', '.btn-delete', function (e) {
             id = $(this).data('id');
-            window.location.href = "video.groups.delete.html?id=" + id;
-        });
-        $(document).on('click', '.btn-view', function (e) {
-            id = $(this).data('id');
-            window.location.href = "video.groups.view.html?id=" + id;
+            window.location.href = "premiums.delete.html?id=" + id;
         });
         $(document).on('click', '.btn-add', function (e) {
-            window.location.href = "video.groups.create.html";
+            window.location.href = "premiums.create.html";
         });
         function displayActionButtons(id) {
             return `<td class='align-middle'>
         <div class="btn-group" role="group" aria-label="Basic outlined example">
-          <button type="button" data-id='${id}' class="btn btn-md btn-view btn-outline-primary"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
+          <button type="button" class="btn btn-md btn-view btn-outline-primary"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
           <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class="ms-2">Edit</span></button>
           <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
         </div>
@@ -50,10 +46,10 @@
         }
 
 
-        function getVideoGroupData() {
+        function getPremiumsData() {
             let html = "";
 
-            $.getJSON("../Cdn/js/data/video.groups.json", function (response) {
+            $.getJSON("../Cdn/js/data/premiums.json", function (response) {
                 const org = response.data;
 
                 for (let i = 0; i < org.length; i++) {
@@ -62,21 +58,41 @@
                     html += "<tr>";
                     html +=
                         "<td class='align-middle text-center'>" +
-                        data.vid_group_id +
+                        data.premium_id +
                         "</td>";
-                    html += "<td class='align-middle'>" + data.name + "</td>";
+                    html += "<td class='align-middle'>" + data.category + "</td>";
+                    html +=
+                        "<td class='align-middle text-truncate' style='max-width: 150px'>" +
+                        data.type +
+                        "</td>";
+                    html +=
+                        "<td class='align-middle text-truncate' style='max-width: 150px'>" +
+                        data.name +
+                        "</td>";
                     html +=
                         "<td class='align-middle text-truncate' style='max-width: 150px'>" +
                         data.description +
                         "</td>";
                     html +=
+                        "<td class='align-middle text-truncate' style='max-width: 150px'>" +
+                        data.script +
+                        "</td>";
+                    html +=
+                        "<td class='align-middle text-truncate' style='max-width: 150px'>" +
+                        data.duration +
+                        "</td>";
+                    html +=
+                        "<td class='align-middle text-truncate' style='max-width: 150px'>" +
+                        data.cost +
+                        "</td>";
+                    html +=
                         "<td class='align-middle'>" +
                         convertDate(data.created_at) +
                         "</td>";
-                    html += displayActionButtons(data.vid_group_id);
+                    html += displayActionButtons(data.premium_id);
                     html += "</tr>";
                 }
-                $(".video-group .data-container").html(html);
+                $(".premiums .data-container").html(html);
             });
         }
     </script>
@@ -98,7 +114,7 @@
                     <!-- TITLE -->
                     <div class="d-flex flex-row align-items-center justify-content-start mt-2">
                         <i class="bi bi-film fs-2"></i>
-                        <span class="fw-bold fs-2 ms-2">VIDEO GROUP</span>
+                        <span class="fw-bold fs-2 ms-2">Premiums</span>
                     </div>
                     <!-- SORT, FILTER AND SEARCH -->
                     <div class="d-flex justify-content-between align-items-center mb-3 mt-2">
@@ -121,7 +137,7 @@
                                 placeholder="Search by Organization Name" name="search" value="" />
                         </div>
                         <button type="button" class="btn btn-md btn-add btn-view btn-outline-primary">
-                            <i class="bi bi-plus-circle"></i><span class="ms-2">Add Video Group</span>
+                            <i class="bi bi-plus-circle"></i><span class="ms-2">Add Premium</span>
                         </button>
                     </div>
 
@@ -129,14 +145,19 @@
                     <div class='list'>
                         <!-- Table List -->
                         <div class='table-responsive'>
-                            <table class='table table-bordered table-striped video-group'>
+                            <table class='table table-bordered table-striped premiums'>
                                 <thead>
                                     <tr>
                                         <th class="align-middle" style="text-align: center;">#</th>
-                                        <th class="align-middle">TITLE</th>
-                                        <th class="align-middle">DESCRIPTION</th>
-                                        <th class="align-middle">CREATED AT</th>
-                                        <th class="align-middle">ACTIONS</th>
+                                        <th class="align-middle">Category</th>
+                                        <th class="align-middle">Type</th>
+                                        <th class="align-middle">Name</th>
+                                        <th class="align-middle">Description</th>
+                                        <th class="align-middle">Script</th>
+                                        <th class="align-middle">Duration</th>
+                                        <th class="align-middle">Cost</th>
+                                        <th class="align-middle">Created at</th>
+                                        <th class="align-middle">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="data-container"></tbody>

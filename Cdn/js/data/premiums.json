@@ -3,7 +3,7 @@
     {
       "premium_id": 1,
       "category": "SALES",
-      "type": "",
+      "type": "Ebook",
       "name": "John Doe",
       "description": "Lorem Ipsum Dolor Maritinez Quezon City Y Realonda Rizal",
       "script": {},
@@ -16,7 +16,7 @@
     {
       "premium_id": 2,
       "category": "REALTOR",
-      "type": "",
+      "type": "Video",
       "name": "Jessie Joe",
       "description": "Lorem Ipsum Dolor Maritinez Quezon City Y Realonda Rizal",
       "script": {},
@@ -29,7 +29,7 @@
     {
       "premium_id": 3,
       "category": "AFFILIATE",
-      "type": "",
+      "type": "Ebook",
       "name": "Fancy Cutter",
       "description": "Lorem Ipsum Dolor Maritinez Quezon City Y Realonda Rizal",
       "script": {},

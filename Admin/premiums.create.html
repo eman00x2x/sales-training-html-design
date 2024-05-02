@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADMIN | VIDEO GROUP CREATE</title>
+    <title>ADMIN | PREMIUM CREATE</title>
     <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
     <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -24,17 +24,26 @@
 
         });
         $(document).on("click", "#back", function (e) {
-            window.location.href = "video.groups.list.html"
+            window.location.href = "premiums.list.html"
         });
         function validateInput(input) {
             let message = [];
 
             const data = input.reduce(function (obj, item) {
-                obj[item.name] = item.value;
+                if (item.name === 'cost') {
+                    obj[item.name] = parseFloat(item.value);
+                } else if (item.name === 'visibility') {
+                    obj[item.name] = parseFloat(item.value);
+                } else {
+                    obj[item.name] = item.value;
+                }
                 return obj;
             }, {});
-
             const validator = validate(data, {
+                category: {
+                    presence: { allowEmpty: false },
+                    type: "string",
+                },
                 name: {
                     presence: { allowEmpty: false },
                     type: "string",
@@ -44,6 +53,18 @@
                     presence: { allowEmpty: false },
                     type: "string",
                     length: { minimum: 4 }
+                },
+                duration: {
+                    presence: { allowEmpty: false },
+                    type: "string",
+                },
+                cost: {
+                    presence: { allowEmpty: false },
+                    type: "number",
+                },
+                visibility: {
+                    presence: { allowEmpty: false },
+                    type: "number",
                 },
             });
 
@@ -77,22 +98,52 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <i class="bi bi-plus-circle fs-2"></i>
-                            <h5 class="ms-2 modal-title font-bold">Add Video Group</h5>
+                            <h5 class="ms-2 modal-title font-bold">Add Premium Video/Ebook</h5>
                         </div>
                         <hr>
                         <div class="response" style="margin-top: 5px;"></div>
 
                         <form id="form" action="" method="post">
                             <input type="hidden" name="csrf_token" id="csrf_token" value="" />
-                            <label for="name">Video Group Name</label>
+                            <label for="category">Premium Ebook/Video Category</label>
+                            <div class=" mb-3">
+                                <input type="text" name="category" id="category" value="" class="form-control"
+                                    autocomplete="off" />
+                            </div>
+                            <label for="type">Premium Ebook/Video Type</label>
+                            <div class=" mb-3">
+                                <input type="text" name="type" id="type" value="" class="form-control"
+                                    autocomplete="off" />
+                            </div>
+                            <label for="name">Premium Ebook/Video Name</label>
                             <div class=" mb-3">
                                 <input type="text" name="name" id="name" value="" class="form-control"
                                     autocomplete="off" />
                             </div>
-                            <label for="description">Description of this Video Group</label>
+                            <label for="description">Description of this Premium Video/Ebook</label>
                             <div class=" mb-3">
                                 <textarea name="description" id="description" class="form-control" rows="3"
                                     autocomplete="off"></textarea>
+                            </div>
+                            <label for="script">Premium Ebook/Video Script</label>
+                            <div class=" mb-3">
+                                <input type="text" name="script" id="script" value="" class="form-control"
+                                    autocomplete="off" />
+                            </div>
+                            <label for="duration">Premium Ebook/Video Duration</label>
+                            <div class=" mb-3">
+                                <input type="text" name="duration" id="duration" value="" class="form-control"
+                                    autocomplete="off" />
+                            </div>
+                            <label for="cost">Premium Ebook/Video Cost</label>
+                            <div class=" mb-3">
+                                <input type="number" name="cost" id="cost" value="" class="form-control"
+                                    autocomplete="off" />
+                            </div>
+                            <label for="visibility">Premium Ebook/Video Visibility</label>
+                            <div class=" mb-3">
+                                <input type="number" name="visibility" id="visibility" value="" class="form-control"
+                                    autocomplete="off" />
                             </div>
                         </form>
 
