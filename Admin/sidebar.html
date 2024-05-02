@@ -5,58 +5,98 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sidebar</title>
-  <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-  <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
-  <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
-  <div class="py-5 px-3">
-    <button type="button" class="d-block d-md-none position-absolute end-0 top-0 text-white btn btn-link"
-      data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x-lg"></i></button>
-    <div class="d-flex flex-column justify-content-center align-items-center text-center">
-      <img src="../Cdn/images/dark-logo.png" alt="" width="50px" />
-      <h1 class="fs-3 fw-normal mt-1 text-white">
-        <span class="fw-bold">Phil</span>properties
-        <p style="font-size: 12px">Your Full Service Real Estate Company</p>
+
+    <div class="container-fluid">
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
+        aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <h1 class="navbar-brand navbar-brand-autodark">
+        <a href=".">
+          <img src="../Cdn/images/philproperties-logo.png" width="110" height="32" alt="Philproperties"
+            class="navbar-brand-image">
+        </a>
       </h1>
+      <div class="collapse navbar-collapse" id="sidebar-menu">
+        <ul class="navbar-nav pt-lg-3 mx-lg-2">
+          <!-- DASHBOARD -->
+          <li class="nav-item fw-bold">
+            <a class="nav-link text-white" href="./">
+              <i class="bi bi-columns-gap nav-link-icon d-lg-inline-block"></i>
+              <span class="nav-link-title">
+                Dashboard
+              </span>
+            </a>
+          </li>
+          <!-- ORGANIZATION -->
+          <li class="nav-item fw-bold">
+            <a class="nav-link text-white" href="./organization.list.html">
+              <i class="bi bi-diagram-3 nav-link-icon d-lg-inline-block"></i>
+              <span class="nav-link-title">
+                Organization
+              </span>
+            </a>
+          </li>
+          <!-- ACCOUNTS -->
+          <li class="nav-item fw-bold">
+            <a class="nav-link text-white" href="./accounts.list.html">
+              <i class="bi bi-people nav-link-icon d-lg-inline-block"></i>
+              <span class="nav-link-title">
+                Accounts
+              </span>
+            </a>
+          </li>
+          <!-- EBOOK GROUPS -->
+          <li class="nav-item fw-bold">
+            <a class="nav-link text-white" href="./ebook.groups.list.html">
+              <i class="bi bi-collection nav-link-icon d-lg-inline-block"></i>
+              <span class="nav-link-title">
+                E-Book Groups
+              </span>
+            </a>
+          </li>
+          <!-- VIDEO GROUPS -->
+          <li class="nav-item fw-bold">
+            <a class="nav-link text-white" href="./video.groups.list.html">
+              <i class="bi bi-collection-play nav-link-icon d-lg-inline-block"></i>
+              <span class="nav-link-title">
+                Video Groups
+              </span>
+            </a>
+          </li>
+          <!-- E-BOOKS -->
+          <li class="nav-item fw-bold">
+            <a class="nav-link text-white" href="./ebooks.list.html">
+              <i class="bi bi-book nav-link-icon  d-lg-inline-block"></i>
+              <span class="nav-link-title">
+                E-Books
+              </span>
+            </a>
+          </li>
+          <!-- VIDEOS -->
+          <li class="nav-item fw-bold">
+            <a class="nav-link text-white" href="./videos.list.html">
+              <i class="bi bi-play-btn nav-link-icon  d-lg-inline-block"></i>
+              <span class="nav-link-title">
+                Videos
+              </span>
+            </a>
+          </li>
+          <!-- PREMIUMS -->
+          <li class="nav-item fw-bold">
+            <a class="nav-link text-white" href="./">
+              <i class="bi bi-gem nav-link-icon d-lg-inline-block"></i>
+              <span class="nav-link-title">
+                Premiums
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <nav class="nav flex-column">
-      <a class="nav-link text-white" aria-current="page" href="#">
-        <i class="bi bi-grid-fill"></i>
-        <span class="ms-2 fw-semibold">Dashboard</span>
-      </a>
-      <a class="nav-link text-white" href="./organization.list.html">
-        <i class="bi bi-diagram-3-fill"></i>
-        <span class="ms-2 fw-semibold">Organization</span>
-      </a>
-      <a class="nav-link text-white" href="./accounts.list.html">
-        <i class="bi bi-people-fill"></i>
-        <span class="ms-2 fw-semibold">Accounts</span>
-      </a>
-      <a class="nav-link text-white" href="./ebook.groups.list.html">
-        <i class="bi bi-book-fill"></i>
-        <span class="ms-2 fw-semibold">E-Book Groups</span>
-      </a>
-      <a class="nav-link text-white" href="./video.groups.list.html">
-        <i class="bi bi-play-btn-fill"></i>
-        <span class="ms-2 fw-semibold">Video Groups</span>
-      </a>
-      <a class="nav-link text-white" href="./ebooks.list.html">
-        <i class="bi bi-book"></i>
-        <span class="ms-2 fw-semibold ">E-Books</span>
-      </a>
-      <a class="nav-link text-white" href="./videos.list.html">
-        <i class="bi bi-play-btn"></i>
-        <span class="ms-2 fw-semibold">Videos</span>
-      </a>
-      <a class="nav-link text-white" href="#">
-        <i class="bi bi-card-list"></i>
-        <span class="ms-2 fw-semibold">Transactions</span>
-      </a>
-    </nav>
-  </div>
 </body>
 
 </html>

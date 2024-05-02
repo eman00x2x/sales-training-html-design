@@ -1,3 +1,15 @@
+# Javascript specific page
+  - All JavaScript files for a specific page should be located in the /Cdn/js folder, following the filename format in dot notation. For example:
+    - organization.create.js
+    - organization.list.js
+  - example of javascript specific page
+    ```
+    function validateInput(input) {
+      ....
+    }
+    ```
+  - Global function should be in script.js
+
 # Design Major Revision
   - Your design does not meet the standards
   - We will use the Tabler Template

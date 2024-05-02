@@ -1,0 +1,43 @@
+{
+  "data": [
+    {
+      "premium_id": 1,
+      "category": "SALES",
+      "type": "Ebook",
+      "name": "John Doe",
+      "description": "Lorem Ipsum Dolor Maritinez Quezon City Y Realonda Rizal",
+      "script": {},
+      "duration": ["30", "90", "180", "365"],
+      "cost": 1500,
+      "visibility": 1,
+      "created_at": 171392352,
+      "end_at": 171392352
+    },
+    {
+      "premium_id": 2,
+      "category": "REALTOR",
+      "type": "Video",
+      "name": "Jessie Joe",
+      "description": "Lorem Ipsum Dolor Maritinez Quezon City Y Realonda Rizal",
+      "script": {},
+      "duration": ["30", "90", "180", "365"],
+      "cost": 1500,
+      "visibility": 1,
+      "created_at": 171392352,
+      "end_at": 171392352
+    },
+    {
+      "premium_id": 3,
+      "category": "AFFILIATE",
+      "type": "Ebook",
+      "name": "Fancy Cutter",
+      "description": "Lorem Ipsum Dolor Maritinez Quezon City Y Realonda Rizal",
+      "script": {},
+      "duration": ["30", "90", "180", "365"],
+      "cost": 1500,
+      "visibility": 1,
+      "created_at": 171392352,
+      "end_at": 171392352
+    }
+  ]
+}

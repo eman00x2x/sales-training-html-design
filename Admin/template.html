@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADMIN | Video Groups</title>
+    <title>Document</title>
     <!-- BOOSTRAP ICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- TABLER -->
@@ -15,45 +15,41 @@
     <script src="../Cdn/js/script.js"></script>
     <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
     <script type="text/javascript">
-
-        //SAMPLE DATA OF VIDEO GROUPS
-
         $(document).ready(function () {
-            $('.header').load('header.html');
-            $('.sidebar').load('sidebar.html');
-            $('.footer').load('footer.html');
-            getVideoGroupData();
+            $(".header").load("header.html");
+            $(".sidebar").load("sidebar.html");
+            $(".footer").load("footer.html");
+            getOrganizationsData();
         });
+
+        $(document).on('click', '.btn-add', function (e) {
+            window.location.href = "organization.create.html";
+        });
+
         $(document).on('click', '.btn-edit', function (e) {
             id = $(this).data('id');
-            window.location.href = "video.groups.update.html?id=" + id;
+            window.location.href = "organization.update.html?id=" + id;
         });
+
         $(document).on('click', '.btn-delete', function (e) {
             id = $(this).data('id');
-            window.location.href = "video.groups.delete.html?id=" + id;
+            window.location.href = "organization.delete.html?id=" + id;
         });
-        $(document).on('click', '.btn-view', function (e) {
-            id = $(this).data('id');
-            window.location.href = "video.groups.view.html?id=" + id;
-        });
-        $(document).on('click', '.btn-add', function (e) {
-            window.location.href = "video.groups.create.html";
-        });
+
         function displayActionButtons(id) {
             return `<td class='align-middle'>
-        <div class="btn-group" role="group" aria-label="Basic outlined example">
-          <button type="button" data-id='${id}' class="btn btn-md btn-view btn-outline-primary"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
-          <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class="ms-2">Edit</span></button>
-          <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
-        </div>
-        </td>`;
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                    <button type="button" class="btn btn-md btn-view btn-outline-primary"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
+                    <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class="ms-2">Edit</span></button>
+                    <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
+                </div>
+            </td>`;
         }
 
-
-        function getVideoGroupData() {
+        function getOrganizationsData() {
             let html = "";
 
-            $.getJSON("../Cdn/js/data/video.groups.json", function (response) {
+            $.getJSON("../Cdn/js/data/organization.json", function (response) {
                 const org = response.data;
 
                 for (let i = 0; i < org.length; i++) {
@@ -62,21 +58,25 @@
                     html += "<tr>";
                     html +=
                         "<td class='align-middle text-center'>" +
-                        data.vid_group_id +
+                        data.organization_id +
                         "</td>";
+                    html +=
+                        "<td class='align-middle text-center' style='max-width: 50px'><img src='" +
+                        data.logo +
+                        "' style='width:10em;' /></td>";
                     html += "<td class='align-middle'>" + data.name + "</td>";
                     html +=
-                        "<td class='align-middle text-truncate' style='max-width: 150px'>" +
+                        "<td class='align-middle text-truncate' style='max-width: 550px'>" +
                         data.description +
                         "</td>";
                     html +=
                         "<td class='align-middle'>" +
                         convertDate(data.created_at) +
                         "</td>";
-                    html += displayActionButtons(data.vid_group_id);
+                    html += displayActionButtons(data.organization_id);
                     html += "</tr>";
                 }
-                $(".video-group .data-container").html(html);
+                $(".organizations .data-container").html(html);
             });
         }
     </script>
@@ -96,10 +96,11 @@
             <div class="page-body content">
                 <div class="container-fluid">
                     <!-- TITLE -->
-                    <div class="d-flex flex-row align-items-center justify-content-start mt-2">
-                        <i class="bi bi-film fs-2"></i>
-                        <span class="fw-bold fs-2 ms-2">VIDEO GROUP</span>
+                    <div class="d-flex flex-row align-items-center justify-content-start">
+                        <i class="bi bi-diagram-2-fill fs-2"></i>
+                        <span class="fw-bold fs-2 ms-2">ORGANIZATION</span>
                     </div>
+
                     <!-- SORT, FILTER AND SEARCH -->
                     <div class="d-flex justify-content-between align-items-center mb-3 mt-2">
                         <div class="d-flex justify-content-start align-items-center w-50">
@@ -121,22 +122,40 @@
                                 placeholder="Search by Organization Name" name="search" value="" />
                         </div>
                         <button type="button" class="btn btn-md btn-add btn-view btn-outline-primary">
-                            <i class="bi bi-plus-circle"></i><span class="ms-2">Add Video Group</span>
+                            <i class="bi bi-plus-circle"></i><span class="ms-2">Add Organization</span>
                         </button>
                     </div>
 
                     <!-- TABLE LIST -->
-                    <div class='list'>
-                        <!-- Table List -->
-                        <div class='table-responsive'>
-                            <table class='table table-bordered table-striped video-group'>
+                    <div class="list">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped organizations">
                                 <thead>
                                     <tr>
-                                        <th class="align-middle" style="text-align: center;">#</th>
-                                        <th class="align-middle">TITLE</th>
-                                        <th class="align-middle">DESCRIPTION</th>
-                                        <th class="align-middle">CREATED AT</th>
-                                        <th class="align-middle">ACTIONS</th>
+                                        <th class="align-middle text-center fw-semibold text-white"
+                                            style="background-color: #1c1c39">
+                                            #
+                                        </th>
+                                        <th class="align-middle text-center fw-semibold text-white"
+                                            style="background-color: #1c1c39">
+                                            Organization Logo
+                                        </th>
+                                        <th class="align-middle fw-semibold text-white"
+                                            style="background-color: #1c1c39">
+                                            Organization Name
+                                        </th>
+                                        <th class="align-middle fw-semibold text-white"
+                                            style="background-color: #1c1c39">
+                                            Organization Description
+                                        </th>
+                                        <th class="align-middle fw-semibold text-white"
+                                            style="background-color: #1c1c39">
+                                            Created Date
+                                        </th>
+                                        <th class="align-middle fw-semibold text-white"
+                                            style="background-color: #1c1c39">
+                                            Actions
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody class="data-container"></tbody>
@@ -145,7 +164,7 @@
                     </div>
 
                     <!-- TABLE FOOTER -->
-                    <!-- <div style="display: flex; align-items: center">
+                    <div style="display: flex; align-items: center">
                         <p style="margin-right: auto">Showing 1 out of 10 pages</p>
                         <nav aria-label="...">
                             <ul class="pagination">
@@ -162,7 +181,7 @@
                                 </li>
                             </ul>
                         </nav>
-                    </div> -->
+                    </div>
                 </div>
             </div>
 
