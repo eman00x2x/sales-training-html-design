@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users | E-book</title>
+    <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
+    <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../Cdn/css/org.unpurchased.video.groups.css" />
+
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"></script>
+    <!-- <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script> -->
+    <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
+    <script src="../Cdn/js/manage.ebooks.js"></script>
+
+    <style>
+        .card p {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            box-shadow: 5px 6px 6px 2px #e9ecef;
+            transform: scale(1.02);
+        }
+
+        .dropdown-toggle::after {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <!-- SIDEBAR -->
+        <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
+            style="background-color: #1c1c39 !important;" data-bs-theme="dark"></aside>
+        <div class="page-wrapper">
+            <div class="header"></div>
+            <div class="page-body content m-0">
+                <div class="container-fluid p-0">
+                    <div class="container ">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center my-5">
+                            <div class="p-2 flex-grow-1 text-nowrap">
+                                <h2 class="text-primary">E-books</h2>
+                            </div>
+                            <div class="p-2">
+                                <div class="row g-2">
+                                    <div class="col-auto">
+                                        <input type="text" class="form-control" style="max-width: 300px;"
+                                            id="searchInput" onkeyup="searchEbook()"
+                                            placeholder="Search by Title, ISBN, Author" />
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="dropdown">
+                                            <a href="#" class="btn btn-outline-primary dropdown-toggle"
+                                                id="dropdownMenuButton" data-bs-toggle="dropdown">SORT BY <i
+                                                    class="bi bi-chevron-down"></i></a>
+                                            <div class="dropdown-menu dropdown-menu-arrow">
+                                                <a class="dropdown-item" href="#"
+                                                    onclick="displayChosen('Title','title')">
+                                                    Title
+                                                </a>
+                                                <a class="dropdown-item" href="#"
+                                                    onclick="displayChosen('Author','author')">
+                                                    Author
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button class="btn btn-light btn-filter" style="padding: 5px 5px !important;"
+                                            onclick="toggleSorting()">
+                                            <h5 class="m-0"><i id="sortIcon" class="bi bi-caret-up-fill px-1"
+                                                    style="color: black;"></i></h5>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ebook-list">
+
+                        </div>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Launch demo modal
+                        </button>
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Ebook Details</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3 id="modalEbookTitle"></h3> <!-- Placeholder for ebook title -->
+                                        <p id="modalEbookAuthor"></p> <!-- Placeholder for ebook author -->
+                                        <img id="modalEbookImage" src="" alt="Ebook Thumbnail" class="img-fluid">
+                                        <!-- Placeholder for ebook image -->
+                                        <p id="modalEbookDescription"></p> <!-- Placeholder for ebook description -->
+                                        <button type="button" class="btn btn-primary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save
+                                            changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- pagination -->
+                        <div class="d-flex align-items-center justify-content-between justify-content-sm-start mt-3">
+                            <p id="page-numbers" class="me-md-auto"></p>
+                            <div class="btn-group mt-3 mt-sm-0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer container-fluid"></div>
+        </div>
+    </div>
+</body>
+
+</html>

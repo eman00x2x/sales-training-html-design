@@ -2,275 +2,265 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Account View </title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Account View </title>
 
-    <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="../Cdn/css/org.account.view.css" />
+  <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="../Cdn/css/org.account.view.css" />
 
-    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
-    <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"></script>
-    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
-    <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
-    <script src="../Cdn/js/script.js">
-        /**
-               * Validator Documentation https://validatejs.org/#validators-length
-               **/
+  <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+  <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"></script>
+  <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+  <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+  <script src="../Cdn/js/script.js">
+    /**
+           * Validator Documentation https://validatejs.org/#validators-length
+           **/
 
-        function validateInput(input) {
-            let message = [];
+    function validateInput(input) {
+      let message = [];
 
-            const data = input.reduce(function (obj, item) {
-                obj[item.name] = item.value;
-                return obj;
-            }, {});
+      const data = input.reduce(function (obj, item) {
+        obj[item.name] = item.value;
+        return obj;
+      }, {});
 
-            const validator = validate(
-                {
-                    email_address: data.email_address,
-                    username: data.username,
-                    password: data.password,
-                    user_type: data.user_type,
-                },
-                {
-                    email_address: {
-                        presence: { allowEmpty: false },
-                        type: "string",
-                        format: {
-                            pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-                            message: "must be a valid email address."
-                        }
-                    },
-                    username: {
-                        presence: { allowEmpty: false },
-                        type: "string",
-                        length: { minimum: 6 },
-                    },
-                    password: {
-                        presence: { allowEmpty: false },
-                        format: {
-                            pattern: "(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$",
-                            message: "must contain at least 8 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character."
-                        },
-                    },
-                    user_type: {
-                        presence: { allowEmpty: false },
-                        type: "string",
-                    }
-                }
-            );
-
-            if (validator !== undefined) {
-                for (key in validator) {
-                    message.push(validator[key]);
-                }
-                return message.join(", ");
+      const validator = validate(
+        {
+          email_address: data.email_address,
+          username: data.username,
+          password: data.password,
+          user_type: data.user_type,
+        },
+        {
+          email_address: {
+            presence: { allowEmpty: false },
+            type: "string",
+            format: {
+              pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+              message: "must be a valid email address."
             }
-
-            return false;
+          },
+          username: {
+            presence: { allowEmpty: false },
+            type: "string",
+            length: { minimum: 6 },
+          },
+          password: {
+            presence: { allowEmpty: false },
+            format: {
+              pattern: "(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$",
+              message: "must contain at least 8 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character."
+            },
+          },
+          user_type: {
+            presence: { allowEmpty: false },
+            type: "string",
+          }
         }
-    </script>
+      );
+
+      if (validator !== undefined) {
+        for (key in validator) {
+          message.push(validator[key]);
+        }
+        return message.join(", ");
+      }
+
+      return false;
+    }
+  </script>
 </head>
 
 <body>
 
-    <div id="user-profile">
-        <div id="user-profile-banner">
-            <img src="https://www.tramada.com/wp-content/uploads/2019/03/Safe-as-houses-Twitter-header.png"
-                alt="Banner image">
-        </div>
-        <div id="user-profile-icon">
-            <div id="user-profile-pic">
-                <img
-                    src="https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.6435-9/121085645_10220966828459453_6276404778038889472_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH9mV3kVHW5LFmgXa6o1NTmZZC6nGdpVD1lkLqcZ2lUPXvYKHERvCdW9WLGoA4_mhzD5BP41hwAaTw_Usv7ykT8&_nc_ohc=GLVEvcYxzRAAb7C7xkO&_nc_ht=scontent.fmnl8-2.fna&oh=00_AfDa7_6gDWogjXMwZg8joZ62Q2hjVkpknSAY8ALXd7yveQ&oe=665672CA">
-            </div>
-        </div>
+  <div id="user-profile">
+    <div id="user-profile-banner">
+      <img src="https://www.tramada.com/wp-content/uploads/2019/03/Safe-as-houses-Twitter-header.png"
+        alt="Banner image">
     </div>
+    <div id="user-profile-icon">
+      <div id="user-profile-pic">
+        <img
+          src="https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.6435-9/121085645_10220966828459453_6276404778038889472_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH9mV3kVHW5LFmgXa6o1NTmZZC6nGdpVD1lkLqcZ2lUPXvYKHERvCdW9WLGoA4_mhzD5BP41hwAaTw_Usv7ykT8&_nc_ohc=GLVEvcYxzRAAb7C7xkO&_nc_ht=scontent.fmnl8-2.fna&oh=00_AfDa7_6gDWogjXMwZg8joZ62Q2hjVkpknSAY8ALXd7yveQ&oe=665672CA">
+      </div>
+    </div>
+  </div>
 
-    <div id="main-content">
-        <div class="user-info-box">
-            <div class="user-card-body" id="l-col">
-                <div class="user-container">
-                    <div class="user-label">
-                        <span style="font-weight: bolder;">MANNY FLORENDO </span>
-                        <p style="margin-top: 4px;"> Candidate </p>
-                        <hr>
-                    </div>
+  <div id="main-content">
+    <div class="user-info-box">
+      <div class="user-card-body" id="l-col">
+        <div class="user-container">
+          <div class="user-label">
+            <span style="font-weight: bolder;">MANNY FLORENDO </span>
+            <p style="margin-top: 4px;"> Candidate </p>
+            <hr>
+          </div>
 
-                    <div id="info-box">
-                        <div id="info-box-title">USER ID: <span> 1923112312 </span></div>
-                        <div id="info-box-title">BIRTHDAY: <span> November 5, 2001 </span> </div>
-                        <div id="info-box-title">USERNAME: <span> mannyflorendo </span> </div>
-                        <div id="info-box-title">EMAIL: <span> manny@philproperties.ph </span> </div>
-                        <div id="info-box-title">GENDER: <span> Male </span> </div>
-                        <div id="info-box-title">INVITED BY: <span> Rafhael Vien Sacdalan </span> </div>
-                        <div id="info-box-title">JOINED IN: <span> March 22, 2024 </span> </div>
-                    </div>
+          <div id="info-box">
+            <div id="info-box-title">USER ID: <span> 1923112312 </span></div>
+            <div id="info-box-title">BIRTHDAY: <span> November 5, 2001 </span> </div>
+            <div id="info-box-title">USERNAME: <span> mannyflorendo </span> </div>
+            <div id="info-box-title">EMAIL: <span> manny@philproperties.ph </span> </div>
+            <div id="info-box-title">GENDER: <span> Male </span> </div>
+            <div id="info-box-title">INVITED BY: <span> Rafhael Vien Sacdalan </span> </div>
+            <div id="info-box-title">JOINED IN: <span> March 22, 2024 </span> </div>
+          </div>
 
-                    <hr>
+          <hr>
 
-                    <p> SOCIAL MEDIA </p>
-                    <i class="bi bi-facebook" style="color:blue;"> </i>
-                    <span style="font-family: Montserrat, sans-serif;
+          <p> SOCIAL MEDIA </p>
+          <i class="bi bi-facebook" style="color:blue;"> </i>
+          <span style="font-family: Montserrat, sans-serif;
           font-size: 12px; font-weight: 400;"> CARL LOUIE DALUPE </span>
 
-                    <div class="socials-box">
-                        <p style="color: white;"> LINKS </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-container">
-                <div class="section-btn btn-active">
-                    <span> PERSONAL INFO </span>
-                </div>
-                <div class="section-btn">
-                    <span> SKILLS AND EXPERIENCE </span>
-                </div>
-                <div class="section-btn">
-                    <span> UPDATE PASSWORD </span>
-                </div>
-                <div class="section-btn">
-                    <span> UPDATE EMAIL </span>
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="form-box">
-                <div class="card-body">
-                    <p> PERSONAL DATA </p>
-                </div>
-
-                <form id="form" action="" method="post">
-                    <div class="form-details-container">
-                        <div>
-                            <label for="first_name" class="form-label"> First Name </label>
-                            <input type="text" id="first_name" class="form-input" />
-                        </div>
-
-                        <div>
-                            <label for="middle_name" class="form-label"> Middle Name </label>
-                            <input type="text" id="middle_name" class="form-input" />
-                        </div>
-
-                        <div>
-                            <label for="last_name" class="form-label"> Last Name </label>
-                            <input type="text" id="last_name" class="form-input" />
-                        </div>
-
-                        <div class="suffix-input">
-                            <label for="suffix" class="form-label"> Suffix </label>
-                            <input type="text" placeholder="Add a suffix" id="first_name" class="form-input" />
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        <p margin-top: 10px;> OTHER INFORMATION </p>
-                    </div>
-
-                    <div class="form-details-container">
-                        <div>
-                            <label for="birth_date" class="form-label">Birthdate</label>
-                            <div class="input-icon-container">
-                                <input type="text" id="birth_date" class="form-input-info">
-                                <i class="bi bi-calendar-event"></i>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label for="social_link" class="form-label"> Social Link </label>
-                            <div>
-                                <input type="text" id="birth_date" class="form-input-info">
-                                <i class="bi bi-plus-square-fill" style="background-color: 131C39;"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label for="phone_num" class="form-label"> Mobile Numbers </label>
-                        <div>
-                            <input type="text" id="phone_num" class="form-input-info">
-                            <i class="bi bi-plus-square-fill" style="background-color: 131C39;"></i>
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        <p style="margin-top: 20px;"> ADDRESS </p>
-                        <p style="font-weight:normal; font-size: 14px; margin-top: -10px;">
-                            PRESENT ADDRESS </p>
-                    </div>
-
-                    <div class="form-details-container">
-                        <div>
-                            <label for="city" class="form-label"> Street/House No./Lot No. </label>
-                            <input type="text" id="city" class="form-input" placeholder="Add an address" />
-                        </div>
-
-                        <div>
-                            <label for="street_add" class="form-label"> City </label>
-                            <input type="text" id="street_add" class="form-input" placeholder="Add an city" />
-                        </div>
-                    </div>
-
-                    <div class="form-details-container">
-                        <div>
-                            <label for="state" class="form-label"> State </label>
-                            <input type="text" id="state" class="form-input" placeholder="Add a state" />
-                        </div>
-
-                        <div>
-                            <label for="country" class="form-label"> Country </label>
-                            <input type="text" id="country" class="form-input" placeholder="Add a country" />
-                        </div>
-
-                        <div>
-                            <label for="postal_code" class="form-label"> Postal Code </label>
-                            <div>
-                                <input type="text" id="postal_code" class="form-input-info">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        <p margin-top: 10px;> EDUCATION </p>
-                    </div>
-
-                    <div class="form-details-container">
-                        <div>
-                            <label for="school" class="form-label"> School </label>
-                            <input type="text" id="first_name" class="form-input" />
-                        </div>
-
-                        <div>
-                            <label for="degree" class="form-label"> Degree </label>
-                            <input type="text" id="degree" class="form-input">
-                        </div>
-
-                        <div>
-                            <label for="graduate_date" class="form-label">Graduated On</label>
-                            <div class="input-icon-container">
-                                <input type="text" id="graduate_date" class="form-input-info">
-                                <i class="bi bi-calendar-event"></i>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <!-- <div class="text-end">
-                <button type="button" class="btn border border-secondary" data-bs-dismiss="modal">
-                    Edit Data
-                </button>
-                <button type="button" class="btn btn-save btn-success">
-                    Save Changes
-                </button>
-            </div> -->
-            
+          <div class="socials-box">
+            <p style="color: white;"> LINKS </p>
+          </div>
         </div>
-    </div>
-</body>
+      </div>
 
+      <div class="tab-container">
+        <div class="section-btn btn-active">
+          <span> PERSONAL INFO </span>
+        </div>
+        <div class="section-btn">
+          <span> SKILLS AND EXPERIENCE </span>
+        </div>
+        <div class="section-btn">
+          <span> UPDATE PASSWORD </span>
+        </div>
+        <div class="section-btn">
+          <span> UPDATE EMAIL </span>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="form-box">
+        <div class="card-body">
+          <p> PERSONAL DATA </p>
+        </div>
+
+        <form id="form" action="" method="post">
+          <div class="form-details-container">
+            <div>
+              <label for="first_name" class="form-label"> First Name </label>
+              <input type="text" id="first_name" class="form-input" />
+            </div>
+
+            <div>
+              <label for="middle_name" class="form-label"> Middle Name </label>
+              <input type="text" id="middle_name" class="form-input" />
+            </div>
+
+            <div>
+              <label for="last_name" class="form-label"> Last Name </label>
+              <input type="text" id="last_name" class="form-input" />
+            </div>
+
+            <div class="suffix-input">
+              <label for="suffix" class="form-label"> Suffix </label>
+              <input type="text" placeholder="Add a suffix" id="first_name" class="form-input" />
+            </div>
+          </div>
+
+          <div class="card-body">
+            <p margin-top: 10px;> OTHER INFORMATION </p>
+          </div>
+
+          <div class="form-details-container">
+            <div>
+              <label for="birth_date" class="form-label">Birthdate</label>
+              <div class="input-icon-container">
+                <input type="text" id="birth_date" class="form-input-info">
+                <i class="bi bi-calendar-event"></i>
+              </div>
+            </div>
+
+            <div>
+              <label for="social_link" class="form-label"> Social Link </label>
+              <div>
+                <input type="text" id="birth_date" class="form-input-info">
+                <i class="bi bi-plus-square-fill" style="background-color: 131C39;"></i>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label for="phone_num" class="form-label"> Mobile Numbers </label>
+            <div>
+              <input type="text" id="phone_num" class="form-input-info">
+              <i class="bi bi-plus-square-fill" style="background-color: 131C39;"></i>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <p style="margin-top: 20px;"> ADDRESS </p>
+            <p style="font-weight:normal; font-size: 14px; margin-top: -10px;">
+              PRESENT ADDRESS </p>
+          </div>
+
+          <div class="form-details-container">       
+            <div>
+              <label for="city" class="form-label"> Street/House No./Lot No. </label>
+              <input type="text" id="city" class="form-input" placeholder="Add an address" />
+            </div>
+
+            <div>
+              <label for="street_add" class="form-label"> City </label>
+              <input type="text" id="street_add" class="form-input" placeholder="Add an city" />
+            </div>
+          </div>
+
+          <div class="form-details-container">
+            <div>
+              <label for="state" class="form-label"> State </label>
+              <input type="text" id="state" class="form-input" placeholder="Add a state" />
+            </div>
+
+            <div>
+              <label for="country" class="form-label"> Country </label>
+              <input type="text" id="country" class="form-input" placeholder="Add a country" />
+            </div>
+
+            <div>
+              <label for="postal_code" class="form-label"> Postal Code </label>
+              <div>
+                <input type="text" id="postal_code" class="form-input-info">
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <p margin-top: 10px;> EDUCATION </p>
+          </div>
+
+          <div class="form-details-container">
+            <div>
+              <label for="school" class="form-label"> School </label>
+              <input type="text" id="first_name" class="form-input" />
+            </div>
+
+            <div>
+              <label for="degree" class="form-label"> Degree </label>
+              <input type="text" id="degree" class="form-input">
+            </div>
+
+            <div>
+              <label for="graduate_date" class="form-label">Graduated On</label>
+              <div class="input-icon-container">
+                <input type="text" id="graduate_date" class="form-input-info">
+                <i class="bi bi-calendar-event"></i>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</body>
 </html>

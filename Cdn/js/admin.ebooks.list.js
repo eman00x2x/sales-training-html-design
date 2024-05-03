@@ -22,7 +22,7 @@ $(document).on('click', '.btn-delete', function (e) {
     window.location.href = "admin.ebooks.delete.html?id=" + id;
 });
 
-function displayActionButtons(id, title) {
+function displayActionButton(id, title) {
     return `<td class='align-middle text-center'>
         <button type="button" data-id='${id}' data-ebook-title="${title}" class="btn btn-md btn-view btn-outline-primary"><i class="bi bi-eye"></i><span class="ms-2 montserrat-regular">View</span></button>
         <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class="ms-2 montserrat-regular">Edit</span></button>
@@ -47,7 +47,7 @@ function getEbooksData() {
             html += "<td class='align-middle montserrat-regular'>" + ebook.isbn + "</td>";
             html += "<td class='align-middle montserrat-regular'>" + ebook.category + "</td>";
             html += "<td class='align-middle montserrat-regular'>" + ebook.code + "</td>";
-            html += displayActionButtons(ebook.ebook_id, ebook.title);
+            html += displayActionButton(ebook.ebook_id, ebook.title);
             html += "</tr>";
         }
         $('.data-container').html(html);
