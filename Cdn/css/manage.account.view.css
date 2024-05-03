@@ -1,0 +1,13 @@
+.avatar{
+    top: 17em;
+    left: 7em
+}
+
+.info{
+    position: relative;
+    top: 7em;    
+}
+
+.right-info{
+    margin-top: -4em;
+}

@@ -4,92 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>View E-Books</title>
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../Cdn/css/font.css">
     <!-- BOOSTRAP ICONS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
-    <!-- TABLER -->
-    <link
-      href="../Cdn/vendor/tabler/dist/css/tabler.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- TABLER CSS-->
+    <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
+    <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
+    <!-- JQUERY -->
     <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
-    <script src="../Cdn/js/script.js"></script>
+    <!-- TABLER -->
     <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $(".header").load("header.html");
-        $(".sidebar").load("sidebar.html");
-        $(".footer").load("footer.html");
-        getEbooksData();
-      });
-
-      $(document).on("click", ".btn-add", function () {
-        window.location.href = "ebooks.create.html";
-      });
-
-      $(document).on("click", ".btn-view", function () {
-        let id = $(this).data("id");
-        let title = $(this).data("ebook-title");
-        window.location.href =
-          "ebook.chapters.list.html?id=" + id + "&title=" + title;
-      });
-
-      $(document).on("click", ".btn-edit", function () {
-        let id = $(this).data("id");
-        window.location.href = "ebooks.update.html?id=" + id;
-      });
-
-      $(document).on("click", ".btn-delete", function (e) {
-        id = $(this).data("id");
-        window.location.href = "ebooks.delete.html?id=" + id;
-      });
-
-      function displayActionButtons(id, title) {
-        return `<td class='align-middle text-center'>
-                <button type="button" data-id='${id}' data-ebook-title="${title}" class="btn btn-md btn-view btn-outline-primary"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
-                <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class="ms-2">Edit</span></button>
-                <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
-    </td>`;
-      }
-
-      function getEbooksData() {
-        let html = "";
-
-        $.getJSON("../Cdn/js/data/ebooks.json", function (response) {
-          console.log(response);
-          let data = response.data;
-          for (let i = 0; i < data.length; i++) {
-            let ebook = data[i];
-            html += "<tr>";
-            html +=
-              "<td class='align-middle text-center'>" +
-              ebook.ebook_id +
-              "</td>";
-            html +=
-              "<td class='align-middle'><img src='" +
-              ebook.thumbnail_image +
-              "' style='width:10em;' /></td>";
-            html += "<td class='align-middle'>" + ebook.title + "</td>";
-            html += "<td class='align-middle'>" + ebook.sub_title + "</td>";
-            html += "<td class='align-middle'>" + ebook.author + "</td>";
-            html += "<td class='align-middle'>" + ebook.isbn + "</td>";
-            html += "<td class='align-middle'>" + ebook.category + "</td>";
-            html += "<td class='align-middle'>" + ebook.code + "</td>";
-            html += displayActionButtons(ebook.ebook_id, ebook.title);
-            html += "</tr>";
-          }
-          $(".data-container").html(html);
-        });
-      }
-    </script>
-  </head>
+    <!-- CUSTOM JS -->
+    <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
+    <script src="../Cdn/js/admin.ebooks.list.js"></script>
+</head>
 
   <body>
     <div class="page">
@@ -104,13 +40,86 @@
         <!-- HEADER -->
         <div class="header"></div>
 
-        <!-- CONTENT -->
-        <div class="page-body content">
-          <div class="container-fluid">
-            <!-- TITLE -->
-            <div class="d-flex align-center justify-content-start">
-              <i class="bi bi-book h1 my-auto"></i>
-              <span class="fw-bold fs-2 ms-2 my-auto">E-Books</span>
+            <!-- CONTENT -->
+            <div class="page-body content">
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="content">
+                                <!-- TITLE -->
+                                <div class="d-flex align-center justify-content-start">
+                                    <i class="bi bi-book h1 my-auto"></i>
+                                    <span class="fw-bold fs-2 ms-2 my-auto montserrat-extrabold">E-Books</span>
+                                </div>
+
+                                <!-- SORT, FILTER AND SEARCH -->
+                                <div
+                                    class="d-flex flex-column-reverse flex-sm-row justify-content-between align-items-center mb-3 mt-2">
+                                    <div class="d-flex justify-content-start align-items-center col col-12 col-sm-7">
+                                        <div class="btn-sort dropdown montserrat-regular">
+                                            <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
+                                                data-bs-toggle="dropdown"></i>
+                                            <a href="#"
+                                                class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
+                                                data-bs-toggle="dropdown">Sort by</a>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Organization Name</a>
+                                                <a class="dropdown-item" href="#">Created Date</a>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="search ms-1 form-control montserrat-regular"
+                                            id="search" placeholder="Search by Organization Name" name="search"
+                                            value="" />
+                                    </div>
+                                    <button type="button"
+                                        class="btn btn-md btn-add btn-outline-primary montserrat-semibold col col-12 col-sm-4 col-lg-3 mb-2 mb-sm-0">
+                                        <i class="bi bi-plus-circle"></i><span class="ms-2">Add E-Books</span>
+                                    </button>
+                                </div>
+
+                                <!-- TABLE LIST -->
+                                <div class='list'>
+                                    <div class='table-responsive'>
+                                        <table class='table table-bordered table-striped'>
+                                            <thead>
+                                                <tr class="montserrat-regular">
+                                                    <th class="align-middle text-center">ID</th>
+                                                    <th class="align-middle text-center">THUMBNAIL</th>
+                                                    <th class="align-middler text-center">TITLE</th>
+                                                    <th class="align-middler text-center">SUBTITLE</th>
+                                                    <th class="align-middle text-center">AUTHOR</th>
+                                                    <th class="align-middle text-center">ISBN</th>
+                                                    <th class="align-middle text-center">CATEGORY</th>
+                                                    <th class="align-middle text-center">CODE</th>
+                                                    <th class="align-middle text-center">ACTIONS</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="data-container">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- TABLE FOOTER -->
+                    <div
+                        class="px-4 d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular">
+                        <p>Showing 1 out of 10 pages</p>
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                            <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
+                                    class="d-none d-md-block">Previous</span><i
+                                    class="bi bi-chevron-double-left d-block d-md-none"></i>
+                            </button>
+                            <button type="button" class="btn btn-outline-primary montserrat-semibold">1</button>
+                            <button type="button" class="btn btn-outline-primary montserrat-semibold">2</button>
+                            <button type="button" class="btn btn-outline-primary montserrat-semibold">3</button>
+                            <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
+                                    class="d-none d-md-block">Next</span><i
+                                    class="bi bi-chevron-double-right d-block d-md-none"></i></button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- SORT, FILTER AND SEARCH -->

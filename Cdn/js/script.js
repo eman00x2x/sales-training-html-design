@@ -16,6 +16,23 @@ const convertDate = (dateData) => {
   });
 };
 
+const displayActionButtons = (id) => {
+  return `<td class='align-middle'>
+                <div class="btn-group" role="group" aria-label="Basic outlined example ">
+                    <button type="button" data-id='${id}' class="btn btn-md btn-view btn-outline-primary montserrat-semibold"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
+                    <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary montserrat-semibold"><i class="bi bi-pencil-square"></i><span class="ms-2">Edit</span></button>
+                    <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger montserrat-semibold"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
+                </div>
+            </td>`;
+}
+
+const returnFilteredData = (data1, data2, attr, filter = "") =>  {
+  let expected = data1.map(a => Object.assign(a, data2.find(b => b[attr] == a[attr])));
+  let filterByID = expected.filter(item => filter === "" ? item[attr] == id : item[filter] == id)
+
+  return filterByID;
+}
+
 const niceTrim = (data, length) => {
   if (data.length < length) {
     return data;
@@ -33,14 +50,20 @@ const formatFileSize = (bytes, decimalPoint = 2) => {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
 };
 
-const getParams = (p) => { 
+const getParams = (p) => {
   let params = new URLSearchParams(window.location.search)
   if (params.has(p) === true) {
     return params.get(p);
-  } else { 
-    alert("Undefined parameter '" + p  + "'");
+  } else {
+    alert("Undefined parameter '" + p + "'");
   }
 }
+
+$(document).ready(function () {
+  $(".header").load("header.html");
+  $(".sidebar").load("sidebar.html");
+  $(".footer").load("footer.html");
+});
 
 $(document).on("click", ".btn-save", function (e) {
   e.preventDefault();
@@ -87,35 +110,35 @@ $(document).on("click", ".btn-save", function (e) {
 
   /* $.post(form.attr('action'), form.serialize(), function (data, status) {
 
-		let response;
+    let response;
 
-		if (typeof data == 'object') {
-			response = data;
-		} else { response = JSON.parse(data); }
+    if (typeof data == 'object') {
+      response = data;
+    } else { response = JSON.parse(data); }
 
-		$('.btn-save').css({
-			'cursor': 'pointer',
-			'pointer-events': 'auto'
-		});
+    $('.btn-save').css({
+      'cursor': 'pointer',
+      'pointer-events': 'auto'
+    });
 
-		$('.btn-save').show();
-		$('.response').html(response.message);
-		$("#form :input").removeAttr('readonly');
+    $('.btn-save').show();
+    $('.response').html(response.message);
+    $("#form :input").removeAttr('readonly');
 
-		if (response.status == 1) {
-			if ($('#reference_url').val() !== undefined) {
+    if (response.status == 1) {
+      if ($('#reference_url').val() !== undefined) {
 
-				let message = " <div class='bg-white p-3 mt-3 rounded'><div class='d-flex gap-3 align-items-center'><div class='loader'></div><p class='mb-0'>Please wait while you are redirecting...</p></div></div>";
+        let message = " <div class='bg-white p-3 mt-3 rounded'><div class='d-flex gap-3 align-items-center'><div class='loader'></div><p class='mb-0'>Please wait while you are redirecting...</p></div></div>";
 
-				$('.response').html(message);
+        $('.response').html(message);
 
-				setTimeout(function () {
-					window.location = $('#reference_url').val();
-				}, 10);
-			}
-		}
+        setTimeout(function () {
+          window.location = $('#reference_url').val();
+        }, 10);
+      }
+    }
 
-	}); */
+  }); */
 
   return false;
 });
