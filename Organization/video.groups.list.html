@@ -4,211 +4,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Organization | Video Groups</title>
+    <title>Video Groups</title>
 
-    <link rel="stylesheet" href="../Cdn/css/org.video.groups.list.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
-    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"></script>
+    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
     <script src="../Cdn/js/script.js"></script>
 
     <script type="text/javascript">
-
         $(document).ready(function () {
-            $('.header').load('/Admin/header.html');
-            $('.sidebar').load('sidebar.html');
-            $('.footer').load('/Admin/footer.html');
+            $(".sidebar").load("navbar.html");
+            getVideoGroupData('', '', '');
         });
+        function getVideoGroupData(sortByCriteria, sortDirection, searchQuery) {
+            console.log('Sort By Criteria:', sortByCriteria);
+            console.log('Sort Direction:', sortDirection);
+            console.log('Search Query:', searchQuery);
+            let html = '';
+            let count = 0;
+            $.getJSON('../Cdn/js/data/video.groups.json', function (response) {
+                const groups = response.data;
+                const filteredGroups = groups.filter(group => group.name.toLowerCase().includes(searchQuery.toLowerCase()));
 
+                if (sortByCriteria === 'title') {
+                    filteredGroups.sort((a, b) => a.name.localeCompare(b.name));
+                } else if (sortByCriteria === 'cost') {
+                    filteredGroups.sort((a, b) => a.cost - b.cost);
+                }
+                if (sortDirection === 'desc') {
+                    filteredGroups.reverse();
+                }
+
+                console.log('Filtered Groups:', filteredGroups);
+
+                if (filteredGroups.length === 0) {
+                    $('.video-group-container').html('');
+                } else {
+                    filteredGroups.forEach(group => {
+                        $.getJSON(`../Cdn/js/data/ratings.json?id=${group.vid_group_id}`, function (ratingResponse) {
+                            const ratings = ratingResponse.data;
+                            const groupRatings = ratings.filter(rating => rating.id === group.vid_group_id && rating.type === 'VIDEO');
+                            const sumOfRatings = groupRatings.reduce((acc, rating) => acc + rating.rate, 0);
+                            const averageRating = groupRatings.length > 0 ? sumOfRatings / groupRatings.length : 0;
+                            console.log('Rating for', group.name, ':', averageRating);
+                            html += `
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-2">
+                        <a class="card h-100" style="transition: transform 0.3s ease; text-decoration: none;">
+                            <div class="image-container align-self-center" style="width: 100%; height: 200px; overflow: hidden;">
+                                <img src="../Cdn/images/R.jpg" class="card-img-top fixed-image" alt="Image" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                            </div>
+                            <div class="card-body text-white" style="background: linear-gradient(90deg, rgba(19,28,57,1) 0%, rgba(10,60,144,1) 100%); transition: transform 0.3s ease;">
+                                <h5 class="card-title">${group.name}</h5> 
+                                <p class="card-text">
+                                    <span class="border border-white rounded-3 px-2 fw-bold">
+                                        &#8369; ${group.cost}
+                                    </span>
+                                    <div class="rating">
+                                        ${groupRatings.length > 0 ? generateRatingStars(averageRating) : 'No Rating'}
+                                        <span class="sold-text">12k sold</span>
+                                    </div>
+                                    
+                                </p>
+                                <p class="card-text overflow-hidden">${group.description}</p>
+                            </div>
+                        </a>
+                    </div>
+            `;
+                            $('.video-group-container').html(html);
+                        });
+                    });
+                }
+            });
+        }
+
+        //sorting
+        let currentSortByCriteria = '';
+        let currentSortDirection = 'asc';
+
+        function setSortByCriteria(criteria) {
+            currentSortByCriteria = criteria;
+            searchVideoGroups();
+        }
+
+        function searchVideoGroups() {
+            let searchQuery = document.getElementById('searchInput').value;
+            getVideoGroupData(currentSortByCriteria, currentSortDirection, searchQuery); // Fixed the variable name here
+        }
+
+        function toggleSorting() {
+            currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
+
+            const sortIcon = document.getElementById('sortIcon');
+            sortIcon.className = currentSortDirection === 'asc' ? 'bi bi-arrow-up' : 'bi bi-arrow-down';
+
+            searchVideoGroups();
+        }
+        function generateRatingStars(rating) {
+            if (!rating || rating <= 0) {
+                return '';
+            }
+
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating - fullStars >= 0.5;
+
+            let starsHtml = '';
+            for (let i = 0; i < fullStars; i++) {
+                starsHtml += '<i class="bi bi-star-fill" style="color: gold;"></i>';
+            }
+            if (hasHalfStar) {
+                starsHtml += '<i class="bi bi-star-half" style="color: gold;"></i>';
+            }
+            return starsHtml;
+        }
+
+        //pagination
     </script>
+    <style>
+        .card-text {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+        }
 
+        .card:hover {
+
+            box-shadow: 5px 6px 6px 2px #e9ecef;
+            transform: scale(1.02);
+        }
+    </style>
 </head>
 
-<body>
+<body id="body-pd">
+    <div id="navbar-container"></div>
     <div class="container-fluid">
-        <div class="row flex-nowrap" style="height: 100vh">
-            <!-- SIDEBAR -->
-            <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
-            <main class="col py-3">
-                <!-- HEADER -->
-                <div class="header"></div>
+        <main class="col py-3">
+            <div class="content">
+                <div>
+                    <div class="d-flex flex-row align-items-center justify-content-start mt-2">
+                        <i class="bi bi-play-circle-fill" style="font-size: 2.5rem;"></i>
+                        <span class="fw-bold fs-2 ms-2">Video Groups</span>
+                    </div>
 
-                <!-- CONTENT -->
-                <div class='content'>
-                    <!-- all content body should be here -->
-                    <div>
-                        <!-- VIDEO UPPER CONTENT -->
-                        <div class="" style="display: flex; align-items: center; margin-bottom: 10px;">
-                            <h1 style="margin-left: 6px; font-weight: bold;">
-                                <i class="bi bi-play-circle-fill"></i></i> </i>Video Groups
-                            </h1>
-                        </div>
-
-                        <div class="row-content">
-                            <!-- Upper Content -->
-                            <div class="dropdown">
-                                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Sort by
+                    <div class="d-flex justify-content-between align-items-center mb-3 mt-2">
+                        <div class="d-flex justify-content-start align-items-center w-50">
+                            <div class="btn-group border border-secondary-subtle">
+                                <button type="button" class="btn btn-light dropdown-toggle fw-semibold text-lg-start"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    SORT BY
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">TITLE</a></li>
-                                    <li><a class="dropdown-item" href="#">DATE</a></li>
-                                    <li><a class="dropdown-item" href="#">COST</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="#" onclick="setSortByCriteria('title')">Title</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#" onclick="setSortByCriteria('cost')">Cost</a>
+                                    </li>
                                 </ul>
                             </div>
-                            <div class="form-outline" data-mdb-input-init style="width: 30%;">
-                                <input placeholder="Search by item name..." class="form-control"
-                                    id="datatable-search-input" style="border-color: black;">
+                            <div class="btn-group border border-secondary-subtle mx-1">
+                                <button class="btn btn-light btn-filter" style="padding: 5px 5px !important;"
+                                    onclick="toggleSorting()">
+                                    <h5 class="m-0"><i id="sortIcon" class="bi bi-arrow-up px-1 "
+                                            style="color: black;"></i></h5>
+                                </button>
                             </div>
-                        </div>
-
-                        <hr style="">
-                    </div>
-
-                    <div class="caroProp pt-1">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    <!-- First Card -->
-                                    <div class="col-md-4">
-                                        <div class="card h-75">
-                                            <img src="https://www.shutterstock.com/shutterstock/videos/1105694547/thumb/10.jpg?ip=x480"
-                                                class="card-img-top featImg" alt="...">
-                                            <div class="card-body">
-
-                                                <div class="info-container">
-                                                    <div class="content">
-                                                        <p class="propType fw-bold w-100">VIDEO GROUP NAME</p>
-
-                                                        <div class="rating-container">
-                                                            <span class="bi bi-star-fill checked"></span>
-                                                            <span class="bi bi-star-fill checked"></span>
-                                                            <span class="bi bi-star-fill checked"></span>
-                                                            <span class="bi bi-star-fill checked"></span>
-                                                            <span class="bi bi-star-fill checked"></span>
-                                                            <span class="sold-text">12k sold</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="info-box"> P 1,000 </div>
-                                                </div>
-
-                                                <p style="font-size: 13px; color: white;">Lorem ipsum dolor sit amet
-                                                    consectetur. Donec elit
-                                                    sit fermentum risus aliquam eget consectetur. Id interdum
-                                                    condimentum
-                                                    dui
-                                                    potenti. Auctor ultrices quisque vitae neque ultrices magna feugiat
-                                                    placerat
-                                                    cras. Tempus at faucibus morbi lacinia et donec. Massa vitae mattis
-                                                    elit
-                                                    ultrices. Consequat quam mauris tempus imperdiet sed tellus aliquam
-                                                    ultricies duis. Egestas pharetra dictum senectus ut dignissim
-                                                    malesuada.
-                                                    Nullam at ac amet varius consectetur sit morbi. Mattis donec arcu
-                                                    dignissim
-                                                    mauris risus in consequat tincidunt aliquet.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Second Card -->
-                                    <div class="col-md-4">
-                                        <div class="card h-75">
-                                            <img src="https://www.shutterstock.com/shutterstock/videos/1105694547/thumb/10.jpg?ip=x480"
-                                                class="card-img-top featImg" alt="...">
-                                            <div class="card-body">
-                                                <div class="info-container">
-                                                    <div class="content">
-                                                        <p class="propType fw-bold w-100">VIDEO GROUP NAME</p>
-
-                                                        <div class="rating-container">
-                                                            <span class="bi bi-star-fill checked"></span>
-                                                            <span class="bi bi-star-fill checked"></span>
-                                                            <span class="bi bi-star-fill checked"></span>
-                                                            <span class="bi bi-star-fill checked"></span>
-                                                            <span class="bi bi-star-fill checked"></span>
-                                                            <span class="sold-text">12k sold</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="info-box"> P 1,000 </div>
-                                                </div>
-
-                                                <p style="font-size: 13px; color: white;">Lorem ipsum dolor sit amet
-                                                    consectetur. Donec elit
-                                                    sit fermentum risus aliquam eget consectetur. Id interdum
-                                                    condimentum
-                                                    dui
-                                                    potenti. Auctor ultrices quisque vitae neque ultrices magna feugiat
-                                                    placerat
-                                                    cras. Tempus at faucibus morbi lacinia et donec. Massa vitae mattis
-                                                    elit
-                                                    ultrices. Consequat quam mauris tempus imperdiet sed tellus aliquam
-                                                    ultricies duis. Egestas pharetra dictum senectus ut dignissim
-                                                    malesuada.
-                                                    Nullam at ac amet varius consectetur sit morbi. Mattis donec arcu
-                                                    dignissim
-                                                    mauris risus in consequat tincidunt al
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Third Card -->
-                                    <div class="col-md-4">
-                                        <div class="card h-75">
-                                            <img src="https://www.shutterstock.com/shutterstock/videos/1105694547/thumb/10.jpg?ip=x480"
-                                                class="card-img-top featImg" alt="...">
-                                            <div class="card-body">
-
-                                                <div class="info-container">
-                                                    <div class="content">
-                                                        <p class="propType fw-bold w-100">VIDEO GROUP NAME</p>
-
-                                                        <div class="rating-container">
-                                                            <span class="bi bi-star-fill checked"></span>
-                                                            <span class="bi bi-star-fill checked"></span>
-                                                            <span class="bi bi-star-fill checked"></span>
-                                                            <span class="bi bi-star-fill checked"></span>
-                                                            <span class="bi bi-star-fill checked"></span>
-                                                            <span class="sold-text">12k sold</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="info-box"> P 1,000 </div>
-                                                </div>
-
-                                                <p style="font-size: 13px; color: white;">Lorem ipsum dolor sit amet
-                                                    consectetur. Donec elit
-                                                    sit fermentum risus aliquam eget consectetur. Id interdum
-                                                    condimentum
-                                                    dui
-                                                    potenti. Auctor ultrices quisque vitae neque ultrices magna feugiat
-                                                    placerat
-                                                    cras. Tempus at faucibus morbi lacinia et donec. Massa vitae mattis
-                                                    elit
-                                                    ultrices. Consequat quam mauris tempus imperdiet sed tellus aliquam
-                                                    ultricies duis. Egestas pharetra dictum senectus ut dignissim
-                                                    malesuada.
-                                                    Nullam at ac amet varius consectetur sit morbi. Mattis donec arcu
-                                                    dignissim
-                                                    mauris risus in consequat tincidunt al
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
+                            <input type="text" class="ms-1 form-control" id="searchInput" onkeyup="searchVideoGroups()"
+                                placeholder="Search by Video Groups Title" />
                         </div>
                     </div>
 
-
-                    <div style="display: flex; align-items: center;">
-                        <p style="margin-right: auto;">Showing 1 out of 10 pages</p>
+                    <div class="container">
+                        <div class="row video-group-container ">
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center">
+                        <p style="margin-right: auto">Showing 1 out of 10 pages</p>
                         <nav aria-label="...">
                             <ul class="pagination">
                                 <li class="page-item disabled">
@@ -216,9 +190,7 @@
                                 </li>
                                 <li class="page-item"><a class="page-link" href="#">1</a></li>
                                 <li class="page-item active">
-                                    <span class="page-link">
-                                        2
-                                    </span>
+                                    <span class="page-link"> 2 </span>
                                 </li>
                                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                                 <li class="page-item">
@@ -227,35 +199,35 @@
                             </ul>
                         </nav>
                     </div>
-
-
-                    <!-- FOOTER -->
-                    <div class="footer"></div>
-                    <!-- MODAL -->
-                    <div class="modal" id="video_group_create" tabindex="-1">
-                        <div class="modal-dialog modal-dialog-centered" id="form-content">
-                            <div class="modal-content">
-                                <div class="form"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal" id="video_group_update" tabindex="-1">
-                        <div class="modal-dialog modal-dialog-centered" id="form-content">
-                            <div class="modal-content">
-                                <div class="form"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal" id="video_group_delete" tabindex="-1">
-                        <div class="modal-dialog modal-dialog-centered" id="form-content">
-                            <div class="modal-content">
-                                <div class="form"></div>
-                            </div>
-                        </div>
-                    </div>
-            </main>
-        </div>
+                </div>
+            </div>
+        </main>
     </div>
+    <script>
+
+
+        function toggleMenu() {
+            const menu = document.getElementById("nav-bar");
+            const toggleButton = document.getElementById("header-toggle");
+            const bodypd = document.getElementById("body-pd");
+            const headerpd = document.getElementById("header");
+
+            if (menu && toggleButton && bodypd && headerpd) {
+                menu.classList.toggle('show');
+                toggleButton.classList.toggle('bi-x');
+                bodypd.classList.toggle('body-pd');
+                headerpd.classList.toggle('body-pd');
+            }
+        }
+
+        fetch("navbar.html")
+            .then(response => response.text())
+            .then(htmlContent => {
+                document.getElementById("navbar-container").innerHTML = htmlContent;
+                document.getElementById("header-toggle").addEventListener('click', toggleMenu);
+            })
+            .catch(error => console.error(error));
+    </script>
 </body>
 
 </html>

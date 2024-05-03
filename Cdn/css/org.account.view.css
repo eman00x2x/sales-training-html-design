@@ -6,13 +6,11 @@
 #user-profile-banner {
   height: 360px;
   overflow: hidden;
-  z-index: 1;
 }
 
 #user-profile-banner img {
   height: 400px;
   width: 100%;
-  z-index: 1;
 }
 
 #user-profile-icon {
@@ -20,7 +18,6 @@
   padding-left: 59px;
   bottom: 0px;
   height: 180px;
-  z-index: 2;
 }
 
 #user-profile-pic {
