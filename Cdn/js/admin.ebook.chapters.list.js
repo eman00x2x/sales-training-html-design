@@ -21,7 +21,7 @@ const id = getParams('id')
                         html += "<td class='align-middle montserrat-bold'>" + chapter.chapter + "</td>";
                         html += "<td class='align-middle text-truncate montserrat-regular' style='max-width: 30em'>" + chapter.content + "</td>";
                         html += "<td class='align-middle montserrat-regular'>" + convertDate(chapter.created_at) + "</td>";
-                        html += displayActionButtons(chapter.ebook_chapter_id);
+                        html += displayActionButton(chapter.ebook_chapter_id);
                         html += "</tr>";
                     });
                 } else {
@@ -46,7 +46,7 @@ const id = getParams('id')
             window.location.href = "admin.ebook.chapters.delete.html?ebook_id=" + id + "&ebook_chapter_id=" + btn_id + "&title=" + title;
         });
 
-        function displayActionButtons(id) {
+        function displayActionButton(id) {
             return `<td class='align-middle text-center'>
                 <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class='montserrat-regular'>Edit</span></button>
                 <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger"><i class="bi bi-trash"></i><span class='montserrat-regular'>Delete</span></button>
