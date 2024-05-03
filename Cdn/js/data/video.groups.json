@@ -4,64 +4,48 @@
       "vid_group_id": 1,
       "name": "Modern Real Estate Selling",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "duration": [30, 60, 90, 180, 365],
-      "cost": 1500.0,
       "created_at": 1713923521
     },
     {
       "vid_group_id": 2,
       "name": "Modern Real Estate Selling Part 2",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "duration": [30, 60, 90, 180, 365],
-      "cost": 1500.0,
       "created_at": 1713923521
     },
     {
       "vid_group_id": 3,
       "name": "Modern Real Estate Selling Part 3",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "duration": [30, 60, 90, 180, 365],
-      "cost": 1500.0,
       "created_at": 1713923521
     },
     {
       "vid_group_id": 4,
       "name": "Modern Real Estate Selling Part 4",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "duration": [30, 60, 90, 180, 365],
-      "cost": 1500.0,
       "created_at": 1713923521
     },
     {
       "vid_group_id": 5,
       "name": "Modern Real Estate Selling",
       "description": "This house is for sale, for loan and for lease sdfafahfklajnlangalgnalgnalgnkaldgnlankgad",
-      "duration": [30, 60, 90, 180, 365],
-      "cost": 1500.0,
       "created_at": 1713923521
     },
     {
       "vid_group_id": 6,
       "name": "Modern Real Estate Selling Part 2",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "duration": [30, 60, 90, 180, 365],
-      "cost": 1500.0,
       "created_at": 1713923521
     },
     {
       "vid_group_id": 7,
       "name": "Modern Real Estate Selling Part 3",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "duration": [30, 60, 90, 180, 365],
-      "cost": 1500.0,
       "created_at": 1713923521
     },
     {
       "vid_group_id": 8,
       "name": "Modern Real Estate Selling Part 4",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "duration": [30, 60, 90, 180, 365],
-      "cost": 1500.0,
       "created_at": 1713923521
     }
   ]

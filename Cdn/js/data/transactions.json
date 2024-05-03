@@ -2,7 +2,7 @@
   "data": [
     {
       "transaction_id": 1,
-      "organization_id": 1,
+      "account_id": 1,
       "duration": [30, 60, 90, 180, 365],
       "price": 1500.0,
       "merchant_id": 1,
@@ -15,7 +15,7 @@
     },
     {
       "transaction_id": 2,
-      "organization_id": 2,
+      "account_id": 2,
       "duration": [30, 60, 90, 180, 365],
       "price": 1500.0,
       "merchant_id": 1,
@@ -28,7 +28,7 @@
     },
     {
       "transaction_id": 3,
-      "organization_id": 3,
+      "account_id": 3,
       "duration": [30, 60, 90, 180, 365],
       "price": 1500.0,
       "merchant_id": 1,
