@@ -5,48 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Chapter</title>
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../Cdn/css/font.css">
     <!-- BOOSTRAP ICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- TABLER -->
+    <!-- TABLER CSS-->
     <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
     <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
+    <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
+    <!-- JQUERY -->
     <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
-    <script src="../Cdn/js/script.js"></script>
+    <!-- TABLER -->
     <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".header").load("header.html");
-            $(".sidebar").load("sidebar.html");
-            $(".footer").load("footer.html");
-
-            let urlParams = new URLSearchParams(window.location.search);
-            let bookId = urlParams.get('id');
-
-            $(document).ready(function () {
-                let urlParams = new URLSearchParams(window.location.search);
-                let chapterId = urlParams.get('ebook_chapter_id');
-
-                $.getJSON('../Cdn/js/data/ebooks.chapters.json', function (response) {
-                    var book = response.data.find(function (item) {
-                        return item.ebook_chapter_id == chapterId;
-                    });
-                    if (book) {
-                        $('#chapter').val(book.chapter);
-                        $('#content').val(book.content);
-                    } else {
-                        console.log("Book not found with ID: " + chapterId);
-                    }
-                });
-            });
-        });
-
-        $(document).on("click", "#back", function () {
-            const ebook_id = getParams('ebook_id')
-            const title = getParams('title')
-            window.location.href = "ebook.chapters.list.html?id=" + ebook_id + "&title=" + title;
-        });
-    </script>
+    <!-- CUSTOM JS -->
+    <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
+    <script src="../Cdn/js/admin.ebook.chapters.delete.js"></script>
 </head>
 
 <body>
@@ -93,32 +72,34 @@
                                 <div
                                     class="d-flex justify-content-start mb-2 align-items-center border-bottom border-secondary-subtle pb-1">
                                     <i class="bi bi-trash3-fill fs-2"></i>
-                                    <h5 class="ms-2 fs-2 modal-title fw-bold">
+                                    <h5 class="ms-2 fs-2 modal-title fw-bold montserrat-bold">
                                         Delete E-Book Chapter
                                     </h5>
                                 </div>
                                 <div class="response"></div>
+                                <div class="montserrat-regular mt-4">
+                                    <div class="d-flex flex-column form-group">
+                                        <label for="chapter" class="form-label fw-semibold">Chapter</label>
+                                        <input type="text" name="chapter" id="chapter"
+                                            class="form-control montserrat-regular" value="" autocomplete="off"
+                                            disabled>
+                                    </div>
+                                    <div class="d-flex flex-column form-group mt-4">
+                                        <label for="content" class="form-label fw-semibold">Content</label>
+                                        <textarea name="content" id="content" class="form-control montserrat-regular"
+                                            value="" autocomplete="off" wrap=physical rows="5" disabled></textarea>
+                                    </div>
 
-                                <div class="d-flex flex-column form-group">
-                                    <label for="chapter" class="form-label fw-semibold">Chapter</label>
-                                    <input type="text" name="chapter" id="chapter" class="form-control" value=""
-                                        autocomplete="off" disabled>
-                                </div>
-                                <div class="d-flex flex-column form-group mt-4">
-                                    <label for="content" class="form-label fw-semibold">Content</label>
-                                    <textarea name="content" id="content" class="form-control" value=""
-                                        autocomplete="off" wrap=physical rows="5" disabled></textarea>
-                                </div>
-
-                                <div class="d-flex gap-2 justify-content-end mt-3">
-                                    <button id="back" type="button" class="btn border border-secondary btn-light"
-                                        data-bs-dismiss="modal">
-                                        Back
-                                    </button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle='modal'
-                                        data-bs-target='#dynamicModal'>
-                                        Continue Deletion
-                                    </button>
+                                    <div class="d-flex gap-2 justify-content-end mt-3">
+                                        <button id="back" type="button" class="btn border border-secondary btn-light montserrat-regular"
+                                            data-bs-dismiss="modal">
+                                            Back
+                                        </button>
+                                        <button type="button" class="btn btn-danger montserrat-regular" data-bs-toggle='modal'
+                                            data-bs-target='#dynamicModal'>
+                                            Continue Deletion
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
