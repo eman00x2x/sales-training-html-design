@@ -15,7 +15,10 @@ $(document).on('click', '.btn-delete', function (e) {
 $(document).on('click', '.btn-add', function (e) {
     window.location.href = "admin.ebook.groups.create.html";
 });
-
+$(document).on('click', '.btn-view', function (e) {
+    id = $(this).data('id');
+    window.location.href = "admin.ebook.groups.view.html?id=" + id;
+});
 
 
 function getEbookGroupData() {
