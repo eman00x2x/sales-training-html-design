@@ -26,9 +26,9 @@ const displayActionButtons = (id) => {
             </td>`;
 }
 
-const returnFilteredData = (data1, data2, attr, haveFilter) =>  {
+const returnFilteredData = (data1, data2, attr, filter = "") =>  {
   let expected = data1.map(a => Object.assign(a, data2.find(b => b[attr] == a[attr])));
-  let filterByID = expected.filter(item => item[haveFilter] == id)
+  let filterByID = expected.filter(item => filter === "" ? item[attr] == id : item[filter] == id)
 
   return filterByID;
 }
