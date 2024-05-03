@@ -9,6 +9,11 @@ $(document).on('click', '.btn-add', function (e) {
     window.location.href = "admin.organization.create.html";
 });
 
+$(document).on('click', '.btn-view', function (e) {
+    id = $(this).data('id');
+    window.location.href = "admin.organization.view.html?id=" + id;
+});
+
 $(document).on('click', '.btn-edit', function (e) {
     id = $(this).data('id');
     window.location.href = "admin.organization.update.html?id=" + id;
@@ -21,10 +26,10 @@ $(document).on('click', '.btn-delete', function (e) {
 
 function displayActionButtons(id) {
     return `<td class='align-middle'>
-                <div class="btn-group" role="group" aria-label="Basic outlined example">
-                    <button type="button" class="btn btn-md btn-view btn-outline-primary"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
-                    <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class="ms-2">Edit</span></button>
-                    <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
+                <div class="btn-group" role="group" aria-label="Basic outlined example ">
+                    <button type="button" data-id='${id}' class="btn btn-md btn-view btn-outline-primary montserrat-semibold"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
+                    <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary montserrat-semibold"><i class="bi bi-pencil-square"></i><span class="ms-2">Edit</span></button>
+                    <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger montserrat-semibold"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
                 </div>
             </td>`;
 }
