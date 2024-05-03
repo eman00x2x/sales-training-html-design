@@ -1,8 +1,4 @@
 $(document).ready(function () {
-    $(".header").load("header.html");
-    $(".sidebar").load("sidebar.html");
-    $(".footer").load("footer.html");
-
     let urlParams = new URLSearchParams(window.location.search);
     let bookId = urlParams.get('id');
 

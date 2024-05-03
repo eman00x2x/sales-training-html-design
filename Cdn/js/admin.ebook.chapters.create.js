@@ -1,9 +1,3 @@
-$(document).ready(function () {
-    $(".header").load("header.html");
-    $(".sidebar").load("sidebar.html");
-    $(".footer").load("footer.html");
-});
-
 $(document).on("click", ".btn-back", function () {
     const id = getParams('id')
     const title = getParams('title')

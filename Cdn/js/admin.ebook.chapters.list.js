@@ -2,9 +2,6 @@ const id = getParams('id')
         const title = getParams('title')
 
         $(document).ready(function () {
-            $('.header').load('header.html');
-            $('.sidebar').load('sidebar.html');
-            $('.footer').load('footer.html');
 
             var urlParams = new URLSearchParams(window.location.search);
             var bookId = urlParams.get('id');
