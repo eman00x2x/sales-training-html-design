@@ -46,7 +46,7 @@ function getOrganizationsData() {
                 "<td class='align-middle text-center' style='max-width: 50px'><img src='" +
                 data.logo +
                 "' style='width:10em;' /></td>";
-            html += "<td class='align-middle' style='min-width: 250px'>" + data.name + "</td>";
+            html += "<td class='align-middle'>" + data.name + "</td>";
             html +=
                 "<td class='align-middle text-truncate' style='max-width: 500px'>" +
                 data.description +

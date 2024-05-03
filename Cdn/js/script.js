@@ -26,6 +26,13 @@ const displayActionButtons = (id) => {
             </td>`;
 }
 
+const returnFilteredData = (data1, data2, attr, haveFilter) =>  {
+  let expected = data1.map(a => Object.assign(a, data2.find(b => b[attr] == a[attr])));
+  let filterByID = expected.filter(item => item[haveFilter] == id)
+
+  return filterByID;
+}
+
 const niceTrim = (data, length) => {
   if (data.length < length) {
     return data;

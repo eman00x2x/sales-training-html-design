@@ -14,6 +14,8 @@ $(document).ready(function () {
     });
 
     getOrgEBookGroupData()
+    getOrgVideoGroupData()
+    getOrgUserData()
 });
 
 $(document).on("click", "#back", function (e) {
@@ -37,13 +39,7 @@ function getOrgEBookGroupData() {
         $.getJSON("../Cdn/js/data/ebook.groups.json")
     ).done(function (data1, data2) {
         // https://stackoverflow.com/questions/47749932/merge-multiple-json-with-the-same-id
-        const ebookGrpData = data1[0].data;
-        const ebookOrg = data2[0].data;
-
-        let expected = ebookGrpData.map(a => Object.assign(a, ebookOrg.find(b => b.ebook_group_id == a.ebook_group_id)));
-        let filterByID = expected.filter(item => item.ebook_group_id == id)
-
-        console.log(filterByID);
+        let filterByID = returnFilteredData(data1[0].data, data2[0].data, "ebook_group_id", "organization_id");
 
         for (let i = 0; i < filterByID.length; i++) {
             let data = filterByID[i];
@@ -71,54 +67,99 @@ function getOrgEBookGroupData() {
                 "<td class='align-middle'><span class='badge badge-outline text-yellow'>" +
                 data.status +
                 "</span></td>";
-            html += `<td class='align-middle'>
-                        <button type="button" data-id='${data.organization_id}' class="btn btn-md btn-view btn-outline-primary montserrat-semibold"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
-                    </td>`;
+            // html += `<td class='align-middle'>
+            //             <button type="button" data-id='${data.transaction_id}' data-bs-toggle='modal' data-bs-target='#dynamicModal' class="btn btn-md btn-view btn-outline-primary montserrat-semibold"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
+            //         </td>`;
             html += "</tr>";
         }
         $(".ebook-group .data-container").html(html);
     });
+}
 
-    /**
-     * Validator Documentation https://validatejs.org/#validators-length
-     **/
+function getOrgVideoGroupData() {
+    let html = "";
 
-    function validateInput(input) {
-        let message = [];
+    $.when(
+        $.getJSON("../Cdn/js/data/organization.video.json"),
+        $.getJSON("../Cdn/js/data/video.groups.json")
+    ).done(function (data1, data2) {
+        // https://stackoverflow.com/questions/47749932/merge-multiple-json-with-the-same-id
+        let filterByID = returnFilteredData(data1[0].data, data2[0].data, "vid_group_id", "organization_id");
 
-        const data = input.reduce(function (obj, item) {
-            obj[item.name] = item.value;
-            return obj;
-        }, {});
+        for (let i = 0; i < filterByID.length; i++) {
+            let data = filterByID[i];
 
-        const validator = validate(
-            {
-                logo: data.logo,
-                name: data.name,
-                description: data.description,
-            },
-            {
-                logo: {
-                    type: "image/png,image/jpeg",
-                },
-                name: {
-                    type: "string",
-                    length: { minimum: 4 },
-                },
-                description: {
-                    type: "string",
-                    length: { minimum: 10, maximum: 300 },
-                },
-            }
-        );
-
-        if (validator !== undefined) {
-            for (key in validator) {
-                message.push(validator[key]);
-            }
-            return message.join(", ");
+            html += "<tr>";
+            html +=
+                "<td class='align-middle text-center'>" +
+                (i + 1) +
+                "</td>";
+            html +=
+                "<td class='align-middle text-center'>" +
+                data.transaction_id +
+                "</td>";
+            html += "<td class='align-middle'>" + data.name + "</td>";
+            html += "<td class='align-middle'>" + data.cost + "</td>";
+            html +=
+                "<td class='align-middle'>" +
+                convertDate(data.started_at) +
+                "</td>";
+            html +=
+                "<td class='align-middle'>" +
+                convertDate(data.end_at) +
+                "</td>";
+            html +=
+                "<td class='align-middle'><span class='badge badge-outline text-yellow'>" +
+                data.status +
+                "</span></td>";
+            // html += `<td class='align-middle'>
+            //             <button type="button" data-id='${data.transaction_id}' data-bs-toggle='modal' data-bs-target='#dynamicModal' class="btn btn-md btn-view btn-outline-primary montserrat-semibold"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
+            //         </td>`;
+            html += "</tr>";
         }
+        $(".video-group .data-container").html(html);
+    });
+}
 
-        return false;
-    }
+function getOrgUserData() {
+    let html = "";
+
+    $.when(
+        $.getJSON("../Cdn/js/data/accounts.json"),
+        $.getJSON("../Cdn/js/data/profiles.json")
+    ).done(function (data1, data2) {
+        // https://stackoverflow.com/questions/47749932/merge-multiple-json-with-the-same-id
+        let filterByID = returnFilteredData(data1[0].data, data2[0].data, "account_id", "organization_id");
+
+        for (let i = 0; i < filterByID.length; i++) {
+            let data = filterByID[i];
+
+            html += "<tr>";
+            html +=
+                "<td class='align-middle text-center'>" +
+                (i + 1) +
+                "</td>";
+            html +=
+                "<td class='align-middle text-center'>" +
+                data.account_id +
+                "</td>";
+            html += "<td class='align-middle'>" + `${data.name.prefix} ${data.name.firstname} ${data.name.lastname} ${data.name.suffix}` + "</td>";
+            html += "<td class='align-middle'>" + data.email + "</td>";
+            html +=
+                "<td class='align-middle'>" +
+                data.username +
+                "</td>";
+            html +=
+                "<td class='align-middle'>" +
+                convertDate(data.registered_at) +
+                "</td>";
+            html +=
+                "<td class='align-middle text-capitalize'>" + data.account_type + "</td>";
+            // html += `<td class='align-middle'>
+            //             <button type="button" data-id='${data.transaction_id}' data-bs-toggle='modal' data-bs-target='#dynamicModal' class="btn btn-md btn-view btn-outline-primary montserrat-semibold"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
+            //         </td>`;
+            html += "</tr>";
+        }
+        $(".users .data-container").html(html);
+    });
 }
