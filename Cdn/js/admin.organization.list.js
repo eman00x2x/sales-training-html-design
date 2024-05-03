@@ -1,8 +1,12 @@
 $(document).ready(function () {
-    $(".header").load("header.html");
-    $(".sidebar").load("sidebar.html");
-    $(".footer").load("footer.html");
     getOrganizationsData();
+});
+
+$(document).on("keyup", '.search', function () {
+    var value = $(this).val().toLowerCase();
+    $(".organizations .data-container tr").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
 });
 
 $(document).on('click', '.btn-add', function (e) {
@@ -24,16 +28,6 @@ $(document).on('click', '.btn-delete', function (e) {
     window.location.href = "admin.organization.delete.html?id=" + id;
 });
 
-function displayActionButtons(id) {
-    return `<td class='align-middle'>
-                <div class="btn-group" role="group" aria-label="Basic outlined example ">
-                    <button type="button" data-id='${id}' class="btn btn-md btn-view btn-outline-primary montserrat-semibold"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
-                    <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary montserrat-semibold"><i class="bi bi-pencil-square"></i><span class="ms-2">Edit</span></button>
-                    <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger montserrat-semibold"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
-                </div>
-            </td>`;
-}
-
 function getOrganizationsData() {
     let html = "";
 
@@ -52,9 +46,9 @@ function getOrganizationsData() {
                 "<td class='align-middle text-center' style='max-width: 50px'><img src='" +
                 data.logo +
                 "' style='width:10em;' /></td>";
-            html += "<td class='align-middle'>" + data.name + "</td>";
+            html += "<td class='align-middle' style='min-width: 250px'>" + data.name + "</td>";
             html +=
-                "<td class='align-middle text-truncate' style='max-width: 550px'>" +
+                "<td class='align-middle text-truncate' style='max-width: 500px'>" +
                 data.description +
                 "</td>";
             html +=

@@ -42,9 +42,12 @@
                 <div class="container-fluid">
                     <!-- BREADCRUMB -->
                     <ol class="breadcrumb breadcrumb-arrows" aria-label="breadcrumbs">
-                        <li class="breadcrumb-item montserrat-semibold"><a href="./admin.organization.list.html">Organization</a></li>
-                        <li class="breadcrumb-item active montserrat-bold" aria-current="page"><a href="#">View Organization</a></li>
+                        <li class="breadcrumb-item montserrat-semibold"><a
+                                href="./admin.organization.list.html">Organization</a></li>
+                        <li class="breadcrumb-item active montserrat-bold" aria-current="page"><a href="#">View
+                                Organization</a></li>
                     </ol>
+
                     <!-- ORGANIZATION DETAILS -->
                     <div class="card mt-3">
                         <div
@@ -55,6 +58,185 @@
                             <div class="w-75">
                                 <h1 class="orgName montserrat-bold"></h1>
                                 <p class="orgDesc text-secondary montserrat-regular"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TABS -->
+                    <div class="card-tabs mt-3">
+                        <!-- CARD NAVIGATION -->
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item"><a href="#tab-top-1" class="nav-link active"
+                                    data-bs-toggle="tab">Purchased E-Book Groups</a></li>
+                            <li class="nav-item"><a href="#tab-top-2" class="nav-link" data-bs-toggle="tab">Purchased
+                                    Video Groups</a></li>
+                            <li class="nav-item"><a href="#tab-top-3" class="nav-link" data-bs-toggle="tab">Registered
+                                    Accounts</a></li>
+                        </ul>
+                        <!-- TAB CONTENT -->
+                        <div class="tab-content">
+                            <!-- PURCHASED EBOOKS AND VIDEO GROUPS -->
+                            <div id="tab-top-1" class="card tab-pane active show">
+                                <div class="card-body">
+                                    <!-- SORT, FILTER AND SEARCH -->
+                                    <div
+                                        class="d-flex justify-content-start align-items-center col col-12 col-sm-7 col-lg-6 mb-3 mt-2 gap-1    ">
+                                        <div class="btn-sort dropdown montserrat-regular">
+                                            <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
+                                                data-bs-toggle="dropdown"></i>
+                                            <a href="#"
+                                                class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
+                                                data-bs-toggle="dropdown">Sort
+                                                by</a>
+                                            <div class="dropdown-menu">
+                                                <div
+                                                    class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
+                                                    <div class="btn-group col-7">
+                                                        <button type="button" class="btn btn-sm btn-outline-primary"><i
+                                                                class="bi bi-sort-alpha-down fs-2"></i></button>
+                                                        <button type="button" class="btn btn-sm btn-outline-primary"><i
+                                                                class="bi bi-sort-alpha-down-alt fs-2"></i></button>
+                                                    </div>
+                                                </div>
+                                                <a class="dropdown-item" href="#">E-Book Group Name</a>
+                                                <a class="dropdown-item" href="#">Created Date</a>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="search form-control montserrat-regular" id="search"
+                                            placeholder="Search by E-Book Group Name, E-Book Group ID" name="search"
+                                            value="" />
+                                        <div class="btn-sort dropdown montserrat-regular">
+                                            <i class="bi bi-sliders2 fs-2 btn montserrat-semibold"
+                                                data-bs-toggle="dropdown"></i>
+                                            <div class="dropdown-menu">
+                                                <div class="dropdown-item montserrat-semibold border-bottom">FILTER BY
+                                                </div>
+                                                <div class="px-3">
+                                                    <span
+                                                        class="form-check-label montserrat-medium py-2">CATEGORY</span>
+                                                    <div class="form-check ">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="chk1">
+                                                        <label class="form-check-label" for="chk1">
+                                                            Real Estate
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check ">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="chk2">
+                                                        <label class="form-check-label" for="chk2">
+                                                            Investment
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check ">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="chk3">
+                                                        <label class="form-check-label" for="chk3">
+                                                            Profit
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check ">
+                                                        <input class="form-check-input" type="checkbox" value=""
+                                                            id="chk4">
+                                                        <label class="form-check-label" for="chk4">
+                                                            Professionalism
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- TABLE LIST -->
+                                    <div class="list">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped ebook-group border border-1">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="align-middle montserrat-semibold text-white text-center"
+                                                            style="background-color: #1c1c39">
+                                                            #
+                                                        </th>
+                                                        <th class="align-middle montserrat-semibold text-white text-center"
+                                                            style="background-color: #1c1c39">
+                                                            Transaction ID
+                                                        </th>
+                                                        <th class="align-middle montserrat-semibold text-white"
+                                                            style="background-color: #1c1c39">
+                                                            Group Name
+                                                        </th>
+                                                        <th class="align-middle montserrat-semibold text-white"
+                                                            style="background-color: #1c1c39">
+                                                            Cost
+                                                        </th>
+                                                        <th class="align-middle montserrat-semibold text-white"
+                                                            style="background-color: #1c1c39">
+                                                            Started Date
+                                                        </th>
+                                                        <th class="align-middle montserrat-semibold text-white"
+                                                            style="background-color: #1c1c39">
+                                                            Ended Date
+                                                        </th>
+                                                        <th class="align-middle montserrat-semibold text-white"
+                                                            style="background-color: #1c1c39">
+                                                            Status
+                                                        </th>
+                                                        <th class="align-middle montserrat-semibold text-white"
+                                                            style="background-color: #1c1c39">
+                                                            Actions
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="data-container montserrat-regular"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- TABLE FOOTER -->
+                                    <div
+                                        class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular">
+                                        <p>Showing 1 out of 10 pages</p>
+                                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                            <button type="button"
+                                                class="btn btn-outline-primary montserrat-semibold"><span
+                                                    class="d-none d-md-block">Previous</span><i
+                                                    class="bi bi-chevron-double-left d-block d-md-none"></i>
+                                            </button>
+                                            <button type="button"
+                                                class="btn btn-outline-primary montserrat-semibold">1</button>
+                                            <button type="button"
+                                                class="btn btn-outline-primary montserrat-semibold">2</button>
+                                            <button type="button"
+                                                class="btn btn-outline-primary montserrat-semibold">3</button>
+                                            <button type="button"
+                                                class="btn btn-outline-primary montserrat-semibold"><span
+                                                    class="d-none d-md-block">Next</span><i
+                                                    class="bi bi-chevron-double-right d-block d-md-none"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Content of Card #2 -->
+                            <div id="tab-top-2" class="card tab-pane">
+                                <div class="card-body">
+                                    <div class="card-title">Content of tab #2</div>
+                                    <p class="text-secondary">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, alias
+                                        aliquid distinctio dolorem
+                                        expedita, fugiat hic magni molestiae molestias odit.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Content of card #3 -->
+                            <div id="tab-top-3" class="card tab-pane">
+                                <div class="card-body">
+                                    <div class="card-title">Content of tab #2</div>
+                                    <p class="text-secondary">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, alias
+                                        aliquid distinctio dolorem
+                                        expedita, fugiat hic magni molestiae molestias odit.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
