@@ -5,6 +5,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Add Organization Details</title>
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../Cdn/css/font.css">
   <!-- BOOSTRAP ICONS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- TABLER CSS -->
@@ -40,7 +46,7 @@
               <div
                 class="d-flex justify-content-start mb-2 align-items-center border-bottom border-secondary-subtle pb-1">
                 <i class="bi bi-pencil-square fs-2"></i>
-                <h5 class="ms-2 modal-title font-bold">
+                <h5 class="ms-2 modal-title montserrat-bold">
                   Update Organization Details
                 </h5>
               </div>
@@ -50,22 +56,22 @@
                 <input type="hidden" name="csrf_token" id="csrf_token" value="" />
                 <img class="orgLogo mb-3 object-fit-contain" width="100%" height="300px" alt="" />
                 <div class="mb-3">
-                  <label for="logo" class="form-label fw-semibold">Update Organization Logo</label>
-                  <input class="form-control" type="file" id="logo" />
+                  <label for="logo" class="form-label montserrat-semibold">Update Organization Logo</label>
+                  <input class="form-control montserrat-regular" type="file" id="logo" />
                 </div>
                 <div class="mb-3">
-                  <label for="name" class="form-label fw-semibold">Update Organization Name</label>
-                  <input type="text" class="form-control" id="name" name="name" value="" />
+                  <label for="name" class="form-label montserrat-semibold">Update Organization Name</label>
+                  <input type="text" class="form-control montserrat-regular" id="name" name="name" value="" />
                 </div>
                 <div class="mb-3">
-                  <label for="description" class="form-label fw-semibold">Update Organization Description</label>
-                  <textarea class="form-control" id="description" rows="5" name="description" value=""></textarea>
+                  <label for="description" class="form-label montserrat-semibold">Update Organization Description</label>
+                  <textarea class="form-control montserrat-regular" id="description" rows="5" name="description" value=""></textarea>
                 </div>
                 <div class="text-end">
-                  <button id="back" type="button" class="btn border border-secondary" data-bs-dismiss="modal">
+                  <button id="back" type="button" class="btn border border-secondary montserrat-semibold" data-bs-dismiss="modal">
                     Back
                   </button>
-                  <button type="button" class="btn btn-save btn-success">
+                  <button type="button" class="btn btn-save btn-success montserrat-semibold">
                     Update
                   </button>
                 </div>
