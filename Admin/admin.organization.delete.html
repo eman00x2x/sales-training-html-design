@@ -7,49 +7,18 @@
   <title>Delete Organization Details</title>
   <!-- BOOSTRAP ICONS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- TABLER -->
+  <!-- TABLER CSS -->
   <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
   <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
+  <!-- CUSTOM CSS -->
   <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
+  <!-- JQUERY -->
   <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
-  <script src="../Cdn/js/script.js"></script>
+  <!-- TABLER -->
   <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
-  <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+  <!-- CUSTOM JS -->
   <script src="../Cdn/js/script.js"></script>
-
-  <script type="text/javascript">
-    let id = ""
-
-    $(document).ready(function () {
-      $(".header").load("header.html");
-      $(".sidebar").load("sidebar.html");
-      $(".footer").load("footer.html");
-
-      let params = new URL(document.location.toString()).searchParams;
-      id = params.get("id");
-
-      $.getJSON('../Cdn/js/data/organization.json', function (data) {
-        let response = data.data;
-        f = response.keys(response).find(key => response[key].organization_id == id);
-
-        $(".orgLogo").attr("src", response[f].logo);
-        $('#name').text(response[f].name);
-        $('#description').text(response[f].description);
-      });
-    });
-
-    $(document).on("click", "#back", function (e) {
-      window.location.href = "organization.list.html"
-    });
-
-    $(document).on("change", "#logo", function (e) {
-      var URL = window.URL || window.webkitURL;
-      var file = e.target.files[0];
-      if (file) {
-        $(".orgLogo").attr("src", URL.createObjectURL(file));
-      }
-    });
-  </script>
+  <script src="../Cdn/js/admin.organization.delete.js"></script>
 </head>
 
 <body>
