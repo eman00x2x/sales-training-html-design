@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View User Profile</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../Cdn/css/font.css">
+    <!-- BOOSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- TABLER CSS -->
+    <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
+    <!-- JQUERY -->
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <!-- TABLER -->
+    <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
+    <!-- CUSTOM JS -->
+    <script src="../Cdn/js/script.js"></script>
+    <script src="/Cdn/js/organization.user.view.js"></script>
+  </head>
+  <body >
+
+    <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
+    style="background-color: #1c1c39 !important;" data-bs-theme="dark"></aside>
+
+    </div>
+    
+<div class="page-wrapper"> 
+  
+  <div class="header"></div>
+
+  
+  <div class="container content pt-3">
+
+  <nav class="pb-3"
+  style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+  aria-label="breadcrumb">
+  <ol class="breadcrumb">
+
+    <div class="breadcrumb-item">
+      <li class=""><a class="text-decoration-none text-secondary" href="organization.user.list.html">All Listing</a></li>
+    </div>
+    <div class="breadcrumb-item flex-grow-1 ">
+      <li class="breadcrumb-item active w-100 bread-title" id="bread-title" aria-current="page"></li>
+    </div>
+  </ol>
+</nav>
+
+<div class="card px-3 py-2">
+  <div class="card-header bg-white">
+    <h1 class="text-primary"><i class="bi bi-person-circle"></i> View User Information</h1>
+
+
+  </div>
+ 
+
+  <div class="card-body">
+    <div class="response "></div>
+ <form id="form" action="" method="post">
+   
+        <div class="">
+         
+
+            <div class="row">
+
+                <div class="col-lg-4 col-sm-12">
+                  <img src="" class="user-img" alt="" />
+
+                </div>
+
+
+                <div class="col-lg-8 col-sm-12">
+                  <div class="row flex-row flex-wrap ">
+                 
+                    <div class="col-lg-4 col-sm-12 pt-2">
+                      <label for="surname"> Surname:</label>
+                      <input type="text" name="lastname" id="lastname" value="" class="form-control" autocomplete="off"  disabled/>
+                    </div>
+                    <div class="col-lg-4 col-sm-12 pt-2">
+                      <label for="surname"> First Name</label>
+                      <input type="text" name="name" id="name" value="" class="form-control" autocomplete="off"  disabled />
+                    </div> 
+  
+                    <div class="col-lg-4 col-sm-12 pt-2">
+                      <label for="surname"> Middle Name</label>
+                      <input type="text" name="mname" id="mname" value="" class="form-control" autocomplete="off"  disabled/>
+                    </div>
+                    <div class="col-lg-12 col-sm-12 pt-2">
+                      <label for="contact"> Address</label>
+                      <input type="text" name="address" id="address" autocomplete="off" class="form-control"  disabled/>
+                    </div> 
+                    <div class="col-lg-6 col-sm-12 pt-2">
+                      <label for="contact"> Contact No</label>
+                      <input type="text" name="contact" id="contact" autocomplete="off" class="form-control"  disabled/>
+                    </div> 
+
+                    <div class="col-lg-6   col-sm-12 pt-2">
+                      <label for="type"> Account Type</label>
+                      <input name="type" id="type"  class="form-control" autocomplete="off"  disabled>
+                    </div>
+                 
+  
+                    
+                  
+                 </div>
+                </div>
+
+            </div>
+
+           
+
+
+     
+          <!--  -->
+        </div>
+
+
+
+      <div class="d-flex justify-content-end pt-3 gap-1">
+          <button id="back" type="button" class="btn border border-secondary" data-bs-dismiss="modal">
+              Back
+            </button>            </div>
+    </form> 
+
+
+    <div class="uploaded-files">
+      <h2>Uploaded Files</h2>
+
+      <div class="uploaded-container">
+          <div class="table-responsive">
+              <table class="table table-striped text-center">
+                <thead >
+                  <tr  id="tableHead" class="">
+                    <th>#</th>
+                    <th>Uploaded Files</th>
+                    <th >Date Uploaded</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                      <td>
+                          1
+                      </td>
+                      <td>
+                          1
+                      </td>
+                        <td>
+                          1
+                      </td>
+
+
+
+                </tbody>
+              </table>
+            </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+  </div>
+</div>
+</div>
+
+<div class="footer"></div>
+
+</div>
+
+
+   
+
+   
+<script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
+
+  </body>
+</html>

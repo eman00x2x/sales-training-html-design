@@ -1,0 +1,23 @@
+.regBody
+{
+    background: url(/Cdn/images/reg-bg1.png)top right/cover no-repeat fixed;
+}
+
+.regFormBg{
+    width: 850px;
+    padding-top: 200px;
+    height: 100vh;
+}
+
+
+:root {
+    --tblr-font-sans-serif:  "Montserrat", sans-serif !important;
+  }
+
+  /* @media (max-width: 576px) { 
+
+    .regFormBg
+    {
+        height: 20px;
+    }
+   } */
