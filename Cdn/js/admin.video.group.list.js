@@ -1,10 +1,8 @@
 
 $(document).ready(function () {
-    $('.header').load('header.html');
-    $('.sidebar').load('sidebar.html');
-    $('.footer').load('footer.html');
     getVideoGroupData();
 });
+
 $(document).on('click', '.btn-edit', function (e) {
     id = $(this).data('id');
     window.location.href = "admin.video.groups.update.html?id=" + id;
@@ -21,6 +19,19 @@ $(document).on('click', '.btn-add', function (e) {
     window.location.href = "admin.video.groups.create.html";
 });
 
+$(document).ready(function () {
+    $('#search').on('input', function() {
+        var searchText = $(this).val().toLowerCase().trim();
+        if (!searchText) {
+            $('.video-group .data-container tr').show();
+            return;
+        }
+        $('.video-group .data-container tr').hide().filter(function() {
+            var idText = $(this).find('td:eq(0)').text().trim();
+            return idText === searchText;
+        }).show();
+    });
+});
 
 function getVideoGroupData() {
     let html = "";

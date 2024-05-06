@@ -1,11 +1,6 @@
 //SAMPLE DATA OF VIDEO GROUPS
 
-$(document).ready(function () {
-    $('.header').load('header.html');
-    $('.sidebar').load('sidebar.html');
-    $('.footer').load('footer.html');
 
-});
 $(document).on("click", "#back", function (e) {
     window.location.href = "admin.premiums.list.html"
 });

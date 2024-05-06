@@ -3,11 +3,9 @@ let id;
 $(document).ready(function () {
     let params = new URL(document.location.toString()).searchParams;
     id = params.get("id");
-
     $.getJSON('../Cdn/js/data/video.groups.json', function (data) {
         let response = data.data;
         f = response.keys(response).find(key => response[key].vid_group_id == id);
-
         $('.vidName').text(response[f].name);
         $('.vidDesc').text(response[f].description);
     });
