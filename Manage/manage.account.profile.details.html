@@ -10,7 +10,7 @@
 
 <body>
     <form class="card-body">
-        <div class="p-4 rounded-3 lh-base">
+        <div class="rounded-3 lh-base p-4">
             <!--PERSONAL DATA -->
             <span class="fs-2 montserrat-bold">PERSONAL DATA</span>
             <div class="d-flex row">
@@ -43,45 +43,50 @@
             </div>
             <!-- OTHER INFORMATION -->
             <hr class="my-3">
-            <div class="d-flex row">
-                <div class="col-6">
+            <div class="d-flex flex-lg-row flex-column gap-3">
+                <div class="col col-12 col-lg-6">
                     <span class="fs-2 montserrat-bold">OTHER INFORMATION</span>
-                    <div class="col-10">
-                        <label for="birthdate" class="fs-4 text-secondary m-0 montserrat-regular">Birthdate</label>
-                        <input type="date" name="birthdate" id="birthdate" class="form-control montserrat-regular my-2"
-                            value="" autocomplete="off">
-                    </div>
-                    <div class="d-flex row">
-                        <label for="contact_number" class="fs-4 text-secondary m-0 montserrat-regular">Mobile
-                            Number/s</label>
-                        <div class="col-10">
-                            <input type="text" name="contact_number" id="contact_number"
+                    <div class="d-flex justify-content-start align-items-end">
+                        <div class="col">
+                            <label for="birthdate" class="fs-4 text-secondary m-0 montserrat-regular">Birthdate</label>
+                            <input type="date" name="birthdate" id="birthdate"
                                 class="form-control montserrat-regular my-2" value="" autocomplete="off">
                         </div>
-                        <div class="d-flex col-2 align-items-center">
-                            <button type="button" class="btn btn-add btn-primary h-50 w-50 d-none"><i
-                                    class="bi bi-plus-lg"></i></button>
+                    </div>
+                    <div class="d-flex justify-content-start align-items-end gap-1">
+                        <div class="col">
+                            <label for="contact_number" class="fs-4 text-secondary mb-2 montserrat-regular">Mobile
+                                Number/s</label>
+                            <input type="text" name="contact_number" id="contact_number"
+                                class="form-control montserrat-regular" value="" autocomplete="off">
                         </div>
+                        <button type="button" class="mobile-add btn btn-add btn-primary "><i
+                                class="bi bi-plus-lg"></i></button>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col">
                     <span class="fs-2 montserrat-bold">SOCIAL LINKS</span>
-                    <div class="d-flex row">
-                        <label for="facebook" class="fs-4 text-secondary m-0 montserrat-regular">Facebook</label>
-                        <div class="col-12">
-                            <input type="url" name="facebook" id="facebook"
-                                class="form-control montserrat-regular my-2" value="" autocomplete="off">
+                    <div class="d-flex justify-content-start align-items-end">
+                        <div class="col">
+                            <label for="facebook" class="fs-4 text-secondary m-0 montserrat-regular">Facebook</label>
+                            <input type="url" name="facebook" id="facebook" class="form-control montserrat-regular my-2"
+                                value="" autocomplete="off">
                         </div>
-                        <label for="linkedIn" class="fs-4 text-secondary m-0 montserrat-regular">LinkedIn</label>
-                        <div class="col-12">
-                            <input type="url" name="linkedIn" id="linkedIn"
-                                class="form-control montserrat-regular my-2" value="" autocomplete="off">
+                    </div>
+                    <div class="d-flex justify-content-start align-items-end">
+                        <div class="col">
+                            <label for="linkedIn" class="fs-4 text-secondary m-0 montserrat-regular">LinkedIn</label>
+                            <input type="url" name="linkedIn" id="linkedIn" class="form-control montserrat-regular my-2"
+                                value="" autocomplete="off">
                         </div>
                     </div>
                 </div>
             </div>
-            <hr class="my-3">
-            <!-- ADDRESS -->
+        </div>
+        <hr class="my-3">
+        <!-- ADDRESS -->
+        <div class="p-4">
+
             <span class="fs-2 montserrat-bold">ADDRESS</span>
             <div class="d-flex row">
                 <span class="fs-4 montserrat-semibold">PRESENT ADDRESS</span>
@@ -178,6 +183,7 @@
                     Save Changes
                 </button>
             </div>
+        </div>
         </div>
     </form>
 </body>

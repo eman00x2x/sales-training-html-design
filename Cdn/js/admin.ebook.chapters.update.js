@@ -5,8 +5,7 @@ $(document).on("click", ".btn-cancel", function () {
 });
 
 $(document).ready(function () {
-    let urlParams = new URLSearchParams(window.location.search);
-    let chapterId = urlParams.get('ebook_chapter_id');
+    chapterId = getParams('ebook_chapter_id');
 
     $.getJSON('../Cdn/js/data/ebooks.chapters.json', function (response) {
         var book = response.data.find(function (item) {

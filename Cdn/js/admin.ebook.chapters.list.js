@@ -10,16 +10,13 @@ $(document).ready(function () {
         });
     });
 
-    var urlParams = new URLSearchParams(window.location.search);
-    var bookId = urlParams.get('id');
-    var title = urlParams.get('title');
     var html = "";
 
     $('.book-title').text(title);
 
     $.getJSON('../Cdn/js/data/ebooks.chapters.json', function (response) {
         var chapters = response.data.filter(function (item) {
-            return item.ebook_id == bookId;
+            return item.ebook_id == id;
         });
 
         if (chapters.length > 0) {
@@ -32,7 +29,7 @@ $(document).ready(function () {
                 html += "</tr>";
             });
         } else {
-            console.log("No chapters found for the book with ID: " + bookId);
+            console.log("No chapters found for the book with ID: " + id);
         }
         $(".chapter .data-container").html(html);
     });
