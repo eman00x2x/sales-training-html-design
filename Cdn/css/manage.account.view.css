@@ -1,6 +1,6 @@
 .avatar{
     top: 17em;
-    left: 7em
+    left: 6em
 }
 
 .info{
@@ -11,3 +11,9 @@
 .right-info{
     margin-top: -4em;
 }
+
+.nav-tabs .nav-item .nav-link.active {
+    background-color: #FFBC3A;
+    color: #1c;
+    font-weight: bold;
+  }
