@@ -1,8 +1,5 @@
-let id = ""
-
 $(document).ready(function () {
-    let params = new URL(document.location.toString()).searchParams;
-    id = params.get("id");
+    let id = getParams("id");
 
     $.getJSON('../Cdn/js/data/organization.json', function (data) {
         let response = data.data;
@@ -19,9 +16,11 @@ $(document).on("click", "#back", function (e) {
 });
 
 $(document).on("change", "#logo", function (e) {
-    var URL = window.URL || window.webkitURL;
-    var file = e.target.files[0];
-    if (file) {
-        $(".orgLogo").attr("src", URL.createObjectURL(file));
+    let reader = new FileReader();
+
+    reader.onload = function () {
+        $(".orgLogo").attr("src", URL.createObjectURL(e.target.files[0]));
     }
+
+    reader.readAsDataURL(e.target.files[0]);
 });

@@ -18,8 +18,104 @@
     },
     {
       "organization_id": 3,
-      "name": "Regular Organization",
+      "name": "User Organization",
       "description": "Pellentesque pharetra dui nec leo dictum, sit amet condimentum mauris pellentesque. Praesent bibendum mollis purus nec pellentesque.",
+      "logo": "https://img.freepik.com/premium-vector/modern-youtube-thumbnail-template_521579-673.jpg",
+      "privileges": [],
+      "created_at": 1713923521
+    },
+    {
+      "organization_id": 4,
+      "name": "Creative Solutions Inc.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae metus id elit dictum pretium.",
+      "logo": "https://img.freepik.com/premium-vector/modern-youtube-thumbnail-template_521579-673.jpg",
+      "privileges": [],
+      "created_at": 1713923521
+    },
+    {
+      "organization_id": 5,
+      "name": "Tech Innovators Group",
+      "description": "Fusce vitae nisl id orci ultricies ultricies. Donec rutrum odio in odio facilisis, at congue nisi scelerisque.",
+      "logo": "https://img.freepik.com/premium-vector/modern-youtube-thumbnail-template_521579-673.jpg",
+      "privileges": [],
+      "created_at": 1713923521
+    },
+    {
+      "organization_id": 6,
+      "name": "Global Ventures Corporation",
+      "description": "Vestibulum ultricies dolor at purus ultrices, vel vehicula ipsum eleifend. Suspendisse hendrerit justo eu justo ullamcorper, vitae dignissim lacus posuere.",
+      "logo": "https://img.freepik.com/premium-vector/modern-youtube-thumbnail-template_521579-673.jpg",
+      "privileges": [],
+      "created_at": 1713923521
+    },
+    {
+      "organization_id": 7,
+      "name": "Innovate Tomorrow Ltd.",
+      "description": "Nam ultrices erat a felis rhoncus, sed vehicula velit consectetur. Sed nec enim quis elit blandit tincidunt.",
+      "logo": "https://img.freepik.com/premium-vector/modern-youtube-thumbnail-template_521579-673.jpg",
+      "privileges": [],
+      "created_at": 1713923521
+    },
+    {
+      "organization_id": 8,
+      "name": "Dynamic Designs Co.",
+      "description": "Maecenas ut odio et nunc auctor malesuada. Integer lobortis purus ut diam bibendum, eget feugiat odio lobortis.",
+      "logo": "https://img.freepik.com/premium-vector/modern-youtube-thumbnail-template_521579-673.jpg",
+      "privileges": [],
+      "created_at": 1713923521
+    },
+    {
+      "organization_id": 9,
+      "name": "Future Forward Enterprises",
+      "description": "Cras commodo est non elit interdum, eget volutpat velit varius. Fusce convallis felis eget tortor consequat scelerisque.",
+      "logo": "https://img.freepik.com/premium-vector/modern-youtube-thumbnail-template_521579-673.jpg",
+      "privileges": [],
+      "created_at": 1713923521
+    },
+    {
+      "organization_id": 10,
+      "name": "Innovative Solutions Group",
+      "description": "Duis aliquet neque eget luctus malesuada. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+      "logo": "https://img.freepik.com/premium-vector/modern-youtube-thumbnail-template_521579-673.jpg",
+      "privileges": [],
+      "created_at": 1713923521
+    },
+    {
+      "organization_id": 11,
+      "name": "Visionary Ventures LLC",
+      "description": "Vivamus non augue vitae arcu gravida mattis. Nulla facilisi. Proin eu erat nec purus accumsan sollicitudin.",
+      "logo": "https://img.freepik.com/premium-vector/modern-youtube-thumbnail-template_521579-673.jpg",
+      "privileges": [],
+      "created_at": 1713923521
+    },
+    {
+      "organization_id": 12,
+      "name": "EcoTech Solutions",
+      "description": "Integer ac velit sed ligula convallis viverra a id risus. Mauris condimentum, lacus nec molestie feugiat, leo eros cursus lorem, nec pellentesque lectus turpis quis purus.",
+      "logo": "https://img.freepik.com/premium-vector/modern-youtube-thumbnail-template_521579-673.jpg",
+      "privileges": [],
+      "created_at": 1713923521
+    },
+    {
+      "organization_id": 13,
+      "name": "InnovateX Labs",
+      "description": "Donec fermentum libero ac sem congue, ut sollicitudin turpis dictum. Phasellus hendrerit, nulla id ullamcorper convallis, metus sapien interdum velit, quis malesuada ex arcu et arcu.",
+      "logo": "https://img.freepik.com/premium-vector/modern-youtube-thumbnail-template_521579-673.jpg",
+      "privileges": [],
+      "created_at": 1713923521
+    },
+    {
+      "organization_id": 14,
+      "name": "TechVision Corporation",
+      "description": "Etiam tempus nisi eget odio vestibulum, vel maximus leo tincidunt. Integer vitae aliquet urna. Curabitur sit amet enim et velit aliquet sagittis.",
+      "logo": "https://img.freepik.com/premium-vector/modern-youtube-thumbnail-template_521579-673.jpg",
+      "privileges": [],
+      "created_at": 1713923521
+    },
+    {
+      "organization_id": 15,
+      "name": "NexGen Innovations",
+      "description": "Sed vestibulum mauris non metus tristique malesuada. Aliquam tincidunt leo id tellus bibendum auctor. Nunc in ex ut justo malesuada consectetur.",
       "logo": "https://img.freepik.com/premium-vector/modern-youtube-thumbnail-template_521579-673.jpg",
       "privileges": [],
       "created_at": 1713923521

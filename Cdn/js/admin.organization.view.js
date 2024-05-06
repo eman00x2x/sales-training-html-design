@@ -1,8 +1,7 @@
 let id;
 
 $(document).ready(function () {
-    let params = new URL(document.location.toString()).searchParams;
-    id = params.get("id");
+    id = getParams('id');
 
     $.getJSON('../Cdn/js/data/organization.json', function (data) {
         let response = data.data;
