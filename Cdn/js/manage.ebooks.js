@@ -38,7 +38,7 @@ function displayEbooks(pageNumber, sortDirection, sortBy, searchText) {
         ebooksResponse1.forEach(ebook => {
             ebookListHtml += `
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-2">
-                    <div class="card" data-ebook-id="${ebook.id}"> <!-- Add data-ebook-id attribute to store ebook ID -->
+                    <div class="card" data-ebook-id="${ebook.ebook_id}">
                         <!-- Photo -->
                         <div class="img-container" style="height: 200px;">
                             <img src="${ebook.thumbnail_image}" class="card-img" alt="Image"
@@ -55,13 +55,18 @@ function displayEbooks(pageNumber, sortDirection, sortBy, searchText) {
         });
         $('.ebook-list').html(ebookListHtml);
         $('.card').click(function() {
-            const ebookId = $(this).data('ebook-id'); // Get the ebook ID from data attribute
-            // $.getJSON('url-to-fetch-ebook-details?id=' + ebookId, function(data) {
-            //     // Update modal content with ebook details
-            //     $('#exampleModalLabel').text(data.title);
-            //     $('.modal-body').html(`<p><strong>Title:</strong> ${data.title}</p><p><strong>Author:</strong> ${data.author}</p>`);
-            // });
-            $('#exampleModal').modal('show');
+            const ebookId = $(this).data('ebook-id'); 
+            $.getJSON('../Cdn/js/data/ebooks.json', function (data) {
+                let response = data.data;
+                f = response.keys(response).find(key => response[key].ebook_id === ebookId);
+                $('#modalEbookTitle').text(response[f].title);
+                $('#modalEbookAuthor').text(response[f].author);
+                $('#modalEbookDescription').text(response[f].description);
+                $('#modalEbookImage').attr('src', response[f].thumbnail_image);
+                // Set ebook ID for "Read Now" button
+                $('#readNowButton').attr('href', 'manage.read.ebook.html?ebook_id=' + ebookId);
+                $('#exampleModal').modal('show');
+            });
         });
     });
 }
@@ -98,7 +103,6 @@ function updatePagination(currentPage, totalPages) {
     let paginationButtons = `<button type="button" class="btn btn-outline-primary ${currentPage === 1 ? 'disabled' : ''}" onclick="changePage(${currentPage - 1})">Previous</button>`;
 
     if (totalPages > 0) {
-        paginationButtons += `<button type="button" class="btn btn-outline-primary ${currentPage === 1 ? 'disabled' : ''}" onclick="changePage(${currentPage - 1})">Previous</button>`;
 
         for (let i = 1; i <= totalPages; i++) {
             const activeClass = i === currentPage ? 'active' : '';
