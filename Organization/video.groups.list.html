@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Groups</title>
+    <title>Video Group</title>
 
     <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -52,7 +52,7 @@
                             console.log('Rating for', group.name, ':', averageRating);
                             html += `
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb-2">
-                        <a class="card h-100" style="transition: transform 0.3s ease; text-decoration: none;">
+                        <a href="video.list.html" class="card h-100" style="transition: transform 0.3s ease; text-decoration: none;">
                             <div class="image-container align-self-center" style="width: 100%; height: 200px; overflow: hidden;">
                                 <img src="../Cdn/images/R.jpg" class="card-img-top fixed-image" alt="Image" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
                             </div>
@@ -180,7 +180,7 @@
                         <div class="row video-group-container ">
                         </div>
                     </div>
-                    
+
                     <div style="display: flex; align-items: center">
                         <p style="margin-right: auto">Showing 1 out of 10 pages</p>
                         <nav aria-label="...">
