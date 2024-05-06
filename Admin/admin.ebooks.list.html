@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>View E-Books</title>
@@ -27,18 +28,15 @@
     <script src="../Cdn/js/admin.ebooks.list.js"></script>
 </head>
 
-  <body>
+<body>
     <div class="page">
-      <!-- SIDEBAR -->
-      <aside
-        class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
-        style="background-color: #1c1c39 !important"
-        data-bs-theme="dark"
-      ></aside>
+        <!-- SIDEBAR -->
+        <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
+            style="background-color: #1c1c39 !important" data-bs-theme="dark"></aside>
 
-      <div class="page-wrapper">
-        <!-- HEADER -->
-        <div class="header"></div>
+        <div class="page-wrapper">
+            <!-- HEADER -->
+            <div class="header"></div>
 
             <!-- CONTENT -->
             <div class="page-body content">
@@ -48,8 +46,8 @@
                             <div class="content">
                                 <!-- TITLE -->
                                 <div class="d-flex align-center justify-content-start">
-                                    <i class="bi bi-book h1 my-auto"></i>
-                                    <span class="fw-bold fs-2 ms-2 my-auto montserrat-extrabold">E-Books</span>
+                                    <i class="bi bi-book h1 my-auto text-primary"></i>
+                                    <span class="fs-1 ms-2 montserrat-bold text-primary">E-Books</span>
                                 </div>
 
                                 <!-- SORT, FILTER AND SEARCH -->
@@ -61,14 +59,24 @@
                                                 data-bs-toggle="dropdown"></i>
                                             <a href="#"
                                                 class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
-                                                data-bs-toggle="dropdown">Sort by</a>
+                                                data-bs-toggle="dropdown">Sort
+                                                by</a>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Organization Name</a>
+                                                <div
+                                                    class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
+                                                    <div class="btn-group col-7">
+                                                        <button type="button" class="btn btn-sm btn-outline-primary"><i
+                                                                class="bi bi-sort-alpha-down fs-2"></i></button>
+                                                        <button type="button" class="btn btn-sm btn-outline-primary"><i
+                                                                class="bi bi-sort-alpha-down-alt fs-2"></i></button>
+                                                    </div>
+                                                </div>
+                                                <a class="dropdown-item" href="#">E-Book Name</a>
                                                 <a class="dropdown-item" href="#">Created Date</a>
                                             </div>
                                         </div>
                                         <input type="text" class="search ms-1 form-control montserrat-regular"
-                                            id="search" placeholder="Search by Organization Name" name="search"
+                                            id="search" placeholder="Search by E-Book Name" name="search"
                                             value="" />
                                     </div>
                                     <button type="button"
@@ -80,7 +88,7 @@
                                 <!-- TABLE LIST -->
                                 <div class='list'>
                                     <div class='table-responsive'>
-                                        <table class='table table-bordered table-striped'>
+                                        <table class='ebooks table table-bordered table-striped'>
                                             <thead>
                                                 <tr class="montserrat-regular">
                                                     <th class="align-middle text-center">ID</th>
@@ -122,9 +130,10 @@
                 </div>
             </div>
 
-        <!-- FOOTER -->
-        <div class="footer container-fluid"></div>
-      </div>
+            <!-- FOOTER -->
+            <div class="footer container-fluid"></div>
+        </div>
     </div>
-  </body>
+</body>
+
 </html>

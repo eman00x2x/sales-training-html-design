@@ -2,6 +2,13 @@ $(document).ready(function () {
     getEbooksData();
 });
 
+$(document).on("keyup", '.search', function () {
+    var value = $(this).val().toLowerCase();
+    $(".ebooks .data-container tr").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+});
+
 $(document).on("click", ".btn-add", function () {
     window.location.href = "admin.ebooks.create.html";
 });
@@ -24,10 +31,12 @@ $(document).on('click', '.btn-delete', function (e) {
 
 function displayActionButton(id, title) {
     return `<td class='align-middle text-center'>
+    <div class="btn-group" role="group" aria-label="Basic outlined example ">
         <button type="button" data-id='${id}' data-ebook-title="${title}" class="btn btn-md btn-view btn-outline-primary"><i class="bi bi-eye"></i><span class="ms-2 montserrat-regular">View</span></button>
         <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class="ms-2 montserrat-regular">Edit</span></button>
         <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger"><i class="bi bi-trash"></i><span class="ms-2 montserrat-regular">Delete</span></button>
-</td>`;
+    </div>
+    </td>`;
 }
 
 function getEbooksData() {

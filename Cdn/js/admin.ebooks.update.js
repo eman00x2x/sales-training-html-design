@@ -7,7 +7,7 @@ $(document).ready(function () {
     const bookId = urlParams.get('id');
 
     $.getJSON('../Cdn/js/data/ebooks.json', function (response) {
-        var book = response.data.find(function (item) {
+        let book = response.data.find(function (item) {
             return item.ebook_id == bookId;
         });
         if (book) {

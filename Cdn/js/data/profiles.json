@@ -42,14 +42,14 @@
           }
         }
       ],
-      "education": {
+      "education": [{
         "school": "Lorem ipsum dolor National College",
         "degree": "Real Estate Property Management",
-        "graduated_at": 0
-      },
+        "graduated_at": 171392352
+      }],
       "social_profile": {
-        "facebook": "",
-        "linkedIn": ""
+        "facebook": "https://www.facebook.com",
+        "linkedIn": "https://www.linkedin.com"
       },
       "updated_at": 171392352
     },
@@ -95,11 +95,11 @@
           }
         }
       ],
-      "education": {
-        "school": "Lorem Ipsum University",
-        "degree": "Business Administration",
-        "graduated_at": 2019
-      },
+      "education": [{
+        "school": "Lorem ipsum dolor National College",
+        "degree": "Real Estate Property Management",
+        "graduated_at": 171392352
+      }],
       "social_profile": {
         "facebook": "john.doe",
         "linkedIn": "john-doe"
@@ -148,11 +148,11 @@
           }
         }
       ],
-      "education": {
-        "school": "Lorem Ipsum University",
-        "degree": "Business Administration",
-        "graduated_at": 2019
-      },
+      "education": [{
+        "school": "Lorem ipsum dolor National College",
+        "degree": "Real Estate Property Management",
+        "graduated_at": 171392352
+      }],
       "social_profile": {
         "facebook": "john.doe",
         "linkedIn": "john-doe"
@@ -201,11 +201,11 @@
           }
         }
       ],
-      "education": {
-        "school": "Lorem Ipsum University",
-        "degree": "Business Administration",
-        "graduated_at": 2019
-      },
+      "education": [{
+        "school": "Lorem ipsum dolor National College",
+        "degree": "Real Estate Property Management",
+        "graduated_at": 171392352
+      }],
       "social_profile": {
         "facebook": "john.doe",
         "linkedIn": "john-doe"
@@ -254,11 +254,11 @@
           }
         }
       ],
-      "education": {
-        "school": "Lorem Ipsum University",
-        "degree": "Business Administration",
-        "graduated_at": 2019
-      },
+      "education": [{
+        "school": "Lorem ipsum dolor National College",
+        "degree": "Real Estate Property Management",
+        "graduated_at": 171392352
+      }],
       "social_profile": {
         "facebook": "john.doe",
         "linkedIn": "john-doe"
@@ -307,11 +307,11 @@
           }
         }
       ],
-      "education": {
-        "school": "Lorem Ipsum University",
-        "degree": "Business Administration",
-        "graduated_at": 2019
-      },
+      "education": [{
+        "school": "Lorem ipsum dolor National College",
+        "degree": "Real Estate Property Management",
+        "graduated_at": 171392352
+      }],
       "social_profile": {
         "facebook": "john.doe",
         "linkedIn": "john-doe"
@@ -360,11 +360,11 @@
           }
         }
       ],
-      "education": {
-        "school": "Lorem Ipsum University",
-        "degree": "Business Administration",
-        "graduated_at": 2019
-      },
+      "education": [{
+        "school": "Lorem ipsum dolor National College",
+        "degree": "Real Estate Property Management",
+        "graduated_at": 171392352
+      }],
       "social_profile": {
         "facebook": "john.doe",
         "linkedIn": "john-doe"
@@ -413,11 +413,11 @@
           }
         }
       ],
-      "education": {
-        "school": "Lorem Ipsum University",
-        "degree": "Business Administration",
-        "graduated_at": 2019
-      },
+      "education": [{
+        "school": "Lorem ipsum dolor National College",
+        "degree": "Real Estate Property Management",
+        "graduated_at": 171392352
+      }],
       "social_profile": {
         "facebook": "john.doe",
         "linkedIn": "john-doe"
@@ -466,11 +466,11 @@
           }
         }
       ],
-      "education": {
-        "school": "Lorem Ipsum University",
-        "degree": "Business Administration",
-        "graduated_at": 2019
-      },
+      "education": [{
+        "school": "Lorem ipsum dolor National College",
+        "degree": "Real Estate Property Management",
+        "graduated_at": 171392352
+      }],
       "social_profile": {
         "facebook": "john.doe",
         "linkedIn": "john-doe"
@@ -519,11 +519,11 @@
           }
         }
       ],
-      "education": {
-        "school": "Lorem Ipsum University",
-        "degree": "Business Administration",
-        "graduated_at": 2019
-      },
+      "education": [{
+        "school": "Lorem ipsum dolor National College",
+        "degree": "Real Estate Property Management",
+        "graduated_at": 171392352
+      }],
       "social_profile": {
         "facebook": "john.doe",
         "linkedIn": "john-doe"
@@ -572,11 +572,11 @@
           }
         }
       ],
-      "education": {
-        "school": "Lorem Ipsum University",
-        "degree": "Business Administration",
-        "graduated_at": 2019
-      },
+      "education": [{
+        "school": "Lorem ipsum dolor National College",
+        "degree": "Real Estate Property Management",
+        "graduated_at": 171392352
+      }],
       "social_profile": {
         "facebook": "john.doe",
         "linkedIn": "john-doe"
@@ -625,11 +625,11 @@
           }
         }
       ],
-      "education": {
-        "school": "Lorem Ipsum University",
-        "degree": "Business Administration",
-        "graduated_at": 2019
-      },
+      "education": [{
+        "school": "Lorem ipsum dolor National College",
+        "degree": "Real Estate Property Management",
+        "graduated_at": 171392352
+      }],
       "social_profile": {
         "facebook": "john.doe",
         "linkedIn": "john-doe"
@@ -678,11 +678,11 @@
           }
         }
       ],
-      "education": {
-        "school": "Lorem Ipsum University",
-        "degree": "Business Administration",
-        "graduated_at": 2019
-      },
+      "education": [{
+        "school": "Lorem ipsum dolor National College",
+        "degree": "Real Estate Property Management",
+        "graduated_at": 171392352
+      }],
       "social_profile": {
         "facebook": "john.doe",
         "linkedIn": "john-doe"
@@ -731,11 +731,11 @@
           }
         }
       ],
-      "education": {
-        "school": "Lorem Ipsum University",
-        "degree": "Business Administration",
-        "graduated_at": 2019
-      },
+      "education": [{
+        "school": "Lorem ipsum dolor National College",
+        "degree": "Real Estate Property Management",
+        "graduated_at": 171392352
+      }],
       "social_profile": {
         "facebook": "john.doe",
         "linkedIn": "john-doe"
@@ -784,11 +784,11 @@
           }
         }
       ],
-      "education": {
-        "school": "Lorem Ipsum University",
-        "degree": "Business Administration",
-        "graduated_at": 2019
-      },
+      "education": [{
+        "school": "Lorem ipsum dolor National College",
+        "degree": "Real Estate Property Management",
+        "graduated_at": 171392352
+      }],
       "social_profile": {
         "facebook": "john.doe",
         "linkedIn": "john-doe"
