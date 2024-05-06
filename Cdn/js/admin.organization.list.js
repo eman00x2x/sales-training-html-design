@@ -3,7 +3,8 @@ $(document).ready(function () {
 });
 
 $(document).on("keyup", '.search', function () {
-    var value = $(this).val().toLowerCase();
+    let value = $(this).val().toLowerCase();
+
     $(".organizations .data-container tr").filter(function () {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
@@ -48,9 +49,9 @@ function getOrganizationsData() {
                 "' style='width:10em;' /></td>";
             html += "<td class='align-middle'>" + data.name + "</td>";
             html +=
-                "<td class='align-middle text-truncate' style='max-width: 500px'>" +
+                "<td class='align-middle truncate-text' style='max-width: 500px'><p>" +
                 data.description +
-                "</td>";
+                "</p></td>";
             html +=
                 "<td class='align-middle'>" +
                 convertDate(data.created_at) +

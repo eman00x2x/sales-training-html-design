@@ -53,7 +53,6 @@ function getOrgEBookGroupData() {
                 data.transaction_id +
                 "</td>";
             html += "<td class='align-middle'>" + data.name + "</td>";
-            html += "<td class='align-middle'>" + data.cost + "</td>";
             html +=
                 "<td class='align-middle'>" +
                 convertDate(data.started_at) +
@@ -98,7 +97,6 @@ function getOrgVideoGroupData() {
                 data.transaction_id +
                 "</td>";
             html += "<td class='align-middle'>" + data.name + "</td>";
-            html += "<td class='align-middle'>" + data.cost + "</td>";
             html +=
                 "<td class='align-middle'>" +
                 convertDate(data.started_at) +
