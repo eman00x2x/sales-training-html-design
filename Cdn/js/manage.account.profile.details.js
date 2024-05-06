@@ -1,10 +1,5 @@
 $.getJSON('../Cdn/js/data/profiles.json', function (response) {
 
-    const formatDate = (epochTime) => {
-        let date = new Date(epochTime * 1000);
-        return date.toISOString().split('T')[0];
-    };
-
     const urlParams = new URLSearchParams(window.location.search);
     const userID = urlParams.get('id');
 

@@ -16,6 +16,11 @@ const convertDate = (dateData) => {
   });
 };
 
+const formatDate = (epochTime) => {
+  let date = new Date(epochTime * 1000);
+  return date.toISOString().split('T')[0];
+};
+
 const displayActionButtons = (id) => {
   return `<td class='align-middle'>
               <div class="btn-group" role="group" aria-label="Basic outlined example ">
