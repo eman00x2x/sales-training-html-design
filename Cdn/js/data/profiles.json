@@ -30,22 +30,9 @@
           }
         }
       ],
-      "skills": [
-        "skill 1",
-        "skill 2",
-        "skill 3",
-        "skill 4"
-      ],
-      "certification": [
-        "certificate 1",
-        "certificate 2",
-        "sample-certificate 1",
-        "sample-certificate 2"
-      ],
-      "professions": [
-        "profession 1",
-        "profession 2"
-      ],
+      "skills": ["Best in Communication", "Masters in Marketing"],
+      "certification": ["Property Management", "Accredited Land Consultant"],
+      "professions": ["Consultant", "Loan Officer"],
       "work_experience": [
         {
           "company": "Philproperties International Corporation",
@@ -114,9 +101,9 @@
           }
         }
       ],
-      "skills": [],
-      "certification": [],
-      "professions": [],
+      "skills": ["Best in Communication", "Masters in Marketing"],
+      "certification": ["Property Management", "Accredited Land Consultant"],
+      "professions": ["Consultant", "Loan Officer"],
       "work_experience": [
         {
           "company": "ABC Corporation",
@@ -171,9 +158,9 @@
           }
         }
       ],
-      "skills": [],
-      "certification": [],
-      "professions": [],
+      "skills": ["Best in Communication", "Masters in Marketing"],
+      "certification": ["Property Management", "Accredited Land Consultant"],
+      "professions": ["Consultant", "Loan Officer"],
       "work_experience": [
         {
           "company": "ABC Corporation",
@@ -228,9 +215,9 @@
           }
         }
       ],
-      "skills": [],
-      "certification": [],
-      "professions": [],
+      "skills": ["Best in Communication", "Masters in Marketing"],
+      "certification": ["Property Management", "Accredited Land Consultant"],
+      "professions": ["Consultant", "Loan Officer"],
       "work_experience": [
         {
           "company": "ABC Corporation",
@@ -285,9 +272,9 @@
           }
         }
       ],
-      "skills": [],
-      "certification": [],
-      "professions": [],
+      "skills": ["Best in Communication", "Masters in Marketing"],
+      "certification": ["Property Management", "Accredited Land Consultant"],
+      "professions": ["Consultant", "Loan Officer"],
       "work_experience": [
         {
           "company": "ABC Corporation",
@@ -342,9 +329,9 @@
           }
         }
       ],
-      "skills": [],
-      "certification": [],
-      "professions": [],
+      "skills": ["Best in Communication", "Masters in Marketing"],
+      "certification": ["Property Management", "Accredited Land Consultant"],
+      "professions": ["Consultant", "Loan Officer"],
       "work_experience": [
         {
           "company": "ABC Corporation",
@@ -399,9 +386,9 @@
           }
         }
       ],
-      "skills": [],
-      "certification": [],
-      "professions": [],
+      "skills": ["Best in Communication", "Masters in Marketing"],
+      "certification": ["Property Management", "Accredited Land Consultant"],
+      "professions": ["Consultant", "Loan Officer"],
       "work_experience": [
         {
           "company": "ABC Corporation",
@@ -456,9 +443,9 @@
           }
         }
       ],
-      "skills": [],
-      "certification": [],
-      "professions": [],
+      "skills": ["Best in Communication", "Masters in Marketing"],
+      "certification": ["Property Management", "Accredited Land Consultant"],
+      "professions": ["Consultant", "Loan Officer"],
       "work_experience": [
         {
           "company": "ABC Corporation",
@@ -513,9 +500,9 @@
           }
         }
       ],
-      "skills": [],
-      "certification": [],
-      "professions": [],
+      "skills": ["Best in Communication", "Masters in Marketing"],
+      "certification": ["Property Management", "Accredited Land Consultant"],
+      "professions": ["Consultant", "Loan Officer"],
       "work_experience": [
         {
           "company": "ABC Corporation",
@@ -570,18 +557,9 @@
           }
         }
       ],
-      "skills": [
-        "skill1",
-        "skill2"
-      ],
-      "certification": [
-        "certificate 1",
-        "certificate 2"
-      ],
-      "professions": [
-        "profession 1",
-        "profession 2"
-      ],
+      "skills": [],
+      "certification": [],
+      "professions": [],
       "work_experience": [
         {
           "company": "ABC Corporation",
@@ -636,9 +614,9 @@
           }
         }
       ],
-      "skills": [],
-      "certification": [],
-      "professions": [],
+      "skills": ["Best in Communication", "Masters in Marketing"],
+      "certification": ["Property Management", "Accredited Land Consultant"],
+      "professions": ["Consultant", "Loan Officer"],
       "work_experience": [
         {
           "company": "ABC Corporation",
@@ -693,9 +671,9 @@
           }
         }
       ],
-      "skills": [],
-      "certification": [],
-      "professions": [],
+      "skills": ["Best in Communication", "Masters in Marketing"],
+      "certification": ["Property Management", "Accredited Land Consultant"],
+      "professions": ["Consultant", "Loan Officer"],
       "work_experience": [
         {
           "company": "ABC Corporation",
@@ -750,9 +728,9 @@
           }
         }
       ],
-      "skills": [],
-      "certification": [],
-      "professions": [],
+      "skills": ["Best in Communication", "Masters in Marketing"],
+      "certification": ["Property Management", "Accredited Land Consultant"],
+      "professions": ["Consultant", "Loan Officer"],
       "work_experience": [
         {
           "company": "ABC Corporation",
@@ -807,9 +785,9 @@
           }
         }
       ],
-      "skills": [],
-      "certification": [],
-      "professions": [],
+      "skills": ["Best in Communication", "Masters in Marketing"],
+      "certification": ["Property Management", "Accredited Land Consultant"],
+      "professions": ["Consultant", "Loan Officer"],
       "work_experience": [
         {
           "company": "ABC Corporation",
@@ -864,9 +842,9 @@
           }
         }
       ],
-      "skills": [],
-      "certification": [],
-      "professions": [],
+      "skills": ["Best in Communication", "Masters in Marketing"],
+      "certification": ["Property Management", "Accredited Land Consultant"],
+      "professions": ["Consultant", "Loan Officer"],
       "work_experience": [
         {
           "company": "ABC Corporation",

@@ -1,0 +1,30 @@
+#header
+{
+    font-size: 45px;
+    font-weight: 600;
+    padding-top: 50px;
+}
+
+:root {
+    --tblr-font-sans-serif:  "Montserrat", sans-serif !important;
+  }
+
+  .card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card:hover {
+
+    box-shadow: 5px 6px 6px 2px #e9ecef;
+    transform: scale(1.02);
+}
+@media (max-width: 576px) { 
+    #header
+{
+    font-size: 25px;
+    padding-top: 50px;
+}
+ }
