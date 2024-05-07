@@ -37,7 +37,7 @@ $(document).ready(function () {
   });
 
   $(document).on("click", "#back", function (e) {
-  window.location.href = "organization.user.list.html"
+  window.location.href = `organization.user.list.html`
 });
 
 $(document).on("change", "#logo", function (e) {

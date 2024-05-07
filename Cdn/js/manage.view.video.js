@@ -1,32 +1,106 @@
 $(document).ready(function () {
-    displayVideo(1, '', 'title', '');
+    displayVideo(1, '', 'asc', 'title');
 
 });
 
-function displayVideo(pageNumber, sortDirection, sortBy, searchText) {
+
+function search() {
+    console.log('Search Input:', document.getElementById('search').value);
+    displayVideo(1, document.getElementById('search').value, sortBy, sortDirection);
+  }
+
+
+
+let sortBy = 'title';
+let sortDirection = 'asc';
+
+
+function updateSortDirection(direction) {
+    sortDirection = direction;
+    console.log(sortDirection);
+    highlightSortDirection();
+    search();
+  }
+  
+  function updateSortBy(by) {
+    sortBy = by;
+    search();
+    highlightSortBy();
+  }
+  function changePage(pageNumber) {
+    const searchQuery=document.getElementById('search').value;
+    displayVideo(pageNumber, searchQuery, sortBy, sortDirection);
+  }
+  function highlightSortDirection() {
+    $('.btn-sort-direction').removeClass('active');
+    if (sortDirection === 'asc') {
+      $('#btnSortAsc').addClass('active');
+    } else {
+      $('#btnSortDesc').addClass('active');
+    }
+  }
+  
+  function highlightSortBy() {
+    $('.dropdown-item.sort-by').removeClass('active');
+    if (sortBy === 'title') {
+      $('#sortByTitle').addClass('active');
+    } else {
+      $('#sortByDate').addClass('active');
+    }
+  }
+// pagination
+
+
+
+
+
+function displayVideo(pageNumber, searchText, sortBy, sortDirection) {
+
+    console.log('Sort By:', sortBy);
+    console.log('Sort Direction:', sortDirection);
+    console.log('Sort queyr', searchText);
+
 
     const videosPerPage = 8;
     const startIndex = (pageNumber - 1) * videosPerPage;
     const endIndex = startIndex + videosPerPage;
 
     const videoId = getParams('id');
+
+
+
     $.getJSON('../Cdn/js/data/videos.json', function (videoData) {
 
         let videoResponse = videoData.data;
-        let video = videoResponse.filter(video => video.vid_group_id == videoId);
-        let filteredVideos = [];
+        let videoview = videoResponse.filter(video => video.vid_group_id == videoId);
+
+        console.log(videoview)
+
+         const filteredVideos = searchText ? videoview.filter(video => {
+            return video.title.toLowerCase().includes(searchText.toLowerCase()) ||
+                video.category.toLowerCase().includes(searchText.toLowerCase()) ||
+                video.description.toLowerCase().includes(searchText.toLowerCase());
+        }) : videoData.data;
 
         
 
-        filteredVideos = video.filter(video => {
-            return video.title.toLowerCase().includes(searchText.toLowerCase()) ||
-                video.isbn.toLowerCase().includes(searchText.toLowerCase()) ||
-                video.author.toLowerCase().includes(searchText.toLowerCase());
-        });
+        sortedData = sortDirection === 'asc' ?
+             filteredVideos.sort((b,a) => a.title.localeCompare(b.title)) :
+            filteredVideos.sort((a,b) => a.title.localeCompare(b.title));
 
-        sortDirection === 'asc' ?
-            filteredVideos.sort((a, b) => a[sortBy].localeCompare(b[sortBy])) :
-            filteredVideos.sort((a, b) => b[sortBy].localeCompare(a[sortBy]));
+        if(sortBy == 'title')
+        {
+            sortedData = sortDirection === 'asc' ?
+            filteredVideos.sort((a,b) => a.title.localeCompare(b.title)) :
+            filteredVideos.sort((b,a) => a.title.localeCompare(b.title));
+        }else if (sortBy === 'category')
+            {
+                sortedData = sortDirection === 'asc' ?
+        filteredVideos.sort((a, b) => a.category.localeCompare(b.category)) :
+        filteredVideos.sort((b, a) => a.category.localeCompare(b.category));
+            }
+
+         
 
         const totalItems = filteredVideos.length;
         const totalPages = Math.ceil(totalItems / videosPerPage);
@@ -38,7 +112,7 @@ function displayVideo(pageNumber, sortDirection, sortBy, searchText) {
         let videoListHtml = '';
         videoResponse1.forEach(video => {
             videoListHtml += `
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mb-2">
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
                     <div class="card" data-ebook-id="${video.ebook_id}">
                         <!-- Photo -->
                         <div class="img-container" style="height: 200px;">
@@ -55,6 +129,8 @@ function displayVideo(pageNumber, sortDirection, sortBy, searchText) {
           `;
         });
         $('.ebook-list').html(videoListHtml);
+
+        
         $('.card').click(function() {
             const videoId = $(this).data('ebook-id'); 
             $.getJSON('../Cdn/js/data/videos.json', function (data) {
@@ -72,53 +148,34 @@ function displayVideo(pageNumber, sortDirection, sortBy, searchText) {
     });
 }
 
-
-// sorting
-let currentSortDirection = 'asc';
-let sortBy = 'title';
-
-function displayChosen(chosenText, selectedSortBy) {
-    document.getElementById('dropdownMenuButton').innerText = chosenText;
-    sortBy = selectedSortBy;
-    searchVideo();
-}
-
-function searchVideo() {
-    let searchText = document.getElementById('searchInput').value;
-    displayVideo(1, currentSortDirection, sortBy, searchText);
-}
-
-function toggleSorting() {
-    currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
-    const sortIcon = $('#sortIcon');
-    sortIcon.removeClass('bi-caret-up-fill bi-caret-down-fill').addClass(currentSortDirection === 'asc' ? 'bi-caret-up-fill' : 'bi-caret-down-fill');
-    searchVideo();
-}
-
-
-// pagination
 function updatePagination(currentPage, totalPages) {
-    const pageNumbers = document.getElementById('page-numbers');
+    const pageNumbers = document.getElementById('page-numbers'); 
     const paginationContainer = $('.btn-group');
-
-    let paginationButtons = `<button type="button" class="btn btn-outline-primary ${currentPage === 1 ? 'disabled' : ''}" onclick="changePage(${currentPage - 1})">Previous</button>`;
-
+  
+    let paginationButtons = '';
+  
     if (totalPages > 0) {
-
-        for (let i = 1; i <= totalPages; i++) {
-            const activeClass = i === currentPage ? 'active' : '';
-            paginationButtons += `<button type="button" class="btn btn-outline-primary ${activeClass}" onclick="changePage(${i})">${i}</button>`;
-        }
-
-        paginationButtons += `<button type="button" class="btn btn-outline-primary ${currentPage === totalPages ? 'disabled' : ''}" onclick="changePage(${currentPage + 1})">Next</button>`;
-        pageNumbers.innerHTML = `Showing ${currentPage} out of ${totalPages} pages`;
-
+      paginationButtons += `
+      <button type="button" class="btn btn-outline-primary montserrat-semibold ${currentPage === 1 ? 'disabled' : ''}" onclick="changePage(${currentPage - 1})">
+          <span class="d-none d-md-block">Previous</span>
+          <i class="bi bi-chevron-double-left d-block d-md-none"></i>
+      </button>`;
+  
+      for (let i = 1; i <= totalPages; i++) {
+        const activeClass = i === currentPage ? 'active' : '';
+        paginationButtons += `<button type="button" class="btn btn-outline-primary ${activeClass}" onclick="changePage(${i})">${i}</button>`;
+      }
+  
+      paginationButtons += `<button type="button" class="btn btn-outline-primary montserrat-semibold ${currentPage === totalPages ? 'disabled' : ''}" onclick="changePage(${currentPage + 1})">
+       <span class="d-none d-md-block">Next</span>
+      <i class="bi bi-chevron-double-right d-block d-md-none"></i>
+  </button>`;
     } else {
-        pageNumbers.innerHTML = `Showing 0 out of 0 pages`;
+      paginationButtons = '';
     }
+  
+    pageNumbers.innerHTML = totalPages > 0 ? `Showing ${currentPage} out of ${totalPages} pages` : 'Showing 0 out of 0 pages';
     paginationContainer.html(paginationButtons);
-}
+  }
+// sorting
 
-function changePage(pageNumber) {
-    displayVideo(pageNumber, currentSortDirection, sortBy, document.getElementById('searchInput').value);
-}

@@ -1,9 +1,58 @@
 $(document).ready(function () {
-    displayVideoGroups(1, '', 'asc');
-  });
+  displayVideoGroups(1, '', 'name', 'asc');
+});
 
-  function displayVideoGroups(pageNumber, searchQuery, sortDirection) {
-    const videosPerPage = 8;
+
+let sortBy = 'name';
+let sortDirection = 'asc';
+
+
+function search() {
+  displayVideoGroups(1, $('#search').val(), sortBy, sortDirection);
+}
+
+
+function updateSortDirection(direction) {
+  sortDirection = direction;
+  console.log(sortDirection);
+  highlightSortDirection();
+  search();
+}
+
+function updateSortBy(by) {
+  sortBy = by;
+  search();
+  highlightSortBy();
+}
+
+
+function changePage(pageNumber) {
+  const searchQuery=$('search').val();
+  displayVideoGroups(pageNumber, searchQuery, sortBy, sortDirection);
+}
+
+
+function highlightSortDirection() {
+  $('.btn-sort-direction').removeClass('active');
+  if (sortDirection === 'asc') {
+    $('#btnSortAsc').addClass('active');
+  } else {
+    $('#btnSortDesc').addClass('active');
+  }
+}
+
+function highlightSortBy() {
+  $('.dropdown-item.sort-by').removeClass('active');
+  if (sortBy === 'name') {
+    $('#sortByTitle').addClass('active');
+  } else {
+    $('#sortByDate').addClass('active');
+  }
+}
+
+  function displayVideoGroups(pageNumber, searchQuery,sortBy, sortDirection) {
+
+    const videosPerPage = 9;
     const startIndex = (pageNumber - 1) * videosPerPage;
     const endIndex = startIndex + videosPerPage;
   
@@ -13,10 +62,24 @@ $(document).ready(function () {
           video.description.toLowerCase().includes(searchQuery.toLowerCase());
       }) : response.data;
   
-      const sortedData = sortDirection === 'asc' ?
-        filteredData.sort((a, b) => a.name.localeCompare(b.name)) :
-        filteredData.sort((a, b) => b.name.localeCompare(a.name));
-  
+      sortedData = sortDirection === 'asc' ?
+      filteredData.sort((b,a) => a.name.localeCompare(b.name)) :
+      filteredData.sort((a,b) => a.name.localeCompare(b.name));
+    if (sortBy == 'name') {
+      // Sort by name
+      sortedData = sortDirection === 'asc' ?
+        filteredData.sort((a,b) => a.name.localeCompare(b.name)) :
+        filteredData.sort((b,a) => a.name.localeCompare(b.name));
+    } else if (sortBy === 'created_at') {
+      // Sort by creation date
+      sortedData = filteredData.sort((a, b) => {
+        const dateA = new Date(a.created_at);
+        const dateB = new Date(b.created_at);
+        return sortDirection === 'asc' ?  dateB - dateA : dateA - dateB ;
+      });
+    }
+
+
       const totalItems = sortedData.length;
       const totalPages = Math.ceil(totalItems / videosPerPage);
       const currentPage = pageNumber;
@@ -28,7 +91,7 @@ $(document).ready(function () {
       let videoListHtml = '';
       videosResponse.forEach(video => {
         videoListHtml += `
-          <div class="col-md-3 col-sm-6 col-xs-12 pb-4 hover-zoom">
+          <div class="col-lg-4 col-md-6 col-sm-12 pb-4 hover-zoom">
             <a href="manage.view.video.html?id=${video.vid_group_id}" style="text-decoration: none;">
               <div class="card p-2" style="background-color:#131C39; color:#fff; height:15rem;">
                 <div class="card-body">
@@ -40,7 +103,6 @@ $(document).ready(function () {
           </div>
         `;
      
-        console.log(video.vid_group_id)
       });
       $('.ebooks').html(videoListHtml);
      
@@ -53,41 +115,29 @@ $(document).ready(function () {
   
     let paginationButtons = '';
   
+  
     if (totalPages > 0) {
-      paginationButtons += `<button type="button" class="btn btn-outline-primary ${currentPage === 1 ? 'disabled' : ''}" onclick="changePage(${currentPage - 1})">Previous</button>`;
+      paginationButtons += `
+      <button type="button" class="btn btn-outline-primary montserrat-semibold ${currentPage === 1 ? 'disabled' : ''}" onclick="changePage(${currentPage - 1})">
+          <span class="d-none d-md-block">Previous</span>
+          <i class="bi bi-chevron-double-left d-block d-md-none"></i>
+      </button>`;
   
       for (let i = 1; i <= totalPages; i++) {
         const activeClass = i === currentPage ? 'active' : '';
         paginationButtons += `<button type="button" class="btn btn-outline-primary ${activeClass}" onclick="changePage(${i})">${i}</button>`;
       }
   
-      paginationButtons += `<button type="button" class="btn btn-outline-primary ${currentPage === totalPages ? 'disabled' : ''}" onclick="changePage(${currentPage + 1})">Next</button>`;
+      paginationButtons += `<button type="button" class="btn btn-outline-primary montserrat-semibold ${currentPage === totalPages ? 'disabled' : ''}" onclick="changePage(${currentPage + 1})">
+       <span class="d-none d-md-block">Next</span>
+      <i class="bi bi-chevron-double-right d-block d-md-none"></i>
+  </button>`;
     } else {
       paginationButtons = '';
     }
-  
     pageNumbers.innerHTML = totalPages > 0 ? `Showing ${currentPage} out of ${totalPages} pages` : 'Showing 0 out of 0 pages';
     paginationContainer.html(paginationButtons);
   }
   
-  function changePage(pageNumber) {
-    displayVideoGroups(pageNumber, document.getElementById('searchInput').value, $('#sortDirection').val());
-  }
-  
-  function searchEbookGroups() {
-    console.log('Search Input:', document.getElementById('searchInput').value);
-    displayVideoGroups(1, document.getElementById('searchInput').value, currentSortDirection);
-  }
-  
 
 
-  let currentSortDirection = 'asc';
-  function toggleSorting() {
-    currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
-  
-    const sortIcon = $('#sortIcon');
-    sortIcon.removeClass('bi-caret-up-fill bi-caret-down-fill').addClass(currentSortDirection === 'asc' ? 'bi-caret-up-fill' : 'bi-caret-down-fill');
-    console.log(currentSortDirection)
-    searchVideoGroups(currentSortDirection);
-  }
-  

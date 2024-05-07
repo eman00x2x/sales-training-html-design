@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User | View Video</title>
-
+    <title>User | Video Group</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +18,8 @@
     <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="/Cdn/css/manage.video.css">
+    <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
+
     <!-- JQUERY -->
     <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
     <!-- TABLER -->
@@ -25,117 +27,98 @@
     <!-- CUSTOM JS -->
     <script src="../Cdn/js/script.js"></script>
     <script src="/Cdn/js/manage.view.video.js"></script>
-</head>
-<style>
-    .card p {
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
 
-    .card:hover {
-        box-shadow: 5px 6px 6px 2px #e9ecef;
-        transform: scale(1.02);
-    }
 
-    .dropdown-toggle::after {
-        display: none;
-    }
-</style>
 </head>
 
 <body>
-<div class="page">
-    <!-- SIDEBAR -->
+
     <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
         style="background-color: #1c1c39 !important;" data-bs-theme="dark"></aside>
+
+
     <div class="page-wrapper">
         <div class="header"></div>
-        <div class="page-body content m-0">
-            <div class="container-fluid p-0">
-                <div class="container">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center my-5">
-                        <div class="p-2 flex-grow-1 text-nowrap">
-                            <h2 class="text-primary">Available Videos</h2>
-                        </div>
-                        <div class="p-2">
-                            <div class="row g-2">
-                                <div class="col-auto">
-                                    <input type="text" class="form-control" style="max-width: 300px;"
-                                        id="searchInput" onkeyup="searchEbook()"
-                                        placeholder="Search by Title, ISBN, Author" />
-                                </div>
-                                <div class="col-auto">
-                                    <div class="dropdown">
-                                        <a href="#" class="btn btn-outline-primary dropdown-toggle"
-                                            id="dropdownMenuButton" data-bs-toggle="dropdown">SORT BY <i
-                                                class="bi bi-chevron-down"></i></a>
-                                        <div class="dropdown-menu dropdown-menu-arrow">
-                                            <a class="dropdown-item" href="#"
-                                                onclick="displayChosen('Title','title')">
-                                                Title
-                                            </a>
-                                            <a class="dropdown-item" href="#"
-                                                onclick="displayChosen('Author','author')">
-                                                Author
-                                            </a>
-                                        </div>
+
+
+        <div class="container-fluid">
+
+        
+
+            <div class="container ">
+
+                <ol class="breadcrumb breadcrumb-arrows pt-3" aria-label="breadcrumbs">
+                    <li class="breadcrumb-item montserrat-semibold "><a class="breadlink"
+                            href="manage.video.grouo.html">Video Group List</a></li>
+                    <li class="breadcrumb-item active montserrat-bold" aria-current="page"><a href="">View
+                            Available Videos</a></li>
+                </ol>
+
+                <div class="row pt-2">
+                    <div class="title col-lg-4">
+                        <h1 class="fw-bold text-primary">
+                            <i class="bi bi-film"></i> AVAILABLE VIDEOS
+                        </h1>
+                    </div>
+
+                 
+                   <div class="d-flex justify-content-start align-items-start  col-lg-8 pb-3">
+                        <div class="btn-sort dropdown montserrat-regular">
+                            <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
+                                data-bs-toggle="dropdown"></i>
+                            <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
+                                data-bs-toggle="dropdown">Sort by</a>
+                            <div class="dropdown-menu">
+                                <div
+                                    class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
+                                    <div class="btn-group1 col-7">
+                                        <button id="btnSortAsc" type="button"
+                                            class="btn btn-sm btn-outline-primary btn-sort-direction active"
+                                            onclick="updateSortDirection('asc')">
+                                            <i class="bi bi-sort-alpha-up fs-2"></i>
+                                        </button>
+                                        <button id="btnSortDesc" type="button"
+                                            class="btn btn-sm btn-outline-primary btn-sort-direction"
+                                            onclick="updateSortDirection('desc')">
+                                            <i class="bi bi-sort-alpha-down-alt fs-2"></i>
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="col-auto">
-                                    <button class="btn btn-light btn-filter" style="padding: 5px 5px !important;"
-                                        onclick="toggleSorting()">
-                                        <h5 class="m-0"><i id="sortIcon" class="bi bi-caret-up-fill px-1"
-                                                style="color: black;"></i></h5>
-                                    </button>
-                                </div>
+                                <a id="sortByTitle" class="dropdown-item sort-by active" href="#"
+                                    onclick="updateSortBy('name')">Video Title</a>
+                                <a id="sortByDate" class="dropdown-item sort-by" href="#"
+                                    onclick="updateSortBy('category')">Category</a>
+
                             </div>
                         </div>
-                    </div>
-                    <div class="row ebook-list">
+                        <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
+                            placeholder="Search by Title" name="search" value="" onkeyup="search()" />
+                </div> 
+                    
+                </div>
+              
 
-                    </div>
-                    <!-- modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
+              
+                <div class="row ebook-list">
 
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <!-- Left side: Ebook image -->
-                                        <div class="col-md-6">
-                                            <img id="modalEbookImage" src="" alt="Ebook Thumbnail"
-                                                class="img-fluid">
-                                        </div>
-                                        <!-- Right side: Title, Author, Description -->
-                                        <div class="col-md-6">
-                                            <h3 id="modalEbookTitle"></h3> <!-- Placeholder for ebook title -->
-                                            <p id="modalEbookAuthor"></p> <!-- Placeholder for ebook author -->
-                                            <p id="modalEbookDescription"></p>
-                                            <a href="#" id="readNowButton" class="btn btn-primary"><i
-                                                    class="bi bi-book-half"></i> Read Now</a>
-                                            <!-- Placeholder for ebook description -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </div>
 
-                    <!-- pagination -->
-                    <div class="d-flex align-items-center justify-content-between justify-content-sm-start mt-3">
-                        <p id="page-numbers" class="me-md-auto"></p>
-                        <div class="btn-group mt-3 mt-sm-0">
-                        </div>
+
+                
+                <!-- pagination -->
+                <div class="d-flex align-items-center justify-content-between justify-content-sm-start mt-3 py-3">
+                    <p id="page-numbers" class="me-md-auto"></p>
+                    <div class="btn-group mt-3 mt-sm-0">
                     </div>
                 </div>
+
             </div>
+
+            <div class="footer"></div>
+
+
         </div>
-        <div class="footer container-fluid"></div>
     </div>
-</div>
 </body>
 
 </html>
