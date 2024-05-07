@@ -41,72 +41,65 @@
             <!-- CONTENT -->
             <div class="page-body content">
                 <div class="container-fluid">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="content">
-                                <!-- TITLE -->
-                                <div class="d-flex align-center justify-content-start">
-                                    <i class="bi bi-book h1 my-auto text-primary"></i>
-                                    <span class="fs-1 ms-2 montserrat-bold text-primary">E-Books</span>
-                                </div>
+                    <div class="content">
+                        <!-- TITLE -->
+                        <div class="d-flex align-center justify-content-start">
+                            <i class="bi bi-book h1 my-auto text-primary"></i>
+                            <span class="fs-1 ms-2 montserrat-bold text-primary">E-Books</span>
+                        </div>
 
-                                <!-- SORT, FILTER AND SEARCH -->
-                                <div
-                                    class="d-flex flex-column-reverse flex-sm-row justify-content-between align-items-center mb-3 mt-2">
-                                    <div class="d-flex justify-content-start align-items-center col col-12 col-sm-7">
-                                        <div class="btn-sort dropdown montserrat-regular">
-                                            <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
-                                                data-bs-toggle="dropdown"></i>
-                                            <a href="#"
-                                                class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
-                                                data-bs-toggle="dropdown">Sort
-                                                by</a>
-                                            <div class="dropdown-menu">
-                                                <div
-                                                    class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
-                                                    <div class="btn-group col-7">
-                                                        <button type="button" class="btn btn-sm btn-outline-primary"><i
-                                                                class="bi bi-sort-alpha-down fs-2"></i></button>
-                                                        <button type="button" class="btn btn-sm btn-outline-primary"><i
-                                                                class="bi bi-sort-alpha-down-alt fs-2"></i></button>
-                                                    </div>
-                                                </div>
-                                                <a class="dropdown-item" href="#">E-Book Name</a>
-                                                <a class="dropdown-item" href="#">Created Date</a>
+                        <!-- SORT, FILTER AND SEARCH -->
+                        <div
+                            class="d-flex flex-column-reverse flex-sm-row justify-content-between align-items-center mb-3 mt-2">
+                            <div class="d-flex justify-content-start align-items-center col col-12 col-sm-7">
+                                <div class="btn-sort dropdown montserrat-regular">
+                                    <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
+                                        data-bs-toggle="dropdown"></i>
+                                    <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
+                                        data-bs-toggle="dropdown">Sort
+                                        by</a>
+                                    <div class="dropdown-menu">
+                                        <div
+                                            class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
+                                            <div class="btn-group col-7">
+                                                <button type="button" class="btn btn-sm btn-outline-primary"><i
+                                                        class="bi bi-sort-alpha-down fs-2"></i></button>
+                                                <button type="button" class="btn btn-sm btn-outline-primary"><i
+                                                        class="bi bi-sort-alpha-down-alt fs-2"></i></button>
                                             </div>
                                         </div>
-                                        <input type="text" class="search ms-1 form-control montserrat-regular"
-                                            id="search" placeholder="Search by E-Book Name" name="search"
-                                            value="" />
+                                        <a class="dropdown-item" href="#">E-Book Name</a>
+                                        <a class="dropdown-item" href="#">Created Date</a>
                                     </div>
-                                    <button type="button"
-                                        class="btn btn-md btn-add btn-outline-primary montserrat-semibold col col-12 col-sm-4 col-lg-3 mb-2 mb-sm-0">
-                                        <i class="bi bi-plus-circle"></i><span class="ms-2">Add E-Books</span>
-                                    </button>
                                 </div>
+                                <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
+                                    placeholder="Search by E-Book Name" name="search" value="" />
+                            </div>
+                            <button type="button"
+                                class="btn btn-md btn-add btn-outline-primary montserrat-semibold col col-12 col-sm-4 col-lg-3 mb-2 mb-sm-0">
+                                <i class="bi bi-plus-circle"></i><span class="ms-2">Add E-Books</span>
+                            </button>
+                        </div>
 
-                                <!-- TABLE LIST -->
-                                <div class='list'>
-                                    <div class='table-responsive'>
-                                        <table class='ebooks table table-bordered table-striped'>
-                                            <thead>
-                                                <tr class="montserrat-regular">
-                                                    <th class="align-middle text-center">ID</th>
-                                                    <th class="align-middle text-center">THUMBNAIL</th>
-                                                    <th class="align-middler text-center">TITLE</th>
-                                                    <th class="align-middler text-center">SUBTITLE</th>
-                                                    <th class="align-middle text-center">AUTHOR</th>
-                                                    <th class="align-middle text-center">ISBN</th>
-                                                    <th class="align-middle text-center">CATEGORY</th>
-                                                    <th class="align-middle text-center">CODE</th>
-                                                    <th class="align-middle text-center">ACTIONS</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="data-container">
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                        <!-- TABLE LIST -->
+                        <div class='list'>
+                            <div class='table-responsive'>
+                                <table class='table table-striped head-table ebooks border border-1'>
+                                    <thead>
+                                        <tr class="montserrat-regular">
+                                            <th class="align-middle text-center">E-BOOK ID</th>
+                                            <th class="align-middle text-center">THUMBNAIL</th>
+                                            <th class="align-middler text-center">TITLE</th>
+                                            <th class="align-middler text-center">SUBTITLE</th>
+                                            <th class="align-middle text-center">AUTHOR</th>
+                                            <th class="align-middle text-center">ISBN</th>
+                                            <th class="align-middle text-center">CATEGORY</th>
+                                            <th class="align-middle text-center">ACTIONS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="data-container">
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
