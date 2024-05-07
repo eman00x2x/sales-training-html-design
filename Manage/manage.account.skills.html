@@ -14,13 +14,15 @@
             <!--SPECIAL SKILLS AND CERTIFICATIONS -->
             <span class="fs-2 montserrat-bold lh-1 lh-lg-base">SPECIAL SKILLS AND CERTIFICATIONS</span>
             <div class="d-flex flex-column">
+                <label for="skills" class="fs-4 text-secondary my-2 montserrat-regular">Skills</label>
                 <div class="d-flex row align-items-center">
-                    <label for="skills" class="fs-4 text-secondary mt-1 montserrat-regular">Skills</label>
-                    <div class="col-4 col-lg-2">
-                        <input type="text" name="skills" id="skills" class="form-control montserrat-regular my-2"
-                            value="" autocomplete="off">
-                            <button type="button" class="btn btn-outline mt-2 btn-outline-primary "><i
-                                class="bi bi-plus-lg"></i><span class="ms-2">Add Mobile Number</span></button>
+                    <div class="d-flex flex-column flex-md-row gap-2 align-items-center">
+                        <div class="d-flex flex-row badge bg-secondary-lt rounded-4 py-2 px-4 gap-3">
+                            <span class="fs-4 montserrat-regular" id="skills" name="skills"></span>
+                            <i class="bi bi-x fs-2 fw-bold remove"></i>
+                        </div>
+                        <button type="button" class="btn btn-add mobile-add btn-outline btn-outline-primary"><i
+                            class="bi bi-plus-lg"></i><span class="ms-2">Add Skill</span></button>
                     </div>
                 </div>
 
@@ -28,31 +30,43 @@
 
                 <div class="d-flex flex-column flex-md-row gap-2">
                     <div class="d-flex flex-column col-12 col-md-6 align-items-start flex-fill">
-                        <div class="col-12 d-flex flex-column">
+                        <div class="col-12">
                             <label for="certificates"
-                                class="fs-4 text-secondary mt-1 montserrat-regular">Certifications</label>
-                            <div class="input-container">
-                                <input type="text" name="certificates" id="certificates"
-                                    class="form-control montserrat-regular mt-2" value="" autocomplete="off">
-                                <div class="d-flex justify-content-center align-items-center mt-2">
-                                    <button class="btn btn-add d-none btn-primary" style="width: 2em; height: 2em;"><i
-                                            class="bi bi-plus-lg"></i></button>
+                                class="fs-4 text-secondary my-2 montserrat-regular">Certification</label>
+                            <input type="hidden" value="1" id="total_certificate_num">
+                            <div class="d-flex flex-column gap-2" id="certification">
+                                <div id='row' class="d-flex justify-content-between align-items-center gap-1">
+                                    <input type="text" name="certificates" id="certificates" class="form-control"
+                                        placeholder="Add Certificates" aria-label="Recipient's username"
+                                        aria-describedby="button-addon2">
+                                    <button type="button" id="deleteRow"
+                                        class="btn mobile-remove btn-remove btn-outline btn-outline-danger "><i
+                                            class="bi bi-trash3"></i><span class="ms-2">Remove</span></button>
                                 </div>
                             </div>
+                            <button type="button"
+                                class="mt-2 btn btn-add mobile-add btn-outline btn-outline-primary"><i
+                                    class="bi bi-plus-lg"></i><span class="ms-2">Add Certificates</span></button>
                         </div>
                     </div>
                     <div class="d-flex flex-column col-12 col-md-6 align-items-start flex-fill">
                         <div class="col-12">
                             <label for="professions"
-                                class="fs-4 text-secondary mt-1 montserrat-regular">Professions</label>
-                            <div class="input-container">
-                                <input type="text" name="professions" id="professions"
-                                    class="form-control montserrat-regular mt-2" value="" autocomplete="off">
-                                <div class="d-flex justify-content-center align-items-center mt-2">
-                                    <button class="btn btn-add btn-primary d-none" style="width: 2em; height: 2em;"><i
-                                            class="bi bi-plus-lg"></i></button>
+                                class="fs-4 text-secondary my-2 montserrat-regular">Professions</label>
+                            <input type="hidden" value="1" id="total_professions_num">
+                            <div class="d-flex flex-column gap-2" id="profession">
+                                <div id='row' class="d-flex justify-content-between align-items-center gap-1">
+                                    <input type="text" name="professions" id="professions" class="form-control"
+                                        placeholder="Add Professions" aria-label="Recipient's username"
+                                        aria-describedby="button-addon2">
+                                    <button type="button" id="deleteRow"
+                                        class="btn mobile-remove btn-remove btn-outline btn-outline-danger "><i
+                                            class="bi bi-trash3"></i><span class="ms-2">Remove</span></button>
                                 </div>
                             </div>
+                            <button type="button"
+                                class="mt-2 btn btn-add mobile-add btn-outline btn-outline-primary"><i
+                                    class="bi bi-plus-lg"></i><span class="ms-2">Add Professions</span></button>
                         </div>
                     </div>
                 </div>
@@ -104,7 +118,8 @@
                     </div>
                 </div>
                 <div class="d-flex flex-row gap-2 justify-content-center mt-4">
-                    <button id="editButton2" class="btn btn-light border border-secondary montserrat-regular" type="button">
+                    <button id="editButton2" class="btn btn-light border border-secondary montserrat-regular"
+                        type="button">
                         Edit Data
                     </button>
                     <button id="saveButton2" type="button" class=" btn btn-success btn-md montserrat-regular"

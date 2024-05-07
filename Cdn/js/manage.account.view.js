@@ -20,13 +20,13 @@ $(document).ready(function () {
         }
     });
 
-    $('#tab-top-2').load('manage.account.skills.html', function () {
+    $('#tab-top-1').load('manage.account.skills.html', function () {
     });
 
     $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
         var target = $(e.target).attr("href");
         if (target === '#tab-top-1') {
-            $('#tab-top-1').load('manage.account.profile.details.html');
+            $('#tab-top-1').load('manage.account.skills.html');
         }
         else if (target === '#tab-top-2') {
             $('#tab-top-2').load('manage.account.skills.html');

@@ -13,7 +13,7 @@ $(document).ready(function () {
         let profile = response.data.find(profile => profile.profile_id === parseInt(id));
 
         if (profile) {
-            $('#skills').val(profile.skills[0]);
+            $('#skills').text(profile.skills[0]);
             $('#certificates').val(profile.certification[0]);
             $('#professions').val(profile.professions[0]);
             $('#company').val(profile.work_experience[0].company);
@@ -29,14 +29,14 @@ $(document).ready(function () {
 })
 
 $(document).on('click', '.btn-add', function () {
-    let new_chq_no = parseInt($('#total_mobile_num').val()) + 1;
-    let new_input = '<div id="row" class="d-flex justify-content-between align-items-center gap-1 mt-2">' +
-        '<input type="text" class="form-control" placeholder="Add Contact Number" aria-label="Recipient\'s username" aria-describedby="button-addon2">' +
+    let new_chq_no = parseInt($('#total_certificates_num').val()) + 1;
+    let new_input = '<div id="row" class="d-flex justify-content-between align-items-center gap-1">' +
+        '<input type="text" class="form-control" placeholder="Add Certfificates" aria-label="Recipient\'s username" aria-describedby="button-addon2">' +
         '<button type="button" id="deleteRow" class="btn btn-remove btn-outline btn-outline-danger "><i class="bi bi-trash3"></i><span class="ms-2">Remove</span></button>' +
         '</div>'
 
-    $('#mobile_number').append(new_input);
-    $('#total_mobile_num').val(new_chq_no);
+    $('#certification').append(new_input);
+    $('#total_certificates_num').val(new_chq_no);
 });
 
 $(document).on('click', '#editButton2', function () {
