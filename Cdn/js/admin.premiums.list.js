@@ -15,6 +15,12 @@ $(document).on('click', '.btn-add', function (e) {
     window.location.href = "admin.premiums.create.html";
 });
 
+$(document).on('click', '.btn-view', function (e) {
+    id = $(this).data('id');
+    window.location.href = "admin.premiums.view.html?id=" + id;
+});
+
+
 $(document).ready(function () {
     $('#search').on('input', function() {
         var searchText = $(this).val().toLowerCase().trim();

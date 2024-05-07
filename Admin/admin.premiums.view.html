@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN | Premium</title>
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../Cdn/css/font.css">
+    <!-- BOOSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- TABLER CSS -->
+    <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
+    <!-- JQUERY -->
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <!-- TABLER -->
+    <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
+    <!-- CUSTOM JS -->
+    <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
+    <script src="../Cdn/js/admin.premiums.view.js"></script>
+
+</head>
+
+<body>
+    <div class="page">
+        <!-- SIDEBAR -->
+        <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
+            style="background-color: #1c1c39 !important;" data-bs-theme="dark"></aside>
+
+        <div class="page-wrapper">
+            <!-- HEADER -->
+            <div class="header"></div>
+
+            <!-- CONTENT -->
+            <div class="page-body content">
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-body">
+                            <div
+                                class="d-flex justify-content-start mb-2 align-items-center border-bottom border-secondary-subtle pb-1">
+                                <i class="bi bi-eye fs-2"></i>
+                                <h5 class="ms-2 modal-title font-bold">
+                                    View Premium Details
+                                </h5>
+                            </div>
+                            <div class="response" style="margin-top: 5px;"></div>
+
+                            <form id="form" action="" method="post">
+                                <input type="hidden" name="csrf_token" id="csrf_token" value="" />
+                                <label for="category" class="montserrat-bold">Premium Category</label>
+                                <div class=" mb-3">
+                                    <p type="text" name="category" id="category" value="" autocomplete="off"> </p>
+                                </div>
+                                <label for="type" class="montserrat-bold">Premium Type</label>
+                                <div class=" mb-3">
+                                    <p name="type" id="type" rows="3" autocomplete="off"></p>
+                                </div>
+                                <label for="name" class="montserrat-bold">Name of this Premium</label>
+                                <div class=" mb-3">
+                                    <p name="name" id="name" rows="3" autocomplete="off"></p>
+                                </div>
+                                <label for="description" class="montserrat-bold">Description of this Premium</label>
+                                <div class=" mb-3">
+                                    <p name="description" id="description" rows="3" autocomplete="off"></p>
+                                </div>
+                                <label for="script" class="montserrat-bold">Script of this Premium</label>
+                                <div class=" mb-3">
+                                    <p name="script" id="script" rows="3" autocomplete="off"></p>
+                                </div>
+                                <label for="duration" class="montserrat-bold">Duration of this Premium</label>
+                                <div class=" mb-3">
+                                    <p name="duration" id="duration" rows="3" autocomplete="off"></p>
+                                </div>
+                                <label for="cost" class="montserrat-bold">Cost of this Premium</label>
+                                <div class=" mb-3">
+                                    <p name="cost" id="cost" rows="3" autocomplete="off"></p>
+                                </div>
+                                <label for="visibility" class="montserrat-bold">Visibility</label>
+                                <div class=" mb-3">
+                                    <p name="visibility" id="visibility" rows="3" autocomplete="off"></p>
+                                </div>
+                                <label for="created_at" class="montserrat-bold">Created at</label>
+                                <div class=" mb-3">
+                                    <p name="created_at" id="created_at" rows="3" autocomplete="off"></p>
+                                </div>
+                            </form>
+
+                            <div class="d-flex justify-content-end">
+                                <button id="back" type="button" class="btn border border-secondary me-1"
+                                    data-bs-dismiss="modal">
+                                    Back
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer container-fluid"></div>
+    </div>
+</body>
+
+</html>
