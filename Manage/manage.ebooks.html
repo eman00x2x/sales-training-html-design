@@ -46,7 +46,7 @@
             <div class="header"></div>
             <div class="page-body content m-0">
                 <div class="container-fluid p-0">
-                    <div class="container ">
+                    <div class="container">
                         <div class="d-flex flex-wrap justify-content-between align-items-center my-5">
                             <div class="p-2 flex-grow-1 text-nowrap">
                                 <h2 class="text-primary">E-books</h2>
@@ -88,30 +88,29 @@
                         <div class="row ebook-list">
 
                         </div>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            Launch demo modal
-                        </button>
-
+                        <!-- modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Ebook Details</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
+
                                     <div class="modal-body">
-                                        <h3 id="modalEbookTitle"></h3> <!-- Placeholder for ebook title -->
-                                        <p id="modalEbookAuthor"></p> <!-- Placeholder for ebook author -->
-                                        <img id="modalEbookImage" src="" alt="Ebook Thumbnail" class="img-fluid">
-                                        <!-- Placeholder for ebook image -->
-                                        <p id="modalEbookDescription"></p> <!-- Placeholder for ebook description -->
-                                        <button type="button" class="btn btn-primary"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save
-                                            changes</button>
+                                        <div class="row">
+                                            <!-- Left side: Ebook image -->
+                                            <div class="col-md-6">
+                                                <img id="modalEbookImage" src="" alt="Ebook Thumbnail"
+                                                    class="img-fluid">
+                                            </div>
+                                            <!-- Right side: Title, Author, Description -->
+                                            <div class="col-md-6">
+                                                <h3 id="modalEbookTitle"></h3> <!-- Placeholder for ebook title -->
+                                                <p id="modalEbookAuthor"></p> <!-- Placeholder for ebook author -->
+                                                <p id="modalEbookDescription"></p>
+                                                <a href="#" id="readNowButton" class="btn btn-primary"><i
+                                                        class="bi bi-book-half"></i> Read Now</a>
+                                                <!-- Placeholder for ebook description -->
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

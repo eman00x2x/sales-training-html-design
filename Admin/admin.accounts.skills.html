@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPECIAL SKILLS AND CERTIFICATIONS</title>
+    <script src="../Cdn/js/manage.account.skills.js"></script>
+</head>
+
+<body>
+    <form class="card-body">
+        <div class="p-4 rounded-3 lh-base">
+            <!--SPECIAL SKILLS AND CERTIFICATIONS -->
+            <span class="fs-2 montserrat-bold">SPECIAL SKILLS AND CERTIFICATIONS</span>
+            <div class="d-flex flex-column">
+                <div class="row align-items-center">
+                    <label for="skills" class="fs-4 text-secondary mt-1 montserrat-regular">Skills</label>
+                    <div class="col-2">
+                        <input type="text" name="skills" id="skills" class="form-control montserrat-regular my-2"
+                            value="" autocomplete="off">
+                    </div>
+                    <div class="col-2">
+                        <input type="text" name="skills" class="form-control montserrat-regular my-2" value=""
+                            autocomplete="off">
+                    </div>
+                    <div class="col-2">
+                        <input type="text" name="skills" class="form-control montserrat-regular my-2" value=""
+                            autocomplete="off">
+                    </div>
+                    <div class="col-2">
+                        <input type="text" name="skills" class="form-control montserrat-regular my-2" value=""
+                            autocomplete="off">
+                    </div>
+                    <div class="col-2">
+                        <input type="text" name="skills" class="form-control montserrat-regular my-2" value=""
+                            autocomplete="off">
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-add d-none btn-primary" style="width: 2em; height: 2em;"><i
+                                class="bi bi-plus-lg"></i></button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 d-flex flex-column align-items-start">
+                        <div class="col-12 d-flex flex-column">
+                            <label for="certificates"
+                                class="fs-4 text-secondary mt-1 montserrat-regular">Certifications</label>
+                            <div class="input-container">
+                                <input type="text" name="certificates" id="certificates"
+                                    class="form-control montserrat-regular mt-2" value="" autocomplete="off">
+                                <div class="d-flex justify-content-center align-items-center mt-2">
+                                    <button class="btn btn-add d-none btn-primary" style="width: 2em; height: 2em;"><i
+                                            class="bi bi-plus-lg"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 d-flex flex-column align-items-start">
+                        <div class="col-12">
+                            <label for="professions"
+                                class="fs-4 text-secondary mt-1 montserrat-regular">Professions</label>
+                            <div class="input-container">
+                                <input type="text" name="professions" id="professions"
+                                    class="form-control montserrat-regular mt-2" value="" autocomplete="off">
+                                <div class="d-flex justify-content-center align-items-center mt-2">
+                                    <button class="btn btn-add btn-primary d-none" style="width: 2em; height: 2em;"><i
+                                            class="bi bi-plus-lg"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- OTHER INFORMATION -->
+                <hr class="my-3">
+                <div class="d-flex flex-row justify-content-between">
+                    <span class="fs-2 montserrat-bold">WORK EXPERIENCE</span>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <button class="btn btn-add btn-primary d-none" style="width: 2em; height: 2em;"><i
+                                class="bi bi-plus-lg"></i></button>
+                    </div>
+                </div>
+                <div class="d-flex flex-column">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="company" class="fs-4 text-secondary mt-1 montserrat-regular">Company</label>
+                            <div class="input-container">
+                                <input type="text" name="company" id="company"
+                                    class="form-control montserrat-regular my-2" value="" autocomplete="off">
+                            </div>
+                            <label for="date-hired" class="fs-4 text-secondary mt-1 montserrat-regular">Date
+                                Hired</label>
+                            <div class="input-container">
+                                <input type="date" name="date-hired" id="date-hired"
+                                    class="form-control montserrat-regular my-2" value="" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="position" class="fs-4 text-secondary mt-1 montserrat-regular">Position</label>
+                            <div class="input-container">
+                                <input type="text" name="position" id="position"
+                                    class="form-control montserrat-regular my-2" value="" autocomplete="off">
+                            </div>
+                            <label for="date-resigned" class="fs-4 text-secondary mt-1 montserrat-regular">Date
+                                Resigned</label>
+                            <div class="input-container">
+                                <input type="date" name="date-resigned" id="date-resigned"
+                                    class="form-control montserrat-regular my-2" value="" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="date-resigned" class="fs-4 text-secondary mt-1 montserrat-regular">Job
+                            Description</label>
+                        <div class="input-container">
+                            <textarea name="description" id="description" class="form-control montserrat-regular"
+                                value="" autocompconste="off" wrap=physical rows="5"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-row gap-2 justify-content-center mt-4">
+                    <button id="editButton2" class="btn btn-light border border-secondary montserrat-regular"
+                        type="button">
+                        Edit Data
+                    </button>
+                    <button id="saveButton2" type="button" class=" btn btn-success btn-md montserrat-regular"
+                        style="display: none;">
+                        Save Changes
+                    </button>
+                </div>
+            </div>
+    </form>
+</body>
+
+</html>

@@ -32,24 +32,22 @@
   <div class="modal fade" id="dynamicModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered" id="form-content">
       <div class="modal-content">
-        <form action="" id="form">
-          <input type="hidden" name="csrf_token" id="csrf_token" value="" />
-          <div class="modal-body d-flex flex-column justify-content-center align-items-center">
-            <i class="bi bi-trash3-fill text-danger" style="font-size: 10em !important;"></i>
-            <h1 class="montserrat-bold" style="font-size: 30px">
-              Delete Organization
-            </h1>
-            <p class="montserrat-regular" style="font-size: 15px">
-              Are you sure you want to delete this organization?
-            </p>
-            <div class="text-end">
-              <button type="button" class="btn border border-secondary-subtle btn-light montserrat-semibold" data-bs-dismiss="modal">
-                Close
-              </button>
-              <button type="button" class="btn btn-delete btn-danger montserrat-semibold">Delete</button>
-            </div>
+        <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+          <i class="bi bi-trash3-fill text-danger" style="font-size: 10em !important;"></i>
+          <h1 class="montserrat-bold" style="font-size: 30px">
+            Delete Organization
+          </h1>
+          <p class="montserrat-regular" style="font-size: 15px">
+            Are you sure you want to delete this organization?
+          </p>
+          <div class="text-end">
+            <button type="button" class="btn border border-secondary-subtle btn-light montserrat-semibold"
+              data-bs-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-delete btn-danger montserrat-semibold">Delete</button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
@@ -90,10 +88,12 @@
                 <p id="description"></p>
               </div>
               <div class="text-end">
-                <button id="back" type="button" class="btn border border-secondary montserrat-semibold" data-bs-dismiss="modal">
+                <button id="back" type="button" class="btn border border-secondary montserrat-semibold"
+                  data-bs-dismiss="modal">
                   Back
                 </button>
-                <button type="button" class="btn btn-danger montserrat-semibold" data-bs-toggle='modal' data-bs-target='#dynamicModal'>
+                <button type="button" class="btn btn-danger montserrat-semibold" data-bs-toggle='modal'
+                  data-bs-target='#dynamicModal'>
                   Continue Deletion
                 </button>
               </div>

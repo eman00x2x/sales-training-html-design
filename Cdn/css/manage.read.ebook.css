@@ -1,0 +1,26 @@
+:root {
+    --text-color: black;
+    --background-color: white;
+}
+
+.light-scheme {
+    --text-color: black;
+    --background-color: white;
+    --content-background-color: #f8f9fa;
+}
+
+.gray-scheme {
+    --text-color: white;
+    --background-color: #3D4048;
+}
+
+.dark-scheme {
+    --text-color: white;
+    --background-color: #202125;
+}
+
+body, .form-select, .browse {
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+

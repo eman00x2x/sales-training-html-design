@@ -1,7 +1,4 @@
 $(document).ready(function () {
-    $('.header').load('header.html');
-    $('.sidebar').load('sidebar.html');
-    $('.footer').load('footer.html');
     getEbookGroupData();
 });
 $(document).on('click', '.btn-edit', function (e) {
@@ -19,7 +16,19 @@ $(document).on('click', '.btn-view', function (e) {
     id = $(this).data('id');
     window.location.href = "admin.ebook.groups.view.html?id=" + id;
 });
-
+$(document).ready(function () {
+    $('#search').on('input', function() {
+        var searchText = $(this).val().toLowerCase().trim();
+        if (!searchText) {
+            $('.ebook-group .data-container tr').show();
+            return;
+        }
+        $('.ebook-group .data-container tr').hide().filter(function() {
+            var idText = $(this).find('td:eq(0)').text().trim();
+            return idText === searchText;
+        }).show();
+    });
+});
 
 function getEbookGroupData() {
     let html = "";

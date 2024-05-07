@@ -16,14 +16,19 @@ const convertDate = (dateData) => {
   });
 };
 
+const formatDate = (epochTime) => {
+  let date = new Date(epochTime * 1000);
+  return date.toISOString().split('T')[0];
+};
+
 const displayActionButtons = (id) => {
   return `<td class='align-middle'>
-                <div class="btn-group" role="group" aria-label="Basic outlined example ">
-                    <button type="button" data-id='${id}' class="btn btn-md btn-view btn-outline-primary montserrat-semibold"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
-                    <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary montserrat-semibold"><i class="bi bi-pencil-square"></i><span class="ms-2">Edit</span></button>
-                    <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger montserrat-semibold"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
-                </div>
-            </td>`;
+              <div class="btn-group" role="group" aria-label="Basic outlined example ">
+                  <button type="button" data-id='${id}' class="btn btn-md btn-view btn-outline-primary montserrat-semibold"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
+                  <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary montserrat-semibold"><i class="bi bi-pencil-square"></i><span class="ms-2">Edit</span></button>
+                  <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger montserrat-semibold"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
+              </div>
+          </td>`;
 }
 
 const returnFilteredData = (data1, data2, attr, filter = "") =>  {

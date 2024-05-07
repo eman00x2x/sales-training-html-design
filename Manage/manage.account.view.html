@@ -25,7 +25,7 @@
     <!-- CUSTOM JS -->
     <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
     <script src="../Cdn/js/script.js"></script>
-    <!-- <script src="../Cdn/js/manage.account.view.js"></script> -->
+    <script src="../Cdn/js/manage.account.view.js"></script>
 </head>
 
 <body>
@@ -34,73 +34,73 @@
             <!-- BANNER + PROFILE PIC-->
             <div class="d-flex flex-column">
                 <div class="w-100 overflow-hidden banner"
-                    style="height: 22em; background-size: cover; background-image: url(https://www.tramada.com/wp-content/uploads/2019/03/Safe-as-houses-Twitter-header.png);">
+                    style="height: 18em; background-size: cover; background-image: url(https://www.tramada.com/wp-content/uploads/2019/03/Safe-as-houses-Twitter-header.png);">
                 </div>
-                <div class="container position-absolute">
+                <div class="container position-relative">
                     <span class="avatar avatar-sm rounded-circle" id="profile-pic"
-                        style="width: 17em; height: 17em; border: 0.5em solid white; background-image: url(https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.6435-9/121085645_10220966828459453_6276404778038889472_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH9mV3kVHW5LFmgXa6o1NTmZZC6nGdpVD1lkLqcZ2lUPXvYKHERvCdW9WLGoA4_mhzD5BP41hwAaTw_Usv7ykT8&_nc_ohc=GLVEvcYxzRAAb7C7xkO&_nc_ht=scontent.fmnl8-2.fna&oh=00_AfDa7_6gDWogjXMwZg8joZ62Q2hjVkpknSAY8ALXd7yveQ&oe=665672CA);"></span>
+                        style="width: 15em; height: 15em; border: 0.5em solid white; background-image: url(https://scontent.fmnl8-2.fna.fbcdn.net/v/t1.6435-9/121085645_10220966828459453_6276404778038889472_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeH9mV3kVHW5LFmgXa6o1NTmZZC6nGdpVD1lkLqcZ2lUPXvYKHERvCdW9WLGoA4_mhzD5BP41hwAaTw_Usv7ykT8&_nc_ohc=GLVEvcYxzRAAb7C7xkO&_nc_ht=scontent.fmnl8-2.fna&oh=00_AfDa7_6gDWogjXMwZg8joZ62Q2hjVkpknSAY8ALXd7yveQ&oe=665672CA);"></span>
                 </div>
             </div>
-            <div class="d-flex justify-content-center">
-                <div class="d-flex row info container-fluid">
-                    <!-- LEFT CARD INFO -->
-                    <div class="d-flex col-3 h-50">
-                        <div class="col-12 card p-4 rounded-3 lh-base">
-                            <span class="fs-2 montserrat-bold">MANNY FLORENDO</span>
-                            <span class="fs-4 text-secondary m-0 montserrat-regular">Candidate</span>
-                            <hr class="my-3">
-                            <div class="montserrat-regular">
-                                <!-- USER ID -->
-                                <div class="row fs-4">
-                                    <div class="col-4">
-                                        <span class="">User ID:</span>
-                                    </div>
-                                    <div class="col-8">
-                                        <span class="fw-bold">192312312</span>
-                                    </div>
-                                </div>
-                                <!-- BIRTHDAY -->
-                                <div class="row fs-4">
-                                    <div class="col-4">
-                                        <span class="">Birthday:</span>
-                                    </div>
-                                    <div class="col-8">
-                                        <span class="fw-bold">November 5, 2021</span>
-                                    </div>
-                                </div>
-                                <!-- USERNAME -->
-                                <div class="row fs-4">
-                                    <div class="col-4">
-                                        <span class="">Username:</span>
-                                    </div>
-                                    <div class="col-8">
-                                        <span class="fw-bold">mannyflorendo</span>
-                                    </div>
-                                </div>
-                                <!-- EMAIL -->
-                                <div class="row fs-4">
-                                    <div class="col-4">
-                                        <span class="">Email:</span>
-                                    </div>
-                                    <div class="col-8">
-                                        <span class="fw-bold">manny@philproperties.ph</span>
-                                    </div>
-                                </div>
-                                <hr class="my-3">
-                                <!-- BIRTHDAY -->
-                                <div class="d-flex flex-column">
-                                    <span class="fw-bold">Social Media</span>
-                                    <div class="d-flex gap-2 flex-row align-items-center mt-2">
-                                        <i class="bi bi-facebook fs-2 text-primary"></i>
-                                        <span class="">MANNY FLORENDO</span>
-                                    </div>
-                                </div>
+            <div class="d-flex flex-column container justify-content-center align-items-center gap-4">
+                <!-- TOP CARD INFO -->
+                <div class="d-flex flex-column justify-content-center align-items-center rounded-4 lh-base mt-4 col-12">
+                    <div class="mt-3 pt-4">
+                    </div>
+                    <span class="mt-4 montserrat-bold" style="font-size: 3em;">MANNY FLORENDO</span>
+                    <span class="fs-4 text-secondary m-0 montserrat-regular">Candidate</span>
+                    <hr class="my-3">
+                    <div class="d-flex flex-column justify-content-center montserrat-regular" style="width: 40em;">
+                        <!-- USER ID -->
+                        <div class="d-flex flex-row fs-4">
+                            <div class="col">
+                                <span class="">User ID:</span>
+                            </div>
+                            <div class="col">
+                                <span class="fw-bold" id="acc-id"></span>
+                            </div>
+                        </div>
+                        <!-- BIRTHDAY -->
+                        <div class="d-flex flex-row fs-4">
+                            <div class="col">
+                                <span class="">Birthday:</span>
+                            </div>
+                            <div class="col">
+                                <span class="fw-bold" id="birthday"></span>
+                            </div>
+                        </div>
+                        <!-- USERNAME -->
+                        <div class="d-flex flex-row fs-4">
+                            <div class="col">
+                                <span class="">Username:</span>
+                            </div>
+                            <div class="col">
+                                <span class="fw-bold" id="username"></span>
+                            </div>
+                        </div>
+                        <!-- EMAIL -->
+                        <div class="d-flex flex-row fs-4">
+                            <div class="col">
+                                <span class="">Email:</span>
+                            </div>
+                            <div class="col">
+                                <span class="fw-bold" id="email"></span>
+                            </div>
+                        </div>
+                        <hr class="my-3">
+                        <!-- BIRTHDAY -->
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold">Social Media</span>
+                            <div class="d-flex gap-2 flex-row align-items-center mt-2">
+                                <i class="bi bi-facebook fs-2 text-primary"></i>
+                                <span class="">MANNY FLORENDO</span>
                             </div>
                         </div>
                     </div>
-                    <!-- RIGHT CARD INFO -->
-                    <div class="d-flex justify-content-center col-9 right-info">
-                        <!-- Cards with tabs component -->
+                </div>
+                <!-- BOTTOM CARD INFO -->
+                <div class="d-flex">
+                    <!-- Cards with tabs component -->
+                    <div>
                         <div class="card-tabs col-12">
                             <!-- Cards navigation -->
                             <ul class="nav nav-tabs">
@@ -113,222 +113,10 @@
                                 <li class="nav-item"><a href="#tab-top-4" class="nav-link" data-bs-toggle="tab">Update
                                         Email</a></li>
                             </ul>
-                            <div class="tab-content">
-                                <!-- Content of card #1 -->
-                                <div id="tab-top-1" class="card tab-pane active show">
-                                    <form class="card-body">
-                                        <div class="p-4 rounded-3 lh-base">
-                                            <!--PERSONAL DATA -->
-                                            <span class="fs-2 montserrat-bold">PERSONAL DATA</span>
-                                            <div class="d-flex row">
-                                                <div class="col-1">
-                                                    <label for="prefix"
-                                                        class="fs-4 text-secondary m-0 montserrat-regular">Prefix</label>
-                                                    <select id="prefix" class="form-select montserrat-regular mt-2"
-                                                        name="prefix">
-                                                        <option value="" selected disabled></option>
-                                                        <option value="selling">Mr.</option>
-                                                        <option value="real-estate">Ms.</option>
-                                                        <option value="properties">Mrs.</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-3">
-                                                    <label for="prefix"
-                                                        class="fs-4 text-secondary m-0 montserrat-regular">First
-                                                        Name</label>
-                                                    <input type="text" name="firstname" id="firstname"
-                                                        class="form-control montserrat-regular mt-2" value=""
-                                                        autocompconste="off">
-                                                </div>
-                                                <div class="col-3">
-                                                    <label for="prefix"
-                                                        class="fs-4 text-secondary m-0 montserrat-regular">Middle
-                                                        Name</label>
-                                                    <input type="text" name="middlename" id="middlename"
-                                                        class="form-control montserrat-regular mt-2" value=""
-                                                        autocompconste="off">
-                                                </div>
-                                                <div class="col-3">
-                                                    <label for="prefix"
-                                                        class="fs-4 text-secondary m-0 montserrat-regular">Last
-                                                        Name</label>
-                                                    <input type="text" name="lastname" id="lastname"
-                                                        class="form-control montserrat-regular mt-2" value=""
-                                                        autocompconste="off">
-                                                </div>
-                                                <div class="col-2">
-                                                    <label for="prefix"
-                                                        class="fs-4 text-secondary m-0 montserrat-regular">Suffix</label>
-                                                    <input type="text" name="suffix" id="suffix"
-                                                        class="form-control montserrat-regular mt-2" value=""
-                                                        autocompconste="off">
-                                                </div>
-                                            </div>
-                                            <!-- OTHER INFORMATION -->
-                                            <hr class="my-3">
-                                            <span class="fs-2 montserrat-bold">OTHER INFORMATION</span>
-                                            <div class="d-flex row">
-                                                <div class="col-6">
-                                                    <div class="col-10">
-                                                        <label for="birthdate"
-                                                            class="fs-4 text-secondary m-0 montserrat-regular">Birthdate</label>
-                                                        <input type="date" name="birthdate" id="birthdate"
-                                                            class="form-control montserrat-regular my-2" value=""
-                                                            autocompconste="off">
-                                                    </div>
-                                                    <div class="d-flex row">
-                                                        <div class="col-10">
-                                                            <label for="number"
-                                                                class="fs-4 text-secondary m-0 montserrat-regular">Mobile
-                                                                Number/s</label>
-                                                            <input type="text" name="number" id="number"
-                                                                class="form-control montserrat-regular my-2" value=""
-                                                                autocompconste="off">
-                                                        </div>
-                                                        <div class="d-flex col-2 align-items-center">
-                                                            <button class="btn btn-primary w-2 h-5 mt-3"><i
-                                                                    class="bi bi-plus-lg"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="d-flex row">
-                                                        <div class="col-10">
-                                                            <label for="social"
-                                                                class="fs-4 text-secondary m-0 montserrat-regular">Social
-                                                                Links</label>
-                                                            <input type="text" name="social" id="social"
-                                                                class="form-control montserrat-regular my-2" value=""
-                                                                autocompconste="off">
-                                                        </div>
-                                                        <div class="d-flex col-2 align-items-center">
-                                                            <button class="btn btn-primary w-2 h-5 mt-3"><i
-                                                                    class="bi bi-plus-lg"></i></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr class="my-3">
-                                            <!-- ADDRESS -->
-                                            <span class="fs-2 montserrat-bold">ADDRESS</span>
-                                            <div class="d-flex row">
-                                                <span class="fs-4 montserrat-semibold">PRESENT ADDRESS</span>
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        <label for="street"
-                                                            class="fs-4 text-secondary mt-1 montserrat-regular">Street /
-                                                            House No. / Lot No.</label>
-                                                        <input type="text" name="street" id="street"
-                                                            class="form-control montserrat-regular my-2" value=""
-                                                            autocompconste="off">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <label for="city"
-                                                            class="fs-4 text-secondary mt-1 montserrat-regular">City</label>
-                                                        <input type="text" name="city" id="city"
-                                                            class="form-control montserrat-regular my-2" value=""
-                                                            autocompconste="off">
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-4">
-                                                        <label for="state"
-                                                            class="fs-4 text-secondary mt-1 montserrat-regular">State</label>
-                                                        <input type="text" name="state" id="state"
-                                                            class="form-control montserrat-regular my-2" value=""
-                                                            autocompconste="off">
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <label for="cpuntry"
-                                                            class="fs-4 text-secondary mt-1 montserrat-regular">Country</label>
-                                                        <input type="text" name="cpuntry" id="cpuntry"
-                                                            class="form-control montserrat-regular my-2" value=""
-                                                            autocompconste="off">
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <label for="postal"
-                                                            class="fs-4 text-secondary mt-1 montserrat-regular">Postal
-                                                            Code</label>
-                                                        <input type="text" name="postal" id="postal"
-                                                            class="form-control montserrat-regular my-2" value=""
-                                                            autocompconste="off">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--PERMANENT ADDRESS-->
-                                            <div class="d-flex row">
-                                                <span class="fs-4 montserrat-semibold">PERMANENT ADDRESS</span>
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        <label for="perma-street"
-                                                            class="fs-4 text-secondary mt-1 montserrat-regular">Street /
-                                                            House No. / Lot No.</label>
-                                                        <input type="text" name="perma-street" id="perma-street"
-                                                            class="form-control montserrat-regular my-2" value=""
-                                                            autocompconste="off">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <label for="perma-city"
-                                                            class="fs-4 text-secondary mt-1 montserrat-regular">City</label>
-                                                        <input type="text" name="perma-city" id="perma-city"
-                                                            class="form-control montserrat-regular my-2" value=""
-                                                            autocompconste="off">
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-4">
-                                                        <label for="perma-state"
-                                                            class="fs-4 text-secondary mt-1 montserrat-regular">State</label>
-                                                        <input type="text" name="perma-state" id="perma-state"
-                                                            class="form-control montserrat-regular my-2" value=""
-                                                            autocompconste="off">
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <label for="perma-country"
-                                                            class="fs-4 text-secondary mt-1 montserrat-regular">Country</label>
-                                                        <input type="text" name="perma-country" id="perma-country"
-                                                            class="form-control montserrat-regular my-2" value=""
-                                                            autocompconste="off">
-                                                    </div>
-                                                    <div class="col-4">
-                                                        <label for="perma-postal"
-                                                            class="fs-4 text-secondary mt-1 montserrat-regular">Postal
-                                                            Code</label>
-                                                        <input type="text" name="perma-postal" id="perma-postal"
-                                                            class="form-control montserrat-regular my-2" value=""
-                                                            autocompconste="off">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <hr class="my-3">
-                                            <!--EDUCATION-->
-                                            <span class="fs-2 montserrat-bold">EDUCATION</span>
-                                            <div class="row">
-                                                <label for="school"
-                                                    class="fs-4 text-secondary mt-1 montserrat-regular">School</label>
-                                                <input type="text" name="school" id="school"
-                                                    class="form-control montserrat-regular my-2" value=""
-                                                    autocompconste="off">
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <label for="degree"
-                                                        class="fs-4 text-secondary mt-1 montserrat-regular">Degree</label>
-                                                    <input type="text" name="degree" id="degree"
-                                                        class="form-control montserrat-regular my-2" value=""
-                                                        autocompconste="off">
-                                                </div>
-                                                <div class="col-6">
-                                                    <label for="graduated-on"
-                                                        class="fs-4 text-secondary mt-1 montserrat-regular">Graduated
-                                                        on</label>
-                                                    <input type="date" name="graduated-on" id="graduated-on"
-                                                        class="form-control montserrat-regular my-2" value=""
-                                                        autocompconste="off">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+                            <div class="tab-content mb-4">
+                                <div id="tab-top-1" class="card tab-pane active show align-self-start">
+                                </div>
+                                <div id="tab-top-2" class="card tab-pane active show align-self-start">
                                 </div>
                             </div>
                         </div>

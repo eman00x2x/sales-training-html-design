@@ -5,7 +5,7 @@
 }
 
 /* Bootstrap 5 CSS and icons included */
-.upload_dropzone {
+.upload-dropzone {
   color: #1c1c39;
   background-color: #f3f5f7;
   outline: 2px dashed #1c1c39;
@@ -24,37 +24,6 @@
     color: #fff !important;
 }
 
-[data-title]:hover:after {
-  opacity: 1;
-  transition: all 0.1s ease 0.5s;
-  visibility: visible;
-}
-
-[data-title]:after {
-  content: attr(data-title);
-  background-color: white !important;
-  color: #111;
-  font-size: 11px;
-  position: absolute;
-  padding: 1px 5px 2px 5px;
-  bottom: -2.5em;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  border-radius: 4px;
-  white-space: nowrap;
-  box-shadow: 1px 1px 3px black;
-  opacity: 5;
-  border: 1px solid white;
-  z-index: 99999;
-  font-weight: 500 !important;
-  visibility: hidden;
-}
-
-[data-title] {
-  position: relative;
-}
-
 .truncate-text p {
   -webkit-line-clamp: 3;
   display: -webkit-box;
@@ -66,7 +35,6 @@
   background-color: white;
   color: #131C39 !important;
 }
-
 
 @media (max-width: 991.97px) { 
   .orgLogo{

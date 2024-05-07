@@ -1,216 +1,132 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin | Video Lists</title>
-    <!-- BOOSTRAP ICONS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
-    <!-- TABLER -->
-    <link
-      href="../Cdn/vendor/tabler/dist/css/tabler.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
-    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
-    <script src="../Cdn/js/script.js"></script>
-    <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $(".header").load("header.html");
-        $(".sidebar").load("sidebar.html");
-        $(".footer").load("footer.html");
-        getVideoData();
-      });
 
-      $(document).on("click", ".btn-add", function () {
-        window.location.href = "admin.videos.create.html";
-      });
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | Video Lists</title>
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../Cdn/css/font.css">
+  <!-- BOOSTRAP ICONS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- TABLER CSS-->
+  <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
+  <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
+  <!-- CUSTOM CSS -->
+  <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
+  <!-- JQUERY -->
+  <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+  <!-- TABLER -->
+  <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
+  <!-- CUSTOM JS -->
+  <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+  <script src="../Cdn/js/script.js"></script>
+  <script src="../Cdn/js/admin.videos.list.js"></script>
+</head>
 
-      $(document).on("click", ".btn-view", function () {
-        var id = $(this).data("id");
-        window.location.href = "admin.videos.view.html?id=" + id;
-      });
+<body>
+  <div class="page">
+    <!-- SIDEBAR -->
+    <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
+      style="background-color: #1c1c39 !important" data-bs-theme="dark"></aside>
+    <div class="page-wrapper">
+      <!-- HEADER -->
+      <div class="header"></div>
 
-      $(document).on("click", ".btn-edit", function () {
-        var id = $(this).data("id");
-        window.location.href = "admin.videos.update.html?id=" + id;
-      });
-
-      $(document).on("click", ".btn-delete", function (e) {
-        id = $(this).data("id");
-        window.location.href = "admin.videos.delete.html?id=" + id;
-      });
-
-      function displayActionButtons(id) {
-        return `<td class='align-middle text-center'>
-                <button type="button" data-id='${id}' class="btn btn-md btn-view btn-outline-primary"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
-                <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class="ms-2">Edit</span></button>
-                <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
-    </td>`;
-      }
-
-      function getVideoData() {
-        let html = "";
-
-        $.getJSON("../Cdn/js/data/videos.json", function (response) {
-          const data = response.data;
-          for (let i = 0; i < data.length; i++) {
-            const video = data[i];
-            html += "<tr>";
-            html +=
-              "<td class='align-middle text-center'>" +
-              video.video_id +
-              "</td>";
-            html +=
-              "<td class='d-flex h-100 w-100 justify-content-center align-items-center text-center'><img src='" +
-              video.thumbnail_image +
-              "' style='width:10em;' /></td>";
-            html +=
-              "<td class='align-middle text-center text-capitalize'>" +
-              video.title +
-              "</td>";
-            html +=
-              "<td class='align-middle truncate-text'>" +
-              "<p>" +
-              video.description +
-              "</p>" +
-              "</td>";
-            html +=
-              "<td class='align-middle text-center text-capitalize'>" +
-              video.category +
-              "</td>";
-            html += displayActionButtons(video.video_id);
-            html += "</tr>";
-          }
-          $(".data-container").html(html);
-        });
-      }
-    </script>
-  </head>
-
-  <body>
-    <div class="page">
-      <!-- SIDEBAR -->
-      <aside
-        class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
-        style="background-color: #1c1c39 !important"
-        data-bs-theme="dark"
-      ></aside>
-      <div class="page-wrapper">
-        <!-- HEADER -->
-        <div class="header"></div>
-
-        <!-- CONTENT -->
-        <div class="page-body content">
-          <div class="container-fluid">
-            <!-- TITLE -->
-            <div class="d-flex align-center justify-content-start">
-              <i class="bi bi bi-play-btn-fill h1"></i>
-              <span class="fw-bold fs-2 ms-2">Video</span>
-            </div>
-
-            <!-- SORT, FILTER AND SEARCH -->
-            <div class="d-flex justify-content-between mb-3 mt-2">
-              <!-- Sort button -->
-              <div class="btn-group border border-secondary-subtle">
-                <button
-                  type="button"
-                  class="btn btn-light dropdown-toggle fw-semibold text-lg-start"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <span class="d-none d-lg-inline">Sort By</span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="#">Organization Name</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Created Date</a>
-                  </li>
-                </ul>
-              </div>
-              <!-- Search input -->
-              <input
-                type="text"
-                class="search ms-1 form-control flex-grow-1 w-75"
-                id="search"
-                placeholder="Search by Organization Name"
-                name="search"
-                value=""
-              />
-              <!-- Add button -->
-              <button
-                type="button"
-                class="btn btn-md btn-add btn-outline-primary ms-1"
-              >
-                <i class="bi bi-plus-circle"></i
-                ><span class="ms-2 d-none d-lg-inline">Add Video</span>
-              </button>
-            </div>
-
-            <!-- TABLE LIST -->
-            <div class="list">
-              <div class="table-responsive">
-                <table class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th class="align-middle text-center">ID</th>
-                      <th class="align-middle text-center">THUMBNAIL</th>
-                      <th class="align-middler text-center">TITLE</th>
-                      <th class="align-middler text-center">DESCRIPTION</th>
-                      <th class="align-middle text-center">CATEGORY</th>
-                      <th class="align-middle text-center">ACTIONS</th>
-                    </tr>
-                  </thead>
-                  <tbody class="data-container"></tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- TABLE FOOTER -->
-            <div class="mt-4" style="display: flex; align-items: center">
-              <p style="margin-right: auto">Showing 1 out of 10 pages</p>
-              <nav aria-label="...">
-                <ul class="pagination">
-                  <li class="page-item disabled">
-                    <span class="page-link">Previous</span>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item active">
-                    <span class="page-link"> 2 </span>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-
-            <!-- DELETE MODAL -->
-            <div class="modal" id="video_delete" tabindex="-1">
-              <div class="modal-dialog modal-dialog-centered" id="form-content">
-                <div class="modal-content">
-                  <div class="form"></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- FOOTER -->
-            <div class="footer"></div>
+      <!-- CONTENT -->
+      <div class="page-body content">
+        <div class="container-fluid">
+          <!-- TITLE -->
+          <div class="d-flex align-center justify-content-start">
+            <i class="bi bi bi-play-btn-fill h1"></i>
+            <span class="fw-bold fs-2 ms-2">Video</span>
           </div>
+
+          <!-- SORT, FILTER AND SEARCH -->
+          <div class="d-flex justify-content-between mb-3 mt-2">
+            <!-- Sort button -->
+            <div class="btn-group border border-secondary-subtle">
+              <button type="button" class="btn btn-light dropdown-toggle fw-semibold text-lg-start"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="d-none d-lg-inline">Sort By</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">Organization Name</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Created Date</a>
+                </li>
+              </ul>
+            </div>
+            <!-- Search input -->
+            <input type="text" class="search ms-1 form-control flex-grow-1 w-75" id="search"
+              placeholder="Search by Organization Name" name="search" value="" />
+            <!-- Add button -->
+            <button type="button" class="btn btn-md btn-add btn-outline-primary ms-1">
+              <i class="bi bi-plus-circle"></i><span class="ms-2 d-none d-lg-inline">Add Video</span>
+            </button>
+          </div>
+
+          <!-- TABLE LIST -->
+          <div class="list">
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th class="align-middle text-center">ID</th>
+                    <th class="align-middle text-center">THUMBNAIL</th>
+                    <th class="align-middler text-center">TITLE</th>
+                    <th class="align-middler text-center">DESCRIPTION</th>
+                    <th class="align-middle text-center">CATEGORY</th>
+                    <th class="align-middle text-center">ACTIONS</th>
+                  </tr>
+                </thead>
+                <tbody class="data-container"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TABLE FOOTER -->
+          <div class="mt-4" style="display: flex; align-items: center">
+            <p style="margin-right: auto">Showing 1 out of 10 pages</p>
+            <nav aria-label="...">
+              <ul class="pagination">
+                <li class="page-item disabled">
+                  <span class="page-link">Previous</span>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active">
+                  <span class="page-link"> 2 </span>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <!-- DELETE MODAL -->
+          <div class="modal" id="video_delete" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered" id="form-content">
+              <div class="modal-content">
+                <div class="form"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FOOTER -->
+          <div class="footer"></div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

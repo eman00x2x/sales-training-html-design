@@ -1,22 +1,16 @@
 $(document).ready(function () {
-    let urlParams = new URLSearchParams(window.location.search);
-    let bookId = urlParams.get('id');
+    chapterId = getParams('ebook_chapter_id');
 
-    $(document).ready(function () {
-        let urlParams = new URLSearchParams(window.location.search);
-        let chapterId = urlParams.get('ebook_chapter_id');
-
-        $.getJSON('../Cdn/js/data/ebooks.chapters.json', function (response) {
-            var book = response.data.find(function (item) {
-                return item.ebook_chapter_id == chapterId;
-            });
-            if (book) {
-                $('#chapter').val(book.chapter);
-                $('#content').val(book.content);
-            } else {
-                console.log("Book not found with ID: " + chapterId);
-            }
+    $.getJSON('../Cdn/js/data/ebooks.chapters.json', function (response) {
+        var book = response.data.find(function (item) {
+            return item.ebook_chapter_id == chapterId;
         });
+        if (book) {
+            $('#chapter').val(book.chapter);
+            $('#content').val(book.content);
+        } else {
+            console.log("Book not found with ID: " + chapterId);
+        }
     });
 });
 

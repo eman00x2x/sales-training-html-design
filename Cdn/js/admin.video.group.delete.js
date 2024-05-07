@@ -1,10 +1,5 @@
 let id = ""
-
     $(document).ready(function () {
-      $(".header").load("header.html");
-      $(".sidebar").load("sidebar.html");
-      $(".footer").load("footer.html");
-
       let params = new URL(document.location.toString()).searchParams;
       id = params.get("id");
       

@@ -1,8 +1,7 @@
 let id;
 
 $(document).ready(function () {
-    let params = new URL(document.location.toString()).searchParams;
-    id = params.get("id");
+    id = getParams('id');
 
     $.getJSON('../Cdn/js/data/organization.json', function (data) {
         let response = data.data;
@@ -54,7 +53,6 @@ function getOrgEBookGroupData() {
                 data.transaction_id +
                 "</td>";
             html += "<td class='align-middle'>" + data.name + "</td>";
-            html += "<td class='align-middle'>" + data.cost + "</td>";
             html +=
                 "<td class='align-middle'>" +
                 convertDate(data.started_at) +
@@ -99,7 +97,6 @@ function getOrgVideoGroupData() {
                 data.transaction_id +
                 "</td>";
             html += "<td class='align-middle'>" + data.name + "</td>";
-            html += "<td class='align-middle'>" + data.cost + "</td>";
             html +=
                 "<td class='align-middle'>" +
                 convertDate(data.started_at) +

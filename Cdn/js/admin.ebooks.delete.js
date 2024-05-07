@@ -1,10 +1,9 @@
 $(document).ready(function () {
-    let urlParams = new URLSearchParams(window.location.search);
-    let bookId = urlParams.get('id');
+  id = getParams('id');
 
     $.getJSON('../Cdn/js/data/ebooks.json', function (response) {
       let book = response.data.find(function (item) {
-        return item.ebook_id == bookId;
+        return item.ebook_id == id;
       });
       if (book) {
         $('#title').val(book.title);

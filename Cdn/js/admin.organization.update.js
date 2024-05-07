@@ -1,6 +1,5 @@
 $(document).ready(function () {
-    let params = new URL(document.location.toString()).searchParams;
-    let id = params.get("id");
+    let id = getParams('id');
 
     $.getJSON('../Cdn/js/data/organization.json', function (data) {
         let response = data.data;
@@ -17,12 +16,13 @@ $(document).on("click", "#back", function (e) {
 });
 
 $(document).on("change", "#logo", function (e) {
-    var URL = window.URL || window.webkitURL;
-    var file = e.target.files[0];
+    let reader = new FileReader();
 
-    if (file) {
-        $(".orgLogo").attr("src", URL.createObjectURL(file));
+    reader.onload = function () {
+        $(".orgLogo").attr("src", URL.createObjectURL(e.target.files[0]));
     }
+
+    reader.readAsDataURL(e.target.files[0]);
 });
 
 /**

@@ -1,9 +1,6 @@
  //SAMPLE DATA OF Premium GROUPS
 
  $(document).ready(function () {
-    $('.header').load('header.html');
-    $('.sidebar').load('sidebar.html');
-    $('.footer').load('footer.html');
     getPremiumsData();
 });
 $(document).on('click', '.btn-edit', function (e) {
@@ -18,7 +15,19 @@ $(document).on('click', '.btn-add', function (e) {
     window.location.href = "admin.premiums.create.html";
 });
 
-
+$(document).ready(function () {
+    $('#search').on('input', function() {
+        var searchText = $(this).val().toLowerCase().trim();
+        if (!searchText) {
+            $('.premiums .data-container tr').show();
+            return;
+        }
+        $('.premiums .data-container tr').hide().filter(function() {
+            var idText = $(this).find('td:eq(0)').text().trim();
+            return idText === searchText;
+        }).show();
+    });
+});
 
 function getPremiumsData() {
     let html = "";
