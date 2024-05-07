@@ -118,7 +118,7 @@ function addEducation(item = {}) {
                         <label for="school" class="fs-4 text-secondary my-2 montserrat-regular">School</label>
                         <div class="">
                             <input type="text" name="school" id="school" class="form-control montserrat-regular" value=${
-                              item.hasOwnProperty("school") > 0
+                              item.hasOwnProperty("school")
                                 ? item.school
                                 : ""
                             }>
@@ -128,7 +128,7 @@ function addEducation(item = {}) {
                         <div class="col-md">
                             <label for="degree" class="fs-4 text-secondary my-2 montserrat-regular">Degree</label>
                             <input type="text" name="degree" id="degree" class="form-control montserrat-regular" value=${
-                              item.hasOwnProperty("degree") > 0
+                              item.hasOwnProperty("degree")
                                 ? item.degree
                                 : ""
                             }
@@ -138,7 +138,7 @@ function addEducation(item = {}) {
                             <label for="graduated-on" class="fs-4 text-secondary my-2 montserrat-regular">Graduated
                                 on</label>
                             <input type="date" name="graduated-on" id="graduated-on" class="form-control montserrat-regular" value=${
-                              item.hasOwnProperty("graduated_at") > 0
+                              item.hasOwnProperty("graduated_at")
                                 ? myDate
                                 : ""
                             }
