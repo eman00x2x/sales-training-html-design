@@ -32,6 +32,12 @@
 
 </head>
 
+<style>
+  th{
+    background-color: #1c1c39
+  }
+</style>
+
 <body> 
   <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
             style="background-color: #1c1c39 !important;" data-bs-theme="dark"></aside>
@@ -46,53 +52,53 @@
     <div class="content pt-1">
       <div class="title">
         <h1 class="fw-bold text-primary">
-          <i class="bi bi-people-fill"></i> REGISTERED USERS LIST
+          <i class="bi bi-people-fill"></i> Registered User List
         </h1>
       </div>
 
-      <div
-      class="d-flex flex-column-reverse flex-sm-row justify-content-between align-items-center mb-3 mt-2">
-      <div class="d-flex justify-content-start align-items-center col col-12 col-sm-7">
-          <div class="btn-sort dropdown montserrat-regular">
-              <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
-                  data-bs-toggle="dropdown"></i>
-              <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
-                  data-bs-toggle="dropdown">Sort
-                  by</a>
-              <div class="dropdown-menu">
-                  <div
-                      class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
-                      <div class="btn-group col-7">
-                          <button type="button" class="btn btn-sm btn-outline-primary"><i
-                                  class="bi bi-sort-alpha-down fs-2"></i></button>
-                          <button type="button" class="btn btn-sm btn-outline-primary"><i
-                                  class="bi bi-sort-alpha-down-alt fs-2"></i></button>
-                      </div>
-                  </div>
-                  <a class="dropdown-item" href="#">Organization Name</a>
-                  <a class="dropdown-item" href="#">Created Date</a>
-              </div>
-          </div>
-          <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
-              placeholder="Search by Organization Name" name="search" value="" />
-      </div>
-      <button type="button"
-          class="btn btn-md btn-add btn-outline-primary montserrat-semibold col col-12 col-sm-4 col-lg-3 mb-2 mb-sm-0">
-          <i class="bi bi-plus-circle"></i><span class="ms-2">Add User</span>
-      </button>
-  </div>
+        <div
+        class="d-flex flex-column-reverse flex-sm-row justify-content-between align-items-center mb-3 mt-2">
+        <div class="d-flex justify-content-start align-items-center col col-12 col-sm-7">
+            <div class="btn-sort dropdown montserrat-regular">
+                <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
+                    data-bs-toggle="dropdown"></i>
+                <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
+                    data-bs-toggle="dropdown">Sort
+                    by</a>
+                <div class="dropdown-menu">
+                    <div
+                        class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
+                        <div class="btn-group col-7">
+                            <button type="button" class="btn btn-sm btn-outline-primary"><i
+                                    class="bi bi-sort-alpha-down fs-2"></i></button>
+                            <button type="button" class="btn btn-sm btn-outline-primary"><i
+                                    class="bi bi-sort-alpha-down-alt fs-2"></i></button>
+                        </div>
+                    </div>
+                    <a class="dropdown-item" href="#">Organization Name</a>
+                    <a class="dropdown-item" href="#">Created Date</a>
+                </div>
+            </div>
+            <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
+                placeholder="Search by Organization Name" name="search" value="" />
+        </div>
+        <button type="button"
+            class="btn btn-md btn-add btn-outline-primary montserrat-semibold col col-12 col-sm-4 col-lg-3 mb-2 mb-sm-0">
+            <i class="bi bi-plus-circle"></i><span class="ms-2">Add User</span>
+        </button>
+    </div>
 
       <div class="userTable mt-2">
         <div class="table-responsive">
           <table class="table organization table-striped text-center">
-            <thead >
+            <thead  >
               <tr  id="tableHead" class="">
-                <th>#</th>
-                <th>User Profile Image</th>
-                <th >Full Name</th>
-                <th >Address</th>
-                <th >Account Type</th>
-                <th >Actions</th>
+                <th style="background-color: #1c1c39" class="text-white" >Account ID</th>
+                <th style="background-color: #1c1c39" class="text-white">User Profile Image</th>
+                <th style="background-color: #1c1c39" class="text-white">Full Name</th>
+                <th style="background-color: #1c1c39" class="text-white">Address</th>
+                <th style="background-color: #1c1c39" class="text-white">Account Type</th>
+                <th style="background-color: #1c1c39" class="text-white">Actions</th>
               </tr>
             </thead>
             <tbody class="data-container montserrat-regular"></tbody>

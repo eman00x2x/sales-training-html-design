@@ -13,8 +13,8 @@
         <div class="rounded-3 lh-base p-4">
             <!--PERSONAL DATA -->
             <span class="fs-2 montserrat-bold">PERSONAL DATA</span>
-            <div class="d-flex flex-column gap-2 flex-md-row">
-                <div class="col col-lg-2">
+            <div class="d-flex flex-column  gap-2 justify-content-between flex-md-row">
+                <div class="col col-lg-2 flex-fill">
                     <label for="prefix" class="fs-4 text-secondary m-0 montserrat-regular">Prefix</label>
                     <select id="prefix" class="form-select montserrat-regular mt-2" name="prefix">
                         <option value="" selected disabled></option>
@@ -23,24 +23,23 @@
                         <option value="Mrs.">Mrs.</option>
                     </select>
                 </div>
-                <div class="col col-lg-4">
-                    <label for="firstname" class="fs-4 text-secondary m-0 montserrat-regular">First
-                        Name</label>
+                <div class="col col-lg-4 flex-fill">
+                    <label for="firstname" class="fs-4 text-secondary m-0 montserrat-regular">First Name</label>
                     <input type="text" name="firstname" id="firstname" class="form-control montserrat-regular mt-2"
                         value="" autocomplete="off">
                 </div>
-                <div class="col col-lg-4">
-                    <label for="lastname" class="fs-4 text-secondary m-0 montserrat-regular">Last
-                        Name</label>
+                <div class="col col-lg-4 flex-fill">
+                    <label for="lastname" class="fs-4 text-secondary m-0 montserrat-regular">Last Name</label>
                     <input type="text" name="lastname" id="lastname" class="form-control montserrat-regular mt-2"
                         value="" autocomplete="off">
                 </div>
-                <div class="col col-lg-2">
+                <div class="col col-lg-2 flex-fill">
                     <label for="suffix" class="fs-4 text-secondary m-0 montserrat-regular">Suffix</label>
                     <input type="text" name="suffix" id="suffix" class="form-control montserrat-regular mt-2" value=""
                         autocomplete="off">
                 </div>
             </div>
+
             <hr class="my-3">
             <!-- OTHER INFORMATION -->
             <div class="row g-0 gap-2">

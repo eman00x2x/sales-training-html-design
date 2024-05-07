@@ -51,7 +51,7 @@ $(document).on('click', '.btn-delete', function (e) {
 });
 
 function displayActionButton(id) {
-    return `<td class='align-middle text-center'>
+    return `<td class='align-middle text-start'>
     <div class="btn-group" role="group" aria-label="Basic outlined example ">
                 <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class='montserrat-regular'>Edit</span></button>
                 <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger"><i class="bi bi-trash"></i><span class='montserrat-regular'>Delete</span></button>

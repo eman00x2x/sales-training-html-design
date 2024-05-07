@@ -13,7 +13,6 @@ $(document).ready(function () {
         let profile = response.data.find(profile => profile.profile_id === parseInt(id));
 
         if (profile) {
-            $('#profile_image').attr('src', profile.profile_image);
             $('#contact_number').val(profile.contact_number[0]);
             $('#prefix').val(profile.name.prefix);
             $('#firstname').val(profile.name.firstname);
