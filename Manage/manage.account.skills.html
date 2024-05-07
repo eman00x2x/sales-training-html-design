@@ -12,38 +12,22 @@
     <form class="card-body">
         <div class="p-4 rounded-3 lh-base">
             <!--SPECIAL SKILLS AND CERTIFICATIONS -->
-            <span class="fs-2 montserrat-bold">SPECIAL SKILLS AND CERTIFICATIONS</span>
+            <span class="fs-2 montserrat-bold lh-1 lh-lg-base">SPECIAL SKILLS AND CERTIFICATIONS</span>
             <div class="d-flex flex-column">
-                <div class="row align-items-center">
+                <div class="d-flex row align-items-center">
                     <label for="skills" class="fs-4 text-secondary mt-1 montserrat-regular">Skills</label>
-                    <div class="col-2">
+                    <div class="col-4 col-lg-2">
                         <input type="text" name="skills" id="skills" class="form-control montserrat-regular my-2"
                             value="" autocomplete="off">
-                    </div>
-                    <div class="col-2">
-                        <input type="text" name="skills" class="form-control montserrat-regular my-2" value=""
-                            autocomplete="off">
-                    </div>
-                    <div class="col-2">
-                        <input type="text" name="skills" class="form-control montserrat-regular my-2" value=""
-                            autocomplete="off">
-                    </div>
-                    <div class="col-2">
-                        <input type="text" name="skills" class="form-control montserrat-regular my-2" value=""
-                            autocomplete="off">
-                    </div>
-                    <div class="col-2">
-                        <input type="text" name="skills" class="form-control montserrat-regular my-2" value=""
-                            autocomplete="off">
-                    </div>
-                    <div class="col-2">
-                        <button class="btn btn-add d-none btn-primary" style="width: 2em; height: 2em;"><i
-                                class="bi bi-plus-lg"></i></button>
+                            <button type="button" class="btn btn-outline mt-2 btn-outline-primary "><i
+                                class="bi bi-plus-lg"></i><span class="ms-2">Add Mobile Number</span></button>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-6 d-flex flex-column align-items-start">
+                <!-- mobile-add btn-add -->
+
+                <div class="d-flex flex-column flex-md-row gap-2">
+                    <div class="d-flex flex-column col-12 col-md-6 align-items-start flex-fill">
                         <div class="col-12 d-flex flex-column">
                             <label for="certificates"
                                 class="fs-4 text-secondary mt-1 montserrat-regular">Certifications</label>
@@ -57,7 +41,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 d-flex flex-column align-items-start">
+                    <div class="d-flex flex-column col-12 col-md-6 align-items-start flex-fill">
                         <div class="col-12">
                             <label for="professions"
                                 class="fs-4 text-secondary mt-1 montserrat-regular">Professions</label>
@@ -82,24 +66,24 @@
                     </div>
                 </div>
                 <div class="d-flex flex-column">
-                    <div class="row">
-                        <div class="col-6">
+                    <div class="d-flex flex-column flex-md-row gap-2">
+                        <div class="d-flex flex-column col-md-6 flex-fill">
                             <label for="company" class="fs-4 text-secondary mt-1 montserrat-regular">Company</label>
                             <div class="input-container">
                                 <input type="text" name="company" id="company"
                                     class="form-control montserrat-regular my-2" value="" autocomplete="off">
                             </div>
+                            <label for="position" class="fs-4 text-secondary mt-1 montserrat-regular">Position</label>
+                            <div class="input-container">
+                                <input type="text" name="position" id="position"
+                                    class="form-control montserrat-regular my-2" value="" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column col-md-6 flex-fill">
                             <label for="date-hired" class="fs-4 text-secondary mt-1 montserrat-regular">Date
                                 Hired</label>
                             <div class="input-container">
                                 <input type="date" name="date-hired" id="date-hired"
-                                    class="form-control montserrat-regular my-2" value="" autocomplete="off">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <label for="position" class="fs-4 text-secondary mt-1 montserrat-regular">Position</label>
-                            <div class="input-container">
-                                <input type="text" name="position" id="position"
                                     class="form-control montserrat-regular my-2" value="" autocomplete="off">
                             </div>
                             <label for="date-resigned" class="fs-4 text-secondary mt-1 montserrat-regular">Date
@@ -111,7 +95,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <label for="date-resigned" class="fs-4 text-secondary mt-1 montserrat-regular">Job
+                        <label for="description" class="fs-4 text-secondary mt-1 montserrat-regular">Job
                             Description</label>
                         <div class="input-container">
                             <textarea name="description" id="description" class="form-control montserrat-regular"

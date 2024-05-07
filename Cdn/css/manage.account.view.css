@@ -3,7 +3,7 @@
     top:0; 
     bottom:0;
     left: 0;
-    right: 0;
+    right: 70em;
     margin: auto;
     z-index: 1;
 }
@@ -17,4 +17,16 @@
     background-color: #FFBC3A;
     color: #1c;
     font-weight: bold;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .avatar {
+      right: 0;
+    }
+  }
+
+  @media only screen and (min-width: 1400px) {
+    .avatar {
+        right: 90em;
+    }
   }

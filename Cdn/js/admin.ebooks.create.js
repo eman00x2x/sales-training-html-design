@@ -2,22 +2,12 @@ $(document).on("click", ".btn-back", function () {
     window.location.href = "admin.ebooks.list.html";
 });
 
-$(document).on("change", "#thumbnail", function (e) {
-    let URL = window.URL || window.webkitURL;
-    let file = e.target.files[0];
+$(document).ready(function () {
+    $(".ebook-div-logo").css("display", "none")
+})
 
-    let imageTag =
-        "<h4 class='montserrat-semibold'>Uploaded Files</h4><div class='d-flex flex-row justify-content-start align-items-center rounded shadow-sm p-2 bg-white rounded border border-secondary-subtle'><img src='" +
-        URL.createObjectURL(file) +
-        "'class='border border-secondary-subtle p-2 rounded' name='org_logo' style='height: 100px'/><div class='d-flex flex-column'><span class='ms-4 fw-semibold'>" +
-        e.target.files[0].name +
-        "</span> <span class='ms-4 fw-normal'>" +
-        formatFileSize(e.target.files[0].size) +
-        "</span><div></div>";
-
-    if (file) {
-        $(".thumbnail_image").html(imageTag);
-    }
+$(document).on("click", ".btn-remove", function (e) {
+    $(".ebook-div-logo").css("display", "none")
 });
 
 function validateInput(input) {

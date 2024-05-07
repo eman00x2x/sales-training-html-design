@@ -20,7 +20,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#tab-top-1').load('manage.account.profile.details.html', function () {
+    $('#tab-top-2').load('manage.account.skills.html', function () {
     });
 
     $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {

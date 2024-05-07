@@ -13,8 +13,8 @@
         <div class="rounded-3 lh-base p-4">
             <!--PERSONAL DATA -->
             <span class="fs-2 montserrat-bold">PERSONAL DATA</span>
-            <div class="d-flex row">
-                <div class="col-2">
+            <div class="d-flex flex-column  gap-2 justify-content-between flex-md-row">
+                <div class="col col-lg-2 flex-fill">
                     <label for="prefix" class="fs-4 text-secondary m-0 montserrat-regular">Prefix</label>
                     <select id="prefix" class="form-select montserrat-regular mt-2" name="prefix">
                         <option value="" selected disabled></option>
@@ -23,93 +23,93 @@
                         <option value="Mrs.">Mrs.</option>
                     </select>
                 </div>
-                <div class="col-4">
-                    <label for="firstname" class="fs-4 text-secondary m-0 montserrat-regular">First
-                        Name</label>
+                <div class="col col-lg-4 flex-fill">
+                    <label for="firstname" class="fs-4 text-secondary m-0 montserrat-regular">First Name</label>
                     <input type="text" name="firstname" id="firstname" class="form-control montserrat-regular mt-2"
                         value="" autocomplete="off">
                 </div>
-                <div class="col-4">
-                    <label for="lastname" class="fs-4 text-secondary m-0 montserrat-regular">Last
-                        Name</label>
+                <div class="col col-lg-4 flex-fill">
+                    <label for="lastname" class="fs-4 text-secondary m-0 montserrat-regular">Last Name</label>
                     <input type="text" name="lastname" id="lastname" class="form-control montserrat-regular mt-2"
                         value="" autocomplete="off">
                 </div>
-                <div class="col-2">
+                <div class="col col-lg-2 flex-fill">
                     <label for="suffix" class="fs-4 text-secondary m-0 montserrat-regular">Suffix</label>
                     <input type="text" name="suffix" id="suffix" class="form-control montserrat-regular mt-2" value=""
                         autocomplete="off">
                 </div>
             </div>
-            <!-- OTHER INFORMATION -->
+
             <hr class="my-3">
-            <div class="d-flex flex-lg-row flex-column gap-3">
-                <div class="col col-12 col-lg-6">
+            <!-- OTHER INFORMATION -->
+            <div class="row g-0 gap-2">
+                <div class="col-md">
                     <span class="fs-2 montserrat-bold">OTHER INFORMATION</span>
-                    <div class="d-flex justify-content-start align-items-end">
-                        <div class="col">
-                            <label for="birthdate" class="fs-4 text-secondary m-0 montserrat-regular">Birthdate</label>
-                            <input type="date" name="birthdate" id="birthdate"
-                                class="form-control montserrat-regular my-2" value="" autocomplete="off">
+                    <div class="">
+                        <label for="birthdate" class="fs-4 text-secondary my-2 montserrat-regular">Birthdate</label>
+                        <input type="date" name="birthdate" id="birthdate" class="form-control montserrat-regular"
+                            value="" autocomplete="off">
+                    </div>
+                    <div class="col">
+                        <label for="contact_number" class="fs-4 text-secondary my-2 montserrat-regular">Mobile
+                            Number/s</label>
+                        <input type="hidden" value="1" id="total_mobile_num">
+                        <div class="" id="mobile_number">
+                            <div id='row' class="d-flex justify-content-between align-items-center gap-1">
+                                <input type="text" name="contact_number" id="contact_number" class="form-control"
+                                    placeholder="Add Contact Number" aria-label="Recipient's username"
+                                    aria-describedby="button-addon2">
+                                <button type="button" id="deleteRow"
+                                    class="btn mobile-remove btn-remove btn-outline btn-outline-danger "><i
+                                        class="bi bi-trash3"></i><span class="ms-2">Remove</span></button>
+                            </div>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-start align-items-end gap-1">
-                        <div class="col">
-                            <label for="contact_number" class="fs-4 text-secondary mb-2 montserrat-regular">Mobile
-                                Number/s</label>
-                            <input type="text" name="contact_number" id="contact_number"
-                                class="form-control montserrat-regular" value="" autocomplete="off">
-                        </div>
-                        <button type="button" class="mobile-add btn btn-add btn-primary "><i
-                                class="bi bi-plus-lg"></i></button>
-                    </div>
+                    <button type="button" class="btn mobile-add btn-add btn-outline mt-2 btn-outline-primary "><i
+                            class="bi bi-plus-lg"></i><span class="ms-2">Add Mobile Number</span></button>
                 </div>
-                <div class="col">
+                <div class="mt-2 mt-md-0 col-md">
                     <span class="fs-2 montserrat-bold">SOCIAL LINKS</span>
-                    <div class="d-flex justify-content-start align-items-end">
-                        <div class="col">
-                            <label for="facebook" class="fs-4 text-secondary m-0 montserrat-regular">Facebook</label>
-                            <input type="url" name="facebook" id="facebook" class="form-control montserrat-regular my-2"
+                    <div class="row">
+                        <div>
+                            <label for="facebook" class="fs-4 text-secondary my-2 montserrat-regular">Facebook</label>
+                            <input type="url" name="facebook" id="facebook" class="form-control montserrat-regular"
                                 value="" autocomplete="off">
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-start align-items-end">
-                        <div class="col">
-                            <label for="linkedIn" class="fs-4 text-secondary m-0 montserrat-regular">LinkedIn</label>
-                            <input type="url" name="linkedIn" id="linkedIn" class="form-control montserrat-regular my-2"
+                        <div>
+                            <label for="linkedIn" class="fs-4 text-secondary my-2 montserrat-regular">LinkedIn</label>
+                            <input type="url" name="linkedIn" id="linkedIn" class="form-control montserrat-regular"
                                 value="" autocomplete="off">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <hr class="my-3">
-        <!-- ADDRESS -->
-        <div class="p-4">
+            <hr class="my-3">
+            <!-- ADDRESS -->
 
             <span class="fs-2 montserrat-bold">ADDRESS</span>
             <div class="d-flex row">
                 <span class="fs-4 montserrat-semibold">PRESENT ADDRESS</span>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <label for="region" class="fs-4 text-secondary mt-1 montserrat-regular">Region</label>
                         <input type="text" name="region" id="region" class="form-control montserrat-regular my-2"
                             value="" autocomplete="off">
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <label for="province" class="fs-4 text-secondary mt-1 montserrat-regular">Province</label>
                         <input type="text" name="province" id="province" class="form-control montserrat-regular my-2"
                             value="" autocomplete="off">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <label for="municipality"
                             class="fs-4 text-secondary mt-1 montserrat-regular">Municipality</label>
                         <input type="text" name="municipality" id="municipality"
                             class="form-control montserrat-regular my-2" value="" autocomplete="off">
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <label for="barangay" class="fs-4 text-secondary mt-1 montserrat-regular">Barangay</label>
                         <input type="text" name="barangay" id="barangay" class="form-control montserrat-regular my-2"
                             value="" autocomplete="off">
@@ -120,25 +120,25 @@
             <div class="d-flex row">
                 <span class="fs-4 montserrat-semibold">PERMANENT ADDRESS</span>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <label for="perma-region" class="fs-4 text-secondary mt-1 montserrat-regular">Region</label>
                         <input type="text" name="perma-region" id="perma-region"
                             class="form-control montserrat-regular my-2" value="" autocompconste="off">
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <label for="perma-province" class="fs-4 text-secondary mt-1 montserrat-regular">Province</label>
                         <input type="text" name="perma-province" id="perma-province"
                             class="form-control montserrat-regular my-2" value="" autocompconste="off">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <label for="perma-municipality"
                             class="fs-4 text-secondary mt-1 montserrat-regular">Municipality</label>
                         <input type="text" name="perma-municipality" id="perma-municipality"
                             class="form-control montserrat-regular my-2" value="" autocompconste="off">
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6">
                         <label for="perma-barangay" class="fs-4 text-secondary mt-1 montserrat-regular">Barangay</label>
                         <input type="text" name="perma-barangay" id="perma-barangay"
                             class="form-control montserrat-regular my-2" value="" autocompconste="off">
@@ -183,7 +183,6 @@
                     Save Changes
                 </button>
             </div>
-        </div>
         </div>
     </form>
 </body>
