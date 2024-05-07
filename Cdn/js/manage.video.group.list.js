@@ -1,7 +1,7 @@
 $(document).ready(function () {
     displayVideoGroups(1, '', 'asc');
   });
-  
+
   function displayVideoGroups(pageNumber, searchQuery, sortDirection) {
     const videosPerPage = 8;
     const startIndex = (pageNumber - 1) * videosPerPage;
@@ -29,7 +29,7 @@ $(document).ready(function () {
       videosResponse.forEach(video => {
         videoListHtml += `
           <div class="col-md-3 col-sm-6 col-xs-12 pb-4 hover-zoom">
-            <a href="manage.videos.html?id=${video.video_group_id}" style="text-decoration: none;">
+            <a href="manage.view.video.html?id=${video.vid_group_id}" style="text-decoration: none;">
               <div class="card p-2" style="background-color:#131C39; color:#fff; height:15rem;">
                 <div class="card-body">
                   <h1 class="card-title pb-2" style="font-size:1.5rem;">${video.name}</h1>
@@ -39,8 +39,11 @@ $(document).ready(function () {
             </a>
           </div>
         `;
+     
+        console.log(video.vid_group_id)
       });
       $('.ebooks').html(videoListHtml);
+     
     });
   }
   
@@ -71,14 +74,11 @@ $(document).ready(function () {
     displayVideoGroups(pageNumber, document.getElementById('searchInput').value, $('#sortDirection').val());
   }
   
-  $(document).on("keyup", '.search', function () {
-    let value = $(this).val().toLowerCase();
-
-    $(".ebooks .data-container tr").filter(function () {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-});
-
+  function searchEbookGroups() {
+    console.log('Search Input:', document.getElementById('searchInput').value);
+    displayVideoGroups(1, document.getElementById('searchInput').value, currentSortDirection);
+  }
+  
 
 
   let currentSortDirection = 'asc';
