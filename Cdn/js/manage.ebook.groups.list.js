@@ -1,8 +1,54 @@
 $(document).ready(function () {
-  displayEbookGroups(1, '', 'asc');
+  displayEbookGroups(1, '', 'asc', 'name');
 });
 
-function displayEbookGroups(pageNumber, searchQuery, sortDirection) {
+let sortBy = 'name';
+let sortDirection = 'asc';
+
+function search() {
+  console.log('Search Input:', document.getElementById('search').value);
+  displayEbookGroups(1, document.getElementById('search').value, sortBy, sortDirection);
+}
+
+function updateSortDirection(direction) {
+  sortDirection = direction;
+  console.log(sortDirection);
+  highlightSortDirection();
+  search();
+}
+
+function updateSortBy(by) {
+  sortBy = by;
+  search();
+  highlightSortBy();
+}
+function changePage(pageNumber) {
+  const searchQuery=document.getElementById('search').value;
+  displayEbookGroups(pageNumber, searchQuery, sortBy, sortDirection);
+}
+function highlightSortDirection() {
+  $('.btn-sort-direction').removeClass('active');
+  if (sortDirection === 'asc') {
+    $('#btnSortAsc').addClass('active');
+  } else {
+    $('#btnSortDesc').addClass('active');
+  }
+}
+
+function highlightSortBy() {
+  $('.dropdown-item.sort-by').removeClass('active');
+  if (sortBy === 'name') {
+    $('#sortByTitle').addClass('active');
+  } else {
+    $('#sortByDate').addClass('active');
+  }
+}
+
+
+function displayEbookGroups(pageNumber, searchQuery, sortBy, sortDirection) {
+  console.log('Sort By:', sortBy);
+  console.log('Sort Direction:', sortDirection);
+  console.log('Sort queyr', searchQuery);
   const ebooksPerPage = 8;
   const startIndex = (pageNumber - 1) * ebooksPerPage;
   const endIndex = startIndex + ebooksPerPage;
@@ -13,9 +59,22 @@ function displayEbookGroups(pageNumber, searchQuery, sortDirection) {
         ebook.description.toLowerCase().includes(searchQuery.toLowerCase());
     }) : response.data;
 
-    const sortedData = sortDirection === 'asc' ?
-      filteredData.sort((a, b) => a.name.localeCompare(b.name)) :
-      filteredData.sort((a, b) => b.name.localeCompare(a.name));
+    sortedData = sortDirection === 'asc' ?
+      filteredData.sort((b,a) => a.name.localeCompare(b.name)) :
+      filteredData.sort((a,b) => a.name.localeCompare(b.name));
+    if (sortBy == 'name') {
+      // Sort by name
+      sortedData = sortDirection === 'asc' ?
+        filteredData.sort((a,b) => a.name.localeCompare(b.name)) :
+        filteredData.sort((b,a) => a.name.localeCompare(b.name));
+    } else if (sortBy === 'created_at') {
+      // Sort by creation date
+      sortedData = filteredData.sort((a, b) => {
+        const dateA = new Date(a.created_at);
+        const dateB = new Date(b.created_at);
+        return sortDirection === 'asc' ?  dateB - dateA : dateA - dateB ;
+      });
+    }
 
     const totalItems = sortedData.length;
     const totalPages = Math.ceil(totalItems / ebooksPerPage);
@@ -45,20 +104,27 @@ function displayEbookGroups(pageNumber, searchQuery, sortDirection) {
 }
 
 function updatePagination(currentPage, totalPages) {
-  const pageNumbers = document.getElementById('page-numbers');
+  const pageNumbers = document.getElementById('page-numbers'); 
   const paginationContainer = $('.btn-group');
 
   let paginationButtons = '';
 
   if (totalPages > 0) {
-    paginationButtons += `<button type="button" class="btn btn-outline-primary ${currentPage === 1 ? 'disabled' : ''}" onclick="changePage(${currentPage - 1})">Previous</button>`;
+    paginationButtons += `
+    <button type="button" class="btn btn-outline-primary montserrat-semibold ${currentPage === 1 ? 'disabled' : ''}" onclick="changePage(${currentPage - 1})">
+        <span class="d-none d-md-block">Previous</span>
+        <i class="bi bi-chevron-double-left d-block d-md-none"></i>
+    </button>`;
 
     for (let i = 1; i <= totalPages; i++) {
       const activeClass = i === currentPage ? 'active' : '';
       paginationButtons += `<button type="button" class="btn btn-outline-primary ${activeClass}" onclick="changePage(${i})">${i}</button>`;
     }
 
-    paginationButtons += `<button type="button" class="btn btn-outline-primary ${currentPage === totalPages ? 'disabled' : ''}" onclick="changePage(${currentPage + 1})">Next</button>`;
+    paginationButtons += `<button type="button" class="btn btn-outline-primary montserrat-semibold ${currentPage === totalPages ? 'disabled' : ''}" onclick="changePage(${currentPage + 1})">
+     <span class="d-none d-md-block">Next</span>
+    <i class="bi bi-chevron-double-right d-block d-md-none"></i>
+</button>`;
   } else {
     paginationButtons = '';
   }
@@ -67,21 +133,6 @@ function updatePagination(currentPage, totalPages) {
   paginationContainer.html(paginationButtons);
 }
 
-function changePage(pageNumber) {
-  displayEbookGroups(pageNumber, document.getElementById('searchInput').value, $('#sortDirection').val());
-}
 
-function searchEbookGroups() {
-  console.log('Search Input:', document.getElementById('searchInput').value);
-  displayEbookGroups(1, document.getElementById('searchInput').value, currentSortDirection);
-}
 
-let currentSortDirection = 'asc';
-function toggleSorting() {
-  currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
 
-  const sortIcon = $('#sortIcon');
-  sortIcon.removeClass('bi-caret-up-fill bi-caret-down-fill').addClass(currentSortDirection === 'asc' ? 'bi-caret-up-fill' : 'bi-caret-down-fill');
-  console.log(currentSortDirection)
-  searchEbookGroups(currentSortDirection);
-}
