@@ -57,17 +57,9 @@
                 <div class="col">
                     <label for="contact_number" class="fs-4 text-secondary my-2 montserrat-regular">Mobile
                         Number/s</label>
-                    <input type="hidden" value="1" id="total_mobile_num">
-                    <div class="" id="mobile_number">
-                        <div id='row' class="d-flex justify-content-between align-items-center gap-1">
-                            <input type="text" name="contact_number" id="contact_number" class="form-control" placeholder="Add Contact Number"
-                                aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button type="button" id="deleteRow" class="btn mobile-remove btn-remove btn-outline btn-outline-danger "><i
-                                    class="bi bi-trash3"></i><span class="ms-2">Remove</span></button>
-                        </div>
-                    </div>
+                    <div class="mobile_number"></div>
                 </div>
-                <button type="button" class="btn mobile-add btn-add btn-outline mt-2 btn-outline-primary "><i
+                <button type="button" class="btn btn-add-mobile btn-add btn-outline mt-2 btn-outline-primary d-none"><i
                         class="bi bi-plus-lg"></i><span class="ms-2">Add Mobile Number</span></button>
             </div>
             <div class="mt-2 mt-md-0 col-md">
@@ -111,7 +103,7 @@
                     <div class="col-md">
                         <div class="">
                             <label for="municipality"
-                                class="fs-4 text-secondary mt-lg-2 mb-2 montserrat-regular">Municipality</label>
+                                class="fs-4 text-secondary mt-md-2 mb-2 montserrat-regular">Municipality</label>
                             <input type="text" name="municipality" id="municipality"
                                 class="form-control montserrat-regular" value="" autocomplete="off">
                         </div>
@@ -142,7 +134,7 @@
                     <div class="col-md">
                         <div class="">
                             <label for="municipality"
-                                class="fs-4 text-secondary mt-lg-2 mb-2 montserrat-regular">Municipality</label>
+                                class="fs-4 text-secondary mt-md-2 mb-2 montserrat-regular">Municipality</label>
                             <input type="text" name="perma-municipality" id="perma-municipality"
                                 class="form-control montserrat-regular" value="" autocomplete="off">
                         </div>
@@ -162,29 +154,12 @@
         <div class="row g-0 gap-2">
             <div class="col-md">
                 <span class="fs-2 montserrat-bold">EDUCATION</span>
-                <div class="row g-0">
-                    <label for="school" class="fs-4 text-secondary my-2 montserrat-regular">School</label>
-                    <div class="">
-                        <input type="text" name="school" id="school" class="form-control montserrat-regular" value=""
-                            autocompconste="off">
-                    </div>
-                </div>
-                <div class="row g-0 gap-2">
-                    <div class="col-md">
-                        <label for="degree" class="fs-4 text-secondary my-2 montserrat-regular">Degree</label>
-                        <input type="text" name="degree" id="degree" class="form-control montserrat-regular" value=""
-                            autocompconste="off">
-                    </div>
-                    <div class="col-md">
-                        <label for="graduated-on" class="fs-4 text-secondary my-2 montserrat-regular">Graduated
-                            on</label>
-                        <input type="date" name="graduated-on" id="graduated-on" class="form-control montserrat-regular"
-                            value="" autocompconste="off">
-                    </div>
-                </div>
+                <div id="education"></div>
+                <button type="button" class="btn btn-add-educ btn-add btn-outline mt-2 btn-outline-primary d-none"><i
+                        class="bi bi-plus-lg"></i><span class="ms-2">Add Education</span></button>
             </div>
         </div>
-        <div class="d-flex flex-row gap-2 justify-content-center mt-4">
+        <div class="d-flex flex-row gap-2 justify-content-center mt-2">
             <button id="editButton" class="btn btn-light border border-secondary montserrat-regular" type="button">
                 Edit Data
             </button>
