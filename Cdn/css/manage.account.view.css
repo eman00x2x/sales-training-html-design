@@ -1,4 +1,4 @@
-.avatar{
+.profile_pic{
     position: absolute;
     top:0; 
     bottom:0;
@@ -8,19 +8,9 @@
     z-index: 1;
 }
 
-.info{
-    position: relative;
-    top: 7em;    
+:root {
+  --tblr-font-sans-serif:  "Montserrat", sans-serif !important;
 }
-
-.btn.btn-link.remove-button {
-  background-color: transparent !important;
-}
-
-.btn.btn-link.remove-button:hover {
-  background-color: transparent !important;
-}
-
 
 .nav-tabs .nav-item .nav-link.active {
     background-color: #FFBC3A;
@@ -29,13 +19,13 @@
   }
 
   @media only screen and (max-width: 768px) {
-    .avatar {
+    .profile_pic {
       right: 0;
     }
   }
 
   @media only screen and (min-width: 1400px) {
-    .avatar {
+    .profile_pic {
         right: 90em;
     }
   }
