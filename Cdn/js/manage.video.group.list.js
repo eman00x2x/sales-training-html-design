@@ -61,6 +61,7 @@ function highlightSortBy() {
         return video.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           video.description.toLowerCase().includes(searchQuery.toLowerCase());
       }) : response.data;
+
   
       sortedData = sortDirection === 'asc' ?
       filteredData.sort((b,a) => a.name.localeCompare(b.name)) :
@@ -93,10 +94,11 @@ function highlightSortBy() {
         videoListHtml += `
           <div class="col-lg-4 col-md-6 col-sm-12 pb-4 hover-zoom">
             <a href="manage.view.video.html?id=${video.vid_group_id}" style="text-decoration: none;">
-              <div class="card p-2" style="background-color:#131C39; color:#fff; height:15rem;">
+              <div class="card p-2" bg-white  shadow-sm  h-100 >
                 <div class="card-body">
                   <h1 class="card-title pb-2" style="font-size:1.5rem;">${video.name}</h1>
                   <p class="">${video.description}</p>
+                  <p class=""> <small>${convertDate(video.created_at)}</small> </p>
                 </div>
               </div>
             </a>

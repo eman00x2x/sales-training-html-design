@@ -56,37 +56,38 @@
         </h1>
       </div>
 
-        <div
-        class="d-flex flex-column-reverse flex-sm-row justify-content-between align-items-center mb-3 mt-2">
-        <div class="d-flex justify-content-start align-items-center col col-12 col-sm-7">
-            <div class="btn-sort dropdown montserrat-regular">
-                <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
-                    data-bs-toggle="dropdown"></i>
-                <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
-                    data-bs-toggle="dropdown">Sort
-                    by</a>
-                <div class="dropdown-menu">
-                    <div
-                        class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
-                        <div class="btn-group col-7">
-                            <button type="button" class="btn btn-sm btn-outline-primary"><i
-                                    class="bi bi-sort-alpha-down fs-2"></i></button>
-                            <button type="button" class="btn btn-sm btn-outline-primary"><i
-                                    class="bi bi-sort-alpha-down-alt fs-2"></i></button>
-                        </div>
+      <div class="d-flex justify-content-start align-items-start  col-lg-8 pb-3">
+        <div class="btn-sort dropdown montserrat-regular">
+            <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
+                data-bs-toggle="dropdown"></i>
+            <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
+                data-bs-toggle="dropdown">Sort by</a>
+            <div class="dropdown-menu">
+                <div
+                    class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
+                    <div class="btn-group1 col-7">
+                        <button id="btnSortAsc" type="button"
+                            class="btn btn-sm btn-outline-primary btn-sort-direction active"
+                            onclick="updateSortDirection('asc')">
+                            <i class="bi bi-sort-alpha-up fs-2"></i>
+                        </button>
+                        <button id="btnSortDesc" type="button"
+                            class="btn btn-sm btn-outline-primary btn-sort-direction"
+                            onclick="updateSortDirection('desc')">
+                            <i class="bi bi-sort-alpha-down-alt fs-2"></i>
+                        </button>
                     </div>
-                    <a class="dropdown-item" href="#">Organization Name</a>
-                    <a class="dropdown-item" href="#">Created Date</a>
                 </div>
+                <a id="sortByTitle" class="dropdown-item sort-by active" href="#"
+                    onclick="updateSortBy('name')">Name</a>
+                <a id="sortByDate" class="dropdown-item sort-by" href="#"
+                    onclick="updateSortBy('category')">Registered Date</a>
+
             </div>
-            <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
-                placeholder="Search by Organization Name" name="search" value="" />
         </div>
-        <button type="button"
-            class="btn btn-md btn-add btn-outline-primary montserrat-semibold col col-12 col-sm-4 col-lg-3 mb-2 mb-sm-0">
-            <i class="bi bi-plus-circle"></i><span class="ms-2">Add User</span>
-        </button>
-    </div>
+        <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
+            placeholder="Search by Title" name="search" value="" onkeyup="search()" />
+</div> 
 
       <div class="userTable mt-2">
         <div class="table-responsive">
@@ -120,22 +121,13 @@
 
 </div> -->
       
-<div
-class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular">
-<p>Showing 1 out of 10 pages</p>
-<div class="btn-group" role="group" aria-label="Basic outlined example">
-    <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
-            class="d-none d-md-block">Previous</span><i
-            class="bi bi-chevron-double-left d-block d-md-none"></i>
-    </button>
-    <button type="button" class="btn btn-outline-primary montserrat-semibold">1</button>
-    <button type="button" class="btn btn-outline-primary montserrat-semibold">2</button>
-    <button type="button" class="btn btn-outline-primary montserrat-semibold">3</button>
-    <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
-            class="d-none d-md-block">Next</span><i
-            class="bi bi-chevron-double-right d-block d-md-none"></i></button>
+  <!-- pagination -->
+  <div class="d-flex align-items-center justify-content-between justify-content-sm-start mt-3 py-3">
+    <p id="page-numbers" class="me-md-auto"></p>
+    <div class="btn-group mt-3 mt-sm-0">
+    </div>
 </div>
-</div>
+
     </div>
 </div>
 

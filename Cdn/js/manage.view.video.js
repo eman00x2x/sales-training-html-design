@@ -28,8 +28,8 @@ function updateSortDirection(direction) {
     highlightSortBy();
   }
   function changePage(pageNumber) {
-    const searchQuery=document.getElementById('search').value;
-    displayVideo(pageNumber, searchQuery, sortBy, sortDirection);
+    const searchText=document.getElementById('search').value;
+    displayVideo(pageNumber, searchText, sortBy, sortDirection);
   }
   function highlightSortDirection() {
     $('.btn-sort-direction').removeClass('active');
@@ -73,16 +73,17 @@ function displayVideo(pageNumber, searchText, sortBy, sortDirection) {
 
         let videoResponse = videoData.data;
         let videoview = videoResponse.filter(video => video.vid_group_id == videoId);
-
         console.log(videoview)
+
+
 
          const filteredVideos = searchText ? videoview.filter(video => {
             return video.title.toLowerCase().includes(searchText.toLowerCase()) ||
                 video.category.toLowerCase().includes(searchText.toLowerCase()) ||
                 video.description.toLowerCase().includes(searchText.toLowerCase());
-        }) : videoData.data;
+        }) : videoview;
 
-        
+        console.log(filteredVideos)
 
         sortedData = sortDirection === 'asc' ?
              filteredVideos.sort((b,a) => a.title.localeCompare(b.title)) :
@@ -111,6 +112,8 @@ function displayVideo(pageNumber, searchText, sortBy, sortDirection) {
 
         let videoListHtml = '';
         videoResponse1.forEach(video => {
+
+          // console.log(video)
             videoListHtml += `
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
                     <div class="card" data-ebook-id="${video.ebook_id}">
