@@ -24,5 +24,6 @@ $(document).ready(function () {
     $('#tab-top-1').load('manage.account.profile.details.html');
     $('#tab-top-2').load('manage.account.skills.html');
     $('#tab-top-3').load('manage.change.password.html');
+    $('#tab-top-4').load('manage.update.email.html');
 });
 

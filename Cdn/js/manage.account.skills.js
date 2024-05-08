@@ -6,17 +6,13 @@ $(document).ready(function () {
     $(".row-work").removeClass();
 
     $.getJSON('../Cdn/js/data/profiles.json', function (response) {
-        const formatDate = (epochTime) => {
-            let date = new Date(epochTime * 1000);
-            return date.toISOString().split('T')[0];
-        };
 
         id = getParams('id');
 
         let profile = response.data.find(profile => profile.profile_id === parseInt(id));
 
         if (profile) {
-            $('#skills').text(profile.skills[0]);
+            profile.skills.map((item) => printSkills(item));
 
             profile.certification.map((item) => addCertification(item));
             cert_ctr = profile.certification.length;
@@ -32,6 +28,16 @@ $(document).ready(function () {
         }
     });
 })
+
+$(document).on("click", "#deleteSkill", function () {
+    $(this).parents("#row-skill").remove();
+});
+
+$(document).on("click", ".btn-add-skill", function () {
+    let input = $(".skill-input").val();
+
+    printSkills(input);
+});
 
 $(document).on("click", ".btn-add-cert", function () {
     addCertification();
@@ -60,6 +66,10 @@ $(document).on("click", ".btn-add-work", function () {
 $(".skill-content").on('click', '.editButton', function () {
     $(".skill-content .input").prop('disabled', false)
 
+    // SKILLS
+    $(".div-add-skill").removeClass("d-none");
+    $("#row-skill #deleteSkill").removeClass("d-none");
+
     // CERTIFICATIONS
     $(".btn-add-cert").removeClass("d-none");
     $(".row-cert .div-remove-cert").removeClass("d-none");
@@ -76,8 +86,8 @@ $(".skill-content").on('click', '.editButton', function () {
     );
     $(".row-work .div-remove-work").removeClass("d-none");
 
-    $(".editButton").hide();
-    $(".saveButton").show();
+    $(".skill-content .editButton").hide();
+    $(".skill-content .saveButton").show();
 });
 
 $(document).on("click", ".deleteCertRow", function () {
@@ -92,10 +102,17 @@ $(document).on("click", ".deleteWorkRow", function () {
     $(this).parents(".row-work").remove();
 });
 
+function printSkills(item) {
+    let input = `<div id='row-skill' class="d-flex flex-row badge bg-blue-lt rounded-4 py-2 px-4 gap-3">
+            <span class="fs-4 montserrat-regular">${item}</span>
+            <i id="deleteSkill" class="bi bi-x fs-2 fw-bold text-secondary cursor-pointer d-none"></i>
+          </div>`;
+    $(input).insertBefore(".skills-list .div-add-skill");
+}
+
 function addCertification(item = "") {
-    let disabled = item ? "disabled" : "";
     let input = `<div class="row-cert d-flex justify-content-between align-items-center gap-1 mb-2">
-                      <input type="text" class="input text-black form-control montserrat-regular" placeholder="Add Certification" disabled value="${item}">
+                      <input type="text" class="input text-black form-control montserrat-regular" name="certificates" placeholder="Add Certification" disabled value="${item}">
                       <button type="button" class="deleteCertRow btn div-remove-cert btn-remove btn-outline btn-outline-danger d-none">
                           <i class="bi bi-trash3"></i>
                           <span class="ms-2">Remove</span>
@@ -108,7 +125,7 @@ function addCertification(item = "") {
 function addProfession(item = "") {
 
     let input = `<div class="row-profession d-flex justify-content-between align-items-center gap-1 mb-2">
-                      <input type="text" class="input text-black form-control montserrat-regular" placeholder="Add Profession" disabled value="${item}">
+                      <input type="text" class="input text-black form-control montserrat-regular" name="profession" placeholder="Add Profession" disabled value="${item}">
                       <button type="button" class="deleteProfRow btn div-remove-profession btn-remove btn-outline btn-outline-danger d-none">
                           <i class="bi bi-trash3"></i>
                           <span class="ms-2">Remove</span>
