@@ -2,7 +2,7 @@ let mobile_ctr = 0;
 let educ_ctr = 0;
 
 $(document).ready(function () {
-  $("#row-educ").removeClass();
+  $(".row-educ").removeClass();
 
   $.getJSON("../Cdn/js/data/profiles.json", function (response) {
     const formatDate = (epochTime) => {
@@ -48,19 +48,19 @@ $(document).ready(function () {
 
 $(document).on("click", ".btn-add-mobile", function () {
   addMobileNumber();
-  $("#row-mobile .input").prop('disabled', false)
-  $("#row-mobile .div-remove-mobile").removeClass("d-none");
+  $(".row-mobile .input").prop('disabled', false)
+  $(".row-mobile .div-remove-mobile").removeClass("d-none");
   mobile_ctr += 1;
   console.log("nyaw");
 });
 
 $(document).on("click", ".btn-add-educ", function () {
   addEducation();
-  $("#education #row-educ").addClass(
+  $(".education .row-educ").addClass(
     "bg-light shadow-sm border mt-2 px-2 rounded"
   );
-  $("#row-educ .input").prop('disabled', false)
-  $("#row-educ .div-remove-educ").removeClass("d-none");
+  $(".row-educ .input").prop('disabled', false)
+  $(".row-educ .div-remove-educ").removeClass("d-none");
   educ_ctr += 1;
 });
 
@@ -69,32 +69,32 @@ $(".profile-content").on("click", ".editButton", function () {
 
   // MOBILE NUMBER
   $(".btn-add-mobile").removeClass("d-none");
-  $("#row-mobile .div-remove-mobile").removeClass("d-none");
+  $(".row-mobile .div-remove-mobile").removeClass("d-none");
 
   // EDUCATION
   $(".btn-add-educ").removeClass("d-none");
 
-  $("#education #row-educ").addClass(
+  $(".education .row-educ").addClass(
     "bg-light shadow-sm border mt-2 px-2 rounded"
   );
-  $("#row-educ .div-remove-educ").removeClass("d-none");
+  $(".row-educ .div-remove-educ").removeClass("d-none");
 
   $(".profile-content .editButton").hide();
   $(".profile-content .saveButton").show();
 });
 
-$(document).on("click", "#deleteMobileRow", function () {
-  $(this).parents("#row-mobile").remove();
+$(document).on("click", ".deleteMobileRow", function () {
+  $(this).parents(".row-mobile").remove();
 });
 
-$(document).on("click", "#deleteEducRow", function () {
-  $(this).parents("#row-educ").remove();
+$(document).on("click", ".deleteEducRow", function () {
+  $(this).parents(".row-educ").remove();
 });
 
 function addMobileNumber(item = "") {
   let input = `<div id="row-mobile" class="d-flex justify-content-between align-items-center gap-1 mb-2">
                   <input type="text" class="input text-black form-control montserrat-regular" placeholder="Add Contact Number" disabled value="${item}">
-                  <button type="button" id="deleteMobileRow" class="btn div-remove-mobile btn-remove btn-outline btn-outline-danger d-none">
+                  <button type="button" class="deleteMobileRow btn div-remove-mobile btn-remove btn-outline btn-outline-danger d-none">
                       <i class="bi bi-trash3"></i>
                       <span class="ms-2">Remove</span>
                   </button>
@@ -112,11 +112,11 @@ function addEducation(item = {}) {
     myDate = date.toISOString().split("T")[0];
   }
 
-  let input = `<div id='row-educ' class='mb-2'>
+  let input = `<div class='row-educ mb-2'>
                     <div class="row g-0">
-                        <label for="school" class="fs-4 text-secondary my-2 montserrat-regular">School</label>
+                        <span class="fs-4 text-secondary my-2 montserrat-regular">School</span>
                         <div class="">
-                            <input type="text" name="school" id="school" class="input text-black form-control montserrat-regular" disabled value=${item.hasOwnProperty("school") > 0
+                            <input type="text" name="school" class="input text-black form-control montserrat-regular" disabled value=${item.hasOwnProperty("school") > 0
       ? item.school
       : ""
     }>
@@ -124,17 +124,17 @@ function addEducation(item = {}) {
                     </div>
                     <div class="row g-0 gap-2">
                         <div class="col-md">
-                            <label for="degree" class="fs-4 text-secondary my-2 montserrat-regular">Degree</label>
-                            <input type="text" name="degree" id="degree" class="input text-black form-control montserrat-regular" disabled value=${item.hasOwnProperty("degree") > 0
+                            <span class="fs-4 text-secondary my-2 montserrat-regular">Degree</span>
+                            <input type="text" name="degree" class="input text-black form-control montserrat-regular" disabled value=${item.hasOwnProperty("degree") > 0
       ? item.degree
       : ""
     }
                                 >
                         </div>
                         <div class="col-md">
-                            <label for="graduated-on" class="fs-4 text-secondary my-2 montserrat-regular">Graduated
-                                on</label>
-                            <input type="date" name="graduated-on" id="graduated-on" class="input text-black form-control montserrat-regular" disabled value=${item.hasOwnProperty("graduated_at") > 0
+                            <span class="fs-4 text-secondary my-2 montserrat-regular">Graduated
+                                on</span>
+                            <input type="date" name="graduated-on" class="input text-black form-control montserrat-regular" disabled value=${item.hasOwnProperty("graduated_at") > 0
       ? myDate
       : ""
     }
@@ -142,13 +142,13 @@ function addEducation(item = {}) {
                         </div>
                     </div>
                     <div class="text-center div-remove-educ d-none">
-                        <button type="button" id="deleteEducRow" class="btn my-3 btn-remove-educ btn-remove btn-outline btn-outline-danger ">
+                        <button type="button" class="deleteEducRow btn my-3 btn-remove-educ btn-remove btn-outline btn-outline-danger ">
                             <i class="bi bi-trash3"></i>
                             <span class="ms-2">Remove</span>
                         </button>
                     </div>
                 </div>`;
 
-  $("#education").append(input);
+  $(".education").append(input);
 }
 
