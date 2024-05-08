@@ -1,20 +1,67 @@
         $(document).ready(function () {
-            getOrganizationsData();
+            getOrganizationsData(1, '', 'asc', 'name');
 
           });
-          $(document).on("keyup", '.search', function () {
-            var value = $(this).val().toLowerCase();
-            $(".userTable .data-container tr").filter(function () {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
+
+          let sortBy = 'name';
+          let sortDirection = 'asc';
+
+
+          function search() {
+            getOrganizationsData(1, $('#search').val(), sortBy, sortDirection);
+          }
+        
+          
+          
+          function updateSortDirection(direction) {
+            sortDirection = direction;
+            console.log(sortDirection);
+            highlightSortDirection();
+            search();
+          }
+          
+          function updateSortBy(by) {
+            sortBy = by;
+            search();
+            highlightSortBy();
+          }
+          
+          
+          function changePage(pageNumber) {
+            const searchText=$('search').val();
+            getOrganizationData(pageNumber, searchText, sortBy, sortDirection);
+          }
+          
+          
+          function highlightSortDirection() {
+            $('.btn-sort-direction').removeClass('active');
+            if (sortDirection === 'asc') {
+              $('#btnSortAsc').addClass('active');
+            } else {
+              $('#btnSortDesc').addClass('active');
+            }
+          }
+          
+          function highlightSortBy() {
+            $('.dropdown-item.sort-by').removeClass('active');
+            if (sortBy === 'name') {
+              $('#sortByTitle').addClass('active');
+            } else {
+              $('#sortByDate').addClass('active');
+            }
+          }
 
 
         $(document).on('click', '.btn-add', function (e) {
             window.location.href = "organization.user.create.html";
         });
 
-          function getOrganizationsData() {
+          function getOrganizationsData(pageNumber, searchText, sortBy, sortDirection) {
+
+            const userPerPage = 9;
+            const startIndex = (pageNumber - 1) * userPerPage;
+            const endIndex = startIndex + userPerPage;
+
             $.getJSON("../Cdn/js/data/profiles.json", function (data) {
                 $.getJSON("../Cdn/js/data/accounts.json", function (account) {
                     $.getJSON("../Cdn/js/data/organization.json", function (organization) {
@@ -28,6 +75,8 @@
 
                         let orgData = organizationData.find((item) => item.organization_id == id);
 
+
+
                         if (orgData) {
                             let orgId = orgData.organization_id;
                             let mergedData = profileData.map(profile => {
@@ -35,6 +84,9 @@
                                 return { ...profile, ...accData };
                             });
                             let filteredData = mergedData.filter(item => item.organization_id == orgId);
+                            // console.log(filteredData)
+
+
                             const tableBody = $(".userTable tbody");
                             filteredData.forEach((item) => {
                                 let fullName = `${item.name.prefix} ${item.name.firstname} ${item.name.lastname} ${item.name.suffix}`;
@@ -63,4 +115,33 @@
             });
           }
 
+          function updatePagination(currentPage, totalPages) {
+            const pageNumbers = document.getElementById('page-numbers');
+            const paginationContainer = $('.btn-group');
+          
+            let paginationButtons = '';
+          
+          
+            if (totalPages > 0) {
+              paginationButtons += `
+              <button type="button" class="btn btn-outline-primary montserrat-semibold ${currentPage === 1 ? 'disabled' : ''}" onclick="changePage(${currentPage - 1})">
+                  <span class="d-none d-md-block">Previous</span>
+                  <i class="bi bi-chevron-double-left d-block d-md-none"></i>
+              </button>`;
+          
+              for (let i = 1; i <= totalPages; i++) {
+                const activeClass = i === currentPage ? 'active' : '';
+                paginationButtons += `<button type="button" class="btn btn-outline-primary ${activeClass}" onclick="changePage(${i})">${i}</button>`;
+              }
+          
+              paginationButtons += `<button type="button" class="btn btn-outline-primary montserrat-semibold ${currentPage === totalPages ? 'disabled' : ''}" onclick="changePage(${currentPage + 1})">
+               <span class="d-none d-md-block">Next</span>
+              <i class="bi bi-chevron-double-right d-block d-md-none"></i>
+          </button>`;
+            } else {
+              paginationButtons = '';
+            }
+            pageNumbers.innerHTML = totalPages > 0 ? `Showing ${currentPage} out of ${totalPages} pages` : 'Showing 0 out of 0 pages';
+            paginationContainer.html(paginationButtons);
+          }
         //   <a class="btn border-primary bg-body" href="organization.user.view.update.html?id=${item.profile_id}"> <i class="bi bi-pencil-square"></i> Edit</a> 
