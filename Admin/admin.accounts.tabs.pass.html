@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Password</title>
+    <script src="../Cdn/js/admin.accounts.pass.js"></script>
+</head>
+
+<body>
+    <form class="skill-content card-body">
+        <div class="p-4 rounded-3 lh-base">
+            <!--UPDATE PASSWORD -->
+            <span class="fs-2 montserrat-bold lh-1 lh-lg-base">UPDATE YOUR PASSWORD</span>
+            <div class="d-flex flex-column flex-lg-row gap-4">
+                <div class="col">
+                    <div class="d-flex flex-column gap-2">
+                        <div class="col-12 align-items-start flex-fill">
+                            <label for="current-password" class="fs-4 text-secondary my-2 montserrat-regular">Current
+                                Password</label>
+                            <input type="password" placeholder="Enter Current Password" id="current-password"
+                                class="current-password form-control">
+                        </div>
+                        <div class="col-12 align-items-start flex-fill">
+                            <label for="new-password" class="fs-4 text-secondary my-2 montserrat-regular">New
+                                Password</label>
+                            <input type="password" placeholder="Enter New Password" name="new-password"
+                                id="new-password" class="form-control">
+                        </div>
+                        <div class="col-12 align-items-start flex-fill">
+                            <label for="confirm-password" class="fs-4 text-secondary my-2 montserrat-regular">Confirm
+                                Password</label>
+                            <input type="password" placeholder="Re-type Password" name="confirm-password"
+                                id="confirm-password" class="form-control">
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-center mt-4">
+                        <button type="button" class="d-flex flex-row gap-2 btn btn-success btn-md montserrat-regular">
+                            <i class="bi bi-lock"></i>
+                            Change Password
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card p-4 password-requirement">
+                        <span class="fs-2 montserrat-bold lh-1 lh-lg-base mb-4"
+                            style="background-color: rgb(248, 248, 248);">PASSWORD REQUIREMENTS</span>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="d-flex flex-row gap-4 align-items-center">
+                                <i class="eight-car bi bi-x-circle-fill fs-2"></i>
+                                <span class="">Atleast 8 characters long</span>
+                            </div>
+                            <div class="upper-lower d-flex flex-row gap-4 align-items-center">
+                                <i class="bi bi-x-circle-fill fs-2"></i>
+                                <span class="">Include both uppercase and lowercase</span>
+                            </div>
+                            <div class="one-num d-flex flex-row gap-4 align-items-center">
+                                <i class="bi bi-x-circle-fill fs-2"></i>
+                                <span class="">Include atleast one number</span>
+                            </div>
+                            <div class="special-char d-flex flex-row gap-4 align-items-center">
+                                <i class="bi bi-x-circle-fill fs-2"></i>
+                                <span class="">Include at least one special character (e.g., !, @, #, $, %)</span>
+                            </div>
+                            <div class="match-password d-flex flex-row gap-4 align-items-center">
+                                <i class="bi bi-x-circle-fill fs-2"></i>
+                                <span class="">Match password</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
