@@ -52,7 +52,7 @@ function getEbooksData() {
             html += "<td class='align-middle text-center'><img src='" + ebook.thumbnail_image + "' style='width:10em;' /></td>";
             html += "<td class='align-middle montserrat-regular'>" + ebook.title + "</td>";
             html += "<td class='align-middle montserrat-regular'>" + ebook.sub_title + "</td>";
-            html += "<td class='align-middle montserrat-regular text-uppercase'>" + ebook.author + "</td>";
+            html += "<td class='align-middle montserrat-regular text-capitalize'>" + ebook.author + "</td>";
             html += "<td class='align-middle montserrat-regular'>" + ebook.isbn + "</td>";
             html += "<td class='align-middle montserrat-regular'>" + "<span class='badge badge-outline text-teal'>" + ebook.category + "</span>" + "</td>";
             html += displayActionButton(ebook.ebook_id, ebook.title);
