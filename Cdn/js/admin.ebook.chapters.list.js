@@ -22,7 +22,7 @@ $(document).ready(function () {
         if (chapters.length > 0) {
             chapters.forEach(function (chapter) {
                 html += "<tr>";
-                html += "<td class='align-middle montserrat-bold'>" + chapter.chapter + "</td>";
+                html += "<td class='align-middle montserrat-regular'>" + chapter.chapter + "</td>";
                 html += "<td class='align-middle truncate-text'style='max-width: 30em'>" + "<p>"  + chapter.content + "</p>" + "</td>";
                 html += "<td class='align-middle montserrat-regular'>" + convertDate(chapter.created_at) + "</td>";
                 html += displayActionButton(chapter.ebook_chapter_id);
@@ -53,8 +53,8 @@ $(document).on('click', '.btn-delete', function (e) {
 function displayActionButton(id) {
     return `<td class='align-middle text-start'>
     <div class="btn-group" role="group" aria-label="Basic outlined example ">
-                <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class='montserrat-regular'>Edit</span></button>
-                <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger"><i class="bi bi-trash"></i><span class='montserrat-regular'>Delete</span></button>
+                <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class='ms-2 montserrat-regular'>Edit</span></button>
+                <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger"><i class="bi bi-trash"></i><span class='ms-2 montserrat-regular'>Delete</span></button>
     </div>
     </td>`;
 }

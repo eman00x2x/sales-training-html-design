@@ -10,6 +10,8 @@ $(document).ready(function () {
 
         let profile = response.find(profile => profile.account_id == id);
         if (profile) {
+            $("#profile-pic").attr("src", profile.profile_image);
+            $('.name').text(profile.name.firstname + " " + profile.name.lastname);
             $('#acc-id').text(profile.account_id);
             $('#birthday').text(convertDate(profile.birthday));
             $('#username').text(profile.username);
@@ -18,18 +20,9 @@ $(document).ready(function () {
         } else {
             console.log("No profile found for the specified account ID.");
         }
-    });
-
-    $('#tab-top-1').load('manage.account.skills.html', function () {
-    });
-
-    $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
-        var target = $(e.target).attr("href");
-        if (target === '#tab-top-1') {
-            $('#tab-top-1').load('manage.account.skills.html');
-        }
-        else if (target === '#tab-top-2') {
-            $('#tab-top-2').load('manage.account.skills.html');
-        }
-    });
+    })
+    $('#tab-top-1').load('manage.account.profile.details.html');
+    $('#tab-top-2').load('manage.account.skills.html');
+    $('#tab-top-3').load('manage.change.password.html');
 });
+
