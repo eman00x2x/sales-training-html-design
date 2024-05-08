@@ -107,8 +107,11 @@ function displayVideo(pageNumber, searchText, sortBy, sortDirection) {
         const totalPages = Math.ceil(totalItems / videosPerPage);
         const currentPage = pageNumber;
 
+
         updatePagination(currentPage, totalPages);
         const videoResponse1 = filteredVideos.slice(startIndex, endIndex);
+
+            console.log(videoResponse1)
 
         let videoListHtml = '';
         videoResponse1.forEach(video => {
@@ -116,16 +119,20 @@ function displayVideo(pageNumber, searchText, sortBy, sortDirection) {
           // console.log(video)
             videoListHtml += `
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
-                    <div class="card" data-ebook-id="${video.ebook_id}">
+                    <div class="card" data-ebook-id="${video.video_id}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                         <!-- Photo -->
-                        <div class="img-container" style="height: 200px;">
+                        <div class="img-container pt-2" style="height: 200px;">
                             <img src="${video.thumbnail_image}" class="card-img" alt="Image"
                                 style="object-fit: contain; width: 100%; height: 100%;">
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">${video.title}</h3>
-                            <p class="text-secondary">${video.description} </p>
+                            <h3 class="card-title text-uppercase montserrat-semibold">${video.title}</h3>
+                            <p class=" card-text text-secondary">${video.description} </p>
+                            <p class=" card-text text-secondary text-end"> <small>${convertDate(video.created_at)}</small>  </p>
+                            
+          
                         </div>
+                       
                     </div>
                 </div>
 
@@ -138,14 +145,27 @@ function displayVideo(pageNumber, searchText, sortBy, sortDirection) {
             const videoId = $(this).data('ebook-id'); 
             $.getJSON('../Cdn/js/data/videos.json', function (data) {
                 let response = data.data;
+
+
                 f = response.keys(response).find(key => response[key].video_id === videoId);
-                $('#modalEbookTitle').text(response[f].title);
-                // $('#modalEbookAuthor').text(response[f].author);
-                $('#modalEbookDescription').text(response[f].description);
-                $('#modalEbookImage').attr('src', response[f].thumbnail_image);
-                // Set ebook ID for "Read Now" button
-                $('#readNowButton').attr('href', 'manage.read.ebook.html?ebook_id=' + videoId);
-                $('#exampleModal').modal('show');
+
+                console.log(videoId);
+
+                console.log(response[f])
+
+                $(".offcanvas-title").text(response[f].title)
+                $(".thumb").attr("src",response[f].thumbnail_image)
+                $(".text-body").text(response[f].description)
+                $(".watch-video").attr("href",`manage.watch.video.html?video_id=`+ videoId)
+
+              
+                // $('#modalEbookTitle').text(response[f].title);
+                // // $('#modalEbookAuthor').text(response[f].author);
+                // $('#modalEbookDescription').text(response[f].description);
+                // $('#modalEbookImage').attr('src', response[f].thumbnail_image);
+                // // Set ebook ID for "Read Now" button
+                // $('#readNowButton').attr('href', 'manage.read.ebook.html?ebook_id=' + videoId);
+                // $('#exampleModal').modal('show');
             });
         });
     });

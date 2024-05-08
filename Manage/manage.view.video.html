@@ -41,27 +41,33 @@
         <div class="header"></div>
 
 
-        <div class="container-fluid">
+        <div class="banner w-100 bg-white p-3 shadow-sm">
+
+            <ol class="breadcrumb breadcrumb-arrows pt-3" aria-label="breadcrumbs">
+                <li class="breadcrumb-item montserrat-semibold "><a class="breadlink"
+                        href="manage.video.grouo.html">Video Group List</a></li>
+                <li class="breadcrumb-item active montserrat-bold" aria-current="page"><a href="">View
+                        Available Videos</a></li>
+            </ol>
+
+            <div class="text-center ">
+                <div>         
+                    <h1 id="header">
+                   AVAILABLE VIDEOS
+                </h1>
+                <hr class="mx-auto w-25 border border-primary border-2">
+               
+       
+            </div>
+
+        </div>
+        </div>
+
+        <div class="container-fluid pt-3">
 
         
-
             <div class="container ">
-
-                <ol class="breadcrumb breadcrumb-arrows pt-3" aria-label="breadcrumbs">
-                    <li class="breadcrumb-item montserrat-semibold "><a class="breadlink"
-                            href="manage.video.grouo.html">Video Group List</a></li>
-                    <li class="breadcrumb-item active montserrat-bold" aria-current="page"><a href="">View
-                            Available Videos</a></li>
-                </ol>
-
                 <div class="row pt-2">
-                    <div class="title col-lg-4">
-                        <h1 class="fw-bold text-primary">
-                            <i class="bi bi-film"></i> AVAILABLE VIDEOS
-                        </h1>
-                    </div>
-
-                 
                    <div class="d-flex justify-content-start align-items-start  col-lg-8 pb-3">
                         <div class="btn-sort dropdown montserrat-regular">
                             <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
@@ -103,7 +109,19 @@
 
                 </div>
 
-
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                      <h5 class="offcanvas-title" id="offcanvasRightLabel"></h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div >
+                            <img class="thumb" src="" alt="">
+                        </div>
+                        <p class="pt-4 text-body"> </p>
+                        <a href="" class="btn btn-primary watch-video">Watch Video</a>
+                    </div>
+                  </div>
                 
                 <!-- pagination -->
                 <div class="d-flex align-items-center justify-content-between justify-content-sm-start mt-3 py-3">
@@ -118,6 +136,9 @@
 
 
         </div>
+
+
+
     </div>
 </body>
 
