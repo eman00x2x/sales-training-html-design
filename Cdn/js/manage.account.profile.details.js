@@ -93,7 +93,7 @@ $(document).on("click", ".deleteEducRow", function () {
 
 function addMobileNumber(item = "") {
   let input = `<div id="row-mobile" class="d-flex justify-content-between align-items-center gap-1 mb-2">
-                  <input type="text" class="input text-black form-control montserrat-regular" placeholder="Add Contact Number" disabled value="${item}">
+                  <input type="text" class="input text-black form-control montserrat-regular" name="contact-number" placeholder="Add Contact Number" disabled value="${item}">
                   <button type="button" class="deleteMobileRow btn div-remove-mobile btn-remove btn-outline btn-outline-danger d-none">
                       <i class="bi bi-trash3"></i>
                       <span class="ms-2">Remove</span>

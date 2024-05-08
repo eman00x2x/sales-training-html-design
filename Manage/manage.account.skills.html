@@ -14,24 +14,29 @@
             <!--SPECIAL SKILLS AND CERTIFICATIONS -->
             <span class="fs-2 montserrat-bold lh-1 lh-lg-base">SPECIAL SKILLS AND CERTIFICATIONS</span>
             <div class="d-flex flex-column">
-                <label for="skills" class="fs-4 text-secondary my-2 montserrat-regular">Skills</label>
+                <span class="fs-4 text-secondary my-2 montserrat-regular">Skills</span>
                 <div class="d-flex row align-items-center">
                     <div class="d-flex flex-column flex-md-row gap-2 align-items-center">
-                        <div class="d-flex flex-row badge bg-secondary-lt rounded-4 py-2 px-4 gap-3">
-                            <span class="fs-4 montserrat-regular" id="skills" name="skills"></span>
-                            <i class="bi bi-x fs-2 fw-bold remove"></i>
+                        <div class="skills-list d-flex flex-wrap gap-2">
+                            <div class="div-add-skill d-flex justify-items-center align-items-center d-none">
+                                <input type="text" class="skill-input form-control" placeholder="Enter skill..."
+                                    style="border-radius: 6px 0px 0px 6px !important;" name="skills">
+                                <div class="">
+                                    <button class="btn-add-skill btn btn-outline-secondary" type="button"
+                                        style="border-radius: 0px 6px 6px 0px !important;">Add Skill</button>
+                                </div>
+                            </div>
                         </div>
-                        <button type="button" class="btn btn-add mobile-add btn-outline btn-outline-primary"><i
-                                class="bi bi-plus-lg"></i><span class="ms-2">Add Skill</span></button>
+
                     </div>
+
                 </div>
 
                 <div class="d-flex flex-column flex-md-row gap-2">
                     <div class="d-flex flex-column col-12 col-md-6 align-items-start flex-fill">
                         <div class="col-12">
                             <div class="col">
-                                <label for="certificates"
-                                    class="fs-4 text-secondary my-2 montserrat-regular">Certification</label>
+                                <span class="fs-4 text-secondary my-2 montserrat-regular">Certification</span>
                                 <div class="certification"></div>
                             </div>
                             <button type="button"
@@ -42,8 +47,7 @@
                     <div class="d-flex flex-column col-12 col-md-6 align-items-start flex-fill">
                         <div class="col-12">
                             <div class="col">
-                                <label for="profession"
-                                    class="fs-4 text-secondary my-2 montserrat-regular">Professions</label>
+                                <span class="fs-4 text-secondary my-2 montserrat-regular">Professions</span>
                                 <div class="profession"></div>
                             </div>
                             <button type="button"
