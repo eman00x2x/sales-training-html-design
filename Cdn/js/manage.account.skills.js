@@ -6,10 +6,6 @@ $(document).ready(function () {
     $(".row-work").removeClass();
 
     $.getJSON('../Cdn/js/data/profiles.json', function (response) {
-        const formatDate = (epochTime) => {
-            let date = new Date(epochTime * 1000);
-            return date.toISOString().split('T')[0];
-        };
 
         id = getParams('id');
 
@@ -76,8 +72,8 @@ $(".skill-content").on('click', '.editButton', function () {
     );
     $(".row-work .div-remove-work").removeClass("d-none");
 
-    $(".editButton").hide();
-    $(".saveButton").show();
+    $(".skill-content .editButton").hide();
+    $(".skill-content .saveButton").show();
 });
 
 $(document).on("click", ".deleteCertRow", function () {
@@ -93,7 +89,6 @@ $(document).on("click", ".deleteWorkRow", function () {
 });
 
 function addCertification(item = "") {
-    let disabled = item ? "disabled" : "";
     let input = `<div class="row-cert d-flex justify-content-between align-items-center gap-1 mb-2">
                       <input type="text" class="input text-black form-control montserrat-regular" placeholder="Add Certification" disabled value="${item}">
                       <button type="button" class="deleteCertRow btn div-remove-cert btn-remove btn-outline btn-outline-danger d-none">
