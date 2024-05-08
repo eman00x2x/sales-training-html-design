@@ -31,8 +31,8 @@ $(document).ready(function () {
     console.log(result[f]);
   });
 
-  $("#tab-top-1").load("admin.accounts.profile.html");
-  $("#tab-top-2").load("admin.accounts.skills.html");
+  $("#tab-top-1").load("admin.accounts.skills.html");
+  // $("#tab-top-2").load("admin.accounts.skills.html");
 
   // $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
   //     var target = $(e.target).attr("href");
