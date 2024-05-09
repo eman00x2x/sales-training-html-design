@@ -234,7 +234,8 @@ function generatePagination(totalItems, currentPage) {
   if (totalPages - currentPage < 2) {
     startPage = totalPages - maxButtons + 1;
     if (startPage <= 0) startPage = 1;
-  }g
+  }
+  
   $(".prev-btn").html(
     `<button
     type="button"
