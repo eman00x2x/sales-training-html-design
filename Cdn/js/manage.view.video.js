@@ -111,7 +111,7 @@ function displayVideo(pageNumber, searchText, sortBy, sortDirection) {
         updatePagination(currentPage, totalPages);
         const videoResponse1 = filteredVideos.slice(startIndex, endIndex);
 
-            console.log(videoResponse1)
+            // console.log(videoResponse1)
 
         let videoListHtml = '';
         videoResponse1.forEach(video => {

@@ -25,12 +25,29 @@ const formatDate = (epochTime) => {
   return date.toISOString().split('T')[0];
 };
 
-function sortNamesAlphabetically() {
+// function sortNamesAlphabetically() {
+//   var rows = $('.table tbody tr').get();
+//   rows.sort(function (a, b) {
+//       var nameA = $(a).find('td:eq(3)').text().toUpperCase(); 
+//       var nameB = $(b).find('td:eq(3)').text().toUpperCase(); 
+//       return nameA.localeCompare(nameB);
+//   });
+//   $.each(rows, function (index, row) {
+//       $('.table').append(row);
+//   });
+// }
+
+function sortTable(sortBy) {
+  
   var rows = $('.table tbody tr').get();
   rows.sort(function (a, b) {
-      var nameA = $(a).find('td:eq(3)').text().toUpperCase(); 
-      var nameB = $(b).find('td:eq(3)').text().toUpperCase(); 
-      return nameA.localeCompare(nameB);
+      var valueA, valueB;
+      if (sortBy === 'name') {
+          valueA = $(a).find('td:eq(3)').text().toUpperCase();
+          valueB = $(b).find('td:eq(3)').text().toUpperCase();
+      } else if (sortBy === 'date') {
+      }
+      return valueA.localeCompare(valueB);
   });
   $.each(rows, function (index, row) {
       $('.table').append(row);
@@ -40,8 +57,9 @@ function sortNamesAlphabetically() {
 $(document).ready(function () {
   $('.dropdown-menu a.dropdown-item').on('click', function (e) {
       e.preventDefault();
-      if ($(this).text() === '') {
-          sortNamesAlphabetically();
+      var sortBy = $(this).data('sort-by');
+      if (sortBy) {
+          sortTable(sortBy);
       }
   });
 });
