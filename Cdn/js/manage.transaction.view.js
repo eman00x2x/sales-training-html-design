@@ -18,7 +18,8 @@ $(document).ready(function() {
                 $('.price').text(data.price);
                 $('.transaction-date').text(convertDate(data.created_at));
                 $('.details').text(data.details);
-                $('.status').text(data.status);
+                let $status = $('.status').text(data.status);
+                $status.addClass(getStatusClass(data.status));
                 $('.source').text(data.source);
                 $('.payment-id').text(data.payment_transaction_id);
                 $('.merchant-email').text(data.merchant_email);
@@ -55,7 +56,17 @@ $(document).ready(function() {
             doc.save('invoice.pdf');
         };
     });
-    
-
-    
 });
+
+function getStatusClass(status) {
+    switch (status) {
+        case 'Success':
+            return 'text-success';
+        case 'Processing':
+            return 'text-warning';
+        case 'Cancelled':
+            return 'text-danger';
+        default:
+            return 'text-dark';
+    }
+}
