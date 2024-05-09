@@ -3,7 +3,7 @@ let educ_ctr = 0;
 
 $(document).ready(function () {
   $("#row-educ").removeClass();
-  $("#saveButton").hide();
+  $(".profileSaveButton").hide();
 
   $.getJSON("../Cdn/js/data/profiles.json", function (response) {
     const formatDate = (epochTime) => {
@@ -50,7 +50,6 @@ $(document).on("click", ".btn-add-mobile", function () {
   addMobileNumber();
   $("#row-mobile .div-remove-mobile").removeClass("d-none");
   mobile_ctr += 1;
-  console.log("nyaw");
 });
 
 $(document).on("click", ".btn-add-educ", function () {
@@ -79,27 +78,56 @@ $(document).on("click", "#editButton", function () {
   $("#row-educ .div-remove-educ").removeClass("d-none");
 
   $("#editButton").hide();
-  $("#saveButton").show();
+  $(".profileSaveButton").show();
 });
 
-$(document).on("click", ".btn-save", function () {
+$(document).on("click", ".profileSaveButton", function (e) {
+  e.preventDefault();
+
+  const form = $(".profile");
+
+  // READONLY AND DISABLED ALL INPUTS AND SELECT
   $(".profile input").prop("readonly", true);
   $(".profile select").prop("disabled", true);
 
-  // MOBILE NUMBER
+  // HIDE MOBILE NUMBER
   $(".btn-add-mobile").addClass("d-none");
   $("#row-mobile .div-remove-mobile").addClass("d-none");
 
-  // EDUCATION
+  // HIDE EDUCATION
   $(".btn-add-educ").addClass("d-none");
 
+  // REMOVE DROP-SHADOW OF ELEMENTS IN EDUCATION
   $("#education #row-educ").removeClass(
     "bg-light shadow-sm border mt-2 px-2 rounded"
   );
   $("#row-educ .div-remove-educ").addClass("d-none");
 
-  $("#saveButton").hide();
+  // HIDE SAVE BUTTON AND SHOW EDIT BUTTON AGAIN
+  $(".profileSaveButton").hide();
   $("#editButton").show();
+
+  // PROCESS RESPONSE
+  $(".response-profile").html(
+    "<div class='bg-white p-3 mt-3 rounded'><div class='d-flex gap-3 align-items-center'><div class='loader'></div><p class='mb-0'>Processing, Please wait...</p></div></div>"
+  );
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+
+  setTimeout(function () {
+    if ((message = validateInput(form.serializeArray()))) {
+      const errorAlert =
+        "<div class='response-profile alert alert-danger alert-dismissible fade show mt-3' role='alert'><span>Follow the format for fields: " +
+        message +
+        "</span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
+      $(".response-profile").html(errorAlert);
+    } else {
+      const successAlert =
+        "<div class='response-profile alert alert-success alert-dismissible fade show mt-3' role='alert'><span>Submitted but nothing happened! form data" +
+        form.serialize() +
+        ". See <a href='../Cdn/js/script.js'>../Cdn/js/script.js</a></span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
+      $(".response-profile").html(successAlert);
+    }
+  }, 30);
 });
 
 $(document).on("click", "#deleteMobileRow", function () {

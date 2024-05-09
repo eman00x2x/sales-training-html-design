@@ -5,11 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Special Skills and Certifications</title>
+    <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
     <script src="../Cdn/js/admin.accounts.tabs.skills.js"></script>
 </head>
 
 <body>
-    <form class="card-body">
+    <form class="spec-skills-cert card-body">
+        <div class="response-skills"></div>
         <div class="">
             <!--SPECIAL SKILLS AND CERTIFICATIONS -->
             <span class="fs-2 montserrat-bold lh-1 lh-lg-base">SPECIAL SKILLS AND CERTIFICATIONS</span>
@@ -69,7 +71,7 @@
                     <button class="editButton btn btn-outline-primary montserrat-regular col-lg-3" type="button">
                         <i class="bi bi-pencil-square me-2"></i><span>Edit Skills and Experience</span>
                     </button>
-                    <button type="button" class="saveButton btn btn-success btn-md montserrat-regular"
+                    <button type="button" class="skillsSaveButton btn btn-success btn-md montserrat-regular"
                         style="display: none;">
                         Save Changes
                     </button>

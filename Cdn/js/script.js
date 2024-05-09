@@ -121,6 +121,8 @@ $(document).on("click", ".btn-save", function (e) {
 
   const form = $("#form");
 
+  console.log(form)
+
   $(".btn-save").css({
     cursor: "wait",
     "pointer-events": "none",
