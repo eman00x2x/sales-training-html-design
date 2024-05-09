@@ -31,8 +31,12 @@ $(document).ready(function () {
     console.log(result[f]);
   });
 
-  $("#tab-top-1").load("admin.accounts.skills.html");
-  // $("#tab-top-2").load("admin.accounts.skills.html");
+  $("#tab-top-1").load("admin.accounts.tabs.profile.html");
+  $("#tab-top-2").load("admin.accounts.tabs.skills.html");
+  $("#tab-top-3").load("admin.accounts.tabs.pass.html");
+  $("#tab-top-4").load("admin.accounts.tabs.email.html");
+  $("#tab-top-5").load("admin.accounts.tabs.ebook.sessions.html");
+  $("#tab-top-6").load("admin.accounts.tabs.video.sessions.html");
 
   // $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
   //     var target = $(e.target).attr("href");

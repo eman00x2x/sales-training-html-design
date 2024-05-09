@@ -12,6 +12,10 @@ $(document).ready(function () {
         $('.orgDesc').text(response[f].description);
     });
 
+    $("#tab-top-1").load("admin.organization.tabs.ebook.grps.html");
+    $("#tab-top-2").load("admin.organization.tabs.video.grps.html");
+    $("#tab-top-3").load("admin.organization.tabs.reg.accs.html");
+
     getOrgEBookGroupData()
     getOrgVideoGroupData()
     getOrgUserData()

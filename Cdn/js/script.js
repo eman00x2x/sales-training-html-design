@@ -6,6 +6,10 @@ const getModel = (url) => {
   });
 };
 
+function limitDataToTen(data) {
+  return data.slice(0, 10);
+}
+
 const convertDate = (dateData) => {
   let date = new Date(0);
   date.setUTCSeconds(dateData);
@@ -21,6 +25,45 @@ const formatDate = (epochTime) => {
   return date.toISOString().split('T')[0];
 };
 
+// function sortNamesAlphabetically() {
+//   var rows = $('.table tbody tr').get();
+//   rows.sort(function (a, b) {
+//       var nameA = $(a).find('td:eq(3)').text().toUpperCase(); 
+//       var nameB = $(b).find('td:eq(3)').text().toUpperCase(); 
+//       return nameA.localeCompare(nameB);
+//   });
+//   $.each(rows, function (index, row) {
+//       $('.table').append(row);
+//   });
+// }
+
+function sortTable(sortBy) {
+  
+  var rows = $('.table tbody tr').get();
+  rows.sort(function (a, b) {
+      var valueA, valueB;
+      if (sortBy === 'name') {
+          valueA = $(a).find('td:eq(3)').text().toUpperCase();
+          valueB = $(b).find('td:eq(3)').text().toUpperCase();
+      } else if (sortBy === 'date') {
+      }
+      return valueA.localeCompare(valueB);
+  });
+  $.each(rows, function (index, row) {
+      $('.table').append(row);
+  });
+}
+
+$(document).ready(function () {
+  $('.dropdown-menu a.dropdown-item').on('click', function (e) {
+      e.preventDefault();
+      var sortBy = $(this).data('sort-by');
+      if (sortBy) {
+          sortTable(sortBy);
+      }
+  });
+});
+
 const displayActionButtons = (id) => {
   return `<td class='align-middle'>
               <div class="btn-group" role="group" aria-label="Basic outlined example ">
@@ -33,6 +76,7 @@ const displayActionButtons = (id) => {
 
 const returnFilteredData = (data1, data2, attr, filter = "") =>  {
   let expected = data1.map(a => Object.assign(a, data2.find(b => b[attr] == a[attr])));
+  console.log('expected', expected)
   let filterByID = expected.filter(item => filter === "" ? item[attr] == id : item[filter] == id)
 
   return filterByID;
