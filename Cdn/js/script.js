@@ -72,7 +72,7 @@ const displayActionButtons = (id) => {
                   <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger montserrat-semibold"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
               </div>
           </td>`;
-}
+};
 
 const returnFilteredData = (data1, data2, attr, filter = "") =>  {
   let expected = data1.map(a => Object.assign(a, data2.find(b => b[attr] == a[attr])));
@@ -80,7 +80,7 @@ const returnFilteredData = (data1, data2, attr, filter = "") =>  {
   let filterByID = expected.filter(item => filter === "" ? item[attr] == id : item[filter] == id)
 
   return filterByID;
-}
+};
 
 const niceTrim = (data, length) => {
   if (data.length < length) {
@@ -100,13 +100,13 @@ const formatFileSize = (bytes, decimalPoint = 2) => {
 };
 
 const getParams = (p) => {
-  let params = new URLSearchParams(window.location.search)
+  let params = new URLSearchParams(window.location.search);
   if (params.has(p) === true) {
     return params.get(p);
   } else {
     alert("Undefined parameter '" + p + "'");
   }
-}
+};
 
 $(document).ready(function () {
   $(".header").load("header.html");
@@ -118,8 +118,6 @@ $(document).on("click", ".btn-save", function (e) {
   e.preventDefault();
 
   const form = $("#form");
-
-  console.log(form.serializeArray());
 
   $(".btn-save").css({
     cursor: "wait",
@@ -142,7 +140,8 @@ $(document).on("click", ".btn-save", function (e) {
         "</span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
       $(".response").html(errorAlert);
     } else {
-      const successAlert = "<div class='response alert alert-success alert-dismissible fade show mt-3' role='alert'><span>Submitted but nothing happened! form data" +
+      const successAlert =
+        "<div class='response alert alert-success alert-dismissible fade show mt-3' role='alert'><span>Submitted but nothing happened! form data" +
         form.serialize() +
         ". See <a href='../Cdn/js/script.js'>../Cdn/js/script.js</a></span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
       $(".response").html(successAlert);
@@ -153,8 +152,8 @@ $(document).on("click", ".btn-save", function (e) {
       "pointer-events": "auto",
     });
 
-    $(".btn-save").show();
-    $("#form :input").removeAttr("readonly");
+    // $(".btn-save").show();
+    // $("#form :input").removeAttr("readonly");
   }, 30);
 
   /* $.post(form.attr('action'), form.serialize(), function (data, status) {

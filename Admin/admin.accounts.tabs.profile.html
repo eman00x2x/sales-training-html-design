@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Profile</title>
-    <script src="../Cdn/js/admin.accounts.profile.js"></script>
+    <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+    <script src="../Cdn/js/admin.accounts.profile.tabs.js"></script>
 </head>
 
 <body>
-    <form class="card-body">
-
+    <form id='form' class="profile card-body">
+        <div class="response"></div>
         <!--PERSONAL DATA -->
         <div class="row g-0">
             <span class="fs-2 montserrat-bold">PERSONAL DATA</span>
@@ -86,67 +87,7 @@
         <div class="row g-0">
             <span class="fs-2 montserrat-bold">ADDRESS</span>
             <!-- PRESENT ADDRESS -->
-            <div class="row g-0">
-                <span class="fs-4 mt-2 montserrat-semibold">CURRENT ADDRESS</span>
-                <div class="row g-0 gap-2">
-                    <div class="col-md">
-                        <div class="">
-                            <label for="region" class="fs-4 text-secondary my-2 montserrat-regular">Region</label>
-                            <input type="text" name="region" id="region" class="form-control montserrat-regular"
-                                value="" autocomplete="off">
-                        </div>
-                        <div class="">
-                            <label for="province" class="fs-4 text-secondary my-2 montserrat-regular">Province</label>
-                            <input type="text" name="province" id="province" class="form-control montserrat-regular"
-                                value="" autocomplete="off">
-                        </div>
-                    </div>
-                    <div class="col-md">
-                        <div class="">
-                            <label for="municipality"
-                                class="fs-4 text-secondary mt-md-2 mb-2 montserrat-regular">Municipality</label>
-                            <input type="text" name="municipality" id="municipality"
-                                class="form-control montserrat-regular" value="" autocomplete="off">
-                        </div>
-                        <div class="">
-                            <label for="barangay" class="fs-4 text-secondary my-2 montserrat-regular">Barangay</label>
-                            <input type="text" name="barangay" id="barangay"
-                                class="form-control montserrat-regular mb-2 mb-lg-0" value="" autocomplete="off">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--PERMANENT ADDRESS-->
-            <div class="row g-0">
-                <span class="fs-4 mt-2 montserrat-semibold">PERMANENT ADDRESS</span>
-                <div class="row g-0 gap-2">
-                    <div class="col-md">
-                        <div class="">
-                            <label for="region" class="fs-4 text-secondary my-2 montserrat-regular">Region</label>
-                            <input type="text"  name="perma-region" id="perma-region" class="form-control montserrat-regular"
-                                value="" autocomplete="off">
-                        </div>
-                        <div class="">
-                            <label for="province" class="fs-4 text-secondary my-2 montserrat-regular">Province</label>
-                            <input type="text"  name="perma-province" id="perma-province" class="form-control montserrat-regular"
-                                value="" autocomplete="off">
-                        </div>
-                    </div>
-                    <div class="col-md">
-                        <div class="">
-                            <label for="municipality"
-                                class="fs-4 text-secondary mt-md-2 mb-2 montserrat-regular">Municipality</label>
-                            <input type="text" name="perma-municipality" id="perma-municipality"
-                                class="form-control montserrat-regular" value="" autocomplete="off">
-                        </div>
-                        <div class="">
-                            <label for="barangay" class="fs-4 text-secondary my-2 montserrat-regular">Barangay</label>
-                            <input type="text" name="perma-barangay" id="perma-barangay"
-                                class="form-control montserrat-regular mb-2 mb-lg-0" value="" autocomplete="off">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="address-list"></div>
         </div>
 
         <hr class="my-3">
@@ -165,7 +106,7 @@
             <button id="editButton" class="btn btn-outline-primary montserrat-regular col-lg-2" type="button">
                 <i class="bi bi-pencil-square me-2"></i><span>Edit Profile</span>
             </button>
-            <button id="saveButton" type="button" class=" btn btn-success btn-md montserrat-regular col-lg-2"
+            <button id="saveButton" type="button" class="btn-save btn btn-success btn-md montserrat-regular col-lg-2"
                 style="display: none;">
                 Save Changes
             </button>
