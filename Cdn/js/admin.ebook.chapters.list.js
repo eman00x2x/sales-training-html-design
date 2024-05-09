@@ -23,7 +23,7 @@ $(document).ready(function () {
             chapters.forEach(function (chapter) {
                 html += "<tr>";
                 html += "<td class='align-middle montserrat-regular'>" + chapter.chapter + "</td>";
-                html += "<td class='align-middle truncate-text'style='max-width: 30em'>" + "<p>"  + chapter.content + "</p>" + "</td>";
+                html += "<td class='align-middle truncate-text'style='max-width: 30em' data-sort-key='name'>" + "<p>"  + chapter.content + "</p>" + "</td>";
                 html += "<td class='align-middle montserrat-regular'>" + convertDate(chapter.created_at) + "</td>";
                 html += displayActionButton(chapter.ebook_chapter_id);
                 html += "</tr>";

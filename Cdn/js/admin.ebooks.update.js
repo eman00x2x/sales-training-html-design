@@ -22,7 +22,7 @@ $(document).ready(function () {
             $(".thumbnail_image").html(thumbnailImage);
 
         } else {
-            console.log("Book not found with ID: " + bookId);
+            console.log("Book not found with ID: " + book.ebook_id);
         }
     });
 });

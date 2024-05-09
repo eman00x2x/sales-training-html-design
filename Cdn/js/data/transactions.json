@@ -10,7 +10,7 @@
       "payment_transaction_id": "LS-123456-T",
       "source": "Paymaya",
       "status": "Success",
-      "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet mauris in elit semper luctus in quis odio. Praesent convallis, nulla in consectetur porttitor, eros turpis placerat nisl, a suscipit velit nulla non massa. Suspendisse sit amet fermentum mi. Donec bibendum, risus in convallis bibendum, purus mauris pulvinar ante",
+      "details": "Lorem Ipsum",
       "created_at": 1713923521
     },
     {
@@ -62,7 +62,7 @@
       "payment_transaction_id": "LS-123456-T",
       "source": "Paymaya",
       "status": "Success",
-      "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet mauris in elit semper luctus in quis odio. Praesent convallis, nulla in consectetur porttitor, eros turpis placerat nisl, a suscipit velit nulla non massa. Suspendisse sit amet fermentum mi. Donec bibendum, risus in convallis bibendum, purus mauris pulvinar ante",
+      "details": "Lorem Ipsum",
       "created_at": 1713923521
     },
     {

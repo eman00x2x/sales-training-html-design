@@ -4,6 +4,10 @@
   
 }
 
+:root {
+  --tblr-font-sans-serif:  "Montserrat", sans-serif !important;
+}
+
 /* Bootstrap 5 CSS and icons included */
 .upload-dropzone {
   color: #1c1c39;
