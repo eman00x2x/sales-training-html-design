@@ -36,6 +36,14 @@
   color: #131C39 !important;
 }
 
+.prev {
+  border-radius: 5px 0 0 5px;
+}
+
+.next {
+  border-radius: 0 5px 5px 0;
+}
+
 @media (max-width: 991.97px) { 
   .orgLogo{
      max-height: 200px

@@ -6,8 +6,8 @@ const getModel = (url) => {
   });
 };
 
-function limitDataToTen(data) {
-  return data.slice(0, 10);
+function limitDataToTen(data, startIndex, itemsPerPage) {
+  return data.slice(startIndex, startIndex + itemsPerPage);
 }
 
 const convertDate = (dateData) => {
@@ -22,14 +22,14 @@ const convertDate = (dateData) => {
 
 const formatDate = (epochTime) => {
   let date = new Date(epochTime * 1000);
-  return date.toISOString().split('T')[0];
+  return date.toISOString().split("T")[0];
 };
 
 // function sortNamesAlphabetically() {
 //   var rows = $('.table tbody tr').get();
 //   rows.sort(function (a, b) {
-//       var nameA = $(a).find('td:eq(3)').text().toUpperCase(); 
-//       var nameB = $(b).find('td:eq(3)').text().toUpperCase(); 
+//       var nameA = $(a).find('td:eq(3)').text().toUpperCase();
+//       var nameB = $(b).find('td:eq(3)').text().toUpperCase();
 //       return nameA.localeCompare(nameB);
 //   });
 //   $.each(rows, function (index, row) {
@@ -38,29 +38,28 @@ const formatDate = (epochTime) => {
 // }
 
 function sortTable(sortBy) {
-  
-  var rows = $('.table tbody tr').get();
+  var rows = $(".table tbody tr").get();
   rows.sort(function (a, b) {
-      var valueA, valueB;
-      if (sortBy === 'name') {
-          valueA = $(a).find('td:eq(3)').text().toUpperCase();
-          valueB = $(b).find('td:eq(3)').text().toUpperCase();
-      } else if (sortBy === 'date') {
-      }
-      return valueA.localeCompare(valueB);
+    var valueA, valueB;
+    if (sortBy === "name") {
+      valueA = $(a).find("td:eq(3)").text().toUpperCase();
+      valueB = $(b).find("td:eq(3)").text().toUpperCase();
+    } else if (sortBy === "date") {
+    }
+    return valueA.localeCompare(valueB);
   });
   $.each(rows, function (index, row) {
-      $('.table').append(row);
+    $(".table").append(row);
   });
 }
 
 $(document).ready(function () {
-  $('.dropdown-menu a.dropdown-item').on('click', function (e) {
-      e.preventDefault();
-      var sortBy = $(this).data('sort-by');
-      if (sortBy) {
-          sortTable(sortBy);
-      }
+  $(".dropdown-menu a.dropdown-item").on("click", function (e) {
+    e.preventDefault();
+    var sortBy = $(this).data("sort-by");
+    if (sortBy) {
+      sortTable(sortBy);
+    }
   });
 });
 
@@ -72,15 +71,22 @@ const displayActionButtons = (id) => {
                   <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger montserrat-semibold"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
               </div>
           </td>`;
-}
+};
 
-const returnFilteredData = (data1, data2, attr, filter = "") =>  {
-  let expected = data1.map(a => Object.assign(a, data2.find(b => b[attr] == a[attr])));
-  console.log('expected', expected)
-  let filterByID = expected.filter(item => filter === "" ? item[attr] == id : item[filter] == id)
+const returnFilteredData = (data1, data2, attr, filter = "") => {
+  let expected = data1.map((a) =>
+    Object.assign(
+      a,
+      data2.find((b) => b[attr] == a[attr])
+    )
+  );
+  console.log("expected", expected);
+  let filterByID = expected.filter((item) =>
+    filter === "" ? item[attr] == id : item[filter] == id
+  );
 
   return filterByID;
-}
+};
 
 const niceTrim = (data, length) => {
   if (data.length < length) {
@@ -100,13 +106,13 @@ const formatFileSize = (bytes, decimalPoint = 2) => {
 };
 
 const getParams = (p) => {
-  let params = new URLSearchParams(window.location.search)
+  let params = new URLSearchParams(window.location.search);
   if (params.has(p) === true) {
     return params.get(p);
   } else {
     alert("Undefined parameter '" + p + "'");
   }
-}
+};
 
 $(document).ready(function () {
   $(".header").load("header.html");
@@ -142,7 +148,8 @@ $(document).on("click", ".btn-save", function (e) {
         "</span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
       $(".response").html(errorAlert);
     } else {
-      const successAlert = "<div class='response alert alert-success alert-dismissible fade show mt-3' role='alert'><span>Submitted but nothing happened! form data" +
+      const successAlert =
+        "<div class='response alert alert-success alert-dismissible fade show mt-3' role='alert'><span>Submitted but nothing happened! form data" +
         form.serialize() +
         ". See <a href='../Cdn/js/script.js'>../Cdn/js/script.js</a></span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
       $(".response").html(successAlert);
@@ -191,3 +198,65 @@ $(document).on("click", ".btn-save", function (e) {
 
   return false;
 });
+
+$(document).on("click", ".pagination-btn", function () {
+  var pageNumber = $(this).data("page");
+  getVideoData(pageNumber);
+});
+
+$(document).on("click", ".prev", function () {
+  var pageNumber = $(this).data("page") === 1 ? $(this).data("page") : $(this).data("page") - 1;
+  getVideoData(pageNumber);
+});
+
+$(document).on("click", ".next", function () {
+  var pageNumber = $(this).data("page") === $(this).data("max") ? $(this).data("page") : $(this).data("page") + 1;
+  getVideoData(pageNumber);
+});
+
+function generatePagination(totalItems, currentPage) {
+  const itemsPerPage = 10;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  let paginationHtml = "";
+  
+  const maxButtons = 3;
+
+  let startPage = currentPage - 1;
+  if (startPage <= 0) startPage = 1;
+
+  if (totalPages - currentPage < 2) {
+    startPage = totalPages - maxButtons + 1;
+    if (startPage <= 0) startPage = 1;
+  }g
+  $(".prev-btn").html(
+    `<button
+    type="button"
+    class="btn btn-outline-primary montserrat-semibold prev rounded-left"
+    data-page=${currentPage}
+  >
+    <span class="d-none d-md-block rounded-left">Previous</span
+    ><i class="bi bi-chevron-double-left d-block d-md-none"></i>
+  </button>`
+  );
+
+  for (let i = startPage; i < startPage + maxButtons && i <= totalPages; i++) {
+    paginationHtml += `<button type="button" class="btn btn-outline-primary montserrat-semibold pagination-btn rounded-0" data-page="${i}">${i}</button>`;
+  }
+
+  $(".next-btn").html(
+    `<button
+    type="button"
+    class="btn btn-outline-primary montserrat-semibold next rounded-right"
+    data-page=${currentPage}
+    data-max=${totalPages}
+  >
+    <span class="d-none d-md-block rounded-right">Next</span
+    ><i class="bi bi-chevron-double-right d-block d-md-none"></i>
+  </button>`
+  );
+
+  $(".showing").html(`<p class="align-center my-auto">Showing ${currentPage} out of ${totalPages} pages</p>`);
+  $(".pagination-page").html(paginationHtml);
+  $(".pagination-btn").removeClass("active");
+  $(`.pagination-btn[data-page="${currentPage}"]`).addClass("active");
+}
