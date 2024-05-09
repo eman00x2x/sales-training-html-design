@@ -24,11 +24,11 @@ $(document).ready(function () {
     let f = result.keys(result).find((key) => result[key].account_id == id);
 
     $(".accLogo").attr("src", response[f].profile_image);
-    $(".accName").text(
-      `${response[f].name.prefix} ${response[f].name.firstname} ${response[f].name.lastname} ${response[f].name.suffix}`
-    );
-    $(".accDesc").text(response[f].description);
-    console.log(result[f]);
+    $('.name').text(`${response[f].name.prefix} ${response[f].name.firstname} ${response[f].name.lastname} ${response[f].name.suffix}`);
+    $('#acc-id').text(response[f].account_id);
+    $('#birthday').text(convertDate(response[f].birthday));
+    $('#username').text(response[f].username);
+    $('#email').text(response[f].email);
   });
 
   $("#tab-top-1").load("admin.accounts.tabs.profile.html");

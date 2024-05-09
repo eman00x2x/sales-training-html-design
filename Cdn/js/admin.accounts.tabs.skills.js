@@ -23,6 +23,7 @@ $(document).ready(function () {
       profile.work_experience.map((item) => addWork(item));
       work_ctr = profile.work_experience.length;
 
+      $(".spec-skills-cert input, textarea").prop('readonly', true)
     } else {
       console.log("No profile found for the specified user ID.");
     }
@@ -65,7 +66,7 @@ $(document).on("click", ".btn-add-work", function () {
 });
 
 $(document).on('click', '.editButton', function () {
-  $(".skill-content .input").prop('disabled', false)
+  $(".spec-skills-cert input, textarea").prop('readonly', false)
 
   // SKILLS
   $(".div-add-skill").removeClass("d-none");
@@ -87,8 +88,64 @@ $(document).on('click', '.editButton', function () {
   );
   $(".row-work .div-remove-work").removeClass("d-none");
 
-  $(".skill-content .editButton").hide();
-  $(".skill-content .saveButton").show();
+  $(".editButton").hide();
+  $(".skillsSaveButton").show();
+});
+
+$(document).on("click", ".skillsSaveButton", function (e) {
+   e.preventDefault();
+
+  const form = $(".spec-skills-cert");
+
+  // READONLY ALL INPUTS AND TEXT AREA
+  $(".spec-skills-cert input, textarea").prop("readonly", true);
+
+  // HIDE SKILLS
+  $(".div-add-skill").addClass("d-none");
+  $("#row-skill #deleteSkill").addClass("d-none");
+
+  // HIDE CERTIFICATIONS
+  $(".btn-add-cert").addClass("d-none");
+  $(".row-cert .div-remove-cert").addClass("d-none");
+
+  // HIDE PROFESSIIONS
+  $(".btn-add-profession").addClass("d-none");
+  $(".row-profession .div-remove-profession").addClass("d-none");
+
+  // HIDE WORK EXPERIENCE
+  $(".btn-add-work").addClass("d-none");
+
+  // REMOVE DROP-SHADOW OF ELEMENTS IN WORK AND EXPERIENCE
+  $(".work .row-work").removeClass(
+    "bg-light shadow-sm border mt-2 px-2 rounded"
+  );
+  $(".row-work .div-remove-work").addClass("d-none");
+
+  // HIDE SAVE BUTTON AND SHOW EDIT BUTTON AGAIN
+  $(".editButton").show();
+  $(".skillsSaveButton").hide();
+
+  // PROCESS RESPONSE
+  $(".response-skills").html(
+    "<div class='bg-white p-3 mt-3 rounded'><div class='d-flex gap-3 align-items-center'><div class='loader'></div><p class='mb-0'>Processing, Please wait...</p></div></div>"
+  );
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+
+  setTimeout(function () {
+    if ((message = validateInput(form.serializeArray()))) {
+      const errorAlert =
+        "<div class='response-skills alert alert-danger alert-dismissible fade show mt-3' role='alert'><span>Follow the format for fields: " +
+        message +
+        "</span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
+      $(".response-skills").html(errorAlert);
+    } else {
+      const successAlert =
+        "<div class='response-skills alert alert-success alert-dismissible fade show mt-3' role='alert'><span>Submitted but nothing happened! form data" +
+        form.serialize() +
+        ". See <a href='../Cdn/js/script.js'>../Cdn/js/script.js</a></span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
+      $(".response-skills").html(successAlert);
+    }
+  }, 30);
 });
 
 $(document).on("click", ".deleteCertRow", function () {
@@ -113,7 +170,7 @@ function printSkills(item) {
 
 function addCertification(item = "") {
   let input = `<div class="row-cert d-flex justify-content-between align-items-center gap-1 mb-2">
-                      <input type="text" class="input text-black form-control montserrat-regular" name="certificates" placeholder="Add Certification" disabled value="${item}">
+                      <input type="text" class="input text-black form-control montserrat-regular" name="certificates" placeholder="Add Certification" value="${item}">
                       <button type="button" class="deleteCertRow btn div-remove-cert btn-remove btn-outline btn-outline-danger d-none">
                           <i class="bi bi-trash3"></i>
                           <span class="ms-2">Remove</span>
@@ -124,9 +181,8 @@ function addCertification(item = "") {
 }
 
 function addProfession(item = "") {
-
   let input = `<div class="row-profession d-flex justify-content-between align-items-center gap-1 mb-2">
-                      <input type="text" class="input text-black form-control montserrat-regular" name="profession" placeholder="Add Profession" disabled value="${item}">
+                      <input type="text" class="input text-black form-control montserrat-regular" name="profession" placeholder="Add Profession" value="${item}">
                       <button type="button" class="deleteProfRow btn div-remove-profession btn-remove btn-outline btn-outline-danger d-none">
                           <i class="bi bi-trash3"></i>
                           <span class="ms-2">Remove</span>
@@ -151,13 +207,13 @@ function addWork(item = {}) {
                         <span class="fs-4 text-secondary mt-1 montserrat-regular">Company</span>
                         <div class="input-container">
                             <input type="text" name="company"
-                                class="input text-black form-control montserrat-regular my-2" autocomplete="off" disabled value="${item.company ? item.company : ""
+                                class="input text-black form-control montserrat-regular my-2" autocomplete="off" value="${item.company ? item.company : ""
     }">
                         </div>
                         <span class="fs-4 text-secondary mt-1 montserrat-regular">Position</span>
                         <div class="input-container">
                             <input type="text" name="position"
-                                class="input text-black form-control montserrat-regular my-2" autocomplete="off" disabled value="${item.position ? item.position : ""
+                                class="input text-black form-control montserrat-regular my-2" autocomplete="off" value="${item.position ? item.position : ""
     }">
                         </div>
                     </div>
@@ -166,14 +222,14 @@ function addWork(item = {}) {
                             Hired</span>
                         <div class="input-container">
                             <input type="date" name="date-hired" 
-                                class="input text-black form-control montserrat-regular my-2" autocomplete="off" disabled value=${myDate ? myDate : ""
+                                class="input text-black form-control montserrat-regular my-2" autocomplete="off" value=${myDate ? myDate : ""
     }>
                         </div>
                         <span class="fs-4 text-secondary mt-1 montserrat-regular">Date
                             Resigned</span>
                         <div class="input-container">
                             <input type="date" name="date-resigned"
-                                class="input text-black form-control montserrat-regular my-2" autocomplete="off" disabled value=${item.date && item.date.hasOwnProperty("date_resigned")
+                                class="input text-black form-control montserrat-regular my-2" autocomplete="off" value=${item.date && item.date.hasOwnProperty("date_resigned")
       ? formatDate(item.date.date_resigned)
       : ""
     }>
@@ -183,7 +239,7 @@ function addWork(item = {}) {
                 <div class="row">
                     <span class="fs-4 text-secondary mt-1 montserrat-regular">Job Description</span>
                     <div class="input-container">
-                        <textarea name="description" class="text-black input form-control montserrat-regular" autocomplete="off" wrap="physical" rows="5" disabled>${item.job_description ? item.job_description : ""}</textarea>
+                        <textarea name="description" class="text-black input form-control montserrat-regular" autocomplete="off" wrap="physical" rows="5">${item.job_description ? item.job_description : ""}</textarea>
                     </div>
                 </div>
                 <div class="text-center div-remove-work d-none">

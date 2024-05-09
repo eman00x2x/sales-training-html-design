@@ -33,7 +33,7 @@ function getVidGroupData() {
             html += "<tr>";
             html += "<td class='align-middle text-center'>" + video.video_id + "</td>";
             html += "<td class='align-middle'><img src='" + video.thumbnail_image + "' style='width:10em;' /></td>";
-            html += "<td class='align-middle text-truncate' style='max-width: 150px'>" + video.title + "</td>";
+            html += "<td class='align-middle text-truncate' style='max-width: 150px' data-sort-key='name'>" + video.title + "</td>";
             html += "<td class='align-middle text-truncate' style='max-width: 150px'>" + video.description + "</td>";
             html += "<td class='align-middle text-truncate' style='max-width: 150px'>" + video.category + "</td>";
             html += "<td class='align-middle text-truncate' style='max-width: 150px'>" + video.link + "</td>";

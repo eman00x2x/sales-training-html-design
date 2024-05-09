@@ -49,7 +49,7 @@ function getVideoGroupData() {
                 "<td class='align-middle text-center'>" +
                 data.vid_group_id +
                 "</td>";
-            html += "<td class='align-middle'>" + data.name + "</td>";
+            html += "<td class='align-middle' data-sort-key='name'>" + data.name + "</td>";
             html +=
                 "<td class='align-middle text-truncate' style='max-width: 150px'>" +
                 data.description +

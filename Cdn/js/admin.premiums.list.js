@@ -56,7 +56,7 @@ function getPremiumsData() {
                 data.type +
                 "</td>";
             html +=
-                "<td class='align-middle text-truncate' style='max-width: 150px'>" +
+                "<td class='align-middle text-truncate' data-sort-key='name' style='max-width: 150px'>" +
                 data.name +
                 "</td>";
             html +=

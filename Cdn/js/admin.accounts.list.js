@@ -28,11 +28,11 @@ $(document).on('click', '.btn-delete', function (e) {
     window.location.href = "admin.accounts.delete.html?id=" + id;
 });
 
-const displayAccActionButtons = (id) => {
+const displayAccActionButtons = (id, name) => {
   return `<td class='align-middle'>
               <div class="btn-group" role="group" aria-label="Basic outlined example ">
                   <button type="button" data-id='${id}' class="btn btn-md btn-view btn-outline-primary montserrat-semibold"><i class="bi bi-eye"></i><span class="ms-2">View</span></button>
-                  <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger montserrat-semibold"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
+                  <button type="button" data-id='${id}' data-name='${name}' class="btn btn-md btn-delete btn-outline-danger montserrat-semibold"><i class="bi bi-trash"></i><span class="ms-2">Delete</span></button>
               </div>
           </td>`;
 };
@@ -72,7 +72,7 @@ function getAccountsData() {
                 "<td class='align-middle'>" +
                 convertDate(data.registered_at) +
                 "</td>";
-            html += displayAccActionButtons(data.account_id);
+            html += displayAccActionButtons(data.account_id, `${data.name.prefix} ${data.name.firstname} ${data.name.lastname} ${data.name.suffix}`);
             html += "</tr>";
         }
         $(".accounts .data-container").html(html);
