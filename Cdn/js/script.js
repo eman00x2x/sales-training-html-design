@@ -43,8 +43,8 @@ function sortTable(sortBy) {
   rows.sort(function (a, b) {
       var valueA, valueB;
       if (sortBy === 'name') {
-          valueA = $(a).find('td:eq(3)').text().toUpperCase();
-          valueB = $(b).find('td:eq(3)').text().toUpperCase();
+          valueA = $(a).find('[data-sort-key="name"]').text().toUpperCase();
+          valueB = $(b).find('[data-sort-key="name"]').text().toUpperCase();
       } else if (sortBy === 'date') {
       }
       return valueA.localeCompare(valueB);
