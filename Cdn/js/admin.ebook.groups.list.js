@@ -35,9 +35,10 @@ function getEbookGroupData() {
 
     $.getJSON("../Cdn/js/data/ebook.groups.json", function (response) {
         const org = response.data;
+        const limitedData = limitDataToTen(org);
 
-        for (let i = 0; i < org.length; i++) {
-            let data = org[i];
+        for (let i = 0; i < limitedData.length; i++) {
+            let data = limitedData[i];
 
             html += "<tr>";
             html +=

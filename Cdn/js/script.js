@@ -6,6 +6,10 @@ const getModel = (url) => {
   });
 };
 
+function limitDataToTen(data) {
+  return data.slice(0, 10);
+}
+
 const convertDate = (dateData) => {
   let date = new Date(0);
   date.setUTCSeconds(dateData);
@@ -33,6 +37,7 @@ const displayActionButtons = (id) => {
 
 const returnFilteredData = (data1, data2, attr, filter = "") =>  {
   let expected = data1.map(a => Object.assign(a, data2.find(b => b[attr] == a[attr])));
+  console.log('expected', expected)
   let filterByID = expected.filter(item => filter === "" ? item[attr] == id : item[filter] == id)
 
   return filterByID;
