@@ -25,6 +25,27 @@ const formatDate = (epochTime) => {
   return date.toISOString().split('T')[0];
 };
 
+function sortNamesAlphabetically() {
+  var rows = $('.table tbody tr').get();
+  rows.sort(function (a, b) {
+      var nameA = $(a).find('td:eq(3)').text().toUpperCase(); 
+      var nameB = $(b).find('td:eq(3)').text().toUpperCase(); 
+      return nameA.localeCompare(nameB);
+  });
+  $.each(rows, function (index, row) {
+      $('.table').append(row);
+  });
+}
+
+$(document).ready(function () {
+  $('.dropdown-menu a.dropdown-item').on('click', function (e) {
+      e.preventDefault();
+      if ($(this).text() === '') {
+          sortNamesAlphabetically();
+      }
+  });
+});
+
 const displayActionButtons = (id) => {
   return `<td class='align-middle'>
               <div class="btn-group" role="group" aria-label="Basic outlined example ">
