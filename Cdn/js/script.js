@@ -25,44 +25,46 @@ const formatDate = (epochTime) => {
   return date.toISOString().split('T')[0];
 };
 
-// function sortNamesAlphabetically() {
-//   var rows = $('.table tbody tr').get();
-//   rows.sort(function (a, b) {
-//       var nameA = $(a).find('td:eq(3)').text().toUpperCase(); 
-//       var nameB = $(b).find('td:eq(3)').text().toUpperCase(); 
-//       return nameA.localeCompare(nameB);
-//   });
-//   $.each(rows, function (index, row) {
-//       $('.table').append(row);
-//   });
-// }
 
-function sortTable(sortBy) {
-  
+function sortTable(sortBy, sortOrder) {
   var rows = $('.table tbody tr').get();
   rows.sort(function (a, b) {
-      var valueA, valueB;
-      if (sortBy === 'name') {
-          valueA = $(a).find('[data-sort-key="name"]').text().toUpperCase();
-          valueB = $(b).find('[data-sort-key="name"]').text().toUpperCase();
-      } else if (sortBy === 'date') {
-      }
-      return valueA.localeCompare(valueB);
+    var valueA, valueB;
+    if (sortBy === 'name') {
+      valueA = $(a).find('[data-sort-key="name"]').text().toUpperCase();
+      valueB = $(b).find('[data-sort-key="name"]').text().toUpperCase();
+    } else if (sortBy === 'date') {
+      var dateStrA = $(a).find('[data-sort-key="date"]').text();
+      var dateStrB = $(b).find('[data-sort-key="date"]').text();
+      var dateA = new Date(dateStrA);
+      var dateB = new Date(dateStrB);
+      return sortOrder === 'asc' ? dateA - dateB : dateB - dateA; 
+    }
+    return sortOrder === 'asc' ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA); 
   });
   $.each(rows, function (index, row) {
-      $('.table').append(row);
+    $('.table').append(row);
   });
 }
 
 $(document).ready(function () {
   $('.dropdown-menu a.dropdown-item').on('click', function (e) {
-      e.preventDefault();
-      var sortBy = $(this).data('sort-by');
-      if (sortBy) {
-          sortTable(sortBy);
-      }
+    e.preventDefault();
+    var sortBy = $(this).data('sort-by');
+    if (sortBy) {
+      sortTable(sortBy, 'asc');
+    }
+  });
+
+  $('button[data-sort-by]').on('click', function () {
+    var sortBy = $(this).data('sort-by');
+    var sortOrder = $(this).data('sort-order');
+    if (sortBy) {
+      sortTable(sortBy, sortOrder);
+    }
   });
 });
+
 
 const displayActionButtons = (id) => {
   return `<td class='align-middle'>
@@ -74,7 +76,7 @@ const displayActionButtons = (id) => {
           </td>`;
 }
 
-const returnFilteredData = (data1, data2, attr, filter = "") =>  {
+const returnFilteredData = (data1, data2, attr, filter = "") => {
   let expected = data1.map(a => Object.assign(a, data2.find(b => b[attr] == a[attr])));
   console.log('expected', expected)
   let filterByID = expected.filter(item => filter === "" ? item[attr] == id : item[filter] == id)

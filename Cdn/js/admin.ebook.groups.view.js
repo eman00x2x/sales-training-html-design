@@ -41,7 +41,7 @@ $(document).on("click", "#back", function (e) {
         html += "<td class='align-middle'>" + ebooks.isbn + "</td>";
         html += "<td class='align-middle'><img src='" + ebooks.thumbnail_image + "' style='width:10em;' /></td>";
         html +=
-            "<td class='align-middle text-truncate' style='max-width: 150px'>" +
+            "<td class='align-middle text-truncate' style='max-width: 150px' data-sort-key='name'>" +
             ebooks.title +
             "</td>";
         html +=
