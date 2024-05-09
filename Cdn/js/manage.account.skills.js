@@ -37,6 +37,7 @@ $(document).on("click", ".btn-add-skill", function () {
     let input = $(".skill-input").val();
 
     printSkills(input);
+    $("#row-skill #deleteSkill").removeClass("d-none");
 });
 
 $(document).on("click", ".btn-add-cert", function () {
