@@ -69,7 +69,7 @@ $(document).on("click", '.btn-sort-desc', function () {
     getVideoGroupData(sortBy, order);
 });
 
-// SORT BY ORGANIZATION NAME
+// SORT BY VIDEO GROUP NAME
 $(document).on("click", '.dropdown-vid', function () {
     $('.dropdown-vid').addClass('active');
     $('.dropdown-id').removeClass('active')
@@ -78,7 +78,7 @@ $(document).on("click", '.dropdown-vid', function () {
     getVideoGroupData(sortBy, order);
 });
 
-// SORT BY ORGANIZATION ID
+// SORT BY VIDEO GROUP ID
 $(document).on("click", '.dropdown-id', function () {
     $('.dropdown-vid').removeClass('active');
     $('.dropdown-id').addClass('active')
@@ -87,7 +87,7 @@ $(document).on("click", '.dropdown-id', function () {
     getVideoGroupData(sortBy, order);
 });
 
-// SORT BY ORGANIZATION CREATED DATE
+// SORT BY VIDEO GROUP CREATED DATE
 $(document).on("click", '.dropdown-created-date', function () {
     $('.dropdown-vid').removeClass('active');
     $('.dropdown-id').removeClass('active')

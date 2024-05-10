@@ -62,7 +62,7 @@ $(document).on("click", '.btn-sort-desc', function () {
     getEbookGroupData(sortBy, order);
 });
 
-// SORT BY ORGANIZATION NAME
+// SORT BY EBOOK GROUP NAME
 $(document).on("click", '.dropdown-ebook', function () {
     $('.dropdown-ebook').addClass('active');
     $('.dropdown-id').removeClass('active')
@@ -71,7 +71,7 @@ $(document).on("click", '.dropdown-ebook', function () {
     getEbookGroupData(sortBy, order);
 });
 
-// SORT BY ORGANIZATION ID
+// SORT BY EBOOK GROUP ID
 $(document).on("click", '.dropdown-id', function () {
     $('.dropdown-ebook').removeClass('active');
     $('.dropdown-id').addClass('active')
@@ -80,7 +80,7 @@ $(document).on("click", '.dropdown-id', function () {
     getEbookGroupData(sortBy, order);
 });
 
-// SORT BY ORGANIZATION CREATED DATE
+// SORT BY EBOOK GROUP CREATED DATE
 $(document).on("click", '.dropdown-created-date', function () {
     $('.dropdown-ebook').removeClass('active');
     $('.dropdown-id').removeClass('active')
