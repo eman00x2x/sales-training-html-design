@@ -40,7 +40,7 @@ function getPremiumsData() {
 
     $.getJSON("../Cdn/js/data/premiums.json", function (response) {
         const org = response.data;
-        const limitedData = limitDataToTen(org);
+        const limitedData = limitDataToTen(org, 0, 10);
 
         for (let i = 0; i < limitedData.length; i++) {
             let data = org[i];
@@ -83,5 +83,6 @@ function getPremiumsData() {
             html += "</tr>";
         }
         $(".premiums .data-container").html(html);
+        console.log("done")
     });
 }

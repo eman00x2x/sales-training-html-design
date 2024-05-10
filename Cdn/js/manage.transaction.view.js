@@ -1,3 +1,4 @@
+let transactData; 
 const id = getParams('id');
 const transactId = getParams('transaction_id');
 
@@ -12,6 +13,8 @@ $(document).ready(function() {
             let data = response.data.find(function (item) {
                 return item.transaction_id == transactId;
             });
+            transactData = data;
+
             if (data) {
                 $('.transaction-id').text(data.transaction_id);
                 $('.duration').text(data.duration.toString());
@@ -31,8 +34,23 @@ $(document).ready(function() {
     }
 
     $(document).on("click", "#invoice", function(){
+        $.when(
+            $.getJSON("../Cdn/js/data/profiles.json"),
+            $.getJSON("../Cdn/js/data/accounts.json"),
+        ).done(function (data1, data2) {
+            // MERGE PROFILE AND ACCOUNTS
+            let response = data1[0].data.map((a) =>
+                Object.assign(
+                    a,
+                    data2[0].data.find((b) => b.account_id == a.account_id)
+                )
+            );
+
+            let f = response.keys(response).find((key) => response[key].account_id == 1);
+            let obj = { name: response[f].name, transaction: transactData };
+        })
+
         const doc = new jspdf.jsPDF();
-    
         var img = new Image();
         img.src = 'https://yt3.googleusercontent.com/H6A1xBfl3_ykU3ThcuvSFVAi7ezdgW73zokuU0beZixcZe1_pZ9mTayF2w-RCsrblcIUkU43BA=s900-c-k-c0x00ffffff-no-rj';
     
