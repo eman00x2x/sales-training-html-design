@@ -25,6 +25,8 @@ $(document).ready(function () {
                 $('.payment-id').text(data.payment_transaction_id);
                 $('.merchant-email').text(data.merchant_email);
 
+                toggleGenerateInvoiceButton(data.status);
+
             } else {
                 console.log("Transaction not found with ID: " + data.transaction_id);
             }
@@ -48,7 +50,7 @@ $(document).ready(function () {
 
             console.log(obj)
             const doc = new jspdf.jsPDF('p', 'mm', [210, 210]);
-            var img = new Image();
+            let img = new Image();
             img.src = 'https://i.ibb.co/ZWSzHPp/logo.png';
 
             img.onload = function () {
@@ -66,12 +68,13 @@ $(document).ready(function () {
                 doc.setFont('helvetica', 'normal');
                 doc.setTextColor('#1c1c1c')
                 doc.setFontSize(10);
-                doc.text(20, 58, obj.name.firstname + ' ' + obj.name.lastname);
+                // doc.text(20, 58, obj.name.firstname + ' ' + obj.name.lastname);
+                doc.text(20, 58, `${obj.name.firstname} ${obj.name.lastname}`);
                 doc.text(20, 63, obj.number);
-                doc.text(20, 68, obj.address.permanent.region + ' ' + obj.address.permanent.province + ' ' + obj.address.permanent.municipality);
+                doc.text(20, 68, `${obj.address.permanent.region} ${obj.address.permanent.province} ${obj.address.permanent.municipality}`);
                 doc.text(20, 72, obj.address.permanent.barangay);
                 doc.text(55, 178, obj.account.toString());
-                doc.text(55, 183, $('.source').text());
+                doc.text(55, 183, $('.source').text()); 
                 doc.text(55, 188, $('.merchant-email').text());
                 doc.text(55, 193, $('.payment-id').text());
                 doc.text(175, 145, $('.price').text());
@@ -104,7 +107,19 @@ $(document).ready(function () {
 
         })
     });
+
+    function toggleGenerateInvoiceButton(status) {
+        const $invoiceButton = $('#invoice');
+        if (status === 'Success') {
+            $invoiceButton.prop('disabled', false);
+        } else {
+            $invoiceButton.prop('disabled', true);
+        }
+    }
+
+
 });
+
 
 function getStatusClass(status) {
     switch (status) {

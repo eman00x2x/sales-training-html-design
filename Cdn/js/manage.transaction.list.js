@@ -1,6 +1,14 @@
 const acc_id = getParams('id');
 $(document).ready(function () {
-    getTransactionsData();
+
+    $('.nav-link').click(function () {
+        const status = $(this).data('status');
+        filterTransactions(status);
+    });
+
+
+    getTransactionsData()
+    
 });
 
 $(document).on("keyup", '.search', function () {
@@ -34,20 +42,34 @@ function getTransactionsData() {
             return item.account_id == acc_id;
         });
 
-        for (let i = 0; i < data.length; i++) {
+for (let i = 0; i < data.length; i++) {
             let item = data[i];
             let statusClass = getStatusClass(item.status);
-            html += "<tr>";
-            html += "<td class='align-middle montserrat-regular'>" + item.transaction_id + "</td>";
-            html += "<td class='align-middle montserrat-regular truncate-text' style='width: 30em'>" + "<p class='my-0'>" + item.details + "</p>" + "</td>";
-            html += "<td class='align-middle montserrat-regular'>" + item.duration.toString() + "</td>";
-            html += "<td class='align-middle montserrat-regular'>" + "₱" + item.price + "</td>";
-            html += "<td class='align-middle montserrat-regular'>" + "<span class='badge badge-outline " + statusClass + "'>" + item.status + "</span>" + "</td>";
-            html += displayActionButton(item.transaction_id, item.title); 
-            html += "</tr>";
+            html += `<tr class="transaction-row" data-status="${item.status}">
+                        <td class='align-middle montserrat-regular'>${item.transaction_id}</td>
+                        <td class='align-middle montserrat-regular truncate-text' style='width: 30em'><p class='my-0'>${item.details}</p></td>
+                        <td class='align-middle montserrat-regular'>${item.duration.toString()}</td>
+                        <td class='align-middle montserrat-regular'>₱${item.price}</td>
+                        <td class='align-middle montserrat-regular'><span class='badge badge-outline ${statusClass}'>${item.status}</span></td>
+                        <td class='align-middle text-start'><div class="btn-group" role="group" aria-label="Basic outlined example "><button type="button" data-id='${item.transaction_id}' class="btn btn-md btn-view btn-outline-primary"><i class="bi bi-eye"></i><span class="ms-2 montserrat-regular">View Transaction</span></button></div></td>
+                    </tr>`;
         }
         $('.data-container').html(html);
     });
+}
+
+
+function filterTransactions(status) {
+    $('.nav-link').removeClass('active');
+    $(`.nav-link[data-status="${status}"]`).addClass('active');
+
+    $('.transaction-row').hide();
+
+    if (status === 'all') {
+        $('.transaction-row').show();
+    } else {
+        $(`.transaction-row[data-status="${status}"]`).show();
+    }
 }
 
 function getStatusClass(status) {
