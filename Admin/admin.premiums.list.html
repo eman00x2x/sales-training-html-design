@@ -59,21 +59,25 @@
                                 <div class="dropdown-menu">
                                     <div
                                         class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
-                                        <div class="btn-group col-7">
-                                            <button type="button" class="btn btn-sm btn-outline-primary"
-                                                data-sort-by="name" data-sort-order="asc"><i
-                                                    class="bi bi-sort-alpha-down fs-2"></i></button>
-                                            <button type="button" class="btn btn-sm btn-outline-primary"
-                                                data-sort-by="name" data-sort-order="desc"><i
-                                                    class="bi bi-sort-alpha-down-alt fs-2"></i></button>
+                                        <div
+                                            class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
+                                            <div class="btn-group col-7">
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-primary btn-sort-asc"><i
+                                                        class="bi bi-sort-alpha-down fs-2  "></i></button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-primary btn-sort-desc"><i
+                                                        class="bi bi-sort-alpha-down-alt fs-2 "></i></button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <a class="dropdown-item" data-sort-by="name" href="#">Premiums Name</a>
-                                    <a class="dropdown-item" data-sort-by="date" href="#">Created Date</a>
+                                    <button type="button" class="dropdown-item dropdown-id">Premium Group ID</button>
+                                    <button type="button" class="dropdown-item dropdown-prem">Premium Group Name</button>
+                                    <button type="button" class="dropdown-item dropdown-created-date">Created Date</button>
                                 </div>
                             </div>
                             <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
-                                placeholder="Search by Video Group name" name="search" value="" />
+                            placeholder="Search by Premium ID / Name" name="search" value="" />
                             <div class="btn-sort dropdown montserrat-regular">
                                 <i class="bi bi-sliders2 fs-2 btn montserrat-semibold" data-bs-toggle="dropdown"></i>
                                 <div class="dropdown-menu">
@@ -171,21 +175,10 @@
                         </div>
                     </div>
 
-                    <!-- TABLE FOOTER -->
-                    <div
-                        class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular">
-                        <p>Showing 1 out of 10 pages</p>
-                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
-                                    class="d-none d-md-block">Previous</span><i
-                                    class="bi bi-chevron-double-left d-block d-md-none"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold">1</button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold">2</button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold">3</button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
-                                    class="d-none d-md-block">Next</span><i
-                                    class="bi bi-chevron-double-right d-block d-md-none"></i></button>
+                    <!-- PAGINATION -->
+                    <div class="d-flex align-items-center justify-content-between justify-content-sm-start mt-3 py-3">
+                        <p id="page-numbers" class="me-md-auto"></p>
+                        <div class="page-buttons btn-group mt-3 mt-sm-0">
                         </div>
                     </div>
                 </div>

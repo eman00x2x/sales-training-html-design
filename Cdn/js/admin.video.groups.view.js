@@ -28,7 +28,7 @@ function getVidGroupData() {
         let videos = data2[0].data;
         
         let filteredVideos = videos.filter(video => video.vid_group_id == id);
-         filteredVideos = limitDataToTen(filteredVideos);
+         filteredVideos = limitDataToTen(filteredVideos, 0, 10);
         filteredVideos.forEach(video => {
             html += "<tr>";
             html += "<td class='align-middle text-center'>" + video.video_id + "</td>";

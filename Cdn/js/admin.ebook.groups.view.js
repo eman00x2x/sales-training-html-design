@@ -30,7 +30,7 @@ $(document).on("click", "#back", function (e) {
          let ebooks = data2[0].data;
         
          let filteredEbooks = ebooks.filter(ebook => ebook.ebook_group_id == id);
-         filteredEbooks = limitDataToTen(filteredEbooks);
+         filteredEbooks = limitDataToTen(filteredEbooks, 0, 10);
 
          filteredEbooks.forEach(ebooks => {
           html += "<tr>";

@@ -53,28 +53,28 @@
                             <div class="btn-sort dropdown montserrat-regular">
                                 <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
                                     data-bs-toggle="dropdown"></i>
-                                <a href="#"
-                                    class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
+                                <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
                                     data-bs-toggle="dropdown">Sort
                                     by</a>
                                 <div class="dropdown-menu">
                                     <div
                                         class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
                                         <div class="btn-group col-7">
-                                            <button type="button" class="btn btn-sm btn-outline-primary"
-                                                data-sort-by="name" data-sort-order="asc"><i
-                                                    class="bi bi-sort-alpha-down fs-2"></i></button>
-                                            <button type="button" class="btn btn-sm btn-outline-primary"
-                                                data-sort-by="name" data-sort-order="desc"><i
-                                                    class="bi bi-sort-alpha-down-alt fs-2"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-primary btn-sort-asc"><i
+                                                    class="bi bi-sort-alpha-down fs-2  "></i></button>
+                                            <button type="button"
+                                                class="btn btn-sm btn-outline-primary btn-sort-desc"><i
+                                                    class="bi bi-sort-alpha-down-alt fs-2 "></i></button>
                                         </div>
                                     </div>
-                                    <a class="dropdown-item" href="#" data-sort-by="name">E-Book Group Name</a>
-                                    <a class="dropdown-item" href="#" data-sort-by="date">Created Date</a>
+                                    <button type="button" class="dropdown-item dropdown-id">Ebook Group ID</button>
+                                    <button type="button" class="dropdown-item dropdown-ebook">Ebook Group Name</button>
+                                    <button type="button" class="dropdown-item dropdown-created-date">Created
+                                        Date</button>
                                 </div>
                             </div>
                             <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
-                                placeholder="Search by Ebook Group Name and Id" name="search" value="" />
+                                placeholder="Search by Ebook-group ID / Name" name="search" value="" />
                         </div>
                         <button type="button"
                             class="btn btn-md btn-add btn-outline-primary montserrat-semibold col col-12 col-sm-4 col-lg-3 mb-2 mb-sm-0">
@@ -116,21 +116,10 @@
                         </div>
                     </div>
 
-                    <!-- TABLE FOOTER -->
-                    <div
-                        class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular">
-                        <p>Showing 1 out of 10 pages</p>
-                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
-                                    class="d-none d-md-block">Previous</span><i
-                                    class="bi bi-chevron-double-left d-block d-md-none"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold">1</button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold">2</button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold">3</button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
-                                    class="d-none d-md-block">Next</span><i
-                                    class="bi bi-chevron-double-right d-block d-md-none"></i></button>
+                    <!-- PAGINATION -->
+                    <div class="d-flex align-items-center justify-content-between justify-content-sm-start mt-3 py-3">
+                        <p id="page-numbers" class="me-md-auto"></p>
+                        <div class="page-buttons btn-group mt-3 mt-sm-0">
                         </div>
                     </div>
                 </div>
