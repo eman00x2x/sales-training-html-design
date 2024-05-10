@@ -1,8 +1,7 @@
-let transactData; 
 const id = getParams('id');
 const transactId = getParams('transaction_id');
 
-$(document).ready(function() {
+$(document).ready(function () {
     $('.breadcrumb-item a').attr('href', './manage.transaction.list.html?id=' + id);
 
     getTransactionsData()
@@ -13,7 +12,6 @@ $(document).ready(function() {
             let data = response.data.find(function (item) {
                 return item.transaction_id == transactId;
             });
-            transactData = data;
 
             if (data) {
                 $('.transaction-id').text(data.transaction_id);
@@ -26,19 +24,18 @@ $(document).ready(function() {
                 $('.source').text(data.source);
                 $('.payment-id').text(data.payment_transaction_id);
                 $('.merchant-email').text(data.merchant_email);
-    
+
             } else {
                 console.log("Transaction not found with ID: " + data.transaction_id);
             }
         });
     }
 
-    $(document).on("click", "#invoice", function(){
+    $(document).on("click", "#invoice", function () {
         $.when(
             $.getJSON("../Cdn/js/data/profiles.json"),
             $.getJSON("../Cdn/js/data/accounts.json"),
         ).done(function (data1, data2) {
-            // MERGE PROFILE AND ACCOUNTS
             let response = data1[0].data.map((a) =>
                 Object.assign(
                     a,
@@ -46,33 +43,66 @@ $(document).ready(function() {
                 )
             );
 
-            let f = response.keys(response).find((key) => response[key].account_id == 1);
-            let obj = { name: response[f].name, transaction: transactData };
+            let f = response.keys(response).find((key) => response[key].account_id == id);
+            let obj = { account: response[f].account_id, name: response[f].name, number: response[f].contact_number[0], address: response[f].address[0]};
+
+            console.log(obj)
+            const doc = new jspdf.jsPDF('p', 'mm', [210, 210]);
+            var img = new Image();
+            img.src = 'https://i.ibb.co/ZWSzHPp/logo.png';
+
+            img.onload = function () {
+                doc.addImage(img, 'JPEG', 20, 15, 15, 15);
+
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor('#131C39')
+                doc.setFontSize(14);
+                doc.text(20, 50, 'Billed to:');
+                doc.text(20, 97, 'Transaction Info');
+                doc.text(20, 170, 'Payment Info');
+                doc.setFontSize(35);
+
+                doc.text(140, 26, 'INVOICE ');
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor('#1c1c1c')
+                doc.setFontSize(10);
+                doc.text(20, 58, obj.name.firstname + ' ' + obj.name.lastname);
+                doc.text(20, 63, obj.number);
+                doc.text(20, 68, obj.address.permanent.region + ' ' + obj.address.permanent.province + ' ' + obj.address.permanent.municipality);
+                doc.text(20, 72, obj.address.permanent.barangay);
+                doc.text(55, 178, obj.account.toString());
+                doc.text(55, 183, $('.source').text());
+                doc.text(55, 188, $('.merchant-email').text());
+                doc.text(55, 193, $('.payment-id').text());
+                doc.text(175, 145, $('.price').text());
+                doc.setFont('helvetica', 'bold');
+                doc.text(143, 145, 'Total Amount: ');
+                doc.text(20, 178, 'Account ID: ');
+                doc.text(20, 183, 'Source: ');
+                doc.text(20, 188, 'Merchant Email: ');
+                doc.text(20, 193, 'Payment ID: ');
+                doc.line(20, 84, 190, 84);
+                let rows = [
+                    ['ID', 'DETAILS', 'DURATION', 'DATE', 'PRICE'],
+                    [$('.transaction-id').text(), $('.details').text(), $('.duration').text(), $('.transaction-date').text(), $('.price').text()],
+                    [],
+                    [],
+                ];
+
+                doc.autoTable({
+                    headStyles :{fillColor : ['#131C39']},
+                    startY: 105,
+                    margin: { left: 20 },
+                    tableWidth: 170,
+                    theme: 'grid',
+                    head: [rows[0]],
+                    body: rows.slice(1),
+                });
+
+                window.open(doc.output('bloburl'), '_blank');
+            };
+
         })
-
-        const doc = new jspdf.jsPDF();
-        var img = new Image();
-        img.src = 'https://yt3.googleusercontent.com/H6A1xBfl3_ykU3ThcuvSFVAi7ezdgW73zokuU0beZixcZe1_pZ9mTayF2w-RCsrblcIUkU43BA=s900-c-k-c0x00ffffff-no-rj';
-    
-        img.onload = function() {
-            doc.addImage(img, 'JPEG', 140, 0, 50, 50);
-    
-            doc.addFont('https://fonts.gstatic.com/s/montserrat/v15/JTUSjIg1_i6t8kCHKm459Wlhzg.ttf', 'Montserrat', 'normal');
-
-            doc.setFont('Montserrat');
-    
-            doc.setFontSize(20);
-            doc.text(20, 55, 'TRANSACTION DETAILS');
-            doc.line(20, 60, 190, 60);
-            doc.setFontSize(12);
-            doc.text(20, 70, 'Transaction ID: ' + $('.transaction-id').text());
-            doc.text(20, 76, 'Duration: ' + $('.duration').text());
-            doc.text(20, 82, 'Price: ₱ ' + $('.price').text());
-            doc.text(20, 88, 'Transaction Date: ' + $('.transaction-date').text());
-            doc.text(20, 94, 'Details: ' + $('.details').text())
-    
-            doc.save('invoice.pdf');
-        };
     });
 });
 
