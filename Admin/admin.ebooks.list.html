@@ -50,8 +50,8 @@
 
                         <!-- SORT, FILTER AND SEARCH -->
                         <div
-                            class="d-flex flex-column-reverse flex-sm-row justify-content-between align-items-center mb-3 mt-2">
-                            <div class="d-flex justify-content-start align-items-center col col-12 col-sm-7">
+                            class="d-flex flex-column-reverse flex-sm-row justify-content-between align-items-center mb-3 mt-2 ">
+                            <div class="d-flex justify-content-start align-items-center col col-12 col-sm-7 gap-1">
                                 <div class="btn-sort dropdown montserrat-regular">
                                     <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
                                         data-bs-toggle="dropdown"></i>
@@ -62,22 +62,35 @@
                                         <div
                                             class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
                                             <div class="btn-group col-7">
-                                                <button type="button" class="btn btn-sm btn-outline-primary"><i
-                                                        class="bi bi-sort-alpha-down fs-2"></i></button>
-                                                <button type="button" class="btn btn-sm btn-outline-primary"><i
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-primary btn-sort-asc"><i
+                                                        class="bi bi-sort-alpha-up fs-2"></i></button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-primary btn-sort-desc"><i
                                                         class="bi bi-sort-alpha-down-alt fs-2"></i></button>
                                             </div>
                                         </div>
-                                        <a class="dropdown-item" data-sort-by="name" href="#">E-Book Name</a>
-                                        <a class="dropdown-item" data-sort-by="date" href="#">Created Date</a>
+                                        <a class="dropdown-item dropdown-title" href="#">Ebook Title</a>
+                                        <a class="dropdown-item dropdown-id" href="#">Ebook ID</a>
+                                        <a class="dropdown-item dropdown-created-date" href="#">Created Date</a>
                                     </div>
                                 </div>
-                                <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
-                                    placeholder="Search by E-Book Name" name="search" value="" />
+                                <input type="text" class="search form-control montserrat-regular" id="search"
+                                    placeholder="Search by Ebook Title / ISBN /  Author" name="search"
+                                    value="" />
+                                <div class="btn-sort dropdown montserrat-regular">
+                                    <i class="bi bi-sliders2 fs-2 btn montserrat-semibold"
+                                        data-bs-toggle="dropdown"></i>
+                                    <div class="dropdown-menu">
+                                        <div class="dropdown-item montserrat-semibold border-bottom">FILTER BY
+                                        </div>
+                                        <div class="filter-list"></div>
+                                    </div>
+                                </div>
                             </div>
                             <button type="button"
                                 class="btn btn-md btn-add btn-outline-primary montserrat-semibold col col-12 col-sm-4 col-lg-3 mb-2 mb-sm-0">
-                                <i class="bi bi-plus-circle"></i><span class="ms-2">Add E-Books</span>
+                                <i class="bi bi-plus-circle"></i><span class="ms-2">Add Account</span>
                             </button>
                         </div>
 
@@ -104,21 +117,11 @@
                             </div>
                         </div>
                     </div>
-                    <!-- TABLE FOOTER -->
-                    <div
-                        class="px-4 d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular">
-                        <p>Showing 1 out of 10 pages</p>
-                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
-                                    class="d-none d-md-block">Previous</span><i
-                                    class="bi bi-chevron-double-left d-block d-md-none"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold">1</button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold">2</button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold">3</button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
-                                    class="d-none d-md-block">Next</span><i
-                                    class="bi bi-chevron-double-right d-block d-md-none"></i></button>
+
+                    <!-- PAGINATION -->
+                    <div class="d-flex align-items-center justify-content-between justify-content-sm-start mt-3 py-3">
+                        <p id="page-numbers" class="me-md-auto"></p>
+                        <div class="page-buttons btn-group mt-3 mt-sm-0">
                         </div>
                     </div>
                 </div>
