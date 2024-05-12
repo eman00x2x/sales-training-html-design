@@ -4,59 +4,59 @@
       "transaction_id": 1,
       "account_id": 1,
       "duration": [30, 60, 90, 180, 365],
-      "price": 1500.0,
+      "price": 2500.0,
       "merchant_id": 1,
       "merchant_email": "loremipsum@email.com",
       "payment_transaction_id": "LS-123456-T",
       "source": "Paymaya",
       "status": "Success",
       "details": "Lorem Ipsum",
-      "created_at": 1713923521
+      "created_at": 1699923521
     },
     {
       "transaction_id": 2,
       "account_id": 1,
       "duration": [30, 60, 90, 180, 365],
-      "price": 1500.0,
+      "price": 3500.0,
       "merchant_id": 1,
       "merchant_email": "loremipsum@email.com",
       "payment_transaction_id": "LS-123456-T",
       "source": "Paymaya",
       "status": "Cancelled",
       "details": "Lorem Ipsum",
-      "created_at": 1713923521
+      "created_at": 170123521
     },
     {
       "transaction_id": 3,
       "account_id": 1,
       "duration": [30, 60, 90, 180, 365],
-      "price": 1500.0,
+      "price": 1000.0,
       "merchant_id": 1,
       "merchant_email": "loremipsum@email.com",
       "payment_transaction_id": "LS-123456-T",
       "source": "Paymaya",
       "status": "Processing",
       "details": "Lorem Ipsum",
-      "created_at": 1713923521
+      "created_at": 1592923521
     },
     {
       "transaction_id": 4,
       "account_id": 1,
       "duration": [30, 60, 90, 180, 365],
-      "price": 1500.0,
+      "price": 4500.0,
       "merchant_id": 1,
       "merchant_email": "loremipsum@email.com",
       "payment_transaction_id": "LS-123456-T",
       "source": "Paymaya",
       "status": "Cancelled",
       "details": "Lorem Ipsum",
-      "created_at": 1713923521
+      "created_at": 1642923521
     },
     {
       "transaction_id": 5,
       "account_id": 1,
       "duration": [30, 60, 90, 180, 365],
-      "price": 1500.0,
+      "price": 2000.0,
       "merchant_id": 1,
       "merchant_email": "loremipsum@email.com",
       "payment_transaction_id": "LS-123456-T",
