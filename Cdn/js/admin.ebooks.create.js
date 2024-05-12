@@ -3,11 +3,24 @@ $(document).on("click", ".btn-back", function () {
 });
 
 $(document).ready(function () {
-    $(".ebook-div-logo").css("display", "none")
+    $(".ebook-div-thumbnail").css("display", "none")
 })
 
 $(document).on("click", ".btn-remove", function (e) {
-    $(".ebook-div-logo").css("display", "none")
+    $(".ebook-div-thumbnail").css("display", "none")
+});
+
+$(document).on("change", "#thumbnail", function (e) {
+    let reader = new FileReader();
+
+    reader.onload = function (event) {
+        $(".ebook-div-thumbnail").css("display", "block")
+        $(".ebook-thumbnail").attr('src', event.target.result)
+        $(".file-name").text(e.target.files[0].name)
+        $(".file-size").text(formatFileSize(e.target.files[0].size))
+    }
+
+    reader.readAsDataURL(e.target.files[0]);
 });
 
 function validateInput(input) {

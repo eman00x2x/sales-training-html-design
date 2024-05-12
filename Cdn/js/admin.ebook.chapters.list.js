@@ -57,6 +57,11 @@ $(document).on("click", ".btn-add", function (e) {
     window.location.href = "admin.ebook.chapters.create.html?id=" + id + "&title=" + title;
 });
 
+$(document).on("click", ".btn-view", function () {
+    let btn_id = $(this).data('id');
+    window.location.href = "admin.ebook.chapters.view.html?ebook_id=" + id + "&ebook_chapter_id=" + btn_id + "&title=" + title;
+});
+
 $(document).on("click", ".btn-edit", function () {
     let btn_id = $(this).data('id');
     window.location.href = "admin.ebook.chapters.update.html?ebook_id=" + id + "&ebook_chapter_id=" + btn_id + "&title=" + title;
@@ -106,6 +111,7 @@ function sortData(data, order, property) {
 function displayActionButton(id) {
     return `<td class='align-middle text-start'>
     <div class="btn-group" role="group" aria-label="Basic outlined example ">
+                <button type="button" data-id='${id}' class="btn btn-md btn-view btn-outline-primary"><i class="bi bi-eye"></i><span class='ms-2 montserrat-regular'>View</span></button>
                 <button type="button" data-id='${id}' class="btn btn-md btn-edit btn-outline-primary"><i class="bi bi-pencil-square"></i><span class='ms-2 montserrat-regular'>Edit</span></button>
                 <button type="button" data-id='${id}' class="btn btn-md btn-delete btn-outline-danger"><i class="bi bi-trash"></i><span class='ms-2 montserrat-regular'>Delete</span></button>
     </div>
@@ -166,7 +172,7 @@ function getChapterData(sortBy, order) {
             slicedData.forEach(function (chapter) {
                 html += "<tr>";
                 html += "<td class='align-middle montserrat-regular'>" + chapter.chapter + "</td>";
-                html += "<td class='align-middle truncate-text'style='max-width: 30em' data-sort-key='name'>" + "<p>" + chapter.content + "</p>" + "</td>";
+                html += "<td class='align-middle truncate-text'style='max-width: 45em' data-sort-key='name'>" + "<p class='my-auto'>" + chapter.content + "</p>" + "</td>";
                 html += "<td class='align-middle montserrat-regular'>" + convertDate(chapter.created_at) + "</td>";
                 html += displayActionButton(chapter.ebook_chapter_id);
                 html += "</tr>";
