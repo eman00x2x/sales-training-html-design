@@ -3,8 +3,9 @@
     top:0; 
     bottom:0;
     left: 0;
-    right: 70em;
-    margin: auto;
+    right: 90em ;
+    margin: 0 auto;
+    margin-top: -11em;
     z-index: 1;
 }
 
