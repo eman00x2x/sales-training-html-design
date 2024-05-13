@@ -121,7 +121,7 @@ function printFilters() {
         for (const data of value) {
             html += `<div class="form-check ">
                         <input class="checklist-filter form-check-input" name=${key} value="${data}" type="checkbox">
-                        <label class="checklist-filter form-check-label" name=${key}>
+                        <label class="checklist-filter text-capitalize form-check-label" name=${key}>
                             ${data}
                         </label>
                     </div>`
