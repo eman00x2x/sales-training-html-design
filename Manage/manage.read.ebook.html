@@ -51,19 +51,19 @@
                             <a href="">Read E-Book</a>
                         </li>
                     </ol>
-                        <div class="row p-3">
-                            <div class="col-lg-9 col-xs-9 justify-content-center d-flex flex-column ">
-                                <div class="title d-flex align-items-center">
-                                    <h1 id="header">THE SMART BUYER'S GUIDE</h1>
-                                </div>
-                                <div class="author ps-2">
-                                    <p>by Manny Florendo</p>
-                                </div>
+                    <div class="row">
+                        <div class=" col-md-12  col-lg-9 justify-content-center d-flex flex-column ">
+                            <div class="title d-flex align-items-center ">
+                                <h1 id="header" style="padding-top:1rem;"></h1>
                             </div>
-                            <div class="col-lg-3 col-xs-3 d-flex align-items-center justify-content-center pb-3">
-                                <img src="../Cdn/images/R.jpg" alt="">
+                            <div class="ps-1">
+                                <p class="author"></p>
                             </div>
                         </div>
+                        <div class="col-md-12  col-lg-3 d-flex align-items-center justify-content-center pb-3">
+                            <img class="ebook-image" src="" alt="">
+                        </div>
+                    </div>
 
                     <div class="progress progress-sm mb-3" style="height: 8px;">
                         <div class="progress-bar" style="width: 57%;" role="progressbar" aria-valuenow="57"
@@ -157,61 +157,25 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
-                
                     <!-- Ratings Section -->
-                    <div class="container-xl">
-                        <div class="row row-cards">
-                          <div class="col-md-4">
-                            <div class="row row-cards">
-                              <div class="col-12">
-                                <div class="card">
-                                  <div class="card-body">
-                                    <div class="h3 card-title">Basic</div>
-                                    <div>
-                                      <select id="rating-default">
-                                        <option value="">Select a rating</option>
-                                        <option value="5">Excellent</option>
-                                        <option value="4" selected>Very Good</option>
-                                        <option value="3">Average</option>
-                                        <option value="2">Poor</option>
-                                        <option value="1">Terrible</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+                        
+                    <div class="rating">
+                        <input type="hidden" id="rating-value" value="0">
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                      </div>
+                      
+
+
+                    <div class="footer container-fluid"></div>
                 </div>
-                
-                <script>
-                    function rate(stars) {
-                        // Add your code to handle rating submission
-                        console.log('Rated:', stars);
-                        // You can send the rating to the server or perform other actions here
-                    }
-                </script>
-                
             </div>
-            <div class="footer container-fluid"></div>
         </div>
     </div>
-    <!-- Libs JS -->
-<script src="./dist/libs/star-rating.js/dist/star-rating.min.js" defer></script>
-<!-- Tabler Core -->
-<script src="./dist/js/tabler.min.js" defer></script>
-<script src="./dist/js/demo.min.js" defer></script>
-<script>
-    // Initialize the Star Rating component
-    document.addEventListener("DOMContentLoaded", function () {
-        const rating = new StarRating('#rating-default', {
-            tooltip: false,
-            clearable: false,
-            stars: function (el, item, index) {
-                el.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" class="icon gl-star-full icon-1" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" stroke-width="0" fill="currentColor" /></svg>`;
-            },
-        });
-    });
-</script>
+
 
 </body>
 
