@@ -3,8 +3,8 @@
     {
       "premium_id": 1,
       "category": "package",
-      "type": "addon",
-      "name": "bronze",
+      "type": "bronze",
+      "name": "Ebook Premium 7 days",
       "description": "Lorem Ipsum Dolor Maritinez Quezon City Y Realonda Rizal",
       "script": [
         {
@@ -20,8 +20,8 @@
     {
       "premium_id": 2,
       "category": "individual",
-      "type": "addon",
-      "name": "silver",
+      "type": "Silver",
+      "name": "Ebook Premium 30 days",
       "description": "Lorem Ipsum Dolor Maritinez Quezon City Y Realonda Rizal",
       "script": [
         {
@@ -37,8 +37,8 @@
     {
       "premium_id": 3,
       "category": "package",
-      "type": "package",
-      "name": "gold",
+      "type": "Gold",
+      "name": "Ebook Premium 1 Year",
       "description": "Lorem Ipsum Dolor Maritinez Quezon City Y Realonda Rizal",
       "script": [
         {
@@ -54,8 +54,8 @@
     {
       "premium_id": 4,
       "category": "individual",
-      "type": "addon",
-      "name": "bronze",
+      "type": "Bronze",
+      "name": "Choose an Ebook from Premium books",
       "description": "Discover a collection of delicious recipes.",
       "script": [
         {
@@ -71,8 +71,8 @@
     {
       "premium_id": 5,
       "category": "package",
-      "type": "package",
-      "name": "silver",
+      "type": "Silver",
+      "name": "Premium Account 1 Month",
       "description": "Achieve your fitness goals with this comprehensive guide.",
       "script": [
         {
@@ -88,8 +88,8 @@
     {
       "premium_id": 6,
       "category": "individual",
-      "type": "addon",
-      "name": "gold",
+      "type": "Gold",
+      "name": "Premium Account 1 Year",
       "description": "Lorem Ipsum Dolor Maritinez Quezon City Y Realonda Rizal",
       "script": [
         {
@@ -105,8 +105,8 @@
     {
       "premium_id": 7,
       "category": "package",
-      "type": "package",
-      "name": "bronze",
+      "type": "Bronze",
+      "name": "Video Premium 7 days",
       "description": "Learn how to create a beautiful garden with these expert tips.",
       "script": [
         {
@@ -122,8 +122,8 @@
     {
       "premium_id": 8,
       "category": "individual",
-      "type": "package",
-      "name": "silver",
+      "type": "Silver",
+      "name": "Video Premium 30 Days",
       "description": "Master the art of photography with this comprehensive course.",
       "script": [
         {
@@ -139,8 +139,8 @@
     {
       "premium_id": 9,
       "category": "package",
-      "type": "addon",
-      "name": "gold",
+      "type": "Gold",
+      "name": "Video Premium 1 Year",
       "description": "Discover the secrets to living a healthy and balanced life.",
       "script": [
         {
@@ -156,8 +156,8 @@
     {
       "premium_id": 10,
       "category": "individual",
-      "type": "package",
-      "name": "bronze",
+      "type": "Bronze",
+      "name": "Premium Group 1 Month",
       "description": "Learn how to effectively plan your finances for a secure future.",
       "script": [
         {
@@ -173,8 +173,8 @@
     {
       "premium_id": 11,
       "category": "package",
-      "type": "addon",
-      "name": "silver",
+      "type": "Silver",
+      "name": "Premium Group 1 Year",
       "description": "Discover the benefits of meditation and achieve inner peace.",
       "script": [
         {
@@ -190,8 +190,8 @@
     {
       "premium_id": 12,
       "category": "package",
-      "type": "package",
-      "name": "gold",
+      "type": "Gold",
+      "name": "Premium Ebook Group Only",
       "description": "Explore the world with this comprehensive travel guide.",
       "script": [
         {
@@ -207,8 +207,8 @@
     {
       "premium_id": 13,
       "category": "individual",
-      "type": "addon",
-      "name": "bronze",
+      "type": "Bronze",
+      "name": "Premium Video Group Only",
       "description": "Learn a new language with this interactive language learning course.",
       "script": [
         {
