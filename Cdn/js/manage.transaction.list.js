@@ -1,5 +1,5 @@
 const acc_id = getParams('id');
-let currentPage = 1, search = '', order = '', sortBy = '';
+let currentPage = 1, search = '', order = '', sortBy = '', statusFilter = 'all'; // Add statusFilter variable
 
 $(document).ready(function () {
 
@@ -182,12 +182,14 @@ function getTransactionsData() {
                     </tr>`;
         }
         $('.data-container').html(html);
+        // Filter transactions again after updating the data
+        filterTransactions(statusFilter);
     });
 }
 
-
-
+// Function to filter transactions by status
 function filterTransactions(status) {
+    statusFilter = status; // Update statusFilter variable
     $('.nav-link').removeClass('active');
     $(`.nav-link[data-status="${status}"]`).addClass('active');
 
