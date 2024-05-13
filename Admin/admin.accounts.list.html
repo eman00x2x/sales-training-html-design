@@ -60,15 +60,15 @@
                                     <div
                                         class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
                                         <div class="btn-group col-7">
-                                            <button type="button" class="btn btn-sm btn-outline-primary"><i
-                                                    class="bi bi-sort-alpha-down fs-2"></i></button>
-                                            <button type="button" class="btn btn-sm btn-outline-primary"><i
+                                            <button type="button" class="btn btn-sm btn-outline-primary btn-sort-asc"><i
+                                                    class="bi bi-sort-alpha-up fs-2"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-primary btn-sort-desc"><i
                                                     class="bi bi-sort-alpha-down-alt fs-2"></i></button>
                                         </div>
                                     </div>
-                                    <a class="dropdown-item" href="#">Account ID</a>
-                                    <a class="dropdown-item" href="#">Full Name</a>
-                                    <a class="dropdown-item" href="#">Created Date</a>
+                                    <a class="dropdown-item dropdown-id" href="#">Account ID</a>
+                                    <a class="dropdown-item dropdown-name" href="#">Full Name</a>
+                                    <a class="dropdown-item dropdown-created-date" href="#">Created Date</a>
                                 </div>
                             </div>
                             <input type="text" class="search form-control montserrat-regular" id="search"
@@ -78,36 +78,7 @@
                                 <div class="dropdown-menu">
                                     <div class="dropdown-item montserrat-semibold border-bottom">FILTER BY
                                     </div>
-                                    <div class="px-3">
-                                        <span class="form-check-label montserrat-medium py-2">ACCOUNT TYPE</span>
-                                        <div class="form-check ">
-                                            <input class="form-check-input" type="checkbox" value="" id="chk1">
-                                            <label class="form-check-label" for="chk1">
-                                                Administrator
-                                            </label>
-                                        </div>
-                                        <div class="form-check ">
-                                            <input class="form-check-input" type="checkbox" value="" id="chk2">
-                                            <label class="form-check-label" for="chk2">
-                                                Subscriber
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="px-3">
-                                        <span class="form-check-label montserrat-medium py-2">ORGANIZATION</span>
-                                        <div class="form-check ">
-                                            <input class="form-check-input" type="checkbox" value="" id="chk1">
-                                            <label class="form-check-label" for="chk1">
-                                                Super Organization
-                                            </label>
-                                        </div>
-                                        <div class="form-check ">
-                                            <input class="form-check-input" type="checkbox" value="" id="chk2">
-                                            <label class="form-check-label" for="chk2">
-                                                Regular Organization
-                                            </label>
-                                        </div>
-                                    </div>
+                                    <div class="filter-list"></div>
                                 </div>
                             </div>
                         </div>
@@ -158,21 +129,11 @@
                         </div>
                     </div>
 
-                    <!-- TABLE FOOTER -->
+                    <!-- PAGINATION -->
                     <div
                         class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular">
-                        <p>Showing 1 out of 10 pages</p>
-                        <div class="btn-group" role="group" aria-label="Basic outlined example">
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
-                                    class="d-none d-md-block">Previous</span><i
-                                    class="bi bi-chevron-double-left d-block d-md-none"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold">1</button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold">2</button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold">3</button>
-                            <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
-                                    class="d-none d-md-block">Next</span><i
-                                    class="bi bi-chevron-double-right d-block d-md-none"></i></button>
+                        <p id="page-numbers"></p>
+                        <div class="page-buttons btn-group">
                         </div>
                     </div>
                 </div>

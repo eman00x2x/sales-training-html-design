@@ -60,42 +60,36 @@
                                     <div class="response"></div>
                                     <!-- FORM INPUT -->
                                     <div class="mb-3 montserrat-regular">
-                                        <label for="thumbnail" class="form-label fw-semibold mt-3">Thumbnail
-                                            Image</label>
-                                        <fieldset class="upload-dropzone text-center p-4">
-                                            <legend class="visually-hidden">Image uploader</legend>
-                                            <i class="bi bi-cloud-arrow-up-fill h1" style="font-size: 5vw;"></i>
-                                            <p class="small my-1">
-                                                Drag &amp; Drop background image(s) inside dashed region<br /><i>or</i>
-                                            </p>
-                                            <input id="thumbnail" name="thumbnail" class="position-absolute invisible"
-                                                type="file" accept="image/jpeg, image/png, image/svg+xml" />
-                                            <label class="btn btn-upload mb-3 bg-primary text-white"
-                                                for="thumbnail">Choose
-                                                file(s)</label>
-                                            <div
-                                                class="upload_gallery d-flex flex-wrap justify-content-center gap-3 mb-0">
-                                            </div>
+                                        <label for="logo" class="form-label montserrat-semibold mt-2">Thumbnail Image</label>
+                                        <fieldset class="upload-dropzone text-center p-4 rounded">
+                                          <legend class="visually-hidden">Image uploader</legend>
+                                          <i class="bi bi-cloud-arrow-up-fill h1"></i>
+                                          <p class="small my-1 montserrat-regular">
+                                            Drag &amp; Drop background image(s) inside dashed
+                                            region<br /><i>or</i>
+                                          </p>
+                                          <input id="thumbnail" name="thumbnail" class="position-absolute invisible" type="file"
+                                            accept="image/jpeg, image/png, image/svg+xml" />
+                                          <label class="btn btn-upload mb-3 bg-primary text-white montserrat-semibold" for="thumbnail">Choose
+                                            file(s)</label>
                                         </fieldset>
-                                        <div class="mb-3 ebook-div-logo">
+                                        <div class="mb-3 ebook-div-thumbnail">
                                             <h4>Uploaded File</h4>
                                             <div
-                                                class='d-flex flex-row justify-content-between align-items-center rounded shadow-sm p-2 bg-white rounded border border-secondary-subtle'>
-                                                <div class="d-flex flex-row justify-content-start align-items-center">
-                                                    <img src=""
-                                                        class='border border-secondary-subtle p-2 rounded org-logo'
-                                                        alt="File Uploaded" name='org-logo' style='height: 100px' />
-                                                    <div class='d-flex flex-column'>
-                                                        <span class='ms-4 montserrat-semibold file-name'></span>
-                                                        <span class='ms-4 montserrat-regular file-size'></span>
-                                                    </div>
+                                              class='d-flex flex-row justify-content-between align-items-center rounded shadow-sm p-2 bg-white rounded border border-secondary-subtle'>
+                                              <div class="d-flex flex-row justify-content-start align-items-center">
+                                                <img src="" class='border border-secondary-subtle p-2 rounded ebook-thumbnail' alt="File Uploaded"
+                                                  name='ebook-thumbnail' style='height: 100px' />
+                                                <div class='d-flex flex-column'>
+                                                  <span class='ms-4 montserrat-semibold file-name'></span>
+                                                  <span class='ms-4 montserrat-regular file-size'></span>
                                                 </div>
-                                                <button type="button"
-                                                    class="btn btn-remove fs-1 me-3 btn-outline-danger">
-                                                    <i class="bi bi-trash3 "></i>
-                                                </button>
+                                              </div>
+                                              <button type="button" class="btn btn-remove fs-1 me-3 btn-outline-danger">
+                                                <i class="bi bi-trash3 "></i>
+                                              </button>
                                             </div>
-                                        </div>
+                                          </div>
                                     </div>
                                     <input type="file" id="fileInput" style="display: none;">
                                     <div class="montserrat-regular">

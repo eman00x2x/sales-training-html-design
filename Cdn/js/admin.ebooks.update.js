@@ -17,9 +17,7 @@ $(document).ready(function () {
             $('#description').val(book.description);
             $('#group').val(book.ebook_group_id);
             $('#code').val(book.code);
-
-            var thumbnailImage = "<h4 class='montserrat-semibold'>Uploaded Files</h4><div class='d-flex flex-row justify-content-start align-items-center rounded shadow-sm p-2 bg-white rounded border border-secondary-subtle'><img src='" + book.thumbnail_image + "' class='border border-secondary-subtle p-2 rounded' name='org_logo' style='height: 100px'/><div class='d-flex flex-column'><span class='ms-4 fw-semibold'>" + book.thumbnail_image.split('/').pop() + "</span></div></div>";
-            $(".thumbnail_image").html(thumbnailImage);
+            $(".ebookThumbnail").attr("src", book.thumbnail_image);
 
         } else {
             console.log("Book not found with ID: " + book.ebook_id);
@@ -29,21 +27,13 @@ $(document).ready(function () {
 
 
 $(document).on("change", "#thumbnail", function (e) {
-    const URL = window.URL || window.webkitURL;
-    const file = e.target.files[0];
+    let reader = new FileReader();
 
-    const imageTag =
-        "<h4 class='montserrat-semibold'>Uploaded Files</h4><div class='d-flex flex-row justify-content-start align-items-center rounded shadow-sm p-2 bg-white rounded border border-secondary-subtle'><img src='" +
-        URL.createObjectURL(file) +
-        "'class='border border-secondary-subtle p-2 rounded' name='org_logo' style='height: 100px'/><div class='d-flex flex-column'><span class='ms-4 fw-semibold d-none'>" +
-        e.target.files[0].name +
-        "</span> <span class='ms-4 fw-normal'>" +
-        formatFileSize(e.target.files[0].size) +
-        "</span><div></div>";
-
-    if (file) {
-        $(".thumbnail_image").html(imageTag);
+    reader.onload = function () {
+        $(".ebookThumbnail").attr("src", URL.createObjectURL(e.target.files[0]));
     }
+
+    reader.readAsDataURL(e.target.files[0]);
 });
 
 function validateInput(input) {

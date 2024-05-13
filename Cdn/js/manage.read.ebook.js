@@ -124,6 +124,9 @@ function updateButtonVisibility(selectedChapterId, filteredChapters) {
 
 document.addEventListener('DOMContentLoaded', function () {
     const ebookId = getParams('ebook_id');
+    const ebookgroupId = getParams('ebook_group_id');
+    $(".ebooklist").attr("href",`manage.ebooks.html?id=`+ ebookgroupId);
+
     populateChapterDropdown(ebookId);
     for (let i = 0; i < sessionStorage.length; i++) {
         const key = sessionStorage.key(i);
@@ -131,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(`${key}: ${value}`);
     }
     
-
 
     //font
     let baseSize = 16;

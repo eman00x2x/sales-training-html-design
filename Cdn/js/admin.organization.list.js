@@ -135,7 +135,10 @@ function updatePagination(totalPages) {
             <i class="bi bi-chevron-double-left d-block d-md-none"></i>
         </button>`;
 
-        for (let i = 1; i <= totalPages; i++) {
+        let startPage = Math.max(1, currentPage - 1);
+        let endPage = Math.min(startPage + 2, totalPages);
+
+        for (let i = startPage; i <= endPage; i++) {
             const activeClass = i === currentPage ? 'active' : '';
             paginationButtons += `<button type="button" class="btn-page btn btn-outline-primary ${activeClass}" data-num="${i}"">${i}</button>`;
         }

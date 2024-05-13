@@ -22,5 +22,11 @@
 body, .form-select, .browse {
     color: var(--text-color);
     background-color: var(--background-color);
+
 }
+#textToResize {
+    border-color: var(--text-color) !important;
+}
+
+
 

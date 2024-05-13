@@ -167,8 +167,8 @@ $(document).on("click", ".btn-save", function (e) {
       "pointer-events": "auto",
     });
 
-    // $(".btn-save").show();
-    // $("#form :input").removeAttr("readonly");
+    $(".btn-save").show();
+    $("#form :input").removeAttr("readonly");
   }, 30);
 
   /* $.post(form.attr('action'), form.serialize(), function (data, status) {
