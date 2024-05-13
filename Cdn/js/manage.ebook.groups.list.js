@@ -1,98 +1,124 @@
+let currentPage = 1, search = '', order = '', sortBy = '';
+
 $(document).ready(function () {
-  displayEbookGroups(1, '', 'asc', 'name');
+  displayEbookGroups(sortBy, order);
 });
 
-let sortBy = 'name';
-let sortDirection = 'asc';
+// SEARCH
+$(document).on("keyup", '.search', function () {
+  search = $(this).val().toLowerCase();
+  currentPage = 1
+  displayEbookGroups(sortBy, order);
+});
 
-function search() {
-  console.log('Search Input:', document.getElementById('search').value);
-  displayEbookGroups(1, document.getElementById('search').value, sortBy, sortDirection);
+// ASCENDING BUTTON
+$(document).on("click", '.btn-sort-asc', function () {
+  $('.btn-sort-asc').addClass('active');
+  $('.btn-sort-desc').removeClass('active');
+  order = 'asc'
+  displayEbookGroups(sortBy, order);
+});
+
+// DESCENDING BUTTON
+$(document).on("click", '.btn-sort-desc', function () {
+  $('.btn-sort-desc').addClass('active');
+  $('.btn-sort-asc').removeClass('active');
+  order = 'desc'
+  displayEbookGroups(sortBy, order);
+});
+
+// SORT BY E-BOOK TITLE
+$(document).on("click", '.dropdown-title', function () {
+  $('.dropdown-title').addClass('active');
+  $('.dropdown-created-date').removeClass('active');
+  sortBy = 'name'
+  displayEbookGroups(sortBy, order);
+});
+
+// SORT BY ORGANIZATION CREATED DATE
+$(document).on("click", '.dropdown-created-date', function () {
+  $('.dropdown-created-date').addClass('active');
+  $('.dropdown-title').removeClass('active');
+  sortBy = 'created_at'
+  displayEbookGroups(sortBy, order);
+});
+
+// PAGINATION
+$(document).on('click', '.btn-page', function (e) {
+  currentPage = $(this).data('num');
+  displayEbookGroups(sortBy, order);
+});
+
+//GO TO EBOOKS
+$(document).on('click', '.card', function (e) {
+  const ebookId = $(this).data('ebook-id');
+  window.location.href = "manage.ebooks.html?id=" + ebookId;
+});
+
+// FUNCTION TO LOWERCASE ALL STRINGS
+function lowerCase(str) {
+  return str.toLowerCase();
 }
 
-function updateSortDirection(direction) {
-  sortDirection = direction;
-  console.log(sortDirection);
-  highlightSortDirection();
-  search();
+// FUNCTION TO RETURN DATA THAT IS SEARCHED, DEFAULT WILL BE THE RESPONSE DATA FROM JSON
+function isSearchQuery(data) {
+  const filter = search ? data.filter(item =>
+      lowerCase(item.name).includes(lowerCase(search)) ||
+      item.organization_id == search
+  ) : data;
+
+  return filter;
 }
 
-function updateSortBy(by) {
-  sortBy = by;
-  search();
-  highlightSortBy();
-}
-function changePage(pageNumber) {
-  const searchQuery=document.getElementById('search').value;
-  displayEbookGroups(pageNumber, searchQuery, sortBy, sortDirection);
-}
-function highlightSortDirection() {
-  $('.btn-sort-direction').removeClass('active');
-  if (sortDirection === 'asc') {
-    $('#btnSortAsc').addClass('active');
-  } else {
-    $('#btnSortDesc').addClass('active');
+
+// SORT BY ORDER AND ITS PROPERTY
+function sortData(data, order, property) {
+  console.log(property)
+  console.log(order)
+  console.log(property)
+  switch (order) {
+      case "asc":
+          if (property === "name")
+            return data.sort((a, b) => lowerCase(a[property]).localeCompare(lowerCase(b[property])));
+          else if (property === "created_at")
+              return data.sort((a, b) => new Date(b[property]) - new Date(a[property]));
+          else
+              return data.sort((a, b) => a.name.localeCompare(b.name));
+      case "desc":
+          if (property === "name")
+            return data.sort((b, a) => lowerCase(a[property]).localeCompare(lowerCase(b[property])));
+          else if (property === "created_at")
+              return data.sort((a, b) => new Date(a[property]) - new Date(b[property]));
+          else
+              return data.sort((b, a) => a.name.localeCompare(b.name));
+      default:
+          return data;
   }
 }
 
-function highlightSortBy() {
-  $('.dropdown-item.sort-by').removeClass('active');
-  if (sortBy === 'name') {
-    $('#sortByTitle').addClass('active');
-  } else {
-    $('#sortByDate').addClass('active');
-  }
-}
-
-
-function displayEbookGroups(pageNumber, searchQuery, sortBy, sortDirection) {
-  console.log('Sort By:', sortBy);
-  console.log('Sort Direction:', sortDirection);
-  console.log('Sort queyr', searchQuery);
-  const ebooksPerPage = 8;
-  const startIndex = (pageNumber - 1) * ebooksPerPage;
-  const endIndex = startIndex + ebooksPerPage;
+// GET THE DATA
+function displayEbookGroups(sortBy, order) {
+  const limit = 10;
+  const startIndex = (currentPage - 1) * limit;
+  const endIndex = startIndex + limit;
 
   $.getJSON('../Cdn/js/data/ebook.groups.json', function (response) {
-    const filteredData = searchQuery ? response.data.filter(ebook => {
-      return ebook.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        ebook.description.toLowerCase().includes(searchQuery.toLowerCase());
-    }) : response.data;
-
-    sortedData = sortDirection === 'asc' ?
-      filteredData.sort((b,a) => a.name.localeCompare(b.name)) :
-      filteredData.sort((a,b) => a.name.localeCompare(b.name));
-    if (sortBy == 'name') {
-      // Sort by name
-      sortedData = sortDirection === 'asc' ?
-        filteredData.sort((a,b) => a.name.localeCompare(b.name)) :
-        filteredData.sort((b,a) => a.name.localeCompare(b.name));
-    } else if (sortBy === 'created_at') {
-      // Sort by creation date
-      sortedData = filteredData.sort((a, b) => {
-        const dateA = new Date(a.created_at);
-        const dateB = new Date(b.created_at);
-        return sortDirection === 'asc' ?  dateB - dateA : dateA - dateB ;
-      });
-    }
-
+    const ebook = response.data;
+    const sortedData = sortData(isSearchQuery(ebook),order,sortBy);
     const totalItems = sortedData.length;
-    const totalPages = Math.ceil(totalItems / ebooksPerPage);
-    const currentPage = pageNumber;
-
-    updatePagination(currentPage, totalPages);
-
-    const ebooksResponse = sortedData.slice(startIndex, endIndex);
-
+    const totalPages = Math.ceil(totalItems / limit);
+    updatePagination(totalPages);
+    const slicedData = sortedData.slice(startIndex, endIndex);
     let ebookListHtml = '';
-    ebooksResponse.forEach(ebook => {
+    slicedData.forEach(ebook => {
       ebookListHtml += `
-        <div class="col-md-3 col-sm-6 col-xs-12 pb-4 hover-zoom">
-          <a href="manage.ebooks.html?id=${ebook.ebook_group_id}" style="text-decoration: none;">
-            <div class="card p-2" style="background-color:#131C39; color:#fff; height:15rem;">
+      <div class="col-lg-4 col-md-6 col-sm-12 pb-4 hover-zoom">
+        <a href="manage.ebooks.html?id=${ebook.ebook_group_id}" style="text-decoration: none;">
+            <div class="card p-2 bg-white shadow-sm" style="height:15rem;">
               <div class="card-body">
                 <h1 class="card-title pb-2" style="font-size:1.5rem;">${ebook.name}</h1>
                 <p class="">${ebook.description}</p>
+                <p class=" card-text text-secondary text-end"> <small>${convertDate(ebook.created_at)}</small>  </p>
               </div>
             </div>
           </a>
@@ -103,36 +129,34 @@ function displayEbookGroups(pageNumber, searchQuery, sortBy, sortDirection) {
   });
 }
 
-function updatePagination(currentPage, totalPages) {
-  const pageNumbers = document.getElementById('page-numbers'); 
-  const paginationContainer = $('.btn-group');
-
+// UPDATE THE PAGE NUMBERS IN PAGE BUTTONS
+function updatePagination(totalPages) {
   let paginationButtons = '';
 
   if (totalPages > 0) {
-    paginationButtons += `
-    <button type="button" class="btn btn-outline-primary montserrat-semibold ${currentPage === 1 ? 'disabled' : ''}" onclick="changePage(${currentPage - 1})">
-        <span class="d-none d-md-block">Previous</span>
-        <i class="bi bi-chevron-double-left d-block d-md-none"></i>
-    </button>`;
+      paginationButtons += `
+      <button type="button" class="btn-page btn btn-outline-primary montserrat-semibold ${currentPage === 1 ? 'disabled' : ''}" data-num="${currentPage - 1}"">
+          <span class="d-none d-md-block">Previous</span>
+          <i class="bi bi-chevron-double-left d-block d-md-none"></i>
+      </button>`;
 
-    for (let i = 1; i <= totalPages; i++) {
-      const activeClass = i === currentPage ? 'active' : '';
-      paginationButtons += `<button type="button" class="btn btn-outline-primary ${activeClass}" onclick="changePage(${i})">${i}</button>`;
-    }
+      let startPage = Math.max(1, currentPage - 1);
+      let endPage = Math.min(startPage + 2, totalPages);
 
-    paginationButtons += `<button type="button" class="btn btn-outline-primary montserrat-semibold ${currentPage === totalPages ? 'disabled' : ''}" onclick="changePage(${currentPage + 1})">
-     <span class="d-none d-md-block">Next</span>
-    <i class="bi bi-chevron-double-right d-block d-md-none"></i>
-</button>`;
-  } else {
-    paginationButtons = '';
-  }
+      for (let i = startPage; i <= endPage; i++) {
+          const activeClass = i === currentPage ? 'active' : '';
+          paginationButtons += `<button type="button" class="btn-page btn btn-outline-primary ${activeClass}" data-num="${i}"">${i}</button>`;
+      }
 
-  pageNumbers.innerHTML = totalPages > 0 ? `Showing ${currentPage} out of ${totalPages} pages` : 'Showing 0 out of 0 pages';
-  paginationContainer.html(paginationButtons);
+      paginationButtons += `
+      <button type="button" class="btn-page btn btn-outline-primary montserrat-semibold ${currentPage === totalPages ? 'disabled' : ''}" data-num="${currentPage + 1}">
+          <span class="d-none d-md-block">Next</span>
+          <i class="bi bi-chevron-double-right d-block d-md-none"></i>
+      </button>`;
+  } else
+      paginationButtons = '';
+
+  $('#page-numbers').html(totalPages > 0 ? `Showing ${currentPage} out of ${totalPages} pages` : 'Showing 0 out of 0 pages');
+  $('.page-buttons').html(paginationButtons);
 }
-
-
-
 
