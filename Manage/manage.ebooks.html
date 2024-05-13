@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,27 +69,19 @@
                                         <div
                                             class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
                                             <div class="btn-group1 col-7">
-                                                <button id="btnSortAsc" type="button"
-                                                    class="btn btn-sm btn-outline-primary btn-sort-direction active"
-                                                    onclick="updateSortDirection('asc')">
-                                                    <i class="bi bi-sort-alpha-up fs-2"></i>
-                                                </button>
-                                                <button id="btnSortDesc" type="button"
-                                                    class="btn btn-sm btn-outline-primary btn-sort-direction"
-                                                    onclick="updateSortDirection('desc')">
-                                                    <i class="bi bi-sort-alpha-down-alt fs-2"></i>
-                                                </button>
+                                                <button type="button" class="btn btn-sm btn-outline-primary btn-sort-asc"><i
+                                                    class="bi bi-sort-alpha-up fs-2"></i></button>
+                                            <button type="button" class="btn btn-sm btn-outline-primary btn-sort-desc"><i
+                                                    class="bi bi-sort-alpha-down-alt fs-2"></i></button>
                                             </div>
                                         </div>
-                                        <a id="sortByTitle" class="dropdown-item sort-by active" href="#"
-                                            onclick="updateSortBy('title')">Title</a>
-                                        <a id="sortByDate" class="dropdown-item sort-by" href="#"
-                                            onclick="updateSortBy('created_at')">Date Created</a>
+                                        <a class="dropdown-item dropdown-title" href="#">Title</a>
+                                        <a class="dropdown-item dropdown-created-date" href="#">Date Created</a>
 
                                     </div>
                                 </div>
                                 <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
-                                    placeholder="Search by Title" name="search" value="" onkeyup="search()" />
+                                    placeholder="Search by Title" name="search" value=""  />
 
 
                                 <div class="btn-sort dropdown montserrat-regular ms-1">
@@ -99,37 +90,7 @@
                                     <div class="dropdown-menu">
                                         <div class="dropdown-item montserrat-semibold border-bottom">FILTER BY
                                         </div>
-                                        <div class="px-3">
-                                            <span class="form-check-label montserrat-medium py-2">EBOOK CATEGORY</span>
-                                            <div class="form-check ">
-                                                <input class="form-check-input chk-category" type="checkbox"
-                                                    value="buying" id="chk1">
-                                                <label class="form-check-label" for="chk1">
-                                                    Buying
-                                                </label>
-                                            </div>
-                                            <div class="form-check ">
-                                                <input class="form-check-input chk-category" type="checkbox"
-                                                    value="earning" id="chk2">
-                                                <label class="form-check-label" for="chk2">
-                                                    Earning
-                                                </label>
-                                            </div>
-                                            <div class="form-check ">
-                                                <input class="form-check-input chk-category" type="checkbox"
-                                                    value="selling" id="chk2">
-                                                <label class="form-check-label" for="chk3">
-                                                    Selling
-                                                </label>
-                                            </div>
-                                            <div class="form-check ">
-                                                <input class="form-check-input chk-category" type="checkbox"
-                                                    value="real-estate" id="chk2">
-                                                <label class="form-check-label" for="chk3">
-                                                    Real Estate
-                                                </label>
-                                            </div>
-                                        </div>
+                                        <div class="filter-list"></div>
                                     </div>
                                 </div>
                             </div>
@@ -157,11 +118,11 @@
 
                         <!-- PAGINATION -->
                         <div
-                            class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular pb-3">
-                            <p id="page-numbers"></p>
-                            <div class="btn-group" role="group" aria-label="Basic outlined example">
-                            </div>
+                        class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular">
+                        <p id="page-numbers"></p>
+                        <div class="page-buttons btn-group">
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
