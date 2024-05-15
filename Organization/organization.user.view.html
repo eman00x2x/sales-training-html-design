@@ -65,12 +65,43 @@
                                 <img class="accLogo object-fit-contain d-inline-block" alt="Account Logo">
                             </div>
                             <div class="col-12 col-lg-9">
-                                <h1 class="accName montserrat-bold lh-1"></h1>
-                                <div class="">
-                                    <span>@username</span>
-                                    <span>manny@philproperties.ph</span>
+                                <div class="d-flex flex-column align-items-center align-items-md-start">
+                                    <span class="name mt-2 montserrat-bold fs-1"></span>
+                                    <span class="fs-4 text-secondary m-0 montserrat-regular">Candidate</span>
                                 </div>
-                                <div></div>
+                                <hr class="my-3">
+                                <div class="d-flex flex-column flex-md-row gap-4 justify-content-start montserrat-regular px-4 px-md-0">
+                                    <div class="col">
+                                        <div class="d-flex flex-row gap-4 ">
+                                            <div class="d-flex flex-column fs-4">
+                                                <span class="">User ID:</span>
+                                                <span class="">Birthday:</span>
+                                                <span class="">Username:</span>
+                                                <span class="">Email:</span>
+                                            </div>
+                                            <div class="d-flex flex-column fs-4">
+                                                <span class="fw-bold" id="acc-id"></span>
+                                                <span class="fw-bold" id="birthday"></span>
+                                                <span class="fw-bold" id="username"></span>
+                                                <span class="fw-bold" id="email"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- SOCIAL MEDIA -->
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bold">Social Media</span>
+                                            <div class="d-flex gap-2 flex-row align-items-center">
+                                                <i class="bi bi-facebook fs-2 text-primary"></i>
+                                                <span class="">Manny Florendo</span>
+                                            </div>
+                                            <div class="d-flex gap-2 flex-row align-items-center">
+                                                <i class="bi bi-linkedin fs-2 text-primary"></i>
+                                                <span class="">Manny Florendo</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -83,13 +114,13 @@
                                     data-bs-toggle="tab">Profile</a></li>
                             <li class="nav-item"><a href="#tab-top-2" class="nav-link" data-bs-toggle="tab">Skills
                                     and Experience</a></li>
-                            <li class="nav-item"><a href="#tab-top-3" class="nav-link" data-bs-toggle="tab">Change
+                            <li class="nav-item"><a href="#tab-top-3" class="nav-link" data-bs-toggle="tab">Update
                                     Password</a></li>
                             <li class="nav-item"><a href="#tab-top-4" class="nav-link" data-bs-toggle="tab">Update
-                                    Email</a></li>
-                            <li class="nav-item"><a href="#tab-top-3" class="nav-link" data-bs-toggle="tab">
+                                    Email Address</a></li>
+                            <li class="nav-item"><a href="#tab-top-5" class="nav-link" data-bs-toggle="tab">
                                     Current E-Book Sessions</a></li>
-                            <li class="nav-item"><a href="#tab-top-4" class="nav-link" data-bs-toggle="tab">
+                            <li class="nav-item"><a href="#tab-top-6" class="nav-link" data-bs-toggle="tab">
                                     Current Video Sessions </a></li>
                         </ul>
                         <!-- TAB CONTENT -->
@@ -99,6 +130,18 @@
 
                             <!-- PURCHASED VIDEO GROUPS -->
                             <div id="tab-top-2" class="card tab-pane"></div>
+
+                            <!-- UPDATE PASSWORD -->
+                            <div id="tab-top-3" class="card tab-pane"></div>
+
+                            <!-- UPDATE EMAIL ADDRESS -->
+                            <div id="tab-top-4" class="card tab-pane"></div>
+
+                            <!-- CURRENT E-BOOK SESSIONS -->
+                            <div id="tab-top-5" class="card tab-pane"></div>
+
+                            <!-- CURRENT VIDEO SESSIONS -->
+                            <div id="tab-top-6" class="card tab-pane"></div>
                         </div>
                     </div>
                 </div>

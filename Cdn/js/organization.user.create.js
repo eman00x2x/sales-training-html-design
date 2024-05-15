@@ -20,6 +20,41 @@ $(document).on("click", "#back", function (e) {
     }
   });
 
+
+  $(document).ready(function () {
+
+    $.when(
+      $.getJSON("../Cdn/js/data/profiles.json"),
+      $.getJSON("../Cdn/js/data/accounts.json"),
+      $.getJSON("../Cdn/js/data/organization.json")
+    ).done(function (data1, data2, data3) {
+      // MERGE PROFILE AND ACCOUNTS
+      let response = data1[0].data.map((a) =>
+        Object.assign(
+          a,
+          data2[0].data.find((b) => b.account_id == a.account_id)
+        )
+      );
+      // MERGE RESPONSE AND ORGANIZATION
+      let result = response.map((a) => ({
+        ...a,
+        organization: data3[0].data.find(
+          (b) => b.organization_id == a.organization_id
+        ),
+      }));
+      $("#breadlink").attr("href", `organization.user.list.html?id=${response[f].organization_id}`);
+  
+      // console.log(response[f].organization_id)
+  
+  
+  
+    });
+
+  
+  
+  });
+
+
   
 
     function validateInput(input) {

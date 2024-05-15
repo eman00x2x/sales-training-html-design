@@ -27,6 +27,8 @@ $(document).ready(function () {
       $("#contact").val(userData.contact_number);
       $("#type").val(accountData.account_type)
       $(".bread-title").text(fullName)
+      $(".breadlink").attr("href", `organization.user.list.html?id=${accountData.organization_id}`);
+      
 
       });
 
@@ -36,9 +38,6 @@ $(document).ready(function () {
     });
   });
 
-  $(document).on("click", "#back", function (e) {
-  window.location.href = `organization.user.list.html`
-});
 
 $(document).on("change", "#logo", function (e) {
   var URL = window.URL || window.webkitURL;

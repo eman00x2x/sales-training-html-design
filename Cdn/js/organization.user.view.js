@@ -37,9 +37,12 @@ $(document).ready(function () {
 
 
   });
-
-  $("#tab-top-1").load("../Admin/admin.accounts.profile.html");
-  $("#tab-top-2").load("../Admin/admin.accounts.skills.html");
+  $("#tab-top-1").load("../Admin/admin.accounts.tabs.profile.html");
+  $("#tab-top-2").load("../Admin/admin.accounts.tabs.skills.html");
+  $("#tab-top-3").load("../Admin/admin.accounts.tabs.pass.html");
+  $("#tab-top-4").load("../Admin/admin.accounts.tabs.email.html");
+  $("#tab-top-5").load("../Admin/admin.accounts.tabs.ebook.sessions.html");
+  $("#tab-top-6").load("../Admin/admin.accounts.tabs.video.sessions.html");
 
   // $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
   //     var target = $(e.target).attr("href");
