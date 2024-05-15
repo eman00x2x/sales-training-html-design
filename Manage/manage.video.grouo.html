@@ -73,8 +73,7 @@
 
 
                 <div class="row">
-                 
-                    <div class="d-flex justify-content-start align-items-start  col-lg-8">
+                    <div class="d-flex justify-content-start align-items-start col-lg-8 pb-3">
                         <div class="btn-sort dropdown montserrat-regular">
                             <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
                                 data-bs-toggle="dropdown"></i>
@@ -84,28 +83,22 @@
                                 <div
                                     class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
                                     <div class="btn-group1 col-7">
-                                        <button id="btnSortAsc" type="button"
-                                            class="btn btn-sm btn-outline-primary btn-sort-direction active"
-                                            onclick="updateSortDirection('asc')">
-                                            <i class="bi bi-sort-alpha-up fs-2"></i>
-                                        </button>
-                                        <button id="btnSortDesc" type="button"
-                                            class="btn btn-sm btn-outline-primary btn-sort-direction"
-                                            onclick="updateSortDirection('desc')">
-                                            <i class="bi bi-sort-alpha-down-alt fs-2"></i>
-                                        </button>
+                                        <button type="button"
+                                            class="btn btn-sm btn-sort-asc btn-outline-primary"><i
+                                                class="bi bi-sort-alpha-up fs-2"></i></button>
+                                        <button type="button"
+                                            class="btn btn-sm btn-sort-desc btn-outline-primary"><i
+                                                class="bi bi-sort-alpha-down-alt fs-2"></i></button>
                                     </div>
                                 </div>
-                                <a id="sortByTitle" class="dropdown-item sort-by active" href="#"
-                                    onclick="updateSortBy('name')">Video Title</a>
-                                <a id="sortByDate" class="dropdown-item sort-by" href="#"
-                                    onclick="updateSortBy('created_at')">Created Date</a>
-
+                                <button type="button" class="dropdown-item dropdown-title">E-Book Title</button>
+                                <button type="button" class="dropdown-item dropdown-created-date">Date
+                                    Created</button>
                             </div>
                         </div>
-                        <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
-                            placeholder="Search by Title" name="search" value="" onkeyup="search()" />
-                </div>
+                        <input type="text" class="search ms-1 me-2 form-control montserrat-regular" id="search"
+                            placeholder="Search by Title" name="search" value="" />
+                    </div>
                     
                 </div>
               
@@ -122,11 +115,12 @@
                 </div>
 
                 <!-- pagination -->
-                <div class="d-flex align-items-center justify-content-between justify-content-sm-start mt-3 py-3">
-                    <p id="page-numbers" class="me-md-auto"></p>
-                    <div class="btn-group mt-3 mt-sm-0">
-                    </div>
-                </div>
+                <div
+                            class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular pb-3">
+                            <p id="page-numbers"></p>
+                            <div class="page-buttons btn-group">
+                            </div>
+                        </div>
 
             </div>
 

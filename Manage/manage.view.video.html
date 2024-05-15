@@ -101,41 +101,12 @@
                         placeholder="Search by Title" name="search" value="" onkeyup="search()" />
                         
                         
-                        <div class="btn-sort dropdown montserrat-regular ms-1">
+                        <div class="btn-sort dropdown montserrat-regular">
                             <i class="bi bi-sliders2 fs-2 btn montserrat-semibold" data-bs-toggle="dropdown"></i>
                             <div class="dropdown-menu">
                                 <div class="dropdown-item montserrat-semibold border-bottom">FILTER BY
                                 </div>
-                                <div class="px-3">
-                                    <span class="form-check-label montserrat-medium py-2">VIDEO CATEGORY</span>
-                                    <div class="form-check ">
-                                        <input class="form-check-input" type="checkbox" value="" id="chk1">
-                                        <label class="form-check-label" for="chk1">
-                                            Selling
-                                        </label>
-                                    </div>
-                                    <div class="form-check ">
-                                        <input class="form-check-input" type="checkbox" value="" id="chk2">
-                                        <label class="form-check-label" for="chk2">
-                                            Affiliate
-                                        </label>
-                                    </div>
-                                </div>
-                                <!-- <div class="px-3">
-                                    <span class="form-check-label montserrat-medium py-2">ORGANIZATION</span>
-                                    <div class="form-check ">
-                                        <input class="form-check-input" type="checkbox" value="" id="chk1">
-                                        <label class="form-check-label" for="chk1">
-                                            Super Organization
-                                        </label>
-                                    </div>
-                                    <div class="form-check ">
-                                        <input class="form-check-input" type="checkbox" value="" id="chk2">
-                                        <label class="form-check-label" for="chk2">
-                                            Regular Organization
-                                        </label>
-                                    </div>
-                                </div> -->
+                                <div class="filter-list"></div>
                             </div>
                         </div>
                         
@@ -166,12 +137,12 @@
                   </div>
                 
                 <!-- pagination -->
-                <div class="d-flex align-items-center justify-content-between justify-content-sm-start mt-3 py-3">
-                    <p id="page-numbers" class="me-md-auto"></p>
-                    <div class="btn-group mt-3 mt-sm-0">
-                    </div>
+                <div
+                class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular">
+                <p id="page-numbers"></p>
+                <div class="page-buttons btn-group">
                 </div>
-
+            </div>
             </div>
 
             <div class="footer"></div>

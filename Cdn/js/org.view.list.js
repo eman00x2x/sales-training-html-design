@@ -1,5 +1,11 @@
 let currentPage = 1, search = '', order = '', sortBy = '',
-    filterData = [{ "account_type": ["Super Administrator", "Administrator", "Subscriber"] }],
+    filterData = [{ 
+        "account_type": [
+
+            { displayed: "Super Administrator", value: "super-administrator" },
+            { displayed: "Administrator", value: "administrator" },
+            { displayed: "Subscriber", value: "subscriber" },
+        ] }],
     filterBy = [];
 
 $(document).ready(function () {
@@ -82,58 +88,33 @@ $(document).on('click', '.btn-delete', function (e) {
     window.location.href = "admin.accounts.delete.html?id=" + id;
 });
 
+//FILTER
 $(document).on('change', '.checklist-filter', function (e) {
     let checkboxes = $(".checklist-filter:checkbox");
+    let checkedValues = [];
+
 
     for (let i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i].checked) {
-            if (!filterBy.includes(checkboxes[i])) { // Check if value already exists
-                filterBy.push(checkboxes[i]);
+            if (!checkedValues.includes(checkboxes[i])) { // Check if value already exists
+                 checkedValues.push(checkboxes[i].value);
             }
         }
         else {
-            const index = filterBy.indexOf(checkboxes[i]); // Find the index of the value
+            const index = checkedValues.indexOf(checkboxes[i]); // Find the index of the value
             if (index > -1) {
-                filterBy.splice(index, 1); // Remove the value from the array
+                checkedValues.splice(index, 1); // Remove the value from the array
             }
         }
     }
-
+    filterBy = checkedValues;
     getAccountsData(sortBy, order);
 });
 
-function printFilters() {
-    let html = '';
-
-    for (const item of filterData) {
-        const regex = /[-_]/g;
-        const key = Object.keys(item)[0];
-        const replacedKey = Object.keys(item)[0].replace(regex, " ");
-        const value = item[key];
-
-        html += `<div class="px-3">
-                    <span class="form-check-label montserrat-medium py-2 text-uppercase">${replacedKey}</span>`;
-
-        for (const data of value) {
-            html += `<div class="form-check ">
-                        <input class="checklist-filter form-check-input" name=${key} value="${data}" type="checkbox">
-                        <label class="checklist-filter form-check-label" name=${key}>
-                            ${data}
-                        </label>
-                    </div>`
-        }
-        html += `</div>`;
-    }
-
-    $(".filter-list").html(html)
-}
-
-// FUNCTION TO LOWERCASE ALL STRINGS
 function lowerCase(str) {
     return str.toLowerCase();
 }
 
-// FUNCTION TO RETURN DATA THAT IS SEARCHED, DEFAULT WILL BE THE RESPONSE DATA FROM JSON
 function isSearchQuery(data) {
     const filterBySearch = search ? data.filter(item =>
         lowerCase(`${item.name.prefix} ${item.name.firstname} ${item.name.lastname} ${item.name.suffix}`).includes(lowerCase(search)) ||
@@ -141,18 +122,18 @@ function isSearchQuery(data) {
         lowerCase(item.email).includes(lowerCase(search))
     ) : data;
 
-    console.log(data)
 
     const filter = filterBy.length > 0 ? filterBySearch.filter(item => {
-        const {account_type } = item;
+        // const {account_type } = item;
+        console.log(filterBy)
         
-        return filterBy.every(filterItem => lowerCase(account_type) === lowerCase(filterItem.value) || lowerCase(name) === lowerCase(filterItem.value));
+        return filterBy.some(selectedType =>   item.account_type.toLowerCase() === selectedType.toLowerCase());
+        
     }) : filterBySearch;
 
     return filter;
 }
 
-// SORT BY ORDER AND ITS PROPERTY
 function sortData(data, order, property) {
     switch (order) {
         case "asc":
@@ -209,6 +190,43 @@ function updatePagination(totalPages) {
     $('.page-buttons').html(paginationButtons);
 }
 
+function printFilters() {
+    let html = '';
+
+    for (const item of filterData) {
+        const regex = /[-_]/g;
+        const key = Object.keys(item)[0];
+        const replacedKey = Object.keys(item)[0].replace(regex, " ");
+        const value = item[key];
+
+        html += `<div class="px-3">
+                    <span class="form-check-label montserrat-medium py-2 text-uppercase">${replacedKey}</span>`;
+
+        for (const data of value) {
+            html += `<div class="form-check ">
+                        <input class="checklist-filter form-check-input" name=${key} value="${data.value}" type="checkbox">
+                        <label class="checklist-filter form-check-label" name=${key}>
+                            ${data.displayed}
+                        </label>
+                    </div>`
+        }
+        html += `</div>`;
+    }
+
+    $(".filter-list").html(html)
+}
+
+// FUNCTION TO LOWERCASE ALL STRINGS
+
+
+// FUNCTION TO RETURN DATA THAT IS SEARCHED, DEFAULT WILL BE THE RESPONSE DATA FROM JSON
+
+
+// SORT BY ORDER AND ITS PROPERTY
+
+
+
+
 const displayAccActionButtons = (id, name) => {
     return `<td class='align-middle'>
               <div class="btn-group" role="group" aria-label="Basic outlined example ">
@@ -264,7 +282,7 @@ function getAccountsData() {
             html += "<td>" + data.profile_id + "</td>";
             html += "<td>" + fullName + "</td>";
             html += "<td>" + data.email + "</td>";
-            html += "<td>" + data.account_type + "</td>";
+            html += "<td class='text-capitalize'>" + data.account_type + "</td>";
             html += "<td>" + convertDate(data.registered_at) + "</td>";
             html += "<td>";
             html += "<div class='d-flex flex-nowrap gap-1'>";
