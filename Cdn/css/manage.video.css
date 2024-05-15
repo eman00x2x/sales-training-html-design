@@ -27,4 +27,14 @@
     font-size: 25px;
     padding-top: 50px;
 }
+.breadcrumb-item {
+    font-size: 12px; 
+}
+
+ }
+@media (max-width: 986px) { 
+
+.ebook-image{
+    width:300px;
+}
  }

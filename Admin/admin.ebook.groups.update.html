@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADMIN | Ebook Groups</title>
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../Cdn/css/font.css">
     <!-- BOOSTRAP ICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- TABLER CSS -->
@@ -41,30 +47,32 @@
                             <div
                                 class="d-flex justify-content-start mb-2 align-items-center border-bottom border-secondary-subtle pb-1">
                                 <i class="bi bi-pencil-square fs-2"></i>
-                                <h5 class="ms-2 modal-title font-bold">
+                                <h5 class="ms-2 modal-title montserrat-bold">
                                     Update Ebook Group
                                 </h5>
                             </div>
                             <div class="response" style="margin-top: 5px;"></div>
                             <form id="form" action="" method="post">
                                 <input type="hidden" name="csrf_token" id="csrf_token" value="" />
-                                <label for="name">EBOOK Group Name</label>
+                                <label for="name" class="form-label montserrat-semibold">EBOOK Group Name</label>
                                 <div class=" mb-3">
-                                    <input type="text" name="name" id="name" value="" class="form-control"
+                                    <input type="text" name="name" id="name" value="" class="form-control montserrat-regular"
                                         autocomplete="off" />
                                 </div>
-                                <label for="description">Description of this EBOOK Group</label>
+                                <label for="description" class="form-label montserrat-semibold">Description of this EBOOK Group</label>
                                 <div class=" mb-3">
-                                    <textarea name="description" id="description" class="form-control" rows="3"
+                                    <textarea name="description" id="description" class="form-control montserrat-regular" rows="3"
                                         autocomplete="off"></textarea>
                                 </div>
                             </form>
-                            <div class="d-flex justify-content-end">
-                                <button id="back" type="button" class="btn border border-secondary me-1"
+                            <div class="text-end">
+                                <button id="back" type="button" class="btn border border-secondary montserrat-semibold"
                                     data-bs-dismiss="modal">
                                     Back
                                 </button>
-                                <span class="btn btn-primary btn-save ">Save Form</span>
+                                <button type="button" class="btn btn-save btn-success montserrat-semibold">
+                                    Update
+                                </button>
                             </div>
                             </form>
                         </div>

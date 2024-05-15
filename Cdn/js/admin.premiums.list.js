@@ -1,8 +1,11 @@
-let currentPage = 1, search = '', order = '', sortBy = '';
+let currentPage = 1, search = '', order = '', sortBy = '',
+filterData = [{ "type": ["Bronze", "Silver", "Gold"] }, { "category": ["Individual", "Package"] }],
+filterBy = [];
 
 //getting the data in json
  $(document).ready(function () {
     getPremiumsData(sortBy, order);
+    printFilters()
 });
 //Edit button in table
 $(document).on('click', '.btn-edit', function (e) {
@@ -38,13 +41,23 @@ $(document).on("keyup", '.search', function () {
 
 // FUNCTION TO RETURN DATA THAT IS SEARCHED, DEFAULT WILL BE THE RESPONSE DATA FROM JSON
 function isSearchQuery(data) {
-    const filter = search ? data.filter(item =>
+    const filterBySearch = search ? data.filter(item =>
         lowerCase(item.name).includes(lowerCase(search)) ||
         item.premium_id == search
     ) : data;
 
+    const filter = filterBy.length > 0 ? filterBySearch.filter(item => {
+        const { category, type } = item;
+        
+        return filterBy.some(filterItem => 
+            (type && lowerCase(type) === lowerCase(filterItem.value)) || 
+            (category && lowerCase(category) === lowerCase(filterItem.value))
+        );
+    }) : filterBySearch;
+
     return filter;
 }
+
 
 // PAGINATION
 $(document).on('click', '.btn-page', function (e) {
@@ -146,6 +159,53 @@ function updatePagination(totalPages) {
 
     $('#page-numbers').html(totalPages > 0 ? `Showing ${currentPage} out of ${totalPages} pages` : 'Showing 0 out of 0 pages');
     $('.page-buttons').html(paginationButtons);
+}
+
+
+$(document).on('change', '.checklist-filter', function (e) {
+    let checkboxes = $(".checklist-filter:checkbox");
+
+    for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            if (!filterBy.includes(checkboxes[i])) { // Check if value already exists
+                filterBy.push(checkboxes[i]);
+            }
+        }
+        else {
+            const index = filterBy.indexOf(checkboxes[i]); // Find the index of the value
+            if (index > -1) {
+                filterBy.splice(index, 1); // Remove the value from the array
+            }
+        }
+    }
+
+    getPremiumsData(sortBy, order);
+});
+
+function printFilters() {
+    let html = '';
+
+    for (const item of filterData) {
+        const regex = /[-_]/g;
+        const key = Object.keys(item)[0];
+        const replacedKey = Object.keys(item)[0].replace(regex, " ");
+        const value = item[key];
+
+        html += `<div class="px-3">
+                    <span class="form-check-label montserrat-medium py-2 text-uppercase">${replacedKey}</span>`;
+
+        for (const data of value) {
+            html += `<div class="form-check ">
+                        <input class="checklist-filter form-check-input" name=${key} value="${data}" type="checkbox">
+                        <label class="checklist-filter form-check-label" name=${key}>
+                            ${data}
+                        </label>
+                    </div>`
+        }
+        html += `</div>`;
+    }
+
+    $(".filter-list").html(html)
 }
 
 function getPremiumsData() {

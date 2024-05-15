@@ -19,7 +19,7 @@
     --background-color: #202125;
 }
 
-body, .form-select, .browse {
+body, .form-select, .browse,{
     color: var(--text-color);
     background-color: var(--background-color);
 
@@ -27,6 +27,22 @@ body, .form-select, .browse {
 #textToResize {
     border-color: var(--text-color) !important;
 }
-
+.banner {
+    background-color: pink;
+}
+.rating {
+    display: inline-block;
+  }
+  
+  .star {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .star:hover,
+  .star.active {
+    color: gold;
+  }
+  
 
 
