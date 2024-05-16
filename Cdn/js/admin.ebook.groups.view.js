@@ -190,6 +190,21 @@ function updatePagination(totalPages) {
     $('.page-buttons').html(paginationButtons);
 }
 
+function getCategoryClass(category) {
+    switch (category) {
+        case 'buying':
+            return 'text-azure';
+        case 'selling':
+            return 'text-teal';
+        case 'real-estate':
+            return 'text-warning';
+        case 'earning':
+            return 'text-pink';
+        default:
+            return 'text-dark';
+    }
+}
+
 function getEBookGroupData() {
     const limit = 10;
     const startIndex = (currentPage - 1) * limit;
@@ -213,6 +228,7 @@ function getEBookGroupData() {
 
         for (let i = 0; i < slicedData.length; i++) {
             let data = slicedData[i];
+            let categoryClass = getCategoryClass(data.category);
             html += "<tr>";
             html +=
                 "<td class='align-middle text-center'>" +
@@ -236,10 +252,7 @@ function getEBookGroupData() {
                 "<td class='align-middle text-truncate' style='max-width: 150px'>" +
                 data.description +
                 "</td>";
-            html +=
-                "<td class='align-middle text-truncate' style='max-width: 150px'>" +
-                data.category +
-                "</td>";
+                html += "<td class='align-middle montserrat-regular'>" + "<span class='badge badge-outline text-capitalize " + categoryClass + "'>" + data.category + "</span>" + "</td>";
             html +=
                 "<td class='align-middle text-truncate' style='max-width: 150px'>" +
                 data.code +
