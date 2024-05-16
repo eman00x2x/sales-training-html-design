@@ -74,21 +74,9 @@ $(document).on("keyup", '.search', function () {
 });
 
 $(document).on('change', '.checklist-filter', function (e) {
-    let checkboxes = $(".checklist-filter:checkbox");
-
-    for (let i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {
-            if (!filterBy.includes(checkboxes[i])) { // Check if value already exists
-                filterBy.push(checkboxes[i]);
-            }
-        }
-        else {
-            const index = filterBy.indexOf(checkboxes[i]); // Find the index of the value
-            if (index > -1) {
-                filterBy.splice(index, 1); // Remove the value from the array
-            }
-        }
-    }
+    filterBy = $(".checklist-filter:checkbox:checked").map(function() {
+        return $(this).val().toLowerCase();
+    }).get();
 
     getEBookGroupData(sortBy, order);
 });
@@ -130,6 +118,12 @@ function isSearchQuery(data) {
         item.ebook_id.toString() === search ||
         lowerCase(item.author).includes(lowerCase(search))
     );
+
+    if (filterBy.length > 0) {
+        return filteredData.filter(item =>
+            filterBy.includes(lowerCase(item.category))
+        );
+    }
 
     return filteredData;
 }
@@ -260,5 +254,3 @@ function getEBookGroupData() {
         $(".ebook-group .data-container").html(html);
     });
 }
-
-
