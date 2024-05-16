@@ -18,7 +18,7 @@ $(document).ready(function () {
 
         $(".thumbnail_image").attr("src", video.thumbnail_image);
       } else {
-        console.log("Book not found with ID: " + videoID);
+        console.log("Video not found with ID: " + videoID);
       }
     });
   });

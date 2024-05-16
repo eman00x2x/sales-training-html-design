@@ -1,5 +1,5 @@
 let currentPage = 1, search = '', order = '', sortBy = ''
-filterData = [{ "category": ["selling", "buying", "real-estate", "earning"] }],
+filterData = [{ "category": ["selling", "buying", "real estate", "earning"] }],
   filterBy = [];
 
 $(document).ready(function () {
@@ -222,7 +222,7 @@ function getCategoryClass(category) {
       return 'text-azure';
     case 'selling':
       return 'text-teal';
-    case 'real-estate':
+    case 'real estate':
       return 'text-warning';
     case 'earning':
       return 'text-pink';
@@ -267,7 +267,7 @@ function getVideosData() {
         video.description +
         "</p>" +
         "</td>";
-      html += "<td class='align-middle montserrat-regular'>" + "<span class='badge badge-outline " + categoryClass + "'>" + video.category + "</span>" + "</td>";
+      html += "<td class='align-middle montserrat-regular'>" + "<span class='badge badge-outline text-uppercase " + categoryClass + "'>" + video.category + "</span>" + "</td>";
       html += displayActionButtons(video.video_id);
       html += "</tr>";
     }
