@@ -10,8 +10,7 @@ $(document).ready(function () {
       return date.toISOString().split("T")[0];
     };
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const userID = urlParams.get("id");
+    userID = getParams('id');
 
     let profile = response.data.find(
       (profile) => profile.profile_id === parseInt(userID)
