@@ -25,20 +25,19 @@ $(document).ready(function () {
       $("#birthdate").val(formatDate(profile.birthday));
       $("#facebook").val(profile.social_profile.facebook);
       $("#linkedIn").val(profile.social_profile.linkedIn);
-      $("#perma-region").val(profile.address[0].permanent.region);
-      $("#perma-province").val(profile.address[0].permanent.province);
-      $("#perma-municipality").val(profile.address[0].permanent.municipality);
-      $("#perma-barangay").val(profile.address[0].permanent.barangay);
-      $("#region").val(profile.address[0].current.region);
-      $("#province").val(profile.address[0].current.province);
-      $("#municipality").val(profile.address[0].current.municipality);
-      $("#barangay").val(profile.address[0].current.barangay);
+
+      Object.entries(profile.address[0]).forEach(([key, value]) =>
+        addAddress(value, key)
+      );
 
       profile.contact_number.map((item) => addMobileNumber(item));
       mobile_ctr = profile.contact_number.length;
 
       profile.education.map((item) => addEducation(item));
       educ_ctr = profile.education.length;
+
+      $(".profile-content input").prop("readonly", true);
+      $(".profile-content select").prop("disabled", true);
 
     } else {
       console.log("No profile found for the specified user ID.");
@@ -65,7 +64,8 @@ $(document).on("click", ".btn-add-educ", function () {
 });
 
 $(".profile-content").on("click", ".editButton", function () {
-  $(".profile-content .input").prop('disabled', false)
+  $(".profile-content input").prop("readonly", false);
+  $(".profile-content select").prop("disabled", false);
 
   // MOBILE NUMBER
   $(".btn-add-mobile").removeClass("d-none");
@@ -80,7 +80,7 @@ $(".profile-content").on("click", ".editButton", function () {
   $(".row-educ .div-remove-educ").removeClass("d-none");
 
   $(".profile-content .editButton").hide();
-  $(".profile-content .saveButton").show();
+  $(".profile-content .profileSaveButton").show();
 });
 
 $(document).on("click", ".deleteMobileRow", function () {
@@ -89,6 +89,55 @@ $(document).on("click", ".deleteMobileRow", function () {
 
 $(document).on("click", ".deleteEducRow", function () {
   $(this).parents(".row-educ").remove();
+});
+
+$(document).on("click", ".profileSaveButton", function (e) {
+  e.preventDefault();
+
+  const form = $(".profile-content");
+
+  // READONLY AND DISABLED ALL INPUTS AND SELECT
+  $(".profile input").prop("readonly", true);
+  $(".profile select").prop("disabled", true);
+
+  // HIDE MOBILE NUMBER
+  $(".btn-add-mobile").addClass("d-none");
+  $(".row-mobile .div-remove-mobile").addClass("d-none");
+
+  // HIDE EDUCATION
+  $(".btn-add-educ").addClass("d-none");
+
+  // REMOVE DROP-SHADOW OF ELEMENTS IN EDUCATION
+  $("education .row-educ").removeClass(
+    "bg-light shadow-sm border mt-2 px-2 rounded"
+  );
+  $(".row-educ .div-remove-educ").addClass("d-none");
+
+  // HIDE SAVE BUTTON AND SHOW EDIT BUTTON AGAIN
+  $(".profileSaveButton").hide();
+  $(".editButton").show();
+
+  // PROCESS RESPONSE
+  $(".response-profile").html(
+    "<div class='bg-white p-3 mt-3 rounded'><div class='d-flex gap-3 align-items-center'><div class='loader'></div><p class='mb-0'>Processing, Please wait...</p></div></div>"
+  );
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+
+  setTimeout(function () {
+    if ((message = validateInput(form.serializeArray()))) {
+      const errorAlert =
+        "<div class='response-profile alert alert-danger alert-dismissible fade show mt-3' role='alert'><span>Follow the format for fields: " +
+        message +
+        "</span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
+      $(".response-profile").html(errorAlert);
+    } else {
+      const successAlert =
+        "<div class='response-profile alert alert-success alert-dismissible fade show mt-3' role='alert'><span>Submitted but nothing happened! form data" +
+        form.serialize() +
+        ". See <a href='../Cdn/js/script.js'>../Cdn/js/script.js</a></span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
+      $(".response-profile").html(successAlert);
+    }
+  }, 30);
 });
 
 function addMobileNumber(item = "") {
@@ -116,7 +165,7 @@ function addEducation(item = {}) {
                     <div class="row g-0">
                         <span class="fs-4 text-secondary my-2 montserrat-regular">School</span>
                         <div class="">
-                            <input type="text" name="school" class="input text-black form-control montserrat-regular" disabled value=${item.hasOwnProperty("school") > 0
+                            <input type="text" name="school" class="input text-black form-control montserrat-regular" value=${item.hasOwnProperty("school") > 0
       ? item.school
       : ""
     }>
@@ -125,7 +174,7 @@ function addEducation(item = {}) {
                     <div class="row g-0 gap-2">
                         <div class="col-md">
                             <span class="fs-4 text-secondary my-2 montserrat-regular">Degree</span>
-                            <input type="text" name="degree" class="input text-black form-control montserrat-regular" disabled value=${item.hasOwnProperty("degree") > 0
+                            <input type="text" name="degree" class="input text-black form-control montserrat-regular" value=${item.hasOwnProperty("degree") > 0
       ? item.degree
       : ""
     }
@@ -134,7 +183,7 @@ function addEducation(item = {}) {
                         <div class="col-md">
                             <span class="fs-4 text-secondary my-2 montserrat-regular">Graduated
                                 on</span>
-                            <input type="date" name="graduated-on" class="input text-black form-control montserrat-regular" disabled value=${item.hasOwnProperty("graduated_at") > 0
+                            <input type="date" name="graduated-on" class="input text-black form-control montserrat-regular" value=${item.hasOwnProperty("graduated_at") > 0
       ? myDate
       : ""
     }
@@ -152,3 +201,131 @@ function addEducation(item = {}) {
   $(".education").append(input);
 }
 
+function addAddress(item, title) {
+  let input = `<div class="row g-0">
+                <span class="fs-4 mt-2 montserrat-semibold">${
+                  title === "current" ? "CURRENT ADDRESS" : "PERMANENT ADDRESS"
+                }</span>
+                <div class="row g-0 gap-2">
+                    <div class="col-md">
+                        <div class="">
+                            <p class="fs-4 text-secondary my-2 montserrat-regular">Region</p>
+                            <input type="text" name="${
+                              title + `.region`
+                            }" class="form-control montserrat-regular"
+                                value=${item.region} autocomplete="off">
+                        </div>
+                        <div class="">
+                            <p class="fs-4 text-secondary my-2 montserrat-regular">Province</p>
+                            <input type="text" name="${
+                              title + `.province`
+                            }" class="form-control montserrat-regular"
+                                value=${item.province} autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="">
+                            <p
+                                class="fs-4 text-secondary mt-md-2 mb-2 montserrat-regular">Municipality</p>
+                            <input type="text" name="${
+                              title + `.municipality`
+                            }"
+                                class="form-control montserrat-regular" value=${
+                                  item.municipality
+                                } autocomplete="off">
+                        </div>
+                        <div class="">
+                            <p class="fs-4 text-secondary my-2 montserrat-regular">Barangay</p>
+                            <input type="text" name="${
+                              title + `.barangay`
+                            }"
+                                class="form-control montserrat-regular mb-2 mb-lg-0" value=${
+                                  item.barangay
+                                } autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+
+  $(".address-list").append(input);
+}
+
+function checkAllProperties(obj, properties) {
+  for (const prop of properties) {
+    if (!obj.hasOwnProperty(prop)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function validateInput(input) {
+  let message = [],
+    tempObj = {},
+    educ = [],
+    address = [
+      {
+        permanent: {},
+        current: {},
+      },
+    ],
+    mobile = [];
+
+  const data = input.reduce(function (obj, item, currentIndex) {
+    if (item.name === "contact_number") {
+      mobile.push(item.value);
+    } else if (item.name.includes("education")) {
+      tempObj[item.name.replace("education.", "")] = item.value;
+
+      if (checkAllProperties(tempObj, ["school", "graduated_at", "degree"])) {
+        educ.push(tempObj);
+        obj["education"] = educ;
+        tempObj = {};
+      }
+    } else if (
+      item.name.includes("current") ||
+      item.name.includes("permanent")
+    ) {
+      const attr = item.name.includes("current") ? "current" : "permanent";
+      tempObj[item.name.replace(`${attr}.`, "")] = item.value;
+
+      if (
+        checkAllProperties(tempObj, [
+          "region",
+          "province",
+          "municipality",
+          "barangay",
+        ])
+      ) {
+        address[0][attr] = tempObj;
+        tempObj = {};
+      }
+    } else obj[item.name] = item.value;
+
+    if (currentIndex === input.length - 1) {
+      obj["address"] = address;
+      obj["contact_number"] = mobile;
+    }
+
+    return obj;
+  }, {});
+
+  console.log(data);
+
+  const validator = validate(data);
+
+  if (validator !== undefined) {
+    for (key in validator) {
+      message.push(validator[key]);
+    }
+    return message.join(", ");
+  }
+
+  // for (key in validator) {
+  //   message.push(validator[key]);
+  // }
+  // return message.join(", ");
+
+  return false;
+}
