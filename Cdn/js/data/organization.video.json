@@ -5,7 +5,7 @@
       "organization_id": 1,
       "vid_group_id": 1,
       "transaction_id": 1,
-      "status": "Pending",
+      "status": "In Progress",
       "started_at": 1713923521,
       "end_at": 1713923521,
       "created_at": 1713923521
@@ -85,7 +85,7 @@
       "organization_id": 1,
       "vid_group_id": 5,
       "transaction_id": 9,
-      "status": "Pending",
+      "status": "Completed",
       "started_at": 1713923521,
       "end_at": 1713923521,
       "created_at": 1713923521
