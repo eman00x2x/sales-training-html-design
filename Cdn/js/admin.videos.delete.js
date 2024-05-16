@@ -1,35 +1,24 @@
 $(document).ready(function () {
-    $(".header").load("header.html");
-    $(".sidebar").load("sidebar.html");
-    $(".footer").load("footer.html");
+  var id = getParams("id");
 
-    var urlParams = new URLSearchParams(window.location.search);
-    var videoID = urlParams.get('id');
+  $.getJSON("../Cdn/js/data/videos.json", function (data) {
+    let response = data.data;
+    f = response.keys(response).find((key) => response[key].video_id == id);
 
-    $.getJSON('../Cdn/js/data/videos.json', function (response) {
-      var video = response.data.find(function (item) {
-        return item.video_id == videoID;
-      });
-      if (video) {
-        $('#title').val(video.title);
-        $('#category').val(video.category);
-        $('#description').val(video.description);
-        $('#link').val(video.link);
-
-        $(".thumbnail_image").attr("src", video.thumbnail_image);
-      } else {
-        console.log("Video not found with ID: " + videoID);
-      }
-    });
+    $(".thumbnail_image").attr("src", response[f].thumbnail_image);
+    $("#title").text(response[f].title);
+    $("#category").text(response[f].category);
+    $("#description").text(response[f].description);
+    $("#link").text(response[f].link);
   });
+});
 
-  $(window).on('resize', function () {
-    if ($(window).width() >= 768)
-      $('.sidebar').removeClass('offcanvas offcanvas-start');
-    else
-      $('.sidebar').addClass('offcanvas offcanvas-start');
-  });
+$(window).on("resize", function () {
+  if ($(window).width() >= 768)
+    $(".sidebar").removeClass("offcanvas offcanvas-start");
+  else $(".sidebar").addClass("offcanvas offcanvas-start");
+});
 
-  $(document).on("click", "#back", function (e) {
-    window.location.href = "admin.videos.list.html"
-  });
+$(document).on("click", "#back", function (e) {
+  window.location.href = "admin.videos.list.html";
+});

@@ -1,130 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Video Edit</title>
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../Cdn/css/font.css" />
+    <!-- BOOSTRAP ICONS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- TABLER CSS-->
+    <link
+      href="../Cdn/vendor/tabler/dist/css/tabler.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769"
+      rel="stylesheet"
+    />
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
+    <!-- JQUERY -->
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <!-- TABLER -->
+    <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
+    <!-- CUSTOM JS -->
+    <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+    <script src="../Cdn/js/script.js"></script>
+    <script src="../Cdn/js/admin.videos.update.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin | Video Edit</title>
-  <!-- FONT -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="../Cdn/css/font.css">
-  <!-- BOOSTRAP ICONS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- TABLER CSS-->
-  <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
-  <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
-  <!-- CUSTOM CSS -->
-  <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
-  <!-- JQUERY -->
-  <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
-  <!-- TABLER -->
-  <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
-  <!-- CUSTOM JS -->
-  <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
-  <script src="../Cdn/js/script.js"></script>
-  <script src="../Cdn/js/admin.videos.delete.js"></script>
-</head>
-
-<body>
-  <!-- DYNAMIC MODAL -->
-  <div class="modal fade" id="dynamicModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered" id="form-content">
-      <div class="modal-content">
-        <input type="hidden" name="csrf_token" id="csrf_token" value="" />
-        <div class="modal-body d-flex flex-column justify-content-center align-items-center">
-          <i class="bi bi-trash3-fill text-danger" style="font-size: 10em !important;"></i>
-          <h1 style="font-weight: bold; font-size: 30px">
-            Delete Video
-          </h1>
-          <p style="font-size: 15px">
-            Are you sure you want to delete this video?
-          </p>
-          <div class="text-end">
-            <button type="button" class="btn border border-secondary-subtle btn-light" data-bs-dismiss="modal">
-              Close
-            </button>
-            <button type="button" class="btn btn-delete btn-danger">Delete</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="">
+  <body>
     <div class="page">
       <!-- SIDEBAR -->
-      <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
-        style="background-color: #1c1c39 !important" data-bs-theme="dark"></aside>
+      <aside
+        class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
+        style="background-color: #1c1c39 !important"
+        data-bs-theme="dark"
+      ></aside>
+
       <div class="page-wrapper">
         <!-- HEADER -->
         <div class="header"></div>
 
         <!-- CONTENT -->
         <div class="page-body content">
-          <!-- all content body should be here -->
-          <!-- CONTENT -->
           <div class="container-fluid">
             <div class="card">
               <div class="card-body">
                 <div
-                  class="d-flex justify-content-start mb-2 align-items-center border-bottom border-secondary-subtle pb-1">
-                  <i class="bi bi-pencil-square fs-2"></i>
-                  <h5 class="ms-2 modal-title fw-bold">
-                    Edit Video Details
+                  class="d-flex justify-content-start mb-2 align-items-center border-bottom border-secondary-subtle pb-1"
+                >
+                  <i class="bi bi-camera-video-fill fs-2"></i>
+                  <h5 class="ms-2 modal-title montserrat-bold">
+                    Update Video Details
                   </h5>
                 </div>
                 <div class="response"></div>
-                <input type="hidden" name="csrf_token" id="csrf_token" value="" />
-                <div class="mb-3">
-                  <p class="form-label fw-semibold">Thumbnail Image</p>
-                  <img class="vidLogo mb-3 object-fit-contain" width="100%" height="300px" alt="" />
-                </div>
-                <input type="file" id="fileInput" style="display: none" />
-                <div class="d-flex flex-column form-group">
+
+                <form id="form" action="" method="post">
+                  <input
+                    type="hidden"
+                    name="csrf_token"
+                    id="csrf_token"
+                    value=""
+                  />
+                  <img
+                    class="vidLogo mb-3 object-fit-contain"
+                    width="100%"
+                    height="300px"
+                    alt=""
+                    id="vidLogo"
+                  />
                   <div class="mb-3">
-                    <label for="logo" class="form-label montserrat-semibold">Update Video Logo</label>
-                    <input class="form-control montserrat-regular" type="file" id="logo" />
+                    <label for="logo" class="form-label montserrat-semibold"
+                      >Update Video Thumbnail</label
+                    >
+                    <input
+                      class="form-control montserrat-regular"
+                      type="file"
+                      id="logo"
+                    />
                   </div>
-                  <div class="row align-items-end">
-                    <div class="col-6">
-                      <label for="title" class="fw-semibold">Title</label>
-                      <input type="text" name="title" id="title" class="form-control" value="" autocomplete="off" />
-                    </div>
-                    <div class="col-6">
-                      <label for="category" class="fw-semibold">Category</label>
-                      <select id="category" class="form-select" name="category">
-                        <option value="" selected disabled>
-                          Select category
-                        </option>
-                        <option value="sales">Sales</option>
-                        <option value="real-estate">Real Estate</option>
-                        <option value="properties">Properties</option>
-                        <option value="necessities">Necessities</option>
-                      </select>
+                  <div class="d-flex flex-column form-group">
+                    <div class="row align-items-end">
+                      <div class="col-6">
+                        <label for="title" class="fw-semibold">Title</label>
+                        <input
+                          type="text"
+                          name="title"
+                          id="title"
+                          class="form-control"
+                          value=""
+                          autocomplete="off"
+                        />
+                      </div>
+                      <div class="col-6">
+                        <label for="category" class="fw-semibold">
+                          Category
+                        </label>
+                        <select
+                          id="category"
+                          class="form-select text-capitalize"
+                          name="category"
+                        >
+                          <option value="" selected disabled>
+                            Select category
+                          </option>
+                          <option value="sales">sales</option>
+                          <option value="real estate">real estate</option>
+                          <option value="properties">properties</option>
+                          <option value="necessities">necessities</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="d-flex flex-column form-group mt-4">
-                  <label for="description" class="fw-semibold">Description</label>
-                  <textarea name="description" id="description" class="form-control" value="" autocomplete="off"
-                    wrap="physical" rows="5"></textarea>
-                </div>
-                <div class="d-flex flex-column form-group">
-                  <label for="link" class="fw-semibold">Link</label>
-                  <input type="text" name="link" id="link" class="form-control" value="" autocomplete="off" />
-                </div>
-                <div class="d-flex gap-2 justify-content-end mt-3">
-                  <button class="btn btn-light btn-cancel border border-secondary montserrat-regular" type="button"
-                    id="back">
-                    Back
-                  </button>
-                  <button class="btn-save btn btn-success btn-md montserrat-regular">
-                    Submit
-                  </button>
-                </div>
+                  <div class="d-flex flex-column form-group mt-4">
+                    <label for="description" class="fw-semibold"
+                      >Description</label
+                    >
+                    <textarea
+                      name="description"
+                      id="description"
+                      class="form-control"
+                      value=""
+                      autocomplete="off"
+                      wrap="physical"
+                      rows="5"
+                    ></textarea>
+                  </div>
+                  <div class="d-flex flex-column form-group">
+                    <label for="link" class="fw-semibold">Link</label>
+                    <input
+                      type="text"
+                      name="link"
+                      id="link"
+                      class="form-control"
+                      value=""
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div class="text-end mt-4">
+                    <button
+                      id="back"
+                      type="button"
+                      class="btn border border-secondary montserrat-semibold"
+                      data-bs-dismiss="modal"
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-save btn-success montserrat-semibold"
+                    >
+                      Update
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -132,10 +172,7 @@
       </div>
 
       <!-- FOOTER -->
-      <div class="footer"></div>
+      <div class="footer container-fluid"></div>
     </div>
-  </div>
-  </div>
-</body>
-
+  </body>
 </html>

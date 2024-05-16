@@ -1,32 +1,23 @@
 $(document).ready(function () {
-  $(".header").load("header.html");
-  $(".sidebar").load("sidebar.html");
-  $(".footer").load("footer.html");
+  let id = getParams('id');
+
+  $.getJSON("../Cdn/js/data/videos.json", function (data) {
+    let response = data.data;
+    video_data = data.data
+    f = response
+      .keys(response)
+      .find((key) => response[key].video_id == id);
+
+    $(".vidLogo").attr("src", response[f].thumbnail_image);
+    $("#title").val(response[f].title);
+    $("#category").val(response[f].category);
+    $("#description").val(response[f].description);
+    $("#link").val(response[f].link);
+  });
 });
 
 $(document).on("click", ".btn-cancel", function () {
   window.location.href = "videos.list.html";
-});
-
-$(document).ready(function () {
-  var urlParams = new URLSearchParams(window.location.search);
-  var videoId = urlParams.get("id");
-
-  $.getJSON("../Cdn/js/data/videos.json", function (response) {
-    var video = response.data.find(function (item) {
-      return item.video_id == videoId;
-    });
-    if (video) {
-      $("#title").val(video.title);
-      $("#category").val(video.category);
-      $("#description").val(video.description);
-      $("#link").val(video.link);
-
-      $(".vidLogo").attr("src", video.thumbnail_image);
-    } else {
-      console.log("Book not found with ID: " + videoId);
-    }
-  });
 });
 
 $(document).on("change", "#logo", function (e) {
@@ -34,7 +25,7 @@ $(document).on("change", "#logo", function (e) {
 
   reader.onload = function () {
     $(".vidLogo").attr("src", URL.createObjectURL(e.target.files[0]));
-  }
+  };
 
   reader.readAsDataURL(e.target.files[0]);
 });
