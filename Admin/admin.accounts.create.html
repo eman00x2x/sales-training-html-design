@@ -5,134 +5,137 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Account</title>
-    <link href="../Cdn/vendor/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../Cdn/css/font.css">
+    <!-- BOOSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- TABLER CSS -->
+    <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
+    <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
+    <!-- JQUERY -->
     <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
-    <script src="../Cdn/vendor/popper-2.11.8/popper.min.js"></script>
-    <script src="../Cdn/vendor/bootstrap-5.3.3/js/bootstrap.min.js"></script>
+    <!-- TABLER -->
+    <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
+    <!-- CUSTOM JS -->
     <script src="../Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
     <script src="../Cdn/js/script.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".header").load("header.html");
-            $(".sidebar").load("sidebar.html");
-            $(".footer").load("footer.html");
-        });
-
-        /**
-         * Validator Documentation https://validatejs.org/#validators-length
-         **/
-
-        function validateInput(input) {
-            let message = [];
-
-            const data = input.reduce(function (obj, item) {
-                obj[item.name] = item.value;
-                return obj;
-            }, {});
-
-            const validator = validate(
-                {
-                    email_address: data.email_address,
-                    username: data.username,
-                    password: data.password,
-                    user_type: data.user_type,
-                },
-                {
-                    email_address: {
-                        presence: { allowEmpty: false },
-                        type: "string",
-                        format: {
-                            pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-                            message: "must be a valid email address."
-                        }
-                    },
-                    username: {
-                        presence: { allowEmpty: false },
-                        type: "string",
-                        length: { minimum: 6 },
-                    },
-                    password: {
-                        presence: { allowEmpty: false },
-                        format: {
-                            pattern: "(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$",
-                            message: "must contain at least 8 characters, 1 uppercase, 1 lowercase, 1 number, and 1 special character."
-                        },
-                    },
-                    user_type: {
-                        presence: { allowEmpty: false },
-                        type: "string",
-                    }
-                }
-            );
-
-            if (validator !== undefined) {
-                for (key in validator) {
-                    message.push(validator[key]);
-                }
-                return message.join(", ");
-            }
-
-            return false;
-        }
-    </script>
+    <script src="../Cdn/js/admin.accounts.create.js"></script>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row flex-nowrap" style="height: 100vh">
-            <!-- SIDEBAR -->
-            <div class="sidebar col-md-3 col-lg-2 px-sm-2 px-0 bg-light"></div>
-            <main class="col py-3">
-                <!-- HEADER -->
-                <div class="header"></div>
+    <div class="page">
+        <!-- SIDEBAR -->
+        <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
+            style="background-color: #1c1c39 !important;" data-bs-theme="dark"></aside>
 
-                <!-- CONTENT -->
-                <div class="content">
-                    <!-- all content body should be here -->
+        <div class="page-wrapper">
+            <!-- HEADER -->
+            <div class="header"></div>
 
+            <!-- CONTENT -->
+            <div class="page-body content">
+                <div class="container-fluid">
                     <div class="card">
                         <div class="card-body">
                             <div
                                 class="d-flex justify-content-start mb-2 align-items-center border-bottom border-secondary-subtle pb-1">
-                                <i class="bi bi-person-fill-add fs-2"></i>
-                                <h5 class="ms-2 modal-title font-bold">
-                                    Add Account
+                                <i class="bi bi-plus-square-fill fs-2"></i>
+                                <h5 class="ms-2 modal-title montserrat-bold">
+                                    New Account Details
                                 </h5>
                             </div>
                             <div class="response"></div>
-
                             <form id="form" action="" method="post">
                                 <input type="hidden" name="csrf_token" id="csrf_token" value="" />
+                                <div class="mb-3">
+                                    <label for="logo" class="form-label montserrat-semibold">Upload Profile
+                                        Picture</label>
+                                    <fieldset class="upload-dropzone text-center p-4 rounded">
+                                        <legend class="visually-hidden">Image uploader</legend>
+                                        <i class="bi bi-cloud-arrow-up-fill h1"></i>
+                                        <p class="small my-1 montserrat-regular">
+                                            Drag &amp; Drop background image(s) inside dashed
+                                            region<br /><i>or</i>
+                                        </p>
+                                        <input id="logo" name="logo" class="position-absolute invisible" type="file"
+                                            accept="image/jpeg, image/png, image/svg+xml" />
+                                        <label class="btn btn-upload mb-3 bg-primary text-white montserrat-semibold"
+                                            for="logo">Choose
+                                            file(s)</label>
+                                    </fieldset>
+                                </div>
+                                <div class="mb-3 org-div-logo">
+                                    <h4>Uploaded File</h4>
+                                    <div
+                                        class='d-flex flex-row justify-content-between align-items-center rounded shadow-sm p-2 bg-white rounded border border-secondary-subtle'>
+                                        <div class="d-flex flex-row justify-content-start align-items-center">
+                                            <img src="" class='border border-secondary-subtle p-2 rounded org-logo'
+                                                alt="File Uploaded" name='org-logo' style='height: 100px' />
+                                            <div class='d-flex flex-column'>
+                                                <span class='ms-4 montserrat-semibold file-name'></span>
+                                                <span class='ms-4 montserrat-regular file-size'></span>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-remove fs-1 me-3 btn-outline-danger">
+                                            <i class="bi bi-trash3 "></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="border border-secondary-subtle mb-3 p-4 rounded">
+                                    <div class="mb-3">
+                                        <label for="username" class="form-label montserrat-semibold">Username</label>
+                                        <input type="text" class="form-control montserrat-regular" id="username"
+                                            name="username" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label montserrat-semibold">Password</label>
+                                        <div class="input-group mb-3">
+                                            <input class="toggle-input form-control" type="password">
+                                            <div class="input-group-append">
+                                                <span class="toggle-password input-group-text" id="basic-addon2"><i class="bi bi-eye-slash-fill" aria-hidden="true"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <label for="email" class="form-label montserrat-semibold">Email Address</label>
+                                        <input type="email" class="form-control montserrat-regular" id="email"
+                                            name="email" />
+                                    </div>
+                                </div>
+                                <div class="border border-secondary-subtle mb-3 p-4 rounded">
+                                    <div class="mb-3">
+                                        <label for="firstname" class="form-label montserrat-semibold">First Name</label>
+                                        <input type="firstname" class="form-control montserrat-regular" id="firstname"
+                                            name="firstname" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="lastname" class="form-label montserrat-semibold">Last Name</label>
+                                        <input type="lastname" class="form-control montserrat-regular" id="lastname"
+                                            name="lastname" />
+                                    </div>
+                                    <div>
+                                        <label for="user_type" class="form-label montserrat-semibold">User Type</label>
+                                        <select name="user_type" class="form-select montserrat-regular">
+                                            <option value="" disabled selected>-- select user type --</option>
+                                            <option value="Super Administrator">Super Administrator</option>
+                                            <option value="Organization Administrator">Organization Administrator</option>
+                                            <option value="User">User</option>
+                                        </select>
+                                    </div>
+                                </div>
 
-                                <div class="mb-3">
-                                    <label for="email_address" class="form-label fw-semibold">Email Address</label>
-                                    <input type="text" class="form-control" id="email_address" name="email_address" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="username" class="form-label fw-semibold">Username</label>
-                                    <input type="text" class="form-control" id="username" name="username" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label fw-semibold">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" />
-                                </div>
-                                <div class="mb-3">
-                                    <label for="user_type" class="form-label fw-semibold">User Type</label>
-                                    <select name="user_type" id="user_type" class="form-select">
-                                        <option value="" disabled selected>-- select user type --</option>
-                                        <option value="Super Administrator">Super Administrator</option>
-                                        <option value="Organization Administrator">Organization Administrator</option>
-                                        <option value="User">User</option>
-                                    </select>
-                                </div>
                                 <div class="text-end">
-                                    <button type="button" class="btn border border-secondary" data-bs-dismiss="modal">
-                                        Close
+                                    <button id="back" type="button"
+                                        class="btn btn-cancel border border-secondary montserrat-semibold">
+                                        Back
                                     </button>
-                                    <button type="button" class="btn btn-save btn-success">
+                                    <button type="button" class="btn btn-save btn-success montserrat-semibold">
                                         Submit
                                     </button>
                                 </div>
@@ -140,11 +143,11 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- FOOTER -->
-                <div class="footer"></div>
-            </main>
+            </div>
         </div>
+
+        <!-- FOOTER -->
+        <div class="footer container-fluid"></div>
     </div>
 </body>
 

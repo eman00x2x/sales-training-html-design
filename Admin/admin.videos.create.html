@@ -43,102 +43,93 @@
         <div class="container-fluid">
           <div class="card">
             <div class="card-body">
-              <div class="modal-body">
-                <form class="p-4" id="form" method="post" action="">
-                  <input type="hidden" name="csrf_token" id="csrf_token" value="" />
-                  <div
-                    class="d-flex justify-content-start mb-2 align-items-center border-secondary-subtle pb-1">
-                    <i class="bi bi-plus-square-fill fs-2"></i>
-                    <h5 class="ms-2 modal-title montserrat-bold my-auto">
-                      Add Video
-                    </h5>
-                  </div>
-                  <hr class="m-0" />
-
-                  <div class="response"></div>
-                  <!-- FORM INPUT -->
-                  <div class="mb-3 montserrat-regular">
-                    <div class="mb-3 montserrat-regular">
-                      <label for="thumbnail" class="form-label fw-semibold mt-3">Thumbnail Image</label>
-                      <div class="mb-3">
-                        <label for="logo" class="form-label montserrat-semibold">Video Logo</label>
-                        <fieldset class="upload-dropzone text-center p-4 rounded">
-                          <legend class="visually-hidden">Image uploader</legend>
-                          <i class="bi bi-cloud-arrow-up-fill h1"></i>
-                          <p class="small my-1 montserrat-regular">
-                            Drag &amp; Drop background image(s) inside dashed
-                            region<br /><i>or</i>
-                          </p>
-                          <input id="logo" name="logo" class="position-absolute invisible" type="file"
-                            accept="image/jpeg, image/png, image/svg+xml" />
-                          <label class="btn btn-upload mb-3 bg-primary text-white montserrat-semibold" for="logo">Choose
-                            file(s)</label>
-                        </fieldset>
-                      </div>
-                      <div class="mb-3 video-div-logo">
-                        <h4>Uploaded File</h4>
-                        <div
-                          class='d-flex flex-row justify-content-between align-items-center rounded shadow-sm p-2 bg-white rounded border border-secondary-subtle'>
-                          <div class="d-flex flex-row justify-content-start align-items-center">
-                            <img src="" class='border border-secondary-subtle p-2 rounded video-logo'
-                              alt="File Uploaded" name='video-logo' style='height: 100px' />
-                            <div class='d-flex flex-column'>
-                              <span class='ms-4 montserrat-semibold file-name'></span>
-                              <span class='ms-4 montserrat-regular file-size'></span>
-                            </div>
-                          </div>
-                          <button type="button" class="btn btn-remove fs-1 me-3 btn-outline-danger">
-                            <i class="bi bi-trash3 "></i>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <input type="file" id="fileInput" style="display: none" />
-                  <div class="d-flex flex-column form-group">
-                    <div class="row align-items-end">
-                      <div class="col-6">
-                        <label for="title" class="fw-semibold">Title</label>
-                        <input type="text" name="title" id="title" class="form-control" value="" autocomplete="off" />
-                      </div>
-                      <div class="col-6">
-                        <label for="category" class="fw-semibold">Category</label>
-                        <select id="category" class="form-select" name="category">
-                          <option value="" selected disabled>Select category</option>
-                          <option value="sales">Sales</option>
-                          <option value="real-estate">Real Estate</option>
-                          <option value="properties">Properties</option>
-                          <option value="necessities">Necessities</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="d-flex flex-column form-group mt-4">
-                    <label for="description" class="fw-semibold">Description</label>
-                    <textarea name="description" id="description" class="form-control" value="" autocomplete="off"
-                      wrap="physical" rows="5"></textarea>
-                  </div>
-                  <div class="d-flex flex-column form-group">
-                    <label for="link" class="fw-semibold">Link</label>
-                    <input type="text" name="link" id="link" class="form-control" value="" autocomplete="off" />
-                  </div>
-                  <div class="text-end mt-4">
-                    <button id="back" type="button" class="btn btn-cancel border border-secondary montserrat-semibold">
-                      Back
-                    </button>
-                    <button type="button" class="btn btn-save btn-success montserrat-semibold">
-                      Submit
-                    </button>
-                  </div>
-                </form>
+              <div class="d-flex justify-content-start mb-2 align-items-center border-bottom border-secondary-subtle pb-1">
+                <i class="bi bi-plus-square-fill fs-2"></i>
+                <h5 class="ms-2 modal-title montserrat-bold my-auto">
+                  Add Video
+                </h5>
               </div>
+              <div class="response"></div>
+              <form class="" id="form" method="post" action="">
+                <input type="hidden" name="csrf_token" id="csrf_token" value="" />
+
+                <!-- FORM INPUT -->
+                <div class="mb-3">
+                  <label for="logo" class="form-label montserrat-semibold">Video Logo</label>
+                  <fieldset class="upload-dropzone text-center p-4 rounded">
+                    <legend class="visually-hidden">Image uploader</legend>
+                    <i class="bi bi-cloud-arrow-up-fill h1"></i>
+                    <p class="small my-1 montserrat-regular">
+                      Drag &amp; Drop background image(s) inside dashed
+                      region<br /><i>or</i>
+                    </p>
+                    <input id="logo" name="logo" class="position-absolute invisible" type="file"
+                      accept="image/jpeg, image/png, image/svg+xml" />
+                    <label class="btn btn-upload mb-3 bg-primary text-white montserrat-semibold" for="logo">Choose
+                      file(s)</label>
+                  </fieldset>
+                </div>
+                <div class="mb-3 video-div-logo">
+                  <h4>Uploaded File</h4>
+                  <div
+                    class='d-flex flex-row justify-content-between align-items-center rounded shadow-sm p-2 bg-white rounded border border-secondary-subtle'>
+                    <div class="d-flex flex-row justify-content-start align-items-center">
+                      <img src="" class='border border-secondary-subtle p-2 rounded video-logo' alt="File Uploaded"
+                        name='video-logo' style='height: 100px' />
+                      <div class='d-flex flex-column'>
+                        <span class='ms-4 montserrat-semibold file-name'></span>
+                        <span class='ms-4 montserrat-regular file-size'></span>
+                      </div>
+                    </div>
+                    <button type="button" class="btn btn-remove fs-1 me-3 btn-outline-danger">
+                      <i class="bi bi-trash3 "></i>
+                    </button>
+                  </div>
+                </div>
+                <input type="file" id="fileInput" style="display: none" />
+                <div class="d-flex flex-column form-group mb-3">
+                  <div class="row align-items-end">
+                    <div class="col-6">
+                      <label for="title" class="fw-semibold">Title</label>
+                      <input type="text" name="title" id="title" class="form-control" value="" autocomplete="off" />
+                    </div>
+                    <div class="col-6">
+                      <label for="category" class="fw-semibold">Category</label>
+                      <select id="category" class="form-select" name="category">
+                        <option value="" selected disabled>Select category</option>
+                        <option value="sales">Sales</option>
+                        <option value="real-estate">Real Estate</option>
+                        <option value="properties">Properties</option>
+                        <option value="necessities">Necessities</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex flex-column form-group mb-3">
+                  <label for="description" class="fw-semibold">Description</label>
+                  <textarea name="description" id="description" class="form-control" value="" autocomplete="off"
+                    wrap="physical" rows="5"></textarea>
+                </div>
+                <div class="d-flex flex-column form-group mb-3">
+                  <label for="link" class="fw-semibold">Link</label>
+                  <input type="text" name="link" id="link" class="form-control" value="" autocomplete="off" />
+                </div>
+                <div class="text-end mb-3">
+                  <button id="back" type="button" class="btn btn-cancel border border-secondary montserrat-semibold">
+                    Back
+                  </button>
+                  <button type="button" class="btn btn-save btn-success montserrat-semibold">
+                    Submit
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
-      <!-- FOOTER -->
-      <div class="footer"></div>
     </div>
+    <!-- FOOTER -->
+    <div class="footer"></div>
   </div>
 </body>
 

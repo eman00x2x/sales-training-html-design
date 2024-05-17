@@ -267,7 +267,7 @@ function getVideosData() {
         video.description +
         "</p>" +
         "</td>";
-      html += "<td class='align-middle montserrat-regular'>" + "<span class='badge badge-outline text-uppercase " + categoryClass + "'>" + video.category + "</span>" + "</td>";
+      html += "<td class='align-middle montserrat-regular'>" + "<span class='badge badge-outline text-capitalize " + categoryClass + "'>" + video.category + "</span>" + "</td>";
       html += displayActionButtons(video.video_id);
       html += "</tr>";
     }
