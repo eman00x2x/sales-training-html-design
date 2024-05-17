@@ -102,7 +102,7 @@ function displayEbookGroups(sortBy, order) {
   const startIndex = (currentPage - 1) * limit;
   const endIndex = startIndex + limit;
 
-  $.getJSON('../Cdn/js/data/ebook.groups.json', function (response) {
+  $.getJSON('../Cdn/js/data/premiums.json', function (response) {
     const ebook = response.data;
     const sortedData = sortData(isSearchQuery(ebook),order,sortBy);
     const totalItems = sortedData.length;
