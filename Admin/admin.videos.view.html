@@ -63,63 +63,64 @@
         <div class="header"></div>
 
         <!-- CONTENT -->
-        <div class="content">
-          <!-- all content body should be here -->
-
-          <div class="card">
-            <div class="card-body">
-              <div
-                class="d-flex justify-content-start mb-2 align-items-center border-bottom border-secondary-subtle pb-1">
-                <i class="bi bi-play-btn-fill fs-2"></i>
-                <h5 class="ms-2 modal-title fw-bold">
-                  View Video Details
-                </h5>
-              </div>
-              <div class="response"></div>
-              <input type="hidden" name="csrf_token" id="csrf_token" value="" />
-              <div class="mb-3">
-                <p class="form-label fw-semibold">Thumbnail Image</p>
-                <img class="thumbnail_image mb-3 object-fit-contain" width="100%" height="300px" alt="" />
-              </div>
-              <input type="file" id="fileInput" style="display: none" />
-              <div class="d-flex flex-column form-group">
-                <div class="row align-items-end">
-                  <div class="col-6">
-                    <label for="title" class="fw-semibold">Title</label>
-                    <input type="text" name="title" id="title" class="form-control" value="" autocomplete="off" />
-                  </div>
-                  <div class="col-6">
-                    <label for="category" class="fw-semibold">Category</label>
-                    <select id="category" class="form-select" name="category">
-                      <option value="" selected disabled>
-                        Select category
-                      </option>
-                      <option value="sales">Sales</option>
-                      <option value="real-estate">Real Estate</option>
-                      <option value="properties">Properties</option>
-                      <option value="necessities">Necessities</option>
-                    </select>
+        <div class="page-body content">
+          <div class="container-fluid">
+            <div class="card">
+              <!-- all content body should be here -->
+              <div class="card-body">
+                <div
+                  class="d-flex justify-content-start mb-2 align-items-center border-bottom border-secondary-subtle pb-1">
+                  <i class="bi bi-play-btn-fill fs-2"></i>
+                  <h5 class="ms-2 modal-title fw-bold">
+                    View Video Details
+                  </h5>
+                </div>
+                <div class="response"></div>
+                <input type="hidden" name="csrf_token" id="csrf_token" value="" />
+                <div class="mb-3">
+                  <p class="form-label fw-semibold">Thumbnail Image</p>
+                  <img class="thumbnail_image mb-3 object-fit-contain" width="100%" height="300px" alt="" />
+                </div>
+                <input type="file" id="fileInput" style="display: none" />
+                <div class="d-flex flex-column form-group">
+                  <div class="row align-items-end">
+                    <div class="col-6">
+                      <label for="title" class="fw-semibold">Title</label>
+                      <input type="text" name="title" id="title" class="form-control" value="" autocomplete="off" />
+                    </div>
+                    <div class="col-6">
+                      <label for="category" class="fw-semibold">Category</label>
+                      <select id="category" class="form-select" name="category">
+                        <option value="" selected disabled>
+                          Select category
+                        </option>
+                        <option value="sales">Sales</option>
+                        <option value="real-estate">Real Estate</option>
+                        <option value="properties">Properties</option>
+                        <option value="necessities">Necessities</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
+                <div class="d-flex flex-column form-group mt-4">
+                  <label for="description" class="fw-semibold">Description</label>
+                  <textarea name="description" id="description" class="form-control" value="" autocomplete="off"
+                    wrap="physical" rows="5"></textarea>
+                </div>
+                <div class="d-flex flex-column form-group">
+                  <label for="link" class="fw-semibold">Link</label>
+                  <input type="text" name="link" id="link" class="form-control" value="" autocomplete="off" />
+                </div>
+                <div class="d-flex gap-2 justify-content-end mt-3">
+                  <button class="btn btn-light btn-cancel border border-secondary montserrat-regular"
+                      type="button" id="back">
+                      Back
+                  </button>
+                  <button class="btn-save btn btn-success btn-md montserrat-regular">
+                      Submit
+                  </button>
               </div>
-              <div class="d-flex flex-column form-group mt-4">
-                <label for="description" class="fw-semibold">Description</label>
-                <textarea name="description" id="description" class="form-control" value="" autocomplete="off"
-                  wrap="physical" rows="5"></textarea>
               </div>
-              <div class="d-flex flex-column form-group">
-                <label for="link" class="fw-semibold">Link</label>
-                <input type="text" name="link" id="link" class="form-control" value="" autocomplete="off" />
-              </div>
-              <div class="d-flex gap-2 justify-content-end mt-3">
-                <button class="btn btn-light btn-cancel border border-secondary montserrat-regular"
-                    type="button" id="back">
-                    Back
-                </button>
-                <button class="btn-save btn btn-success btn-md montserrat-regular">
-                    Submit
-                </button>
-            </div>
             </div>
           </div>
         </div>
