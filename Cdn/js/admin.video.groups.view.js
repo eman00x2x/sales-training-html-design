@@ -1,4 +1,6 @@
 let id, currentPage = 1, search = '', order = '', sortBy = '';
+filterData = [{ "category": ["selling", "buying", "real-estate", "earning"] }],
+    filterBy = [];
 
 $(document).ready(function () {
     let params = new URL(document.location.toString()).searchParams;
@@ -10,7 +12,8 @@ $(document).ready(function () {
         $('.vidName').text(response[f].name);
         $('.vidDesc').text(response[f].description);
     });
-    getVidGroupData()
+    printFilters();
+    getVidGroupData(sortBy, order)
 });
 
 //Back Button
@@ -68,6 +71,40 @@ $(document).on("keyup", '.search', function () {
     getVidGroupData(sortBy, order);
 });
 
+$(document).on('change', '.checklist-filter', function (e) {
+    filterBy = $(".checklist-filter:checkbox:checked").map(function () {
+        return $(this).val().toLowerCase();
+    }).get();
+
+    getVidGroupData(sortBy, order);
+});
+
+function printFilters() {
+    let html = '';
+
+    for (const item of filterData) {
+        const regex = /[-_]/g;
+        const key = Object.keys(item)[0];
+        const replacedKey = Object.keys(item)[0].replace(regex, " ");
+        const value = item[key];
+
+        html += `<div class="px-3">
+                    <span class="form-check-label montserrat-medium py-2 text-uppercase">${replacedKey}</span>`;
+
+        for (const data of value) {
+            html += `<div class="form-check ">
+                        <input class="checklist-filter form-check-input" name=${key} value="${data}" type="checkbox">
+                        <label class="checklist-filter text-capitalize form-check-label" name=${key}>
+                            ${data}
+                        </label>
+                    </div>`
+        }
+        html += `</div>`;
+    }
+
+    $(".filter-list").html(html)
+}
+
 // FUNCTION TO LOWERCASE ALL STRINGS
 function lowerCase(str) {
     return str.toLowerCase();
@@ -78,6 +115,11 @@ function isSearchQuery(data) {
         lowerCase(item.title).includes(lowerCase(search)) ||
         item.video_id.toString() === search
     );
+    if (filterBy.length > 0) {
+        return filteredData.filter(item =>
+            filterBy.includes(lowerCase(item.category))
+        );
+    }
     return filteredData;
 }
 

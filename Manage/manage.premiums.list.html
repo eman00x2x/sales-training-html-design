@@ -25,7 +25,7 @@
     <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
     <!-- CUSTOM JS -->
     <script src="../Cdn/js/script.js"></script>
-    <script src="../Cdn/js/manage.ebook.groups.list.js"></script>
+    <script src="../Cdn/js/manage.premiums.list.js"></script>
 
 </head>
 
@@ -45,13 +45,13 @@
                         <div class="p-md-5 p-0 row w-100 d-flex align-items-center justify-content-center">
                             <div class="col-lg-3 d-none d-lg-flex d-flex align-items-center justify-content-center">
                                 <img class="ms-3"
-                                    src="https://scontent.fmnl9-4.fna.fbcdn.net/v/t1.15752-9/440808928_1515158902676971_4122858983122286621_n.png?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEJn_FZ9sXsDUeMMcEunSI6zPEIeItBQCrM8Qh4i0FAKh9wQWqqjSflY4L4R627spXXk-5pbbH-GBeAfZdFzTp1&_nc_ohc=zruNYIBkQjMQ7kNvgHD9HCW&_nc_ht=scontent.fmnl9-4.fna&oh=03_Q7cD1QGd6Gw5OCD1MBIgcAmgokOzmsNlU9NHWjmnA3Vfcn6AUQ&oe=66612806"
+                                    src="https://scontent.fmnl4-6.fna.fbcdn.net/v/t1.15752-9/395819213_856730659153648_2331261993201752162_n.png?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeE7Ze1vBNTbmr0y22LfXEqximDHbyqGWi6KYMdvKoZaLrL6WYehH2AnIVC_aXboHwonAe1_pOanfaN59vzARKJK&_nc_ohc=-t_C_pwkT3cQ7kNvgGA1qsn&_nc_ht=scontent.fmnl4-6.fna&oh=03_Q7cD1QEK73UqlFe61nZ7WLtnLUvTBc4Kj65XQfQi-GOfu_lshQ&oe=666E1B96"
                                     alt="">
                             </div>
                             <div class="col-lg-9 col-sm-12 justify-content-center d-flex align-items-center pb-3">
                                 <div class="ms-3">
                                     <h1 id="header">
-                                        Browse E-Book Groups
+                                        Premiums
                                     </h1>
                                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod eius a numquam
                                         impedit
@@ -70,42 +70,57 @@
                             <!-- SORT, FILTER AND SEARCH -->
                             <div class="d-flex justify-content-start align-items-start col-lg-8 pb-3">
                                 <div class="btn-sort dropdown montserrat-regular">
-                                    <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none" data-bs-toggle="dropdown"></i>
-                                    <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block" data-bs-toggle="dropdown">Sort by</a>
+                                    <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
+                                        data-bs-toggle="dropdown"></i>
+                                    <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
+                                        data-bs-toggle="dropdown">Sort by</a>
                                     <div class="dropdown-menu">
-                                        <div class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
+                                        <div
+                                            class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
                                             <div class="btn-group1 col-7">
-                                                <button type="button" class="btn btn-sm btn-sort-asc btn-outline-primary">
+                                                <button type="button"
+                                                    class="btn btn-sm btn-sort-asc btn-outline-primary">
                                                     <i class="bi bi-sort-alpha-up fs-2"></i>
                                                 </button>
-                                                <button type="button" class="btn btn-sm btn-sort-desc btn-outline-primary">
+                                                <button type="button"
+                                                    class="btn btn-sm btn-sort-desc btn-outline-primary">
                                                     <i class="bi bi-sort-alpha-down-alt fs-2"></i>
                                                 </button>
                                             </div>
                                         </div>
-                                        <button type="button" class="dropdown-item dropdown-title">E-Book Title</button>
-                                        <button type="button" class="dropdown-item dropdown-created-date">Date Created</button>
+                                        <button type="button" class="dropdown-item dropdown-title active">Name</button>
                                     </div>
                                 </div>
-                                <input type="text" class="search ms-1 me-2 form-control montserrat-regular" id="search" placeholder="Search by Title" name="search" value="" />
+                                <input type="text" class="search ms-1 me-2 form-control montserrat-regular" id="search"
+                                    placeholder="Search by Title" name="search" value="" />
+                                <div class="btn-sort dropdown montserrat-regular ms-1">
+                                    <i class="bi bi-sliders2 fs-2 btn montserrat-semibold"
+                                        data-bs-toggle="dropdown"></i>
+                                    <div class="dropdown-menu">
+                                        <div class="dropdown-item montserrat-semibold border-bottom">FILTER BY
+                                        </div>
+                                        <div class="filter-list"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                
+
                         <!-- CARDS -->
                         <div class="data-container justify-content-center">
                             <div class="row w-100 d-flex flex-wrap justify-content-start align-items-center ebooks">
                             </div>
                         </div>
-                
+
                         <!-- PAGINATION -->
-                        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular pb-3">
+                        <div
+                            class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular pb-3">
                             <p id="page-numbers"></p>
                             <div class="page-buttons btn-group">
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- FOOTER -->
                 <div class="footer container-fluid"></div>
             </div>

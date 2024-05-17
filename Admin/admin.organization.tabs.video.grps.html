@@ -18,51 +18,25 @@
                 <div class="dropdown-menu">
                     <div class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
                         <div class="btn-group col-7">
-                            <button type="button" class="btn btn-sm btn-outline-primary"><i
-                                    class="bi bi-sort-alpha-down fs-2"></i></button>
-                            <button type="button" class="btn btn-sm btn-outline-primary"><i
+                            <button type="button" class="btn-sort-asc btn btn-sm btn-outline-primary"><i
+                                    class="bi bi-sort-alpha-up fs-2"></i></button>
+                            <button type="button" class="btn-sort-desc btn btn-sm btn-outline-primary"><i
                                     class="bi bi-sort-alpha-down-alt fs-2"></i></button>
                         </div>
                     </div>
-                    <a class="dropdown-item" href="#">Video Group Name</a>
-                    <a class="dropdown-item" href="#">Started Date</a>
-                    <a class="dropdown-item" href="#">Ended Date</a>
+                    <a class="dropdown-item dropdown-id" href="#">Video Group ID</a>
+                    <a class="dropdown-item dropdown-transact-id" href="#">Transaction ID</a>
+                    <a class="dropdown-item dropdown-name" href="#">Video Group Name</a>
                 </div>
             </div>
             <input type="text" class="search form-control montserrat-regular" id="search"
-                placeholder="Search by Video Group Name, Transaction ID" name="search" value="" />
+                placeholder="Search by Video Group ID, Video Group Name, Transaction ID" name="search" value="" />
             <div class="btn-sort dropdown montserrat-regular">
                 <i class="bi bi-sliders2 fs-2 btn montserrat-semibold" data-bs-toggle="dropdown"></i>
                 <div class="dropdown-menu">
                     <div class="dropdown-item montserrat-semibold border-bottom">FILTER BY
                     </div>
-                    <div class="px-3">
-                        <span class="form-check-label montserrat-medium py-2">CATEGORY</span>
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" value="" id="chk1">
-                            <label class="form-check-label" for="chk1">
-                                Real Estate
-                            </label>
-                        </div>
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" value="" id="chk2">
-                            <label class="form-check-label" for="chk2">
-                                Investment
-                            </label>
-                        </div>
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" value="" id="chk3">
-                            <label class="form-check-label" for="chk3">
-                                Profit
-                            </label>
-                        </div>
-                        <div class="form-check ">
-                            <input class="form-check-input" type="checkbox" value="" id="chk4">
-                            <label class="form-check-label" for="chk4">
-                                Professionalism
-                            </label>
-                        </div>
-                    </div>
+                    <div class="filter-list"></div>
                 </div>
             </div>
         </div>
@@ -75,7 +49,7 @@
                         <tr>
                             <th class="align-middle montserrat-semibold text-white text-center"
                                 style="background-color: #1c1c39">
-                                #
+                                Video Group ID
                             </th>
                             <th class="align-middle montserrat-semibold text-white text-center"
                                 style="background-color: #1c1c39">
@@ -93,10 +67,6 @@
                             <th class="align-middle montserrat-semibold text-white" style="background-color: #1c1c39">
                                 Status
                             </th>
-                            <!-- <th class="align-middle montserrat-semibold text-white"
-                                                                                            style="background-color: #1c1c39">
-                                                                                            Actions
-                                                                                        </th> -->
                         </tr>
                     </thead>
                     <tbody class="data-container montserrat-regular"></tbody>
@@ -107,17 +77,8 @@
         <!-- TABLE FOOTER -->
         <div
             class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular">
-            <p>Showing 1 out of 10 pages</p>
-            <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
-                        class="d-none d-md-block">Previous</span><i class="bi bi-chevron-double-left d-block d-md-none"></i>
-                </button>
-                <button type="button" class="btn btn-outline-primary montserrat-semibold">1</button>
-                <button type="button" class="btn btn-outline-primary montserrat-semibold">2</button>
-                <button type="button" class="btn btn-outline-primary montserrat-semibold">3</button>
-                <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
-                        class="d-none d-md-block">Next</span><i
-                        class="bi bi-chevron-double-right d-block d-md-none"></i></button>
+            <p id="page-numbers"></p>
+            <div class="page-buttons btn-group">
             </div>
         </div>
     </div>

@@ -2,27 +2,25 @@ $(document).ready(function () {
   $(".video-div-logo").css("display", "none")
 })
 
-// $(document).on("change", "#thumbnail", function (e) {
-//   var URL = window.URL || window.webkitURL;
-//   var file = e.target.files[0];
-
-//   const imageTag =
-//     "<h6>Uploaded Files</h6><div class='d-flex flex-row justify-content-start align-items-center rounded shadow-sm p-2 bg-white rounded border border-secondary-subtle'><img src='" +
-//     URL.createObjectURL(file) +
-//     "'class='border border-secondary-subtle p-2 rounded' name='org_logo' style='height: 100px'/><div class='d-flex flex-column'><span class='ms-4 fw-semibold'>" +
-//     e.target.files[0].name +
-//     "</span> <span class='ms-4 fw-normal'>" +
-//     formatFileSize(e.target.files[0].size) +
-//     "</span><div></div>";
-
-//   if (file) {
-//     $(".thumbnail_image").html(imageTag);
-//     $(".video-div-logo").css("display", "block")
-//   }
-// });
+$(document).on("click", "#back", function (e) {
+  window.location.href = "admin.videos.list.html";
+});
 
 $(document).on("click", ".btn-remove", function (e) {
   $(".video-div-logo").css("display", "none");
+});
+
+$(document).on("change", "#logo", function (e) {
+  let reader = new FileReader();
+
+  reader.onload = function (event) {
+      $(".video-div-logo").css("display", "block")
+      $(".video-logo").attr('src', event.target.result)
+      $(".file-name").text(e.target.files[0].name)
+      $(".file-size").text(formatFileSize(e.target.files[0].size))
+  }
+
+  reader.readAsDataURL(e.target.files[0]);
 });
 
 function validateInput(input) {
@@ -75,7 +73,3 @@ function validateInput(input) {
 
   return false;
 }
-
-$(document).on("click", "#back", function (e) {
-  window.location.href = "admin.videos.list.html";
-});

@@ -21,9 +21,9 @@ $(document).ready(function () {
             console.log("No profile found for the specified account ID.");
         }
     })
-    $('#tab-top-1').load('manage.account.profile.details.html');
-    $('#tab-top-2').load('manage.account.skills.html');
-    $('#tab-top-3').load('manage.change.password.html');
-    $('#tab-top-4').load('manage.update.email.html');
+    $('#tab-top-1').load('manage.account.tabs.profile.html');
+    $('#tab-top-2').load('manage.account.tabs.skills.html');
+    $('#tab-top-3').load('manage.account.tabs.password.html');
+    $('#tab-top-4').load('manage.account.tabs.email.html');
 });
 

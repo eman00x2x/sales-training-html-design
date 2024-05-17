@@ -4,43 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User | E-Book Groups</title>
+    <title> My Collection | E-book Group</title>
+
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../Cdn/css/font.css">
+
     <!-- BOOSTRAP ICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
     <!-- TABLER CSS -->
     <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
     <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
-    <!-- CUSTOM CSS -->
-    <link rel="stylesheet" href="../Cdn/css/manage.video.css">
-    <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
+
     <!-- JQUERY -->
     <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+
     <!-- TABLER -->
     <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
+
     <!-- CUSTOM JS -->
     <script src="../Cdn/js/script.js"></script>
-    <script src="../Cdn/js/manage.ebook.groups.list.js"></script>
+    <script src="/Cdn/js/manage.col.ebook.group.js"></script>
+
+    <style>
+        .card p {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card:hover {
+
+            box-shadow: 5px 6px 6px 2px #e9ecef;
+            transform: scale(1.02);
+        }
+    </style>
 
 </head>
 
 <body>
+
     <div class="page">
+
         <!-- SIDEBAR -->
         <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
             style="background-color: #1c1c39 !important;" data-bs-theme="dark"></aside>
+
         <div class="page-wrapper">
             <!-- HEADER -->
             <div class="header"></div>
+
             <!-- CONTENT -->
             <div class="page-body content m-0">
                 <div class="bg-white shadow shadow-sm">
-                    <!-- BANNER -->
+
+                    <!-- TITLE CONTAINER -->
                     <div class="container">
                         <div class="p-md-5 p-0 row w-100 d-flex align-items-center justify-content-center">
                             <div class="col-lg-3 d-none d-lg-flex d-flex align-items-center justify-content-center">
@@ -48,68 +71,76 @@
                                     src="https://scontent.fmnl9-4.fna.fbcdn.net/v/t1.15752-9/440808928_1515158902676971_4122858983122286621_n.png?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEJn_FZ9sXsDUeMMcEunSI6zPEIeItBQCrM8Qh4i0FAKh9wQWqqjSflY4L4R627spXXk-5pbbH-GBeAfZdFzTp1&_nc_ohc=zruNYIBkQjMQ7kNvgHD9HCW&_nc_ht=scontent.fmnl9-4.fna&oh=03_Q7cD1QGd6Gw5OCD1MBIgcAmgokOzmsNlU9NHWjmnA3Vfcn6AUQ&oe=66612806"
                                     alt="">
                             </div>
-                            <div class="col-lg-9 col-sm-12 justify-content-center d-flex align-items-center pb-3">
+
+                            <div class="col-lg-9 col-sm-12 justify-content-center d-flex align-items-center p-4">
                                 <div class="ms-3">
-                                    <h1 id="header">
-                                        Browse E-Book Groups
+                                    <h1 id="header" style="font-weight: bold; font-size: 40px;">
+                                        E-book Collection
                                     </h1>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod eius a numquam
-                                        impedit
-                                        sequi ipsum
-                                        deserunt sit porro placeat blanditiis!</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis finibus
+                                        sapien, et
+                                        condimentum nisl. Nulla odio mi, semper sit amet purus luctus, consequat semper
+                                        mauris.
+                                        Proin neque neque, dictum eu auctor nec, semper vitae diam. Etiam vel facilisis
+                                        est.</p>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid mt-5 d-flex justify-content-center">
-                    <div class="container ps-5">
+
+                <div class="container-fluid mt-5">
+                    <div class="container">
                         <div class="row">
-                            <!-- SORT, FILTER AND SEARCH -->
+
+                            <!-- FUNCTION -->
                             <div class="d-flex justify-content-start align-items-start col-lg-8 pb-3">
                                 <div class="btn-sort dropdown montserrat-regular">
-                                    <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none" data-bs-toggle="dropdown"></i>
-                                    <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block" data-bs-toggle="dropdown">Sort by</a>
+                                    <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
+                                        data-bs-toggle="dropdown"></i>
+                                    <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
+                                        data-bs-toggle="dropdown">Sort by</a>
                                     <div class="dropdown-menu">
-                                        <div class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
+                                        <div
+                                            class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
                                             <div class="btn-group1 col-7">
-                                                <button type="button" class="btn btn-sm btn-sort-asc btn-outline-primary">
-                                                    <i class="bi bi-sort-alpha-up fs-2"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-sm btn-sort-desc btn-outline-primary">
-                                                    <i class="bi bi-sort-alpha-down-alt fs-2"></i>
-                                                </button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-sort-asc btn-outline-primary"><i
+                                                        class="bi bi-sort-alpha-up fs-2"></i></button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-sort-desc btn-outline-primary"><i
+                                                        class="bi bi-sort-alpha-down-alt fs-2"></i></button>
                                             </div>
                                         </div>
                                         <button type="button" class="dropdown-item dropdown-title">E-Book Title</button>
-                                        <button type="button" class="dropdown-item dropdown-created-date">Date Created</button>
+                                        <button type="button" class="dropdown-item dropdown-created-date">Date
+                                            Created</button>
                                     </div>
                                 </div>
-                                <input type="text" class="search ms-1 me-2 form-control montserrat-regular" id="search" placeholder="Search by Title" name="search" value="" />
+                                <input type="text" class="search ms-1 me-2 form-control montserrat-regular" id="search"
+                                    placeholder="Search by Title" name="search" value="" />
                             </div>
                         </div>
-                
-                        <!-- CARDS -->
-                        <div class="data-container justify-content-center">
+
+                        <!-- E-BOOKS CONTAINER -->
+                        <div class="data-container">
                             <div class="row w-100 d-flex flex-wrap justify-content-start align-items-center ebooks">
                             </div>
                         </div>
-                
+
                         <!-- PAGINATION -->
-                        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular pb-3">
+                        <div
+                            class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular pb-3">
                             <p id="page-numbers"></p>
                             <div class="page-buttons btn-group">
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- FOOTER -->
                 <div class="footer container-fluid"></div>
             </div>
         </div>
 </body>
-
 </html>

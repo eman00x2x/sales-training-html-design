@@ -55,9 +55,11 @@
         <div class="page-body content">
           <div class="container-fluid">
             <!-- TITLE -->
-            <div class="d-flex align-center justify-content-start">
-              <i class="bi bi bi-play-btn-fill h1"></i>
-              <span class="fw-bold fs-2 ms-2">Video</span>
+            <div
+              class="d-flex flex-row align-items-center justify-content-start text-primary"
+            >
+              <i class="bi bi bi-play-btn-fill h1 my-auto"></i>
+              <span class="fs-1 ms-2 montserrat-bold my-auto">Video</span>
             </div>
 
             <!-- SORT, FILTER AND SEARCH -->
@@ -85,30 +87,54 @@
                       <div class="btn-group col-7">
                         <button
                           type="button"
-                          class="btn btn-sm btn-outline-primary"
+                          class="btn btn-sm btn-sort-asc btn-outline-primary"
                         >
-                          <i class="bi bi-sort-alpha-down fs-2"></i>
+                          <i class="bi bi-sort-alpha-up fs-2"></i>
                         </button>
                         <button
                           type="button"
-                          class="btn btn-sm btn-outline-primary"
+                          class="btn btn-sm btn-sort-desc btn-outline-primary"
                         >
                           <i class="bi bi-sort-alpha-down-alt fs-2"></i>
                         </button>
                       </div>
                     </div>
-                    <a class="dropdown-item" href="#">Video Title</a>
-                    <a class="dropdown-item" href="#">Created Date</a>
+                    <button type="button" class="dropdown-item dropdown-id">
+                      Video ID
+                    </button>
+                    <button type="button" class="dropdown-item dropdown-title">
+                      Video Title
+                    </button>
+                    <button
+                      type="button"
+                      class="dropdown-item dropdown-created-date"
+                    >
+                      Created Date
+                    </button>
                   </div>
                 </div>
                 <input
                   type="text"
                   class="search ms-1 form-control montserrat-regular"
                   id="search"
-                  placeholder="Search by Video Title"
+                  placeholder="Search by Video Name / Video ID"
                   name="search"
                   value=""
                 />
+                <div class="btn-sort dropdown montserrat-regular ms-1">
+                  <i
+                    class="bi bi-sliders2 fs-2 btn montserrat-semibold"
+                    data-bs-toggle="dropdown"
+                  ></i>
+                  <div class="dropdown-menu">
+                    <div
+                      class="dropdown-item montserrat-semibold border-bottom"
+                    >
+                      FILTER BY
+                    </div>
+                    <div class="filter-list"></div>
+                  </div>
+                </div>
               </div>
               <button
                 type="button"
@@ -140,21 +166,21 @@
               </div>
             </div>
 
+            <!-- PAGINATION -->
+            <div
+              class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular"
+            >
+              <p id="page-numbers"></p>
+              <div class="page-buttons btn-group"></div>
+            </div>
+
             <!-- TABLE FOOTER -->
             <div
               class="px-4 d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between my-3 montserrat-regular"
             >
-              <div class="showing align-center justify-content-center h-100 d-flex">
-              </div>
               <div
-                class="btn-group"
-                role="group"
-                aria-label="Basic outlined example"
-              >
-                <div class="prev-btn"></div>
-                <div class="pagination-page"></div>
-                <div class="next-btn"></div>
-              </div>
+                class="showing align-center justify-content-center h-100 d-flex"
+              ></div>
             </div>
 
             <!-- DELETE MODAL -->

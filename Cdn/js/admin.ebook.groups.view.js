@@ -74,21 +74,9 @@ $(document).on("keyup", '.search', function () {
 });
 
 $(document).on('change', '.checklist-filter', function (e) {
-    let checkboxes = $(".checklist-filter:checkbox");
-
-    for (let i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {
-            if (!filterBy.includes(checkboxes[i])) { // Check if value already exists
-                filterBy.push(checkboxes[i]);
-            }
-        }
-        else {
-            const index = filterBy.indexOf(checkboxes[i]); // Find the index of the value
-            if (index > -1) {
-                filterBy.splice(index, 1); // Remove the value from the array
-            }
-        }
-    }
+    filterBy = $(".checklist-filter:checkbox:checked").map(function() {
+        return $(this).val().toLowerCase();
+    }).get();
 
     getEBookGroupData(sortBy, order);
 });
@@ -130,6 +118,12 @@ function isSearchQuery(data) {
         item.ebook_id.toString() === search ||
         lowerCase(item.author).includes(lowerCase(search))
     );
+
+    if (filterBy.length > 0) {
+        return filteredData.filter(item =>
+            filterBy.includes(lowerCase(item.category))
+        );
+    }
 
     return filteredData;
 }
@@ -196,6 +190,21 @@ function updatePagination(totalPages) {
     $('.page-buttons').html(paginationButtons);
 }
 
+function getCategoryClass(category) {
+    switch (category) {
+        case 'buying':
+            return 'text-azure';
+        case 'selling':
+            return 'text-teal';
+        case 'real-estate':
+            return 'text-warning';
+        case 'earning':
+            return 'text-pink';
+        default:
+            return 'text-dark';
+    }
+}
+
 function getEBookGroupData() {
     const limit = 10;
     const startIndex = (currentPage - 1) * limit;
@@ -219,6 +228,7 @@ function getEBookGroupData() {
 
         for (let i = 0; i < slicedData.length; i++) {
             let data = slicedData[i];
+            let categoryClass = getCategoryClass(data.category);
             html += "<tr>";
             html +=
                 "<td class='align-middle text-center'>" +
@@ -242,10 +252,7 @@ function getEBookGroupData() {
                 "<td class='align-middle text-truncate' style='max-width: 150px'>" +
                 data.description +
                 "</td>";
-            html +=
-                "<td class='align-middle text-truncate' style='max-width: 150px'>" +
-                data.category +
-                "</td>";
+                html += "<td class='align-middle montserrat-regular'>" + "<span class='badge badge-outline text-capitalize " + categoryClass + "'>" + data.category + "</span>" + "</td>";
             html +=
                 "<td class='align-middle text-truncate' style='max-width: 150px'>" +
                 data.code +
@@ -260,5 +267,3 @@ function getEBookGroupData() {
         $(".ebook-group .data-container").html(html);
     });
 }
-
-

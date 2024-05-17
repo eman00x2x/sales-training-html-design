@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin | Update Video</title>
+    <title>Admin | Video Edit</title>
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,121 +46,133 @@
         style="background-color: #1c1c39 !important"
         data-bs-theme="dark"
       ></aside>
+
       <div class="page-wrapper">
         <!-- HEADER -->
         <div class="header"></div>
-        <form class="p-4" id="form" method="post" action="">
-          <input type="hidden" name="csrf_token" id="csrf_token" value="" />
-          <div class="d-flex align-items-center">
-            <div
-              class="d-flex flex-row justify-content-center align-items-center"
-            >
-              <i class="bi bi-pencil-square fs-2"></i>
-              <h5 class="ms-2 fw-bold">Update Video</h5>
+
+        <!-- CONTENT -->
+        <div class="page-body content">
+          <div class="container-fluid">
+            <div class="card">
+              <div class="card-body">
+                <div
+                  class="d-flex justify-content-start mb-2 align-items-center border-bottom border-secondary-subtle pb-1"
+                >
+                  <i class="bi bi-camera-video-fill fs-2"></i>
+                  <h5 class="ms-2 modal-title montserrat-bold">
+                    Update Video Details
+                  </h5>
+                </div>
+                <div class="response"></div>
+
+                <form id="form" action="" method="post">
+                  <input
+                    type="hidden"
+                    name="csrf_token"
+                    id="csrf_token"
+                    value=""
+                  />
+                  <img
+                    class="vidLogo mb-3 object-fit-contain"
+                    width="100%"
+                    height="300px"
+                    alt=""
+                    id="vidLogo"
+                  />
+                  <div class="mb-3">
+                    <label for="logo" class="form-label montserrat-semibold"
+                      >Update Video Thumbnail</label
+                    >
+                    <input
+                      class="form-control montserrat-regular"
+                      type="file"
+                      id="logo"
+                    />
+                  </div>
+                  <div class="d-flex flex-column form-group">
+                    <div class="row align-items-end">
+                      <div class="col-6">
+                        <label for="title" class="fw-semibold">Title</label>
+                        <input
+                          type="text"
+                          name="title"
+                          id="title"
+                          class="form-control"
+                          value=""
+                          autocomplete="off"
+                        />
+                      </div>
+                      <div class="col-6">
+                        <label for="category" class="fw-semibold">
+                          Category
+                        </label>
+                        <select
+                          id="category"
+                          class="form-select text-capitalize"
+                          name="category"
+                        >
+                          <option value="" selected disabled>
+                            Select category
+                          </option>
+                          <option value="sales">sales</option>
+                          <option value="real estate">real estate</option>
+                          <option value="properties">properties</option>
+                          <option value="necessities">necessities</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-column form-group mt-4">
+                    <label for="description" class="fw-semibold"
+                      >Description</label
+                    >
+                    <textarea
+                      name="description"
+                      id="description"
+                      class="form-control"
+                      value=""
+                      autocomplete="off"
+                      wrap="physical"
+                      rows="5"
+                    ></textarea>
+                  </div>
+                  <div class="d-flex flex-column form-group">
+                    <label for="link" class="fw-semibold">Link</label>
+                    <input
+                      type="text"
+                      name="link"
+                      id="link"
+                      class="form-control"
+                      value=""
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div class="text-end mt-4">
+                    <button
+                      id="back"
+                      type="button"
+                      class="btn border border-secondary montserrat-semibold"
+                      data-bs-dismiss="modal"
+                    >
+                      Back
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-save btn-success montserrat-semibold"
+                    >
+                      Update
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
-          <hr class="m-0" />
-          <div class="response"></div>
-          <div class="mb-3 montserrat-regular">
-            <label for="thumbnail" class="form-label fw-semibold mt-3"
-              >Thumbnail Image</label
-            >
-            <fieldset class="upload_dropzone text-center p-4">
-              <legend class="visually-hidden">Image uploader</legend>
-              <i
-                class="bi bi-cloud-arrow-up-fill h1"
-                style="font-size: 5vw"
-              ></i>
-              <p class="small my-1">
-                Drag &amp; Drop background image(s) inside dashed region<br /><i
-                  >or</i
-                >
-              </p>
-              <input
-                id="thumbnail"
-                name="thumbnail"
-                class="position-absolute invisible"
-                type="file"
-                accept="image/jpeg, image/png, image/svg+xml"
-              />
-              <label
-                class="btn btn-upload mb-3 bg-primary text-white"
-                for="thumbnail"
-                >Choose file(s)</label
-              >
-              <div
-                class="upload_gallery d-flex flex-wrap justify-content-center gap-3 mb-0"
-              ></div>
-            </fieldset>
-            <div class="mt-3 thumbnail_image"></div>
-          </div>
-          <input type="file" id="fileInput" style="display: none" />
-          <div class="d-flex flex-column form-group">
-            <div class="row align-items-end">
-              <div class="col-6">
-                <label for="title" class="form-label fw-semibold">Title</label>
-                <input
-                  type="text"
-                  name="title"
-                  id="title"
-                  class="form-control"
-                  value=""
-                  autocomplete="off"
-                />
-              </div>
-              <div class="col-6">
-                <label for="category" class="form-label fw-semibold"
-                  >Category</label
-                >
-                <select id="category" class="form-select" name="category">
-                  <option value="" selected disabled>Select category</option>
-                  <option value="selling">Selling</option>
-                  <option value="real-estate">Real-Estate</option>
-                  <option value="properties">Properties</option>
-                  <option value="necessities">Necessities</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="d-flex flex-column form-group mt-4">
-            <label for="description" class="form-label fw-semibold"
-              >Description</label
-            >
-            <textarea
-              name="description"
-              id="description"
-              class="form-control"
-              value=""
-              autocomplete="off"
-              wrap="physical"
-              rows="5"
-            ></textarea>
-          </div>
-          <div class="d-flex flex-column form-group">
-            <label for="link" class="form-label fw-semibold">Link</label>
-            <input
-              type="text"
-              name="link"
-              id="link"
-              class="form-control"
-              value=""
-              autocomplete="off"
-            />
-          </div>
-          <div class="d-flex gap-2 justify-content-end mt-3">
-            <button
-              id="back"
-              class="btn btn-light btn-cancel border border-secondary"
-              type="button"
-            >
-              Back
-            </button>
-            <button class="btn-save btn btn-success btn-md">Submit</button>
-          </div>
-        </form>
-        <!-- FOOTER -->
-        <div class="footer"></div>
+        </div>
       </div>
+
+      <!-- FOOTER -->
+      <div class="footer container-fluid"></div>
     </div>
   </body>
 </html>

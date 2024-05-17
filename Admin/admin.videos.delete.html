@@ -53,19 +53,19 @@
     </div>
   </div>
 
-  <div class="">
-    <div class="page">
-      <!-- SIDEBAR -->
-      <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
-        style="background-color: #1c1c39 !important" data-bs-theme="dark"></aside>
-      <div class="page-wrapper">
-        <!-- HEADER -->
-        <div class="header"></div>
+  <div class="page">
+    <!-- SIDEBAR -->
+    <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
+      style="background-color: #1c1c39 !important" data-bs-theme="dark"></aside>
+    <div class="page-wrapper">
+      <!-- HEADER -->
+      <div class="header"></div>
 
+      <!-- CONTENT -->
+      <div class="page-body content">
         <!-- CONTENT -->
-        <div class="content">
+        <div class="container-fluid">
           <!-- all content body should be here -->
-
           <div class="card">
             <div class="card-body">
               <div
@@ -86,30 +86,21 @@
                 <div class="row align-items-end">
                   <div class="col-6">
                     <label for="title" class="fw-semibold">Title</label>
-                    <input type="text" name="title" id="title" class="form-control" value="" autocomplete="off" />
+                    <p id="title"></p> 
                   </div>
                   <div class="col-6">
                     <label for="category" class="fw-semibold">Category</label>
-                    <select id="category" class="form-select" name="category">
-                      <option value="" selected disabled>
-                        Select category
-                      </option>
-                      <option value="sales">Sales</option>
-                      <option value="real-estate">Real-Estate</option>
-                      <option value="properties">Properties</option>
-                      <option value="necessities">Necessities</option>
-                    </select>
+                    <p id="category"></p>
                   </div>
                 </div>
               </div>
               <div class="d-flex flex-column form-group mt-4">
                 <label for="description" class="fw-semibold">Description</label>
-                <textarea name="description" id="description" class="form-control" value="" autocomplete="off"
-                  wrap="physical" rows="5"></textarea>
+                <p id="description"></p>
               </div>
-              <div class="d-flex flex-column form-group">
+              <div class="d-flex flex-column form-group mt-4">
                 <label for="link" class="fw-semibold">Link</label>
-                <input type="text" name="link" id="link" class="form-control" value="" autocomplete="off" />
+                <p id="link"></p>
               </div>
               <div class="d-flex gap-2 justify-content-end mt-3">
                 <button id="back" type="button" class="btn border border-secondary btn-light" data-bs-dismiss="modal">
@@ -123,10 +114,10 @@
           </div>
         </div>
       </div>
-
-      <!-- FOOTER -->
-      <div class="footer"></div>
     </div>
+
+    <!-- FOOTER -->
+    <div class="footer"></div>
   </div>
   </div>
 </body>

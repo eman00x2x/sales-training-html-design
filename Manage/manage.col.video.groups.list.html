@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> User | My Collection | Video Groups </title>
+    <title> My Collection | Video Groups </title>
 
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,31 +58,36 @@
         <!-- NAVBAR -->
         <div class="header"></div>
 
-        <!-- TITLE HEADER -->
-        <div class="container-fluid p-0" style="background-color: #d8e1e81b;">
+        <!-- TITLE CONTAINER -->
+        <div class="bg-white shadow-sm">
+            <div class="container">
+                <div class="p-5 row w-100">
+                    <div class="col-lg-3 col-sm-12 d-flex align-items-center justify-content-center">
+                        <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/440735179_1623284401794627_2584977165667634267_n.png?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFwMkB8-6wFHGaSluqTmcV9jLV3x4CDfXuMtXfHgIN9ewFMqIIDC7mENYR_lchdtCyO-gyinCeBZf8bXo-w2-uc&_nc_ohc=LFKdEDpEJp4Q7kNvgFPJHBZ&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QFJCAwcsMWK-JRUjq-lN_tImrpHF4dqCQuWaOaV3NFobg&oe=6660F818"
+                            alt="">
+                    </div>
+                    <div class="col-lg-9 col-sm-12 justify-content-center d-flex align-items-center p-6">
+                        <div>
+                            <h1 id="header" style="font-weight: bold; font-size: 40px;">
+                                Video Collection
+                            </h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis finibus sapien, et
+                                condimentum nisl. Nulla odio mi, semper sit amet purus luctus, consequat semper mauris.
+                                Proin neque neque, dictum eu auctor nec, semper vitae diam. Etiam vel facilisis est.</p>
+                        </div>
 
-            <div class="p-5 row" style="background-color: white; margin-bottom: 20px;">
-                <div class="col-lg-3 col-sm-12 d-flex align-items-center justify-content-center     ">
-                    <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/440735179_1623284401794627_2584977165667634267_n.png?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFwMkB8-6wFHGaSluqTmcV9jLV3x4CDfXuMtXfHgIN9ewFMqIIDC7mENYR_lchdtCyO-gyinCeBZf8bXo-w2-uc&_nc_ohc=LFKdEDpEJp4Q7kNvgFPJHBZ&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QFJCAwcsMWK-JRUjq-lN_tImrpHF4dqCQuWaOaV3NFobg&oe=6660F818"
-                        alt="">
-                </div>
-                <div class="col-lg-9 col-sm-12 justify-content-center d-flex align-items-center ">
-                    <div>
-                        <p id="header" style="font-weight: bold; font-size: 40px;">
-                            Watch Training Videos
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis finibus sapien, et
-                            condimentum nisl. Nulla odio mi, semper sit amet purus luctus, consequat semper mauris.
-                            Proin neque neque, dictum eu auctor nec, semper vitae diam. Etiam vel facilisis est.</p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="container ">
-                <div class="row" style="margin-left: 9px;">
 
-                    <!-- FUNCTIONS -->
-                    <div class="d-flex justify-content-start align-items-start  col-lg-8">
+        <div class="container-fluid mt-5">
+            <div class="container">
+
+                <!-- FUNCTIONS -->
+                <div class="row" style="margin-left: 7px;">
+                    <div class="d-flex justify-content-start align-items-start col-lg-8">
                         <div class="btn-sort dropdown montserrat-regular">
                             <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
                                 data-bs-toggle="dropdown"></i>
@@ -91,41 +96,36 @@
                             <div class="dropdown-menu">
                                 <div class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
                                     <div class="btn-group1 col-7">
-                                        <button id="btnSortAsc" type="button"
-                                            class="btn btn-sm btn-outline-primary btn-sort-direction active"
-                                            onclick="updateSortDirection('asc')">
-                                            <i class="bi bi-sort-alpha-up fs-2"></i>
-                                        </button>
-                                        <button id="btnSortDesc" type="button"
-                                            class="btn btn-sm btn-outline-primary btn-sort-direction"
-                                            onclick="updateSortDirection('desc')">
-                                            <i class="bi bi-sort-alpha-down-alt fs-2"></i>
-                                        </button>
+                                        <button type="button" class="btn btn-sm btn-sort-asc btn-outline-primary"><i
+                                                class="bi bi-sort-alpha-up fs-2"></i></button>
+                                        <button type="button" class="btn btn-sm btn-sort-desc btn-outline-primary"><i
+                                                class="bi bi-sort-alpha-down-alt fs-2"></i></button>
                                     </div>
                                 </div>
-                                <a id="sortByTitle" class="dropdown-item sort-by active" href="#"
-                                    onclick="updateSortBy('name')">Video Title</a>
-                                <a id="sortByDate" class="dropdown-item sort-by" href="#"
-                                    onclick="updateSortBy('created_at')">Created Date</a>
+                                <button type="button" class="dropdown-item dropdown-title">Video Title</button>
+                                <button type="button" class="dropdown-item dropdown-created-date">Date
+                                    Created</button>
                             </div>
                         </div>
-                        <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
-                            placeholder="Search by Group Name" name="search" value="" onkeyup="search()" />
+                        <input type="text" class="search ms-1 me-2 form-control montserrat-regular" id="search"
+                            placeholder="Search by Title" name="search" value="" />
                     </div>
                 </div>
 
-                <!-- VIDEO CONTAINERS -->
                 <div class="data-container">
+
+                    <!-- VIDEO CONTAINERS -->
                     <div class="container  mt-5">
-                        <div class="row w-100 d-flex flex-wrap justify-content-center align-items-center video">
+                        <div class="row w-100 d-flex flex-wrap justify-content-start align-items-center videos">
                         </div>
                     </div>
                 </div>
 
                 <!-- PAGINATION -->
-                <div class="d-flex align-items-center justify-content-between justify-content-sm-start mt-3 py-3">
-                    <p id="page-numbers" class="me-md-auto"></p>
-                    <div class="btn-group mt-3 mt-sm-0">
+                <div
+                    class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular pb-3">
+                    <p id="page-numbers"></p>
+                    <div class="page-buttons btn-group">
                     </div>
                 </div>
             </div>

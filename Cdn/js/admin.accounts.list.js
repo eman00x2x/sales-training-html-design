@@ -3,7 +3,7 @@ let currentPage = 1, search = '', order = '', sortBy = '',
     filterBy = [];
 
 $(document).ready(function () {
-    getAccountsData(sortBy, order);
+    getAccountsData();
     printFilters()
 });
 
@@ -11,7 +11,7 @@ $(document).ready(function () {
 $(document).on("keyup", '.search', function () {
     search = $(this).val().toLowerCase();
     currentPage = 1
-    getAccountsData(sortBy, order);
+    getAccountsData();
 });
 
 // ASCENDING BUTTON
@@ -19,7 +19,7 @@ $(document).on("click", '.btn-sort-asc', function () {
     $('.btn-sort-asc').addClass('active');
     $('.btn-sort-desc').removeClass('active');
     order = 'asc'
-    getAccountsData(sortBy, order);
+    getAccountsData();
 });
 
 // DESCENDING BUTTON
@@ -27,7 +27,7 @@ $(document).on("click", '.btn-sort-desc', function () {
     $('.btn-sort-desc').addClass('active');
     $('.btn-sort-asc').removeClass('active');
     order = 'desc'
-    getAccountsData(sortBy, order);
+    getAccountsData();
 });
 
 // SORT BY ORGANIZATION NAME
@@ -36,7 +36,7 @@ $(document).on("click", '.dropdown-name', function () {
     $('.dropdown-id').removeClass('active')
     $('.dropdown-created-date').removeClass('active');
     sortBy = 'name'
-    getAccountsData(sortBy, order);
+    getAccountsData();
 });
 
 // SORT BY ORGANIZATION ID
@@ -45,7 +45,7 @@ $(document).on("click", '.dropdown-id', function () {
     $('.dropdown-id').addClass('active')
     $('.dropdown-created-date').removeClass('active');
     sortBy = 'account_id'
-    getAccountsData(sortBy, order);
+    getAccountsData();
 });
 
 // SORT BY ORGANIZATION CREATED DATE
@@ -54,13 +54,13 @@ $(document).on("click", '.dropdown-created-date', function () {
     $('.dropdown-id').removeClass('active')
     $('.dropdown-created-date').addClass('active');
     sortBy = 'registered_at'
-    getAccountsData(sortBy, order);
+    getAccountsData();
 });
 
 // PAGINATION
 $(document).on('click', '.btn-page', function (e) {
     currentPage = $(this).data('num');
-    getAccountsData(sortBy, order);
+    getAccountsData();
 });
 
 $(document).on('click', '.btn-add', function (e) {
@@ -99,7 +99,7 @@ $(document).on('change', '.checklist-filter', function (e) {
         }
     }
 
-    getAccountsData(sortBy, order);
+    getAccountsData();
 });
 
 function printFilters() {
@@ -145,7 +145,7 @@ function isSearchQuery(data) {
         const { organization, account_type } = item;
         const { name } = organization;
         
-        return filterBy.every(filterItem => lowerCase(account_type) === lowerCase(filterItem.value) || lowerCase(name) === lowerCase(filterItem.value));
+        return filterBy.some(filterItem => lowerCase(account_type) === lowerCase(filterItem.value) || lowerCase(name) === lowerCase(filterItem.value));
     }) : filterBySearch;
 
     return filter;
