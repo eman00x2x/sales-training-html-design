@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> User | My Collection | Video Lists </title>
+    <title> My Collection | Video Lists </title>
 
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,76 +64,96 @@
                 <!-- BREADCRUMB -->
                 <ol class="breadcrumb breadcrumb-arrows pt-3" aria-label="breadcrumbs">
                     <li class="breadcrumb-item montserrat-semibold "><a class="breadlink"
-                            href="manage.col.video.groups.list.html" style="color: #b5adad;">Video Group</a></li>
+                            href="manage.col.video.groups.list.html" style="color: #b5adad;">Video Collections</a></li>
                     <li class="breadcrumb-item active montserrat-bold text-primary" aria-current="page"><a href="">View
                             Available Videos</a></li>
                 </ol>
 
                 <div class="row pt-2">
                     <div class="title col-lg-4">
-                        <p style="font-size: 40px; color: rgba(0, 0, 0, 0.808); font-weight: bold;">
-                            AVAILABLE VIDEOS
+                        <p class="text-primary" style="font-size: 40px; font-weight: bold;">
+                            Available Videos
                         </p>
                     </div>
                 </div>
 
+                <!-- FUNCTION -->
 
-
-                <div class="d-flex justify-content-start align-items-start  col-lg-8 pb-3">
-                    <div class="btn-sort dropdown montserrat-regular">
-                        <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
-                            data-bs-toggle="dropdown"></i>
-                        <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
-                            data-bs-toggle="dropdown">Sort by</a>
-                        <div class="dropdown-menu">
-                            <div class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
-                                <div class="btn-group1 col-7">
-                                    <button id="btnSortAsc" type="button"
-                                        class="btn btn-sm btn-outline-primary btn-sort-direction active"
-                                        onclick="updateSortDirection('asc')">
-                                        <i class="bi bi-sort-alpha-up fs-2"></i>
-                                    </button>
-                                    <button id="btnSortDesc" type="button"
-                                        class="btn btn-sm btn-outline-primary btn-sort-direction"
-                                        onclick="updateSortDirection('desc')">
-                                        <i class="bi bi-sort-alpha-down-alt fs-2"></i>
-                                    </button>
+                <div class="row pt-2">
+                    <div class="d-flex justify-content-start align-items-start  col-lg-8 pb-3">
+                        <div class="btn-sort dropdown montserrat-regular">
+                            <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
+                                data-bs-toggle="dropdown"></i>
+                            <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
+                                data-bs-toggle="dropdown">Sort by</a>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
+                                    <div class="btn-group1 col-7">
+                                        <button id="btnSortAsc" type="button"
+                                            class="btn btn-sm btn-outline-primary btn-sort-direction active"
+                                            onclick="updateSortDirection('asc')">
+                                            <i class="bi bi-sort-alpha-up fs-2"></i>
+                                        </button>
+                                        <button id="btnSortDesc" type="button"
+                                            class="btn btn-sm btn-outline-primary btn-sort-direction"
+                                            onclick="updateSortDirection('desc')">
+                                            <i class="bi bi-sort-alpha-down-alt fs-2"></i>
+                                        </button>
+                                    </div>
                                 </div>
+                                <a id="sortByTitle" class="dropdown-item sort-by active" href="#"
+                                    onclick="updateSortBy('name')">Video Title</a>
+                                <a id="sortByDate" class="dropdown-item sort-by" href="#"
+                                    onclick="updateSortBy('category')">Category</a>
                             </div>
-                            <a id="sortByTitle" class="dropdown-item sort-by active" href="#"
-                                onclick="updateSortBy('name')">Video Title</a>
-                            <a id="sortByDate" class="dropdown-item sort-by" href="#"
-                                onclick="updateSortBy('category')">Category</a>
+                        </div>
+                        <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
+                            placeholder="Search by Title" name="search" value="" onkeyup="search()" />
 
+                        <div class="btn-sort dropdown montserrat-regular">
+                            <i class="bi bi-sliders2 fs-2 btn montserrat-semibold" data-bs-toggle="dropdown"></i>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item montserrat-semibold border-bottom">FILTER BY
+                                </div>
+                                <div class="filter-list"></div>
+                            </div>
                         </div>
                     </div>
-                    <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
-                        placeholder="Search by Title" name="search" value="" onkeyup="search()" />
                 </div>
 
-            </div>
+                <!-- VIDEO LIST CONTAINER -->
+                <div class="row video-list">
 
+                </div>
 
+                <!-- MODAL -->
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                    aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasRightLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div>
+                            <img class="thumb" src="" alt="">
+                        </div>
+                        <p class="pt-4 text-body"> </p>
+                        <a href="" class="btn btn-primary watch-video">Watch Video</a>
+                    </div>
+                </div>
 
-            <div class="row video-list">
-
-            </div>
-
-
-
-            <!-- pagination -->
-            <div class="d-flex align-items-center justify-content-between justify-content-sm-start mt-3 py-3">
-                <p id="page-numbers" class="me-md-auto"></p>
-                <div class="btn-group mt-3 mt-sm-0">
+                <!-- PAGINATION -->
+                <div
+                    class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular">
+                    <p id="page-numbers"></p>
+                    <div class="page-buttons btn-group">
+                    </div>
                 </div>
             </div>
 
+            <!-- FOOTER -->
+            <div class="footer"></div>
         </div>
-
-        <div class="footer"></div>
-
-
-    </div>
     </div>
 </body>
 
