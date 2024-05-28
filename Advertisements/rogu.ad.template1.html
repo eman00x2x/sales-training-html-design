@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Ads Template 1</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .logo {
+        height: 75px;
+        margin-bottom: 0.5em;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        padding-top: 2em;
+    }
+
+    .background {
+        background: -webkit-linear-gradient(top, #131C39 50%, white 40%);
+        padding: 0em 5em;
+    }
+
+    .card-holder {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 24px;
+        margin: 1em 0px;
+    }
+
+    .card {
+        background-color: white;
+        padding: 1.5em;
+        box-shadow: 9px 10px 32px 0px rgba(0, 0, 0, 0.54);
+        -webkit-box-shadow: 9px 10px 32px 0px rgba(0, 0, 0, 0.54);
+        -moz-box-shadow: 9px 10px 32px 0px rgba(0, 0, 0, 0.54);
+        /* height: calc(100vh - 6em) */
+        text-align: center;
+    }
+
+    .content {
+        margin: 0 auto;
+        max-width: 1240px;
+    }
+
+    .card-title {
+        margin: 0.2em 0px;
+    }
+
+    .card-info {
+        line-height: 1.5em;
+        font-size: 14px;
+    }
+
+    .images {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .btn {
+        border: 2px solid black;
+        background-color: transparent;
+        color: black;
+        padding: 14px 3em;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 1.5em 0em;
+    }
+
+    .info {
+        border-color: white;
+        color: white;
+    }
+
+    .info:hover {
+        background: white;
+        color: #131C39;
+    }
+
+    .montserrat-regular {
+        font-family: "Montserrat", sans-serif !important;
+        font-optical-sizing: auto;
+        font-weight: 400 !important;
+        font-style: normal !important;
+    }
+
+    .montserrat-bold {
+        font-family: "Montserrat", sans-serif !important;
+        font-optical-sizing: auto !important;
+        font-weight: 700 !important;
+        font-style: normal !important;
+    }
+
+    footer {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 75px;
+        background-color: #eee;
+        margin-top: 3em;
+    }
+
+    /* styles for mobile devices */
+    @media screen and (min-width: 320px) {
+        .background {
+            background: -webkit-linear-gradient(top, #131C39 50%, white 30%);
+            padding: 0em 1em;
+        }
+
+        .card-holder {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+    }
+
+    @media screen and (min-width: 640px) {
+        .card-holder {
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+    }
+
+    @media screen and (min-width: 968px) {
+        .card-holder {
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+        }
+    }
+</style>
+
+<body>
+    <div class="background">
+        <div class="content">
+            <div class="header">
+                <img class="logo" src="../Cdn/images/dark-logo.png">
+                <h1 class="montserrat-bold">Philproperties</h1>
+                <p class="montserrat-regular" style="margin-top: 5px;">Your Full Service Real-Estate Partner</p>
+                <button class="btn info montserrat-bold">Join Now</button>
+            </div>
+            <div class="card-holder">
+                <div class="card">
+                    <img class="images" src="../Cdn/images/enroll.jpg" alt="" srcset="">
+                    <h1 class="montserrat-bold card-title">Marketing</h1>
+                    <p class="card-info montserrat-regular">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                        Dicta
+                        soluta velit, obcaecati expedita
+                        mollitia numquam officia ea molestias placeat quibusdam eaque eos labore, deserunt quaerat
+                        eveniet
+                        error aliquam non eligendi.</p>
+                </div>
+                <div class="card">
+                    <img class="images" src="../Cdn/images/enroll.jpg" alt="" srcset="">
+                    <h1 class="montserrat-bold card-title">Marketing</h1>
+                    <p class="card-info montserrat-regular">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                        Dicta
+                        soluta velit, obcaecati expedita
+                        mollitia numquam officia ea molestias placeat quibusdam eaque eos labore, deserunt quaerat
+                        eveniet
+                        error aliquam non eligendi.</p>
+                </div>
+                <div class="card">
+                    <img class="images" src="../Cdn/images/enroll.jpg" alt="" srcset="">
+                    <h1 class="montserrat-bold card-title">Marketing</h1>
+                    <p class="card-info montserrat-regular">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                        Dicta
+                        soluta velit, obcaecati expedita
+                        mollitia numquam officia ea molestias placeat quibusdam eaque eos labore, deserunt quaerat
+                        eveniet
+                        error aliquam non eligendi.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="montserrat-regular">
+        <p class="">Copyright © 2006 - 2024.
+            <a href="https://manage.philproperties.ph/">Philproperties International Corporation</a>.
+            All rights reserved.
+        </p>
+    </footer>
+</body>
+
+</html>
