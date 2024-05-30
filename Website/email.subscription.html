@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Update Verification</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f5f7fa; font-family: 'Arial', sans-serif; color: #333;">
+  <div style="width: 100%; max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); overflow: hidden;">
+    <div style="background-color: #f1f1f1; padding: 20px; text-align: center; color: #131C39; display: flex; align-items: center; justify-content: center;">
+      <img src="https://i.ibb.co/ZWSzHPp/logo.png" alt="Philproperties International Corporation" style="height: 40px; margin-right: 10px;">
+      <span style="font-size: 15px; font-weight: 400;">PhilProperties International Corporation</span>
+    </div>
+    <div style="background: rgb(59,51,34); background: linear-gradient(90deg, rgba(59,51,34,1) 0%, rgba(13,12,70,1) 50%, rgba(0,0,0,0.8996848739495799) 100%); padding: 40px 20px; text-align: center; color: #ffffff; display: flex; flex-direction: row; align-items: center; justify-content: center;">
+        <img src="https://img.icons8.com/?size=100&id=46217&format=png&color=f1f1f1" alt="Email Icon" style="width: 100px; height: 100px; margin-right: 20px;">
+        <h1 style="margin: 0; font-size: 28px; font-weight: bold;">Subscription</h1>
+    </div>
+    
+    <div style="padding: 20px 30px; text-align: center;">
+      <h2 style="font-size: 22px; color: #131C39; margin-top: 0;">Thank You for Subscribing!</h2>
+      <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;">We are excited to have you on board. Here are the details of your subscription:</p>
+
+      <div style="text-align: left; margin: 20px 0; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0; padding: 10px 0;">
+        <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;"><strong>Transaction ID:</strong> ${transaction_id}</p>
+        <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;"><strong>Account ID:</strong> ${account_id}</p>
+        <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;"><strong>Duration:</strong> ${duration}</p>
+        <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;"><strong>Subcripted plan:</strong> ${premiums_id}</p>
+        <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;"><strong>Price:</strong> $${price}</p>
+        <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;"><strong>Merchant ID:</strong> ${merchant_id}</p>
+        <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;"><strong>Merchant Email:</strong> ${merchant_email}</p>
+        <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;"><strong>Payment Transaction ID:</strong> ${payment_transaction_id}</p>
+        <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;"><strong>Status:</strong> ${status}</p>
+        <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;"><strong>Details:</strong> ${details}</p>
+        <p style="font-size: 14px; line-height: 1.6; margin: 10px 0;"><strong>Date:</strong> ${new Date(created_at * 1000).toLocaleString()}</p>
+      </div>
+
+      <p style="font-size: 14px; line-height: 1.6; margin: 20px 0;">If you have any questions or need assistance, please contact our support team at <a href="mailto:support@company.com" style="text-decoration: none;">support@company.com</a>.</p>
+    </div>
+
+    <div style="background-color: #f5f7fa; padding: 15px 20px; text-align: center; font-size: 12px; color: #666;">
+      <p style="margin: 5px 0;">&copy; 2024 Philproperties International Corporation. All rights reserved.</p>
+      <p style="margin: 5px 0;">Suite 932 City & Land Mega Plaza Bldg. ADB Ave. cor Garnet Road Ortigas Center, Manila, Philippines</p>
+    </div>
+  </div>
+</body>
+</html>
