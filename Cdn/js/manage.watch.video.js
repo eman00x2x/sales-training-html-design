@@ -23,7 +23,17 @@ function displayVideo(){
                 videoDetailsHtml += `
                 
                 <div class="vidTitle pt-3">
+                <div class="d-flex justify-content-between">
                 <h1 class="title montserrat-bold">${video.title}</h1>
+                <div class="rating">
+                <input type="hidden" id="rating-value" value="0">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+              </div>
+                </div>
                 <div >
                     <p class="desc montserrat-light"> ${video.description}</p>
                 </div>
@@ -39,6 +49,8 @@ function displayVideo(){
                     </div>
                 </form>
             </div>
+
+            
                 
                 `;
             });
