@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Ads Template 4</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .montserrat-regular {
+        font-family: "Montserrat", sans-serif !important;
+        font-optical-sizing: auto;
+        font-weight: 400 !important;
+        font-style: normal !important;
+    }
+
+    .montserrat-bold {
+        font-family: "Montserrat", sans-serif !important;
+        font-optical-sizing: auto !important;
+        font-weight: 700 !important;
+        font-style: normal !important;
+    }
+
+    .logo {
+        filter: brightness(0) invert(1);
+    }
+
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color: #131C39;
+        padding: 15px 0px;
+    }
+
+    .btn {
+        margin-top: 1em;
+        border: 2px solid black;
+        background-color: transparent;
+        color: black;
+        padding: 14px 3em;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .info {
+        border-color: #131C39;
+        color: #131C39;
+    }
+
+    .info:hover {
+        background: #131C39;
+        color: white;
+    }
+
+    .brand {
+        margin-left: 0.5em;
+    }
+
+    .detail-container {
+        display: flex;
+        flex-direction: column;
+        margin: 1em 0px;
+    }
+
+    .banner {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .bottom {
+        margin-top: 1em;
+        display: flex;
+    }
+
+    .img-grid {
+        gap: 10px;
+    }
+
+    .imgs {
+        width: 250px;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .p-info {
+        max-width: 550px;
+    }
+
+    .info-container {
+        width: 50%;
+    }
+
+    footer {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 75px;
+        background-color: #eee;
+        margin-top: 3em;
+    }
+
+    @media screen and (min-width: 320px) {
+        #imgs1 {
+            display: none;
+        }
+
+        #imgs2 {    
+            display: grid;
+        }
+
+        .hero-banner {
+            order: 1;
+        }
+
+        .bottom {
+            order: 3;
+            flex-direction: column;
+        }
+
+        .img-grid {
+            order: 2;
+            margin-top: 0.2em;
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+
+        .info-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .p-info {
+            text-align: center;
+            margin: 0 1em;
+        }
+
+        .imgs {
+            width: 100%;
+        }
+    }
+
+    @media screen and (min-width: 576px) {
+        .hero-banner {
+            order: 2;
+        }
+
+        .bottom {
+            order: 1;
+        }
+
+        .img-grid {
+            order: 3;
+        }
+
+        .info-container {
+            margin-bottom: 2em;
+            width: 100%;
+        }
+
+        .p-info {
+            max-width: 750px;
+        }
+    }
+
+    @media screen and (min-width: 968px) {}
+
+    @media screen and (min-width: 1240px) {
+        #imgs1 {
+            display: grid;
+        }
+
+        #imgs2 {
+            display: none;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0px auto;
+        }
+
+        .detail-container {
+            padding: 0.5em 1.5em 0px 1.5em;
+        }
+
+        .p-info {
+            margin: 0em;
+        }
+
+        .hero-banner {
+            order: 1;
+        }
+
+        .img-grid {
+            order: 2;
+            /* display: flex; */
+            width: 50%;
+        }
+
+        .info-container {
+            margin-bottom: 2em;
+        }
+
+        .bottom {
+            display: flex;
+            flex-direction: row;
+            /* width: 100%; */
+        }
+
+        .info-container {
+            width: 50%;
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+            margin-bottom: 0em;
+        }
+
+        .p-info {
+            text-align: start;
+            max-width: 600px;
+        }
+
+        .imgs {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img class="logo" src="../Cdn/images/philproperties-logo.png">
+        </div>
+        <div class="detail-container">
+            <div class="hero-banner">
+                <img src="https://scontent.fmnl4-6.fna.fbcdn.net/v/t39.30808-6/240377119_6707545919271062_7819441314968866511_n.png?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHsythxf1IEjBU2kxQOiEyydOuTsK6muuR065Owrqa65D1jP5PuczN2sSXz01GL4iolM5iHxLBBhp3lzo4uR68m&_nc_ohc=HDVMqGlfeHkQ7kNvgGRLqQI&_nc_ht=scontent.fmnl4-6.fna&oh=00_AYCtL6XVRV2CF9ZxQws4B-0fIPhIScwrffMChPnvqVk_mA&oe=665BA6F4"
+                    alt="" class="banner">
+            </div>
+            <div class="bottom">
+                <div class="info-container">
+                    <p class="montserrat-regular p-info">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Repellendus,
+                        provident? Aspernatur, at.
+                        Aliquam vero veniam iusto incidunt laboriosam optio sit eum, maiores repudiandae quod, hic
+                        pariatur
+                        explicabo rerum dolorum ullam nisi reprehenderit ex corrupti minima, ipsa deserunt accusamus
+                        qui
+                        excepturi soluta? Laboriosam reiciendis quo illo distinctio aspernatur est facilis
+                        voluptates!</p>
+                    <button class="btn info montserrat-bold">Join Now</button>
+                </div>
+                <div id="imgs1" class="img-grid">
+                    <img class="imgs" src="../Cdn/images/enroll.jpg" alt="">
+                    <img class="imgs" src="../Cdn/images/enroll.jpg" alt="">
+                    <img class="imgs" src="../Cdn/images/enroll.jpg" alt="">
+                </div>
+            </div>
+            <div id="imgs2" class="img-grid">
+                <img class="imgs" src="../Cdn/images/enroll.jpg" alt="">
+                <img class="imgs" src="../Cdn/images/enroll.jpg" alt="">
+                <img class="imgs" src="../Cdn/images/enroll.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <footer class="montserrat-regular">
+        <p class="">Copyright © 2006 - 2024.
+            <a href="https://manage.philproperties.ph/">Philproperties International Corporation</a>.
+            All rights reserved.
+        </p>
+    </footer>
+</body>
+
+</html>

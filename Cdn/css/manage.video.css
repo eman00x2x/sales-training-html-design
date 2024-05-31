@@ -38,3 +38,14 @@
     width:300px;
 }
  }
+
+ .d-none {
+     display: none;
+ }
+ .profile-content {
+     max-width: 800px;
+     margin: auto;
+ }
+ .response-profile {
+     word-wrap: break-word;
+ }

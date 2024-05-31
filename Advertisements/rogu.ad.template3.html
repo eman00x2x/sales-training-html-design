@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <title>Ads Template 3</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .montserrat-regular {
+        font-family: "Montserrat", sans-serif !important;
+        font-optical-sizing: auto;
+        font-weight: 400 !important;
+        font-style: normal !important;
+    }
+
+    .montserrat-bold {
+        font-family: "Montserrat", sans-serif !important;
+        font-optical-sizing: auto !important;
+        font-weight: 700 !important;
+        font-style: normal !important;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    .img-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-gap: 10px;
+    }
+
+    .imgs {
+        width: 350px;
+        object-fit: cover;
+        object-position: center;
+        height: 100%;
+    }
+
+    .text-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        padding: 3em;
+    }
+
+    .left-child,
+    .right-child {
+        width: 50%;
+    }
+
+    .right-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: end;
+    }
+
+    .title {
+        word-wrap: break-word;
+        max-width: 50em;
+    }
+
+    .btn {
+        margin-top: 1em;
+        border: 2px solid black;
+        background-color: transparent;
+        color: black;
+        padding: 14px 3em;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .dark-info {
+        border-color: #131C39;
+        background-color: #131C39;
+        color: white;
+    }
+
+    .p-info {
+        text-align: end;
+    }
+
+    footer {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 75px;
+        background-color: #eee;
+    }
+
+    @media screen and (min-width: 320px) {
+        .container {
+            flex-direction: column-reverse;
+        }
+
+        .img-grid {
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-gap: 10px;
+        }
+
+        .imgs {
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+            height: 100%;
+        }
+
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1em;
+        }
+
+        .left-child,
+        .right-child {
+            width: 100%;
+        }
+
+        .title {
+            word-wrap: break-word;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .p-info {
+            margin: 0.5em 0em;
+            text-align: center;
+        }
+
+        .right-child {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            margin-top: 0.5em;
+        }
+    }
+
+    @media screen and (min-width: 640px) {}
+
+    @media screen and (min-width: 968px) {
+        .container {
+            flex-direction: column;
+        }
+
+        .img-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-gap: 10px;
+        }
+
+        .text-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: start;
+            padding: 3em;
+        }
+
+        .left-child,
+        .right-child {
+            width: 50%;
+        }
+
+        .right-child {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: end;
+        }
+
+        .title {
+            word-wrap: break-word;
+            text-align: start;
+            max-width: 50em;
+        }
+
+        .p-info {
+            text-align: end;
+        }
+    }
+
+    @media screen and (min-width: 1240px) {}
+</style>
+
+<body>
+    <div class="container">
+        <div class="img-grid">
+            <img class="imgs"
+                src="https://img.freepik.com/free-photo/medium-shot-woman-working-as-real-estate-agent_23-2151064993.jpg?t=st=1716891868~exp=1716895468~hmac=a04b3c9009cacb0504f892ea6a8ad9f119c3e786b049fd7038303f02c45e771d&w=740"
+                alt="">
+            <img class="imgs"
+                src="https://img.freepik.com/free-photo/front-view-man-working-as-real-estate-agent_23-2151064815.jpg?t=st=1716891928~exp=1716895528~hmac=a43564bd8bbdff5178802686bf3e3e14957687d677b95b53ae829f80f505c866&w=740"
+                alt="">
+            <img class="imgs"
+                src="https://img.freepik.com/premium-photo/close-up-shot-beautiful-couple-hunting-new-house-talking-real-estate-broker_175634-31230.jpg?w=900"
+                alt="">
+            <img class="imgs"
+                src="https://img.freepik.com/free-photo/person-holding-house-keys-toy-model-house-desk_23-2148301737.jpg?t=st=1716892505~exp=1716896105~hmac=b98deaaca5d434ab25c2d51754d395013c5a5e1425660bd0695f865fb2d5dbfd&w=900"
+                alt="">
+        </div>
+        <div class="text-container">
+            <div class="left-child">
+                <h1 class="title montserrat-bold">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae,
+                    porro cum unde rem rerum</h1>
+            </div>
+            <div class="right-child">
+                <p class="montserrat-regular p-info">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Repellendus,
+                    provident? Aspernatur, at.
+                    Aliquam vero veniam iusto incidunt laboriosam optio sit eum, maiores repudiandae quod, hic pariatur
+                    explicabo rerum dolorum ullam nisi reprehenderit ex corrupti minima, ipsa deserunt accusamus qui
+                    excepturi soluta? Laboriosam reiciendis quo illo distinctio aspernatur est facilis voluptates!</p>
+                <button class="btn dark-info montserrat-bold">Join Now</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

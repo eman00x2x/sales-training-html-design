@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premiums Preview</title>
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../Cdn/css/font.css">
+    <!-- BOOSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- TABLER CSS -->
+    <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="../Cdn/css/manage.video.css">
+    <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
+    <!-- JQUERY -->
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <!-- TABLER -->
+    <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
+    <!-- CUSTOM JS -->
+    <script src="../Cdn/js/script.js"></script>
+    <script src="../Cdn/js/manage.preview.premiums.js"></script>
+
+</head>
+
+<body>
+    <div class="page">
+        <!-- SIDEBAR -->
+        <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
+            style="background-color: #1c1c39 !important;" data-bs-theme="dark"></aside>
+        <div class="page-wrapper">
+            <!-- HEADER -->
+            <div class="header"></div>
+            <!-- CONTENT -->
+            <div class="page-body content m-0">
+                <div class="bg-white shadow shadow-sm">
+                    <!-- BANNER -->
+                    <div class="container">
+                        <div class="p-md-5 p-0 row w-100 d-flex align-items-center justify-content-center">
+                            <div class="col-lg-3 d-none d-lg-flex d-flex align-items-center justify-content-center">
+                                <img class="ms-3"
+                                    src="https://scontent.fmnl3-4.fna.fbcdn.net/v/t1.15752-9/445377120_1157762435464724_1737752529042080538_n.png?_nc_cat=102&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGRvN6vuBCCezNBaT1IA7jKJr5tPOW32GEmvm085bfYYTTBWz2WPafOWt2-HCDxi7Nyk5q73fn7ZFo0LjgeaNAs&_nc_ohc=QMBU99NOFsMQ7kNvgE43ABT&_nc_ht=scontent.fmnl3-4.fna&oh=03_Q7cD1QGz6EnlDUEJEpoMVWWWIITxBRjN-hzqxkGu35CZG8zQsw&oe=667BD2C3"
+                                    alt="">
+                            </div>
+                            <div class="col-lg-9 col-sm-12 justify-content-center d-flex align-items-center pb-3">
+                                <div class="ms-3">
+                                    <h1 id="header">
+                                        Premiums
+                                    </h1>
+                                    <p class="description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quod eius a numquam impedit sequi ipsum deserunt sit porro placeat blanditiis!</p>
+                                    <button class="btn btn-outline-primary mt-3 add-to-cart" data-premium-id="" data-premium-name="" data-premium-price="" data-premium-description="" data-premium-category="" data-premium-type="">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid mt-5 d-flex justify-content-center">
+                    <div class="container ps-5">
+                        <div class="row">
+                            <!-- SORT, FILTER AND SEARCH -->
+                            <div class="d-flex justify-content-start align-items-start col-lg-8 pb-3">
+                                <div class="btn-sort dropdown montserrat-regular">
+                                    <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none" data-bs-toggle="dropdown"></i>
+                                    <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block" data-bs-toggle="dropdown">Sort by</a>
+                                    <div class="dropdown-menu">
+                                        <div class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
+                                            <div class="btn-group1 col-7">
+                                                <button type="button" class="btn btn-sm btn-sort-asc btn-outline-primary">
+                                                    <i class="bi bi-sort-alpha-up fs-2"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-sort-desc btn-outline-primary">
+                                                    <i class="bi bi-sort-alpha-down-alt fs-2"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="dropdown-item dropdown-title">Title</button>
+                                        <button type="button" class="dropdown-item dropdown-created-date">Date Created</button>
+                                    </div>
+                                </div>
+                                <input type="text" class="search ms-1 me-2 form-control montserrat-regular" id="search" placeholder="Search by Title" name="search" value="" />
+                            </div>
+                        </div>
+                
+                        <!-- CARDS -->
+                        <div class="data-container justify-content-center">
+                            <div class="row w-100 d-flex flex-wrap justify-content-start align-items-center ebooks">
+                            </div>
+                        </div>
+                
+                        <!-- PAGINATION -->
+                        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular pb-3">
+                            <p id="page-numbers"></p>
+                            <div class="page-buttons btn-group">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FOOTER -->
+                <div class="footer container-fluid"></div>
+            </div>
+        </div>
+</body>
+
+</html>
