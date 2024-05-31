@@ -68,34 +68,27 @@
 
             <div class="container ">
                 <div class="row pt-2">
-                    <div class="d-flex justify-content-start align-items-start  col-lg-8 pb-3">
-                        <div class="btn-sort dropdown montserrat-regular">
-                            <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
-                                data-bs-toggle="dropdown"></i>
-                            <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
-                                data-bs-toggle="dropdown">Sort by</a>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
-                                    <div class="btn-group1 col-7">
-                                        <button id="btnSortAsc" type="button"
-                                            class="btn btn-sm btn-outline-primary btn-sort-direction active"
-                                            onclick="updateSortDirection('asc')">
-                                            <i class="bi bi-sort-alpha-up fs-2"></i>
-                                        </button>
-                                        <button id="btnSortDesc" type="button"
-                                            class="btn btn-sm btn-outline-primary btn-sort-direction"
-                                            onclick="updateSortDirection('desc')">
-                                            <i class="bi bi-sort-alpha-down-alt fs-2"></i>
-                                        </button>
-                                    </div>
+                   <div class="d-flex justify-content-start align-items-start  col-lg-8 pb-3">
+                    <div class="btn-sort dropdown montserrat-regular">
+                        <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
+                            data-bs-toggle="dropdown"></i>
+                        <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
+                            data-bs-toggle="dropdown">Sort by</a>
+                        <div class="dropdown-menu">
+                            <div
+                                class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
+                                <div class="btn-group1 col-7">
+                                    <button type="button" class="btn btn-sm btn-outline-primary btn-sort-asc"><i
+                                        class="bi bi-sort-alpha-up fs-2"></i></button>
+                                <button type="button" class="btn btn-sm btn-outline-primary btn-sort-desc"><i
+                                        class="bi bi-sort-alpha-down-alt fs-2"></i></button>
                                 </div>
-                                <a id="sortByTitle" class="dropdown-item sort-by active" href="#"
-                                    onclick="updateSortBy('name')">Video Title</a>
-                                <a id="sortByDate" class="dropdown-item sort-by" href="#"
-                                    onclick="updateSortBy('category')">Category</a>
-
                             </div>
+                            <a class="dropdown-item dropdown-title" href="#">Title</a>
+                            <a class="dropdown-item dropdown-created-date" href="#">Date Created</a>
+
                         </div>
+                    </div>
                         <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
                             placeholder="Search by Title" name="search" value="" onkeyup="search()" />
 

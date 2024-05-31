@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Appoitnment</title>
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../Cdn/css/font.css">
+    <!-- BOOSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- TABLER CSS-->
+    <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
+    <link rel="stylesheet" href="../Cdn/css/manage.appointment.css" />
+    <!-- JQUERY -->
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <!-- TABLER -->
+    <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
+    <!-- CUSTOM JS -->
+    <script src="../Cdn/js/script.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
+            style="background-color: #1c1c39 !important;" data-bs-theme="dark"></aside>
+        <div class="page-wrapper">
+            <!-- HEADER -->
+            <div class="header"></div>
+            <div class="banner p-4">
+                <div class="container-fluid col lh-4">
+                    <ol class="breadcrumb breadcrumb-arrows" aria-label="breadcrumbs">
+                        <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-light">Dashboard</a>
+                        </li>
+                        <li class="breadcrumb-item active text-light" aria-current="page"><a href="#">Set
+                                Appointment</a></li>
+                    </ol>
+                    <p class="montserrat-bold lh-1 col-12 col-md-6 text-light mt-3" style="font-size: 3em;">Sell Your Property</p>
+                    <p class="montserrat-light col-12 col-md-6 text-light">Get the best value for your property. Our experienced
+                        team will help you through every step of the selling process.</p>
+                </div>
+            </div>
+            <div class="schedule p-4">
+                <div class="container-fluid">
+                    <div class="d-flex flex-column justify-content-center align-items-center flex-md-row">
+                        <div class="col lh-2">
+                            <span class="montserrat-bold fs-2">SCHEDULE AN APPOINTMENT</span>
+                            <p>Please choose your face-to-face interview.</p>
+                        </div>
+                        <div class="col text-end">
+                            <span class="status status-blue">
+                                <span class="status-dot status-dot-animated"></span>
+                                Appointment
+                            </span>
+                        </div>
+                    </div>
+                    <div class=" d-flex calendly-inline-widget w-100 mt-4 mt-md-0"
+                        data-url="https://calendly.com/obsequio-rus/30min" style="min-width:320px;height:700px;"></div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"
+                        async></script>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
