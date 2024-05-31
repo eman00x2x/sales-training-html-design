@@ -184,7 +184,7 @@ function displayPremiums(sortBy, order) {
                       <button class="btn btn-outline-primary w-100 add-to-cart" 
                               data-premium-id="${premium.premium_id}" 
                               data-premium-name="${premium.name}" 
-                              data-premium-price="${premium.price}"
+                              data-premium-price="${premium.cost}"
                               data-premium-description="${premium.description}"
                               data-premium-type="${premium.type}"
                               data-premium-category="${premium.category}">

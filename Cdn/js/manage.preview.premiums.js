@@ -179,7 +179,7 @@ function fetchPremiumDetails() {
 
         $(".add-to-cart").attr("data-premium-id", response[f].premium_id);
         $(".add-to-cart").attr("data-premium-name", response[f].name);
-        $(".add-to-cart").attr("data-premium-price", response[f].price);
+        $(".add-to-cart").attr("data-premium-price", response[f].cost);
         $(".add-to-cart").attr("data-premium-decription", response[f].decription);
         $(".add-to-cart").attr("data-premium-type", response[f].type);
         $(".add-to-cart").attr("data-premium-category", response[f].category);
