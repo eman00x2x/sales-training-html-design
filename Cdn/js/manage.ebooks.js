@@ -192,7 +192,7 @@ function displayEbooks(sortBy, order) {
         slicedData.forEach(ebook => {
             ebookListHtml += `
             <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
-                <div class="card" data-ebook-id="${ebook.ebook_id}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="height:22rem;">
+                <div class="card" data-ebook-id="${ebook.ebook_id}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="height:24rem;">
                         <!-- Photo -->
                         <div class="img-container pt-2" style="height: 200px;">
                             <img src="${ebook.thumbnail_image}" class="card-img" alt="Image"
@@ -209,6 +209,22 @@ function displayEbooks(sortBy, order) {
 
           `;
         });
+            ebookListHtml += `
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
+            <a href="manage.ebook.examination.html" class="text-decoration-none">
+                <div class="card" data-ebook-id="examination_card" style="height:100%;">
+                    <!-- Photo -->
+                    <div class="img-container pt-2" style="height: 200px;">
+                        <img src="/Cdn/images/exam.svg" class="card-img" alt="Examination Image" style="object-fit: contain; width: 100%; height: 100%;">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title text-uppercase montserrat-semibold m-0">Take Examination</h3>
+                        <p class="text-secondary">Ready to take the exam? Click Here</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+            `;
         $('.ebook-list').html(ebookListHtml);
 
         $('.card').click(function () {

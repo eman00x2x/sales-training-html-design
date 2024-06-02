@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Template Customizer</title>
+    <title>CREATE EMAIL</title>
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,14 @@
     <!-- CUSTOM JS -->
     <script src="../Cdn/js/script.js"></script>
     <script src="../Cdn/js/manage.create.email.js"></script>
-
+    <!-- CUSTOM TAG INPUT CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+    <style>
+        .bootstrap-tagsinput {
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -52,15 +59,24 @@
             <div class="page-body content m-0">
                 <div class="container-fluid">
                     <h2 class="pt-3">Create Email</h2>
+                    
+                    <!-- Recipients Input -->
+                    <div class="mb-3">
+                        <label for="recipients">Recipients</label>
+                        <input type="text" id="recipients" class="form-control" data-role="tagsinput" />
+                    </div>
+
                     <textarea id="email-editor">
-                        <p>Customize here</p>
+                        <p>Create your email here...</p>
                     </textarea>
-                    <button class="btn btn-primary mt-3" onclick="saveEmail()">Save Email</button>
+                    <button class="btn btn-primary mt-3 mb-3" id="sendemail">SEND</button>
                 </div>
                 <!-- FOOTER -->
                 <div class="footer container-fluid"></div>
             </div>
         </div>
+    </div>
+
 </body>
 
 </html>

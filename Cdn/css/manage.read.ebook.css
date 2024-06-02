@@ -1,48 +1,66 @@
 :root {
-    --text-color: black;
-    --background-color: white;
+--text-color: black;
+--background-color: white;
 }
 
 .light-scheme {
-    --text-color: black;
-    --background-color: white;
-    --content-background-color: #f8f9fa;
+--text-color: black;
+--background-color: white;
+--content-background-color: #f8f9fa;
 }
 
 .gray-scheme {
-    --text-color: white;
-    --background-color: #3D4048;
+--text-color: white;
+--background-color: #3D4048;
 }
 
 .dark-scheme {
-    --text-color: white;
-    --background-color: #202125;
+--text-color: white;
+--background-color: #202125;
 }
 
-body, .form-select, .browse,{
-    color: var(--text-color);
-    background-color: var(--background-color);
+body, .page-body{
+color: var(--text-color);
+background-color: var(--background-color);
 
 }
-#textToResize {
-    border-color: var(--text-color) !important;
+
+.breadcrumb-arrows {
+    border-radius: 8px;
+    padding: 10px;
 }
+
 .banner {
-    background-color: pink;
+background-color: var(--background-color);
+border-radius: 8px;
+padding: 20px;
+color: var(--text-color);
+}
+.banner select {
+    color:black;
+}
+
+#textToResize {
+border-color: var(--text-color) !important;
+background-color: var(--background-color);
+color: var(--text-color);
+}
+/* .banner {
+background-color: pink;
 }
 .rating {
-    display: inline-block;
-  }
-  
-  .star {
-    font-size: 24px;
-    cursor: pointer;
-  }
-  
-  .star:hover,
-  .star.active {
-    color: gold;
-  }
-  
+display: inline-block;
+}
+
+.star {
+font-size: 24px;
+cursor: pointer;
+}
+
+.star:hover,
+.star.active {
+color: gold;
+} */
+
 
 

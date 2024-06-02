@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+$(document).ready(function() {
     tinymce.init({
         selector: '#email-editor',
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
@@ -6,17 +6,30 @@ document.addEventListener("DOMContentLoaded", function () {
         elementpath: false
     });
 
-    // Function to load templates into the TinyMCE editor
     function loadTemplate(templateUrl) {
-        fetch(templateUrl)
-            .then(response => response.text())
-            .then(data => {
-                tinymce.get('email-editor').setContent(data);
-            })
-            .catch(error => console.error('Error loading template:', error));
+        $.get(templateUrl, function(data) {
+            tinymce.get('email-editor').setContent(data);
+        }).fail(function(error) {
+            console.error('Error loading template:', error);
+        });
     }
 
-    // Event listeners for template selection
-    document.getElementById('template1').addEventListener('click', () => loadTemplate('email.announcement.template.html'));
-    document.getElementById('template2').addEventListener('click', () => loadTemplate('email.marketing.template.html'));
+    $('#template1').on('click', function() {
+        loadTemplate('email.announcement.template.html');
+    });
+
+    $('#template2').on('click', function() {
+        loadTemplate('email.marketing.template.html');
+    });
+
+    $('#recipients').tagsinput({
+        confirmKeys: [13, 44] // Enter and comma
+    });
+
+    $('#saveEmailButton').on('click', function() {
+        const recipients = $('#recipients').tagsinput('items');
+        const emailContent = tinymce.get('email-editor').getContent();
+        console.log('Recipients:', recipients);
+        console.log('Email Content:', emailContent);
+    });
 });
