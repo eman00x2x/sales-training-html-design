@@ -70,7 +70,7 @@
 
               <div class="row">
 
-                <div class="col-lg-4 col-sm-12 border border-dark">
+                <div class="col-lg-12 col-sm-12 border border-dark">
                   <div class="mb-3">
                     <!-- <label for="logo" class="form-label fw-semibold">Organization Logo</label> -->
                     <fieldset class="upload_dropzone text-center p-4 rounded">
@@ -91,40 +91,49 @@
                 </div>
 
 
-                <div class="col-lg-8 col-sm-12">
+                <div class="col-lg-12 col-sm-12 border border-2 rounded mt-2 p-5">
                   <div class="row flex-row flex-wrap ">
 
-                    <div class="col-lg-4 col-sm-12 pt-2">
-                      <label for="surname"> Surname:</label>
+                    <div class="col-lg-12 col-sm-12 pt-2">
+                      <label for="surname" class=" form-label montserrat-semibold"> Surname:</label>
                       <input type="text" name="lastname" id="lastname" value="" class="form-control"
                         autocomplete="off" />
                     </div>
-                    <div class="col-lg-4 col-sm-12 pt-2">
-                      <label for="surname"> First Name</label>
+                    <div class="col-lg-12 col-sm-12 pt-2">
+                      <label for="surname"  class=" form-label montserrat-semibold"> First Name</label>
                       <input type="text" name="name" id="name" value="" class="form-control" autocomplete="off" />
                     </div>
 
-                    <div class="col-lg-4 col-sm-12 pt-2">
-                      <label for="surname"> Middle Name</label>
+                    <div class="col-lg-12 col-sm-12 pt-2">
+                      <label for="surname" class=" form-label montserrat-semibold"> Middle Name</label>
                       <input type="text" name="mname" id="mname" value="" class="form-control" autocomplete="off" />
                     </div>
-                    <div class="col-lg-12 col-sm-12 pt-2">
+                    <!-- <div class="col-lg-12 col-sm-12 pt-2">
                       <label for="contact"> Address</label>
                       <input type="text" name="address" id="address" autocomplete="off" class="form-control" />
-                    </div>
-                    <div class="col-lg-6 col-sm-12 pt-2">
-                      <label for="contact"> Contact No</label>
+                    </div> -->
+                    <!-- <div class="col-lg-6 col-sm-12 pt-2">
+                      <label for="contact" class=" form-label montserrat-semibold"> Contact No</label>
                       <input type="text" name="contact" id="contact" autocomplete="off" class="form-control" />
-                    </div>
+                    </div> -->
                     <!-- <div class="col-lg-8 col-sm-12 pt-2">
                           <label>Edit Profile Image</label>
                           <input type="file" class="form-control" id="logo"/>
                           
                         </div> -->
-                    <div class="col-lg-6 col-sm-12 pt-2">
-                      <label for="type"> Account Type</label>
+                        <div>
+                          <label for="type" class="form-label montserrat-semibold">User Type</label>
+                          <select name="type" id="type" class="form-select montserrat-regular">
+                              <option value="" disabled selected>-- select user type --</option>
+                              <option value="Super Administrator">Super Administrator</option>
+                              <option value="Organization Administrator">Organization Administrator</option>
+                              <option value="User">User</option>
+                          </select>
+                      </div>
+                    <!-- <div class="col-lg-6 col-sm-12 pt-2">
+                      <label for="type" class=" form-label montserrat-semibold"> Account Type</label>
                       <input name="type" id="type" class="form-control" autocomplete="off">
-                    </div>
+                    </div> -->
 
 
 

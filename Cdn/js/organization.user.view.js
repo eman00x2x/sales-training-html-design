@@ -23,26 +23,32 @@ $(document).ready(function () {
     }));
     let f = result.keys(result).find((key) => result[key].account_id == id);
 
+
+    $('.name').text(response[f].name.firstname + " " + response[f].name.lastname);
+    $('#acc-id').text(response[f].account_id);
+    $('#birthday').text(convertDate(response[f].birthday));
+    $('#username').text(response[f].username);
+    $('#email').text(response[f].email);
+    $('.acc-fb').text(response[f].social_profile.facebook);
+    $('.acc-linkedIn').text(response[f].social_profile.linkedIn);
     $(".accLogo").attr("src", response[f].profile_image);
     $(".accName").text(
       `${response[f].name.prefix} ${response[f].name.firstname} ${response[f].name.lastname} ${response[f].name.suffix}`
     );
     $(".accDesc").text(response[f].description);
     console.log(result[f]);
-
-    $(".breadlink").attr("href", `organization.user.list.html?id=${response[f].organization_id}`);
-
-    // console.log(response[f].organization_id)
-
-
-
   });
+
+
   $("#tab-top-1").load("../Admin/admin.accounts.tabs.profile.html");
   $("#tab-top-2").load("../Admin/admin.accounts.tabs.skills.html");
   $("#tab-top-3").load("../Admin/admin.accounts.tabs.pass.html");
   $("#tab-top-4").load("../Admin/admin.accounts.tabs.email.html");
   $("#tab-top-5").load("../Admin/admin.accounts.tabs.ebook.sessions.html");
   $("#tab-top-6").load("../Admin/admin.accounts.tabs.video.sessions.html");
+  $("#tab-top-7").load("organization.tab.view.download.html");
+
+  
 
   // $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
   //     var target = $(e.target).attr("href");
@@ -55,9 +61,9 @@ $(document).ready(function () {
   // });
 });
 
-// $(document).on("click", "#back", function (e) {
-//   window.location.href = "admin.organization.list.html";
-// });
+$(document).on("click", "#back", function (e) {
+  window.location.href = "organization.list.html";
+});
 
 $(document).on("change", "#logo", function (e) {
   var URL = window.URL || window.webkitURL;
@@ -67,3 +73,4 @@ $(document).on("change", "#logo", function (e) {
     $(".orgLogo").attr("src", URL.createObjectURL(file));
   }
 });
+

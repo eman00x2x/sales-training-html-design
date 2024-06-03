@@ -23,9 +23,28 @@
   <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
   <!-- CUSTOM JS -->
   <script src="../Cdn/js/script.js"></script>
+  <script src="/Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+
   <script src="/Cdn/js/manage.watch.video.js"></script>
 </head>
-
+<style>
+  .rating {
+      direction: rtl;
+      display: inline-block;
+  }
+  .star {
+      font-size: 2rem;
+      color: lightgray;
+      cursor: pointer;
+      transition: color 0.2s;
+  }
+  .star:hover,
+  .star.hover,
+  .star.selected,
+  .star.selected ~ .star {
+      color: gold;
+  }
+</style>
 <body>
   <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
     style="background-color: #1c1c39 !important" data-bs-theme="dark"></aside>
@@ -76,15 +95,27 @@
                             </div>
                         </form>
                     </div> -->
+                
             </div>
 
+            <div>
+              <div class="response"></div>
 
+              <form id="form" action="" method="post">
+                <label for="surname"> Comment</label>
+                <textarea type="text" name="comment" id="comment" value="" class="form-control" autocomplete="off"> </textarea>                
+                      <div class="text-end pt-1">
+                          <button type="button" class="btn btn-save btn-success">Comment</button>
+  
+                      </div>
+                  </form>
+              </div>
           </div>
 
           <div class="col-lg-4 border p-3">
 
             <div class="reco">
-
+<!-- 
               <h1 class="montserrat-semibold text-center">Recommended Videos</h1>
 
               <div class="card">
@@ -92,9 +123,10 @@
                   <img src="" alt="">
                 </div>
                 <div class="card-body">
+                  <img src="" alt="">
                   <div class="card-title">Video Title</div>
                 </div>
-              </div>
+              </div> -->
 
             </div>
 
