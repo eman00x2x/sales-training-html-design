@@ -53,23 +53,39 @@ function displayVideo(){
             initRating();
 
             let recommendedVideos = videosData.filter(video => video.video_id != videoId).slice(0, 3);
+            console.log(recommendedVideos)
                 let recommendedHtml = `
                 <h1 class="montserrat-semibold text-center">Recommended Videos</h1>`;
                 
                 recommendedVideos.forEach(video => {
                     recommendedHtml += `
-                    <div class="card">
-                        <div class="thumbnail">
-                            <img src="${video.thumbnail_image}" alt="${video.title}">
-                        </div>
-                        <div class="card-body">
-                            <div class="card-title">${video.title}</div>
-                        </div>
-                    </div>`;
+                    <div class="card" data-ebook-id="${video.video_id}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="height:100%;">
+                    <!-- Photo -->
+                    <div class="img-container pt-2" style="height: 200px;">
+                        <img src="${video.thumbnail_image}" class="card-img" alt="Image"
+                            style="object-fit: contain; width: 100%; height: 100%;">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title text-uppercase montserrat-semibold m-0">${video.title}</h3>
+                       
+                    </div>
+                </div>`;
                 });
 
                 $('.reco').html(recommendedHtml);
-    });
+    
+                $('.card').click(function () {
+                    const videoId = $(this).data('ebook-id');
+                    $.getJSON('../Cdn/js/data/videos.json', function (data) {
+                      let response = data.data;
+                      f = response.keys(response).find(key => response[key].video_id === videoId);
+                      $(".offcanvas-title").text(response[f].title)
+                      $(".thumb").attr("src",response[f].thumbnail_image)
+                      $(".text-body").text(response[f].description)
+                      $(".watch-video").attr("href",`manage.watch.video.html?video_id=`+ videoId)
+                  });
+                });
+            });
 }
 
 function validateInput(input) {
