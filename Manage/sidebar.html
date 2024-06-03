@@ -9,98 +9,111 @@
 
 <body>
 
-    <div class="container-fluid">
-      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
-        aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <h1 class="navbar-brand navbar-brand-autodark">
-        <a href=".">
-          <img src="../Cdn/images/philproperties-logo.png" width="110" height="32" alt="Philproperties"
-            class="navbar-brand-image">
-        </a>
-      </h1>
-      <div class="collapse navbar-collapse" id="sidebar-menu">
-        <ul class="navbar-nav pt-lg-3 mx-lg-2">
-          <!-- DASHBOARD -->
-          <li class="nav-item fw-bold">
-            <a class="nav-link text-white" href="/Manage/dashboard.html">
-              <i class="bi bi-columns-gap nav-link-icon d-lg-inline-block"></i>
-              <span class="nav-link-title">
-                Dashboard
-              </span>
-            </a>
-          </li>
-          <!-- ORGANIZATION -->
-          <li class="nav-item fw-bold">
-            <a class="nav-link text-white" href="/Manage/manage.video.grouo.html">
-              <i class="bi bi-diagram-3 nav-link-icon d-lg-inline-block"></i>
-              <span class="nav-link-title">
+  <div class="container-fluid">
+    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
+      aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <h1 class="navbar-brand navbar-brand-autodark">
+      <a href=".">
+        <img src="../Cdn/images/philproperties-logo.png" width="110" height="32" alt="Philproperties"
+          class="navbar-brand-image">
+      </a>
+    </h1>
+    <div class="collapse navbar-collapse" id="sidebar-menu">
+      <ul class="navbar-nav pt-lg-3 mx-lg-2">
+        <!-- DASHBOARD -->
+        <li class="nav-item fw-bold">
+          <a class="nav-link text-white" href="/Manage/manage.dashboard.html">
+            <i class="bi bi-columns-gap nav-link-icon d-lg-inline-block"></i>
+            <span class="nav-link-title">
+              Dashboard
+            </span>
+          </a>
+        </li>
+        <!-- MY ACCOUNT -->
+        <li class="nav-item fw-bold">
+          <a class="nav-link text-white" href="/Manage/manage.account.view.html?id=1">
+            <i class="bi bi-people nav-link-icon d-lg-inline-block"></i>
+            <span class="nav-link-title">
+              My Account
+            </span>
+          </a>
+        </li>
+        <!-- ORGANIZATION -->
+        <li class="nav-item fw-bold">
+          <a class="nav-link text-white" href="/Manage/manage.video.grouo.html">
+            <i class="bi bi-diagram-3 nav-link-icon d-lg-inline-block"></i>
+            <span class="nav-link-title">
               Video Collection
-              </span>
-            </a>
-          </li>
-          <!-- ACCOUNTS -->
-          <li class="nav-item fw-bold">
-            <a class="nav-link text-white" href="/Manage/manage.ebook.groups.list.html">
-              <i class="bi bi-people nav-link-icon d-lg-inline-block"></i>
-              <span class="nav-link-title">
+            </span>
+          </a>
+        </li>
+        <!-- E-BOOK COLLECTIONS -->
+        <li class="nav-item fw-bold">
+          <a class="nav-link text-white" href="/Manage/manage.ebook.groups.list.html">
+            <i class="bi bi-people nav-link-icon d-lg-inline-block"></i>
+            <span class="nav-link-title">
               E-Book Collection
-              </span>
+            </span>
+          </a>
+        </li>
+        <!-- PROFESSIONS -->
+        <li class="nav-item fw-bold">
+          <a class="nav-link text-white" href="/Manage/manage.professions.html">
+            <i class="bi bi-people nav-link-icon d-lg-inline-block"></i>
+            <span class="nav-link-title">
+              Professions
+            </span>
+          </a>
+        </li>
+        <!-- PROFILE -->
+        <li class="nav-item fw-bold">
+          <div class="dropdown">
+            <a class=" nav-link  text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="bi bi-collection nav-link-icon d-lg-inline-block"></i> My Collection
             </a>
-          </li>
-          <!-- PROFILE -->
-          <li class="nav-item fw-bold">
-            <!-- <a class="nav-link text-white" href="/Manage/manage.account.view.html">
-              <i class="bi bi-collection nav-link-icon d-lg-inline-block"></i>
-              <span class="nav-link-title">
-                My Collection
-              </span> -->
-              <div class="dropdown">
-                <a class=" nav-link  text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <i class="bi bi-collection nav-link-icon d-lg-inline-block"></i>  My Collection
-                </a>
-              
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="./manage.col.video.groups.list.html">
-                    <i class="bi bi-file-earmark-play nav-link-icon d-lg-inline-block"></i>
-                    Videos</a></li>
-                  <li><a class="dropdown-item" href="">
-                    <i class="bi bi-bookshelf nav-link-icon d-lg-inline-block"></i>
-                    E-Books</a></li>
-                </ul>
-              </div>
-            </a>
-          </li>
-          <!-- TRANSACTION -->
-          <li class="nav-item fw-bold">
-            <a class="nav-link text-white" href="/Manage/manage.transaction.list.html">
-              <i class="bi bi-cart nav-link-icon d-lg-inline-block"></i>
-              <span class="nav-link-title">
-                Transactions
-              </span>
-            </a>
-          </li>
-          <li class="nav-item fw-bold">
-            <a class="nav-link text-white" href="#">
-              <i class="bi bi-shop nav-link-icon d-lg-inline-block"></i>
-              <span class="nav-link-title">
-                Marketplace
-              </span>
-            </a>
-          </li>
-          <li class="nav-item fw-bold">
-            <a class="nav-link text-white" href="#">
-              <i class="bi bi-envelope nav-link-icon d-lg-inline-block"></i>
-              <span class="nav-link-title">
-                Email
-              </span>
-            </a>
-          </li>
-     
-        </ul>
-      </div>
+
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="./manage.col.video.groups.list.html">
+                  <i class="bi bi-file-earmark-play nav-link-icon d-lg-inline-block"></i>
+                  Videos</a></li>
+              <li><a class="dropdown-item" href="">
+                  <i class="bi bi-bookshelf nav-link-icon d-lg-inline-block"></i>
+                  E-Books</a></li>
+            </ul>
+          </div>
+          </a>
+        </li>
+        <!-- TRANSACTION -->
+        <li class="nav-item fw-bold">
+          <a class="nav-link text-white" href="/Manage/manage.transaction.list.html?id=1">
+            <i class="bi bi-cart nav-link-icon d-lg-inline-block"></i>
+            <span class="nav-link-title">
+              Transactions
+            </span>
+          </a>
+        </li>
+        <li class="nav-item fw-bold">
+          <a class="nav-link text-white" href="#">
+            <i class="bi bi-shop nav-link-icon d-lg-inline-block"></i>
+            <span class="nav-link-title">
+              Marketplace
+            </span>
+          </a>
+        </li>
+        <li class="nav-item fw-bold">
+          <a class="nav-link text-white" href="#">
+            <i class="bi bi-envelope nav-link-icon d-lg-inline-block"></i>
+            <span class="nav-link-title">
+              Email
+            </span>
+          </a>
+        </li>
+      </ul>
     </div>
+  </div>
 </body>
 
 </html>
