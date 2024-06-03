@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../Cdn/css/font.css">
-    <!-- BOOSTRAP ICONS -->
+    <!-- BOOTSTRAP ICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- TABLER CSS -->
     <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
@@ -27,6 +27,41 @@
     <!-- CUSTOM JS -->
     <script src="../Cdn/js/script.js"></script>
     <script src="../Cdn/js/manage.read.ebook.js"></script>
+    <style>
+
+
+        .read {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .comment-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .comment-author .author-name {
+            font-weight: bold;
+        }
+
+        .comment-content {
+            flex: 1;
+        }
+
+        .rating .star {
+            font-size: 1.5rem;
+            color: gold;
+            cursor: pointer;
+        }
+
+        .rating .star:hover,
+        .rating .star.active {
+            color: orange;
+        }
+    </style>
 </head>
 
 <body>
@@ -52,15 +87,15 @@
                         </li>
                     </ol>
                     <div class="row">
-                        <div class=" col-md-12  col-lg-9 justify-content-center d-flex flex-column ">
-                            <div class="title d-flex align-items-center ">
-                                <h1 id="header" style="padding-top:1rem;"></h1>
+                        <div class="col-md-12 col-lg-9 justify-content-center d-flex flex-column">
+                            <div class="title d-flex align-items-center">
+                                <h1 id="header" ></h1>
                             </div>
                             <div class="ps-1">
                                 <p class="author"></p>
                             </div>
                         </div>
-                        <div class="col-md-12  col-lg-3 d-flex align-items-center justify-content-center pb-3">
+                        <div class="col-md-12 col-lg-3 d-flex align-items-center justify-content-center pb-3">
                             <img class="ebook-image" src="" alt="">
                         </div>
                     </div>
@@ -73,12 +108,10 @@
                     </div>
                     <div class="customize d-flex flex-column flex-sm-row">
                         <div class="me-3">
-                            <select class="form-select mb-2" id="chapterSelect">
-                            </select>
+                            <select class="form-select mb-2" id="chapterSelect"></select>
                         </div>
                         <div class="size me-3 mb-2">
-                            <select class="form-select" id="fontSizeSelector">
-                            </select>
+                            <select class="form-select" id="fontSizeSelector"></select>
                         </div>
                         <div class="mt-2">
                             <div>
@@ -100,83 +133,76 @@
                     </div>
                 </div>
                 <div class="container-fluid">
-
                     <div id="textToResize" class="read d-flex flex-column p-3 mt-3 border overflow-auto"
-                        style=" height: 50rem;">
+                        style="height: 50rem;">
                         <div class="title align-self-center">
-                            <h1 id="heading">Hello</h1>
+                            <h1 id="heading"></h1>
                         </div>
                         <div class="ebook-content align-self-center px-2">
-                            <!-- <p style="text-align: justify;text-indent: 2rem; "></p> -->
+                            <!-- Content goes here -->
                         </div>
-
                     </div>
                     <div class="buttons d-flex justify-content-between">
                         <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                            <a href="#" class="btn btn-primary" id="prevButton" onclick="previousChapter()">
-                                Previous
-                            </a>
+                            <a href="#" class="btn btn-primary" id="prevButton" onclick="previousChapter()">Previous</a>
                         </div>
                         <div class="col-6 col-sm-4 col-md-2 col-xl py-3 d-flex justify-content-end">
-                            <a href="#" class="btn btn-primary align-self-end" id="nextButton" onclick="nextChapter()">
-                                Next
-                            </a>
+                            <a href="#" class="btn btn-primary" id="nextButton" onclick="nextChapter()">Next</a>
                         </div>
                     </div>
+                    
                 </div>
-                <div class="container">
+                <div class="container-fluid">
                     <!-- Comments Section -->
-                    <div class="row">
-                        <div class="col">
+                    <div class="row w-100">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
                             <h2>Comments</h2>
                             <div class="comments">
                                 <!-- Single Comment -->
-                                <div class="comment mb-3 pb-3 border-bottom">
-                                    <div class="comment-author">
-                                        <img src="user-avatar.jpg" alt="User Avatar">
-                                        <span class="author-name">John Doe</span>
+                                <div class="comment mb-3 pb-3 border-bottom d-flex flex-column align-items-start">
+                                    <div class="comment-author d-flex align-items-center">
+                                        <img src="../Cdn/images/profilebini.jpg" alt="User Avatar">
+                                        <span class="author-name ml-2">John Doe</span>
                                     </div>
-                                    <div class="comment-content">
+                                    <div class="comment-content pt-2">
                                         <p>This is a great article! Thanks for sharing.</p>
                                     </div>
                                 </div>
                                 <!-- Single Comment -->
-                                <div class="comment mb-3 pb-3 border-bottom">
-                                    <div class="comment-author">
-                                        <img src="user-avatar.jpg" alt="User Avatar">
-                                        <span class="author-name">Jane Smith</span>
+                                <div class="comment mb-3 pb-3 border-bottom d-flex flex-column align-items-start">
+                                    <div class="comment-author d-flex align-items-center">
+                                        <img src="../Cdn/images/profilebini.jpg" alt="User Avatar">
+                                        <span class="author-name ml-2">Jane Smith</span>
                                     </div>
-                                    <div class="comment-content">
+                                    <div class="comment-content pt-2">
                                         <p>Very informative. I learned a lot.</p>
                                     </div>
                                 </div>
                                 <!-- Add your comments form here -->
                                 <form>
                                     <textarea class="form-control" rows="3" placeholder="Add your comment"></textarea>
-                                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                                    <button type="submit" class="btn btn-primary mt-2 mb-2">Submit</button>
                                 </form>
                             </div>
                         </div>
-                    <!-- Ratings Section -->
-                        
-                    <div class="rating">
-                        <input type="hidden" id="rating-value" value="0">
-                        <span class="star" data-value="1">&#9733;</span>
-                        <span class="star" data-value="2">&#9733;</span>
-                        <span class="star" data-value="3">&#9733;</span>
-                        <span class="star" data-value="4">&#9733;</span>
-                        <span class="star" data-value="5">&#9733;</span>
-                      </div>
-                      
-
-
-                    <div class="footer container-fluid"></div>
+                        <!-- Ratings Section -->
+                        <div class="col-lg-6 col-md-6 col-sm-12 mt-4">
+                            <h2>Ratings</h2>
+                            <div class="rating d-flex">
+                                <input type="hidden" id="rating-value" value="0">
+                                <span class="star" data-value="1">&#9733;</span>
+                                <span class="star" data-value="2">&#9733;</span>
+                                <span class="star" data-value="3">&#9733;</span>
+                                <span class="star" data-value="4">&#9733;</span>
+                                <span class="star" data-value="5">&#9733;</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <div class="footer container-fluid"></div>
             </div>
         </div>
     </div>
-
-
 </body>
 
 </html>

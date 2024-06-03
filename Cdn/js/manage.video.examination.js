@@ -175,74 +175,76 @@ function printFilters() {
 
 function displayVideos(sortBy, order) {
 
-    const limit = 10;
-    const startIndex = (currentPage - 1) * limit;
-    const endIndex = startIndex + limit;
+    // const limit = 10;
+    // const startIndex = (currentPage - 1) * limit;
+    // const endIndex = startIndex + limit;
 
-    const videoId = getParams('id');
-    $.getJSON('../Cdn/js/data/videos.json', function (videoData) {
-        let videoResponse = videoData.data;
-        let videoview = videoResponse.filter(video => video.vid_group_id == videoId);
+    $.getJSON('../Cdn/js/data/exam.json', function (examData) {
+        let videoResponse = examData.data;
+        let videoview = videoResponse.filter(video => video.type == 'VIDEO');
 
-        console.log(videoview)
-        const sortedData = sortData(isSearchQuery(videoview), order, sortBy);
-        const totalItems = sortedData.length;
-        const totalPages = Math.ceil(totalItems / limit);
-        updatePagination(totalPages);
-        const slicedData = sortedData.slice(startIndex, endIndex);
-        let videoListHtml = '';
-        slicedData.forEach(video => {
-            videoListHtml += `
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
-                <div class="card" data-ebook-id="${video.video_id}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="height:100%;">
-                        <!-- Photo -->
-                        <div class="img-container pt-2" style="height: 200px;">
-                            <img src="${video.thumbnail_image}" class="card-img" alt="Image"
-                                style="object-fit: contain; width: 100%; height: 100%;">
+
+
+        let questionnaireHtml = ''; // Initialize the variable to hold the HTML content
+        let questionIndex = 0; // Initialize question index outside the loop
+        let selectedAnswers = {}; // Object to store selected answers
+        
+        videoview.forEach((questionnaireData, index) => {
+            questionnaireData.questionaires.forEach((questionnaire) => {
+                const uniqueGroupName = `question_${questionnaireData.exam_id}_${questionIndex}`; // Unique group name
+                questionnaireHtml += `
+                    <div class="card col-lg-12 p-5 mt-1">
+                        <div class="card-title">
+                            <h1>${questionIndex + 1}.) ${questionnaire.question}</h1>
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title text-uppercase montserrat-semibold m-0">${video.title}</h3>
-                            <p class=" card-text text-secondary">${video.description} </p>
-
-                            <p class="lh-1 card-text text-secondary text-end"> <small>${convertDate(video.created_at)}</small>  </p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="${uniqueGroupName}" value="a" id="${uniqueGroupName}_a">
+                                <label class="form-check-label" for="${uniqueGroupName}_a">${questionnaire.choices.a}</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="${uniqueGroupName}" value="b" id="${uniqueGroupName}_b">
+                                <label class="form-check-label" for="${uniqueGroupName}_b">${questionnaire.choices.b}</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="${uniqueGroupName}" value="c" id="${uniqueGroupName}_c">
+                                <label class="form-check-label" for="${uniqueGroupName}_c">${questionnaire.choices.c}</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="${uniqueGroupName}" value="d" id="${uniqueGroupName}_d">
+                                <label class="form-check-label" for="${uniqueGroupName}_d">${questionnaire.choices.d}</label>
+                            </div>
                         </div>
                     </div>
-
-                </div>
-                
-
-          `;
+                `;
+                questionIndex++; // Increment question index for the next questionnaire
+            });
         });
-
-        videoListHtml += `
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
-        <a href="manage.video.examination.html" class="text-decoration-none">
-            <div class="card" data-ebook-id="examination_card" style="height:100%;">
-                <!-- Photo -->
-                <div class="img-container pt-2" style="height: 200px;">
-                    <img src="/Cdn/images/exam.svg" class="card-img" alt="Examination Image" style="object-fit: contain; width: 100%; height: 100%;">
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title text-uppercase montserrat-semibold m-0">Take Examination</h3>
-                    <p class="text-secondary">Ready to take the exam? Click Here</p>
-                </div>
-            </div>
-        </a>
-    </div>
-        `;
         
-        $('.ebook-list').html(videoListHtml);
+        $('.questionnaire-container').html(questionnaireHtml); // Insert the generated HTML into the designated container
+        
+        function submitAnswers() {
+            // Reset selected answers
+            selectedAnswers = {};
+        
+            $('input[type=radio]').each(function() {
+                if (this.checked) {
+                    const groupName = $(this).attr('name');
+                    const answer = $(this).val();
+                    selectedAnswers[groupName] = answer;
+                }
+            });
+        
+            console.log(selectedAnswers);
+            alert("Form submitted successfully!");
 
-        $('.card').click(function () {
-            const videoId = $(this).data('ebook-id');
-            $.getJSON('../Cdn/js/data/videos.json', function (data) {
-              let response = data.data;
-              f = response.keys(response).find(key => response[key].video_id === videoId);
-              $(".offcanvas-title").text(response[f].title)
-              $(".thumb").attr("src",response[f].thumbnail_image)
-              $(".text-body").text(response[f].description)
-              $(".watch-video").attr("href",`manage.watch.video.html?video_id=`+ videoId)
-          });
-        });
+        }
+        
+        $('#submit-btn').click(submitAnswers);
+        
+        
+        
+        
+
     });
 }

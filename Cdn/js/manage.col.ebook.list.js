@@ -219,7 +219,7 @@ function displayEbooks(sortBy, order) {
                 $(".offcanvas-title").text(response[f].title)
                 $(".thumb").attr("src", response[f].thumbnail_image)
                 $(".text-body").text(response[f].description)
-                $(".read-ebook").attr("href", `manage.col.read.ebook.html?ebook_id=${ebookId}&ebook_group_id=${response[f].ebook_group_id}`);
+                $(".read-ebook").attr("href", `manage.read.ebook.html?ebook_id=${ebookId}&ebook_group_id=${response[f].ebook_group_id}`);
                 console.log('hatdpg');
             });
         });

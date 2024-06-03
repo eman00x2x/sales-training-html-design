@@ -27,15 +27,34 @@ $(document).ready(function () {
 
     updateCartDisplay();
 
-    $('#checkout-form').submit(function (event) {
-        event.preventDefault();
-
+    // Function to show the success modal
+    function showSuccessModal() {
         $('#successModal').modal('show');
-
-        sessionStorage.removeItem('cart');
-        
         setTimeout(function () {
+            $('#successModal').modal('hide');
             window.location.href = 'index.html';
-        }, 1500); 
-    });
+        }, 1500);
+    }
+
+    // PayPal Buttons
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            let totalPrice = $('#total-price').text();
+            totalPrice = parseFloat(totalPrice.replace('₱', ''));
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: totalPrice.toFixed(2) // Can also reference a variable or function
+                    }
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            // Show the modal before capturing the order
+            showSuccessModal();
+            return actions.order.capture().then(function(details) {
+                sessionStorage.removeItem('cart');
+            });
+        }
+    }).render('#paypal-button-container'); // Renders the PayPal button
 });

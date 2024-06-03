@@ -16,6 +16,7 @@ $(document).ready(function () {
             console.log("Input Email:", inputEmail);
             console.log("Account Email:", accountEmail);
             if (inputEmail === accountEmail) {
+                window.open('../website/email.verification.code.template.html', "_blank");
                 $('#tab-top-4').load('manage.account.tabs.code.html');
             } else {
                 alert("Email does not match. Please enter the correct email.");

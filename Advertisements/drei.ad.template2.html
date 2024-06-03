@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Drei Ad Template 1</title>
+  </head>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+      margin: 0;
+      background-color: #131c39;
+    }
+
+    .company {
+      margin-top: 40px;
+      margin-bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .company img {
+      width: 50px;
+    }
+
+    .company h2 {
+      font-size: 32px;
+      margin-top: 20px;
+      margin-bottom: 0px;
+      color: white;
+    }
+
+    .company p {
+      font-size: 18px;
+      margin: 0px;
+      color: white;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      background-color: white;
+    }
+
+    .info-reverse {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      background-color: white;
+    }
+
+    .info .image,
+    .info .deets,
+    .info-reverse .image,
+    .info-reverse .deets {
+      position: relative;
+      width: 50%;
+    }
+
+    .info .image figure img,
+    .info-reverse .image figure img {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .info .deets,
+    .info-reverse .deets {
+      padding: 0 40px;
+      width: 50%;
+    }
+
+    .info button,
+    .info-reverse button {
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+      background-color: transparent;
+      padding: 10px 20px 10px 20px;
+      border: 2px solid;
+      border-color: #131c39;
+      color: #131c39;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 10px;
+      font-weight: 500;
+    }
+
+    .videosection {
+      margin-bottom: 50px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    .videosection .video {
+      height: 600px;
+      width: 80%;
+      border-radius: 10px;
+    }
+
+    .images {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .images img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .button {
+      position: absolute;
+      top: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 0 30px 0;
+      width: 100%;
+    }
+
+    .button .background {
+      position: absolute;
+      z-index: 0;
+      height: 100%;
+      width: 100%;
+      background-color: #131c39;
+      opacity: 0.8;
+    }
+
+    .button p,
+    .button h2 {
+      position: relative;
+      color: white;
+      z-index: 1;
+      text-align: center;
+      margin: 0 0 10px 0;
+      width: 50%;
+    }
+
+    .button .join {
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+      background-color: transparent;
+      padding: 10px 20px 10px 20px;
+      border: 2px solid;
+      border-color: white;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 10px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 75px;
+      background-color: #eee;
+    }
+
+    @media only screen and (max-width: 967px) {
+
+      .button p,
+      .button h2 {
+        margin: 0 0 10px 0;
+        width: 90%;
+      }
+
+      .videosection .video {
+        height: 300px;
+        width: 100%;
+      }
+
+      .info .image,
+      .info .deets,
+      .info-reverse .image,
+      .info-reverse .deets {
+        position: relative;
+        width: 90%;
+      }
+
+      .info .deets,
+      .info-reverse .deets {
+        padding: 0 40px;
+        width: 80%;
+        margin-bottom: 40px;
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .info-reverse {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      .button {
+        position: absolute;
+        top: 30%;
+      }
+    }
+  </style>
+
+  <body>
+    <div class="company">
+      <img src="../Cdn/images/dark-logo.png" alt="" />
+      <h2>Philproperties</h2>
+      <p>Your Full Service Real-Estate Partner</p>
+    </div>
+
+    <div class="videosection">
+      <iframe
+        class="video"
+        src="https://www.youtube.com/embed/4J4leq-vTeo?si=2Osl2pZ8KWj68K0O&amp;controls=0&amp;autoplay=1"
+        allow="autoplay"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <div class="info" id="info">
+      <div class="image">
+        <figure>
+          <img
+            src="https://img.freepik.com/free-photo/analog-landscape-city-with-buildings_23-2149661456.jpg?t=st=1716869240~exp=1716872840~hmac=b4a9baa7138c4b656bf0517a56df1b3be67a65c07851d44326aa1428e17878f1&w=900"
+            alt=""
+          />
+        </figure>
+      </div>
+      <div class="deets">
+        <h2>Lorem ipsum dolor sit amet</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta soluta
+          velit, obcaecati expedita mollitia numquam officia ea molestias
+          placeat quibusdam eaque eos labore, deserunt quaerat eveniet error
+          aliquam non eligendi.
+        </p>
+        <button type="button">I want to Earn</button>
+      </div>
+    </div>
+
+    <div class="info-reverse">
+      <div class="deets">
+        <h2>Lorem ipsum dolor sit amet</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta soluta
+          velit, obcaecati expedita mollitia numquam officia ea molestias
+          placeat quibusdam eaque eos labore, deserunt quaerat eveniet error
+          aliquam non eligendi.
+        </p>
+        <button type="button">I want to Buy</button>
+      </div>
+      <div class="image">
+        <figure>
+          <img
+            src="https://img.freepik.com/free-photo/analog-landscape-city-with-buildings_23-2149661456.jpg?t=st=1716869240~exp=1716872840~hmac=b4a9baa7138c4b656bf0517a56df1b3be67a65c07851d44326aa1428e17878f1&w=900"
+            alt=""
+          />
+        </figure>
+      </div>
+    </div>
+
+    <div class="info">
+      <div class="image">
+        <figure>
+          <img
+            src="https://img.freepik.com/free-photo/analog-landscape-city-with-buildings_23-2149661456.jpg?t=st=1716869240~exp=1716872840~hmac=b4a9baa7138c4b656bf0517a56df1b3be67a65c07851d44326aa1428e17878f1&w=900"
+            alt=""
+          />
+        </figure>
+      </div>
+      <div class="deets">
+        <h2>Lorem ipsum dolor sit amet</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta soluta
+          velit, obcaecati expedita mollitia numquam officia ea molestias
+          placeat quibusdam eaque eos labore, deserunt quaerat eveniet error
+          aliquam non eligendi.
+        </p>
+        <button type="button">I want to Invest</button>
+      </div>
+    </div>
+
+    <footer class="montserrat-regular">
+      <p class="">
+        Copyright © 2006 - 2024.
+        <a href="https://manage.philproperties.ph/"
+          >Philproperties International Corporation</a
+        >. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>
