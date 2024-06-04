@@ -27,11 +27,11 @@ $(document).ready(function () {
             </div>
           </span>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <a class="ajax dropdown-item" href="admin.profile.view.html?id=1">
+            <a class="ajax dropdown-item" href="../Manage/manage.account.view.html?id=1">
               <i class="dropdown-icon ti ti-user me-2"></i> Profile
             </a>
             <div class="dropdown-divider m-0 p-0"></div>
-            <a class="dropdown-item doLogOut" href="?option=doLogOut">
+            <a class="dropdown-item doLogOut" href="../Website/website.login.html">
               <i class="dropdown-icon ti ti-logout-2 me-2"></i> Sign out
             </a>
           </div>`);
