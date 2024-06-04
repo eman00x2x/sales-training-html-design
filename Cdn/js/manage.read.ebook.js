@@ -68,6 +68,67 @@ $(document).ready(function () {
         $('#heading').css('font-size', headerSize + 'px');
     });
 
+    $('#submitComment').on('click', function () {
+        const comment = $('#comment').val().trim();
+        
+        if (comment) {
+            const templateName = 'Bini Kaloy'; // Replace this with your template name
+            const time = new Date().toLocaleTimeString();
+            const profilePicUrl = '../Cdn/images/profilebini.jpg'; // Replace this with the URL of your profile picture
+            const commentCard = $(`
+                <div class="card mt-2">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <img src="${profilePicUrl}" class="rounded-circle me-3" style="width: 50px; height: 50px;" alt="Profile Picture">
+                            <div class="row">
+                                <p class="card-text col-12 mb-0">${comment}</p>
+                                <small class="text-muted">${templateName} - ${time}</small>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary edit-button"><i class="bi bi-pencil"></i></button>
+                            <button class="btn btn-danger delete-button"><i class="bi bi-trash3"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `);
+    
+            commentCard.find('.delete-button').on('click', () => commentCard.remove());
+    
+            function handleEdit(button) {
+                const cardText = commentCard.find('.card-text');
+                const editInput = $(`<textarea type="text" class="form-control col-12" value="${cardText.text()}">`);
+                cardText.replaceWith(editInput);
+                button.toggleClass('btn-primary btn-success').html('<i class="bi bi-check"></i>');
+    
+                button.off('click').on('click', function () {
+                    const updatedComment = editInput.val().trim();
+                    if (updatedComment) {
+                        editInput.replaceWith(`<p class="card-text mb-0">${updatedComment}</p>`);
+                        button.toggleClass('btn-success btn-primary').html('<i class="bi bi-pencil"></i>');
+    
+                        // Rebind the edit event
+                        button.off('click').on('click', function () {
+                            handleEdit($(this));
+                        });
+                    } else {
+                        alert('Comment cannot be empty.');
+                    }
+                });
+            }
+    
+            commentCard.find('.edit-button').on('click', function () {
+                handleEdit($(this));
+            });
+    
+            $('#commentDisplay').append(commentCard);
+            $('#comment').val('');
+        } else {
+            alert('Please enter a comment.');
+        }
+    });
+    
+
 });
 
 // Function to display chapter content and update progress bar
