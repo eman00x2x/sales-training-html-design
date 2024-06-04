@@ -1,4 +1,18 @@
+let user;
 let data;
+
+const setUser = (username, password) => {
+  user = {
+    username: username,
+    password: password,
+    type: username === 'admin' ? 'admin' : username === 'organization' ? 'organization' : 'user'
+  };
+
+}
+
+const getUser = () => {
+  return user;
+}
 
 const getModel = (url) => {
   $.getJSON(url, function (response) {
@@ -49,9 +63,9 @@ function sortTable(sortBy, sortOrder) {
       var dateStrB = $(b).find('[data-sort-key="date"]').text();
       var dateA = new Date(dateStrA);
       var dateB = new Date(dateStrB);
-      return sortOrder === 'asc' ? dateA - dateB : dateB - dateA; 
+      return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
     }
-    return sortOrder === 'asc' ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA); 
+    return sortOrder === 'asc' ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
   });
   $.each(rows, function (index, row) {
     $('.table').append(row);
