@@ -33,15 +33,39 @@
             <div class="logo text-center pb-5">
                 <img src="/Cdn/images/philproperties-logo.png" alt="">
             </div>
-            <div class="title text-center">
-                <h1 style="font-size: 35px; font-weight: 300px;"> Registration Form</h1>
-                <p>Complete the form below</p>
+            <div class="text-center">
+                <h1 class="mb-0" style="font-size: 35px; font-weight: 700 !important;">Registration Form</h1>
+                <p class="mt-1">Fill-out the following required information.</p>
             </div>
-
-            <form action="" class="px-4">
-
+            <form action="" class="px-4 divider">
                 <div class="row">
-
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="mb-3">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-control" name="firstname" id="firstname" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="mb-3">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-control" name="lastname" id="uselastname" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="mb-3">
+                            <label class="form-label">Address</label>
+                            <input type="text" class="form-control" name="address" id="address" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <div class="mb-3">
+                            <label class="form-label">Contact Number</label>
+                            <input type="text" class="form-control" name="contacts" id="contact" />
+                        </div>
+                    </div>
+                </div>
+                <hr class="mt-0 mb-3">
+                <div class="row">
                     <div class="col-lg-6 col-sm-12">
                         <div class="mb-3">
                             <label class="form-label">Email Address</label>
@@ -51,7 +75,7 @@
                     <div class="col-lg-6 col-sm-12">
                         <div class="mb-3">
                             <label class="form-label">User Name</label>
-                            <input type="text" class="form-control" name="email" id="username" />
+                            <input type="text" class="form-control" name="username" id="username" />
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-12">
@@ -63,22 +87,21 @@
                     <div class="col-lg-6 col-sm-12">
                         <div class="mb-3">
                             <label class="form-label">Re-type Password</label>
-                            <input type="password" class="form-control" name="password" id="password" />
+                            <input type="password" class="form-control" name="retype_password" id="password" />
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-12 text-center">
                         <input type="checkbox">
                         <label for="">I agree to the terms and conditions of Philproperties contract and the
                             website.</label>
                     </div>
-
-                    <div class="button text-center pt-4 pb-2">
-                        <button type="button" class="btn rounded-pill btn-signup"
-                            style="background-color: #E8A115;">Sign Up</button>
+                    <div class="button text-center mt-3 mb-3">
+                        <button type="button" class="btn rounded col-lg-4 btn-signup" style="background-color: #E8A115;">Sign Up</button>
                     </div>
-
                     <div class="text-center">
-                        <p>Already have an account? <span><a href="website.login.html">Log In Here</a></span></p>
+                        <p>Already have an account? <span><a href="website.login.html">Login here</a></span></p>
                     </div>
                 </div>
             </form>
