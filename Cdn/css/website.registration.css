@@ -1,27 +1,51 @@
-.regBody
-{
-    background: url(/Cdn/images/reg-bg1.png)top right/cover no-repeat fixed;
+.regBody {
+    background: url(/Cdn/images/reg-bg1.png) top right/cover no-repeat fixed;
 }
 
-
-.regForm{
+.regForm {
     width: 850px;
     height: 100%;
 }
 
+.back {
+    position: relative;
+    background: #131C39;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    color: white;
+}
+
+.back::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(19,28,57,1) 0%, rgba(0,0,0,1) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1;
+}
+
+.back:hover::before {
+    opacity: 1;
+}
+
+.back span {
+    position: relative;
+    z-index: 2;
+}
 
 :root {
-    --tblr-font-sans-serif:  "Montserrat", sans-serif !important;
-  }
+    --tblr-font-sans-serif: "Montserrat", sans-serif !important;
+}
 
-  @media (max-width: 576px) { 
-
-    .regForm
-    {
-width: fit-content;
-height: fit-content;
-border-radius:20px;
-margin: 10px;
-
+@media (max-width: 576px) {
+    .regForm {
+        width: fit-content;
+        height: fit-content;
+        border-radius: 20px;
+        margin: 10px;
     }
-   }
+}
