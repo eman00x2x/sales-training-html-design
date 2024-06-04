@@ -26,9 +26,33 @@
     <!-- CUSTOM JS -->
     <script src="../Cdn/js/script.js"></script>
     <script src="../Cdn/js/manage.premiums.list.js"></script>
+    <script src="../Cdn/js/manage.dashboard.js"></script>
+
+
+
 </head>
 
 <body>
+        <!-- MODAL -->
+
+        <div class="modal" id="exampleModal" tabindex="-1" data-bs-show="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Complete Profile</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Please complete your profile information.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn me-auto" data-bs-dismiss="modal">Later</button>
+                  <button type="button"  class="complete btn btn-primary" data-bs-dismiss="modal">Proceed</button>                
+                </div>
+              </div>
+            </div>
+          </div>
+
     <div class="page">
         <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
             style="background-color: #1c1c39 !important;" data-bs-theme="dark"></aside>
@@ -52,7 +76,7 @@
                             <div class="card-overlay"></div>
                             <div class="card-content">
                                 <h2>Read Ebooks</h2>
-                                
+
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas sapiente aperiam
                                     iste repellat, sequi corporis excepturi a totam quod repudiandae provident, iure et
                                     quibusdam iusto enim nulla alias expedita sit.</p>
@@ -64,7 +88,7 @@
                             <div class="card-overlay"></div>
                             <div class="card-content">
                                 <h2>Watch training videos</h2>
-                           
+
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas sapiente aperiam
                                     iste repellat, sequi corporis excepturi a totam quod repudiandae provident, iure et
                                     quibusdam iusto enim nulla alias expedita sit.</p>
@@ -76,7 +100,7 @@
                             <div class="card-overlay"></div>
                             <div class="card-content">
                                 <h2>View your collections</h2>
-                               
+
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas sapiente aperiam
                                     iste repellat, sequi corporis excepturi a totam quod repudiandae provident, iure et
                                     quibusdam iusto enim nulla alias expedita sit.</p>
@@ -88,7 +112,7 @@
                             <div class="card-overlay"></div>
                             <div class="card-content">
                                 <h2>Professions</h2>
-                                
+
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas sapiente aperiam
                                     iste repellat, sequi corporis excepturi a totam quod repudiandae provident, iure et
                                     quibusdam iusto enim nulla alias expedita sit.</p>
@@ -224,20 +248,21 @@
             padding-right: 3rem;
             padding-bottom: 2rem;
         }
+
         .hero-banner {
             background-size: cover;
             padding: 95px 20px;
             position: relative;
 
         }
-       
+
     }
 
     @media (min-width: 992px) and (max-width: 1129px) {
         .card-container {
             grid-template-columns: repeat(4, 1fr);
             padding-bottom: 30px;
-          
+
         }
 
         .hero-banner {
@@ -246,13 +271,13 @@
             position: relative;
 
         }
-       
+
     }
 
     @media (min-width: 1130px) {
         .card-container {
             grid-template-columns: repeat(4, 1fr);
-           
+
         }
 
         .card {

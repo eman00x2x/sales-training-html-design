@@ -16,7 +16,7 @@ $(document).ready(function () {
                     <td>${item.type}</td>
                     <td>${item.category}</td>
                     <td>₱${parseFloat(item.price).toFixed(2)}</td>
-                    <td><button class="btn btn-danger btn-sm remove-from-cart" data-premium-id="${item.id}">Remove</button></td>
+                    <td><button class="btn btn-danger btn-sm remove-from-cart p-1" data-premium-id="${item.id}">Remove</button></td>
                 </tr>
             `;
             cartTableBody.append(itemRow);

@@ -12,6 +12,7 @@ $(document).ready(function () {
         let chapters = chaptersData.data;
         const filteredChapters = chapters.filter(chapter => chapter.ebook_id == ebookId);
         const chapterSelect = $('#chapterSelect');
+        initRating();
 
         chapterSelect.empty();
 
@@ -211,4 +212,38 @@ function nextChapter() {
 
         window.location.href = `manage.ebooks.html?id=${ebookGroupId}`;
     }
+}
+
+function initRating() {
+    const stars = document.querySelectorAll('.star');
+    const ratingValue = document.getElementById('rating-value');
+
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            const value = star.getAttribute('data-value');
+            ratingValue.value = value;
+            stars.forEach(s => {
+                s.classList.remove('selected');
+            });
+            for (let i = 0; i < value; i++) {
+                stars[i].classList.add('selected');
+            }
+        });
+
+        star.addEventListener('mouseover', () => {
+            const value = star.getAttribute('data-value');
+            stars.forEach(s => {
+                s.classList.remove('hover');
+            });
+            for (let i = value - 1; i >= 0; i--) {
+                stars[i].classList.add('hover');
+            }
+        });
+
+        star.addEventListener('mouseout', () => {
+            stars.forEach(s => {
+                s.classList.remove('hover');
+            });
+        });
+    });
 }

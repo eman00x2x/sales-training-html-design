@@ -3,7 +3,9 @@ $(document).ready(function() {
         selector: '#email-editor',
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
-        elementpath: false
+        elementpath: false,
+        selector: '#email-editor',
+        height: '50rem'
     });
 
     function loadTemplate(templateUrl) {

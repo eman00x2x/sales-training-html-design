@@ -173,7 +173,8 @@ function displayPremiums(sortBy, order) {
       premiumListHtml += `
       <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
       <div class="card p-2 bg-white shadow-sm" style="min-height:17rem;">
-          <div class="card-body d-flex flex-column justify-content-between">
+          <div class="card-body d-flex flex-column justify-content-between" data-premium-id="${premium.premium_id}">
+          
               <div>
                   <h1 class="card-title pb-2" style="font-size:1.5rem;">${premium.name}</h1>
                   <p class="">${premium.description}</p>
@@ -188,11 +189,11 @@ function displayPremiums(sortBy, order) {
                               data-premium-description="${premium.description}"
                               data-premium-type="${premium.type}"
                               data-premium-category="${premium.category}">
-                          Add to Cart
+                        Add to Cart
                       </button>
                   </div>
                   <div class="col-6">
-                      <button class="btn btn-outline-secondary w-100 view-details" data-premium-id="${premium.premium_id}">Preview</button>
+                      <button class="btn btn-outline-secondary w-100 view-details" data-premium-id="${premium.premium_id}"> <i class="bi bi-cart-fill"></i> Preview</button>
                   </div>
               </div>
           </div>
@@ -200,7 +201,7 @@ function displayPremiums(sortBy, order) {
   </div>`;
     });
     $('.ebooks').html(premiumListHtml);
-    checkCartState(); // Call this function after rendering the buttons
+    checkCartState(); 
   });
 }
 
@@ -246,18 +247,18 @@ $(document).on('click', '.add-to-cart', function () {
   const premiumType = button.data('premium-type');
   const premiumCategory = button.data('premium-category');
 
-  // Retrieve current cart from session storage or initialize a new array if it doesn't exist
   let cart = sessionStorage.getItem('cart');
   cart = cart ? JSON.parse(cart) : [];
 
-  // Check if the item already exists in the cart
+
   const existingItemIndex = cart.findIndex(item => item.id === premiumId);
   if (existingItemIndex !== -1) {
-      // If the item exists, remove it from the cart
+
       cart.splice(existingItemIndex, 1);
-      button.removeClass('btn-success').addClass('btn-outline-primary').text('Add to Cart');
+      button.removeClass('btn-success').addClass('btn-outline-primary').html('<i class="bi bi-cart-fill" style="margin-right: 5px;"></i> Add to Cart'); 
+
   } else {
-      // Add the new item to the cart
+
       cart.push({
           id: premiumId,
           name: premiumName,
@@ -266,17 +267,14 @@ $(document).on('click', '.add-to-cart', function () {
           type: premiumType,
           category: premiumCategory,
       });
-      button.removeClass('btn-outline-primary').addClass('btn-success').text('Added to Cart');
+      button.removeClass('btn-outline-primary').addClass('btn-success').html('<i class="bi bi-cart-fill"></i> &nbsp;  Added');
+
   }
 
-  // Save the updated cart back to session storage
   sessionStorage.setItem('cart', JSON.stringify(cart));
 
-  // Optional: Display a message or update the cart UI
-  // alert(`${premiumName} has been ${existingItemIndex !== -1 ? 'removed from' : 'added to'} your cart.`);
 });
 
-// Function to check the state of buttons on page load
 function checkCartState() {
   let cart = sessionStorage.getItem('cart');
   cart = cart ? JSON.parse(cart) : [];
@@ -287,16 +285,18 @@ function checkCartState() {
       const existsInCart = cart.some(item => item.id === premiumId);
       
       if (existsInCart) {
-          button.removeClass('btn-outline-primary').addClass('btn-success').text('Added to Cart');
+        button.removeClass('btn-outline-primary').addClass('btn-success').html('<i class="bi bi-cart-fill"></i> &nbsp;  Added');
       } else {
-          button.removeClass('btn-success').addClass('btn-outline-primary').text('Add to Cart');
-      }
+        button.removeClass('btn-success').addClass('btn-outline-primary').html('<i class="bi bi-cart-fill" style="margin-right: 5px;"></i> Add to Cart');      }
   });
 }
 
 //PREVIEW GROUPS
-$(document).on('click', '.view-details', function () {
-  const premiumId = $(this).data('premium-id');
-  window.location.href = `manage.preview.premiums.html?id=${premiumId}`;
-});
+document.addEventListener('click', function(event) {
+    const clickedElement = event.target;
+    if (clickedElement.closest('.card-body') && !clickedElement.classList.contains('add-to-cart')) {
+      const premiumId = clickedElement.closest('.card-body').dataset.premiumId;
+      window.location.href = `manage.preview.premiums.html?id=${premiumId}`;
+    }
+  });
 

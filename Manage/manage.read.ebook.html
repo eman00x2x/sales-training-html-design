@@ -28,8 +28,6 @@
     <script src="../Cdn/js/script.js"></script>
     <script src="../Cdn/js/manage.read.ebook.js"></script>
     <style>
-
-
         .read {
             background-color: #fff;
             border-radius: 8px;
@@ -50,17 +48,22 @@
         .comment-content {
             flex: 1;
         }
-
-        .rating .star {
-            font-size: 1.5rem;
-            color: gold;
+        .rating {
+            direction: ltr;
+            display: inline-block;
+        }
+        .star {
+            font-size: 2em;
             cursor: pointer;
+            color: gray;
         }
 
-        .rating .star:hover,
-        .rating .star.active {
-            color: orange;
+        .star.hover,
+        .star.selected {
+            color: gold;
         }
+        </style>
+
     </style>
 </head>
 
@@ -93,6 +96,14 @@
                             </div>
                             <div class="ps-1">
                                 <p class="author"></p>
+                                <div class="rating">
+                                    <input type="hidden" id="rating-value" value="0">
+                                    <span class="star" data-value="1">&#9733;</span>
+                                    <span class="star" data-value="2">&#9733;</span>
+                                    <span class="star" data-value="3">&#9733;</span>
+                                    <span class="star" data-value="4">&#9733;</span>
+                                    <span class="star" data-value="5">&#9733;</span>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-3 d-flex align-items-center justify-content-center pb-3">

@@ -46,3 +46,7 @@
  .response-profile {
      word-wrap: break-word;
  }
+
+ #sendemail{
+    width: 10em;
+ }
