@@ -3,7 +3,7 @@ $(document).ready(function () {
 })
 
 $(document).on("click", "#back", function (e) {
-  window.location.href = "organization.iser.list.html"
+  window.location.href = "organization.user.list.html?id=1"
 });
 
 $(document).on("click", ".btn-remove", function (e) {
