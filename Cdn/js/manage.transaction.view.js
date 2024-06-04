@@ -51,7 +51,7 @@ $(document).ready(function () {
             console.log(obj)
             const doc = new jspdf.jsPDF('p', 'mm', [210, 210]);
             let img = new Image();
-            img.src = 'https://i.ibb.co/ZWSzHPp/logo.png';
+            img.src = '../Cdn/images/logo.png';
 
             img.onload = function () {
                 doc.addImage(img, 'JPEG', 20, 15, 15, 15);
