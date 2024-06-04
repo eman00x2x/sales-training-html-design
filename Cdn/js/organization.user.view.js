@@ -23,7 +23,7 @@ $(document).ready(function () {
     }));
     let f = result.keys(result).find((key) => result[key].account_id == id);
 
-
+    $('#bread-link').attr('href', `organization.user.list.html?id=${response[f].organization_id}`);
     $('.name').text(response[f].name.firstname + " " + response[f].name.lastname);
     $('#acc-id').text(response[f].account_id);
     $('#birthday').text(convertDate(response[f].birthday));

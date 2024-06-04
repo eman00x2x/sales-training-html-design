@@ -29,21 +29,19 @@
 </head>
 <style>
   .rating {
-      direction: rtl;
+      direction: ltr;
       display: inline-block;
   }
-  .star {
-      font-size: 2rem;
-      color: lightgray;
-      cursor: pointer;
-      transition: color 0.2s;
-  }
-  .star:hover,
-  .star.hover,
-  .star.selected,
-  .star.selected ~ .star {
-      color: gold;
-  }
+ .star {
+    font-size: 2em;
+    cursor: pointer;
+    color: gray;
+}
+
+.star.hover,
+.star.selected {
+    color: gold;
+}
 </style>
 <body>
   <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
@@ -157,40 +155,7 @@
   </div>
 
   <script>
-$('#submitComment').on('click', function () {
-    const comment = $('#comment').val().trim();
-    
-    if (comment !== '') {
-        const templateName = 'Bini Kaloy'; // Replace this with your template name
-        const time = new Date().toLocaleTimeString();
-        const profilePicUrl = '../Cdn/images/profilebini.jpg'; // Replace this with the URL of your profile picture
-        const commentCard = $(`
-            <div class="card mt-2">
-                <div class="card-body d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center">
-                        <img src="${profilePicUrl}" class="rounded-circle me-3" style="width: 50px; height: 50px;" alt="Profile Picture">
-                        <div>
-                            <p class="card-text mb-0">${comment}</p>
-                            <small class="text-muted">${templateName} - ${time}</small>
-                        </div>
-                    </div>
-                    <div>
-                        <button class="btn btn-danger">Delete</button>
-                    </div>
-                </div>
-            </div>
-        `);
 
-        commentCard.find('button').on('click', function () {
-            commentCard.remove();
-        });
-
-        $('#commentDisplay').append(commentCard);
-        $('#comment').val('');
-    } else {
-        alert('Please enter a comment.');
-    }
-});
 
 
 

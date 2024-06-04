@@ -22,29 +22,46 @@
     <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
     <!-- CUSTOM JS -->
     <script src="../Cdn/js/script.js"></script>
-    <script src="/Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
+    <script src="/Cdn/js/organization.tab.view.download.js"></script>
+    <!-- <script src="/Cdn/vendor/validatejs-0.13.1/validate.min.js"></script> -->
 </head>
 
 <body>
     <div class="card-body">
         <!-- SORT, FILTER AND SEARCH -->
-        <div class="d-flex justify-content-start align-items-center col col-12 col-sm-7 col-lg-6 mb-3 mt-2 gap-1">
+        <div class="d-flex justify-content-start align-items-center col col-12 col-sm-7 gap-1">
             <div class="btn-sort dropdown montserrat-regular">
-                <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none" data-bs-toggle="dropdown"></i>
-                <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block" data-bs-toggle="dropdown">Sort by</a>
+                <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
+                    data-bs-toggle="dropdown"></i>
+                <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
+                    data-bs-toggle="dropdown">Sort
+                    by</a>
                 <div class="dropdown-menu">
-                    <div class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
+                    <div
+                        class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
                         <div class="btn-group col-7">
-                            <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-sort-alpha-down fs-2"></i></button>
-                            <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-sort-alpha-down-alt fs-2"></i></button>
+                            <button type="button" class="btn btn-sm btn-outline-primary btn-sort-asc"><i
+                                    class="bi bi-sort-alpha-up fs-2"></i></button>
+                            <button type="button" class="btn btn-sm btn-outline-primary btn-sort-desc"><i
+                                    class="bi bi-sort-alpha-down-alt fs-2"></i></button>
                         </div>
                     </div>
-                    <a class="dropdown-item" href="#">File name</a>
-                    <a class="dropdown-item" href="#">Date Created</a>
+                    <a class="dropdown-item dropdown-id" href="#">Account ID</a>
+                    <a class="dropdown-item dropdown-name" href="#">Full Name</a>
+                    <a class="dropdown-item dropdown-created-date" href="#">Created Date</a>
                 </div>
             </div>
-            <input type="text" class="search form-control montserrat-regular" id="search" placeholder="Search by File Name, File ID" name="search" value="" />
-        </div>
+            <input type="text" class="search form-control montserrat-regular" id="search"
+                placeholder="Search by Account ID, Full Name, Email Address" name="search" value="" />
+            <div class="btn-sort dropdown montserrat-regular">
+                <i class="bi bi-sliders2 fs-2 btn montserrat-semibold" data-bs-toggle="dropdown"></i>
+                <div class="dropdown-menu">
+                    <div class="dropdown-item montserrat-semibold border-bottom">FILTER BY
+                    </div>
+                    <div class="filter-list"></div>
+                </div>
+            </div>
+        </div>>
 
         <!-- TABLE LIST -->
         <div class="list">

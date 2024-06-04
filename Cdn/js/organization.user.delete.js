@@ -20,6 +20,8 @@ $(document).ready(function () {
       let fullAddress = `${permanentAddress.region}, ${permanentAddress.province}, ${permanentAddress.municipality}, ${permanentAddress.barangay}`;
       let accType = "";
 
+      $('.link-bread').attr('href', `organization.user.list.html?id=${userData.organization_id}`);
+
       $(".user-img").attr("src", userData.profile_image);
       $("#lastname").val(userData.name.suffix);
       $("#name").val(userData.name.firstname);

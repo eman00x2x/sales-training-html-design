@@ -194,7 +194,7 @@ function displayVideos(sortBy, order) {
         slicedData.forEach(video => {
             videoListHtml += `
             <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
-                <div class="card" data-ebook-id="${video.video_id}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="height:100%;">
+                <div class="card pe-auto" data-ebook-id="${video.video_id}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="height:100%; cursor: pointer;">
                         <!-- Photo -->
                         <div class="img-container pt-2" style="height: 200px;">
                             <img src="${video.thumbnail_image}" class="card-img" alt="Image"
