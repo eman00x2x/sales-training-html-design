@@ -4,35 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purchased Video Groups</title>
+    <title>Downloaded Files</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="../Cdn/css/font.css" />
+    <!-- BOOSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <!-- TABLER CSS -->
+    <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
+    <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
+    <!-- JQUERY -->
+    <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
+    <!-- TABLER -->
+    <script src="../Cdn/vendor/tabler/dist/js/tabler.min.js" defer></script>
+    <!-- CUSTOM JS -->
+    <script src="../Cdn/js/script.js"></script>
+    <script src="/Cdn/vendor/validatejs-0.13.1/validate.min.js"></script>
 </head>
 
 <body>
     <div class="card-body">
         <!-- SORT, FILTER AND SEARCH -->
-        <div class="d-flex justify-content-start align-items-center col col-12 col-sm-7 col-lg-6 mb-3 mt-2 gap-1    ">
+        <div class="d-flex justify-content-start align-items-center col col-12 col-sm-7 col-lg-6 mb-3 mt-2 gap-1">
             <div class="btn-sort dropdown montserrat-regular">
-                <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
-                    data-bs-toggle="dropdown"></i>
-                <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
-                    data-bs-toggle="dropdown">Sort
-                    by</a>
+                <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none" data-bs-toggle="dropdown"></i>
+                <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block" data-bs-toggle="dropdown">Sort by</a>
                 <div class="dropdown-menu">
                     <div class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
                         <div class="btn-group col-7">
-                            <button type="button" class="btn btn-sm btn-outline-primary"><i
-                                    class="bi bi-sort-alpha-down fs-2"></i></button>
-                            <button type="button" class="btn btn-sm btn-outline-primary"><i
-                                    class="bi bi-sort-alpha-down-alt fs-2"></i></button>
+                            <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-sort-alpha-down fs-2"></i></button>
+                            <button type="button" class="btn btn-sm btn-outline-primary"><i class="bi bi-sort-alpha-down-alt fs-2"></i></button>
                         </div>
                     </div>
                     <a class="dropdown-item" href="#">File name</a>
                     <a class="dropdown-item" href="#">Date Created</a>
                 </div>
             </div>
-            <input type="text" class="search form-control montserrat-regular" id="search"
-                placeholder="Search by File Name, FIle ID" name="search" value="" />
-            
+            <input type="text" class="search form-control montserrat-regular" id="search" placeholder="Search by File Name, File ID" name="search" value="" />
         </div>
 
         <!-- TABLE LIST -->
@@ -41,50 +52,75 @@
                 <table class="table table-striped video-group border border-1">
                     <thead>
                         <tr>
-                            <th class="align-middle montserrat-semibold text-white text-center"
-                                style="background-color: #1c1c39">
-                                #
-                            </th>
-                            <th class="align-middle montserrat-semibold text-white text-center"
-                                style="background-color: #1c1c39">
-                                File ID
-                            </th>
-                            <th class="align-middle montserrat-semibold text-white" style="background-color: #1c1c39">
-                               File Name
-                            </th>
-                            <th class="align-middle montserrat-semibold text-white" style="background-color: #1c1c39">
-                               Date Created
-                            </th>
-                           
-                            <!-- <th class="align-middle montserrat-semibold text-white"
-                                                                                            style="background-color: #1c1c39">
-                                                                                            Actions
-                                                                                        </th> -->
+                            <th class="align-middle montserrat-semibold text-white text-center" style="background-color: #1c1c39">#</th>
+                            <th class="align-middle montserrat-semibold text-white text-center" style="background-color: #1c1c39">File ID</th>
+                            <th class="align-middle montserrat-semibold text-white" style="background-color: #1c1c39">File Name</th>
+                            <th class="align-middle montserrat-semibold text-white" style="background-color: #1c1c39">Date Created</th>
+                            <th class="align-middle montserrat-semibold text-white" style="background-color: #1c1c39">Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="data-container montserrat-regular"></tbody>
+                    <tbody class="data-container montserrat-regular">
+                        <tr>
+                            <td>1</td>
+                            <td>12345</td>
+                            <td><a href="/Cdn/images/profilebini.jpg" download>Example File</a></td>
+                            <td>2024-06-03</td>
+                            <td>
+                                <button class="btn btn-primary btn-view" data-bs-toggle="modal" data-bs-target="#previewModal">View</button>
+                                <button class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <!-- Add more rows with data here -->
+                    </tbody>
                 </table>
             </div>
         </div>
 
+        <div class="modal modal-blur fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="previewModalLabel">File Preview</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <iframe id="filePreview" frameborder="0" width="100%" height="400"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="/Cdn/images/profilebini.jpg" class="btn btn-success" download>Download File</a></td>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- TABLE FOOTER -->
-        <div
-            class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular">
+        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular">
             <p>Showing 1 out of 10 pages</p>
             <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
-                        class="d-none d-md-block">Previous</span><i
-                        class="bi bi-chevron-double-left d-block d-md-none"></i>
+                <button type="button" class="btn btn-outline-primary montserrat-semibold">
+                    <span class="d-none d-md-block">Previous</span>
+                    <i class="bi bi-chevron-double-left d-block d-md-none"></i>
                 </button>
                 <button type="button" class="btn btn-outline-primary montserrat-semibold">1</button>
                 <button type="button" class="btn btn-outline-primary montserrat-semibold">2</button>
                 <button type="button" class="btn btn-outline-primary montserrat-semibold">3</button>
-                <button type="button" class="btn btn-outline-primary montserrat-semibold"><span
-                        class="d-none d-md-block">Next</span><i
-                        class="bi bi-chevron-double-right d-block d-md-none"></i></button>
+                <button type="button" class="btn btn-outline-primary montserrat-semibold">
+                    <span class="d-none d-md-block">Next</span>
+                    <i class="bi bi-chevron-double-right d-block d-md-none"></i>
+                </button>
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $('.btn-view').on('click', function () {
+                const fileUrl = $(this).closest('tr').find('a').attr('href');
+                $('#filePreview').attr('src', fileUrl);
+            });
+        });
+    </script>
 </body>
 
 </html>

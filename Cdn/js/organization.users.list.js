@@ -101,7 +101,7 @@
                                         <td> ${convertDate(item.registered_at)}</td>
                                         <td>
                                             <div class="d-flex flex-nowrap gap-1">
-                                                <a class="btn border-primary bg-body" href="organization.user.view.html?id=${item.profile_id}" > <i class="bi bi-eye"></i> View</a>
+                                                <a class="btn border-primary bg-body" href="organization.user.view.html?id=${item.profile_id}" >   <span class="p-4">   </span></a>
                                                 <a class="btn border-danger bg-body" href="organization.user.delete.html?id=${item.profile_id}" > <i class="bi bi-trash"></i> Delete</a>
                                             </div>
                                         </td>
