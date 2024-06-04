@@ -131,7 +131,8 @@ const getParams = (p) => {
   if (params.has(p) === true) {
     return params.get(p);
   } else {
-    alert("Undefined parameter '" + p + "'");
+    // alert("Undefined parameter '" + p + "'");
+    console.log("Undefined parameter '" + p + "'")
   }
 };
 
