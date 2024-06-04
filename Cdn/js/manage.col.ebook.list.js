@@ -192,21 +192,20 @@ function displayEbooks(sortBy, order) {
         slicedData.forEach(ebook => {
             ebookListHtml += `
             <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
-                <div class="card" data-ebook-id="${ebook.ebook_id}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="height:100%;">
-                        <!-- Photo -->
-                        <div class="img-container">
-                            <img src="${ebook.thumbnail_image}" class="card-img" alt="Image"
-                                style="object-fit: contain; height: 100%;">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title text-uppercase montserrat-semibold m-0">${ebook.title}</h3>
-                            <p class="text-secondary mb-2">${ebook.author} </p>
-                            <p class=" lh-1 card-text text-secondary">${ebook.sub_title} </p>
-                            <p class="lh-1 card-text text-secondary text-end"> <small>${convertDate(ebook.created_at)}</small>  </p>
-                        </div>
+            <div class="card" data-ebook-id="${ebook.ebook_id}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="height:100%; cursor: pointer;">
+                    <!-- Photo -->
+                    <div class="img-container">
+                        <img src="${ebook.thumbnail_image}" class="card-img" alt="Image"
+                            style="object-fit: contain; height: 100%;">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title text-uppercase montserrat-semibold m-0">${ebook.title}</h3>
+                        <p class="text-secondary mb-2">${ebook.author} </p>
+                        <p class=" lh-1 card-text text-secondary">${ebook.sub_title} </p>
+                        <p class="lh-1 card-text text-secondary text-end"> <small>${convertDate(ebook.created_at)}</small>  </p>
                     </div>
                 </div>
-
+            </div>
           `;
         });
         $('.ebook-list').html(ebookListHtml);
@@ -219,7 +218,7 @@ function displayEbooks(sortBy, order) {
                 $(".offcanvas-title").text(response[f].title)
                 $(".thumb").attr("src", response[f].thumbnail_image)
                 $(".text-body").text(response[f].description)
-                $(".read-ebook").attr("href", `manage.read.ebook.html?ebook_id=${ebookId}&ebook_group_id=${response[f].ebook_group_id}`);
+                $(".read-ebook").attr("href", `manage.col.read.ebook.html?ebook_id=${ebookId}&ebook_group_id=${response[f].ebook_group_id}`);
                 console.log('hatdpg');
             });
         });

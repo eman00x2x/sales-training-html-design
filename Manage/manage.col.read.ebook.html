@@ -31,6 +31,42 @@
     <script src="../Cdn/js/manage.col.read.ebook.js"></script>
 </head>
 
+<style>
+    .read {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .comment-author img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .comment-author .author-name {
+        font-weight: bold;
+    }
+
+    .comment-content {
+        flex: 1;
+    }
+
+    .rating .star {
+        font-size: 1.5rem;
+        color: gold;
+        cursor: pointer;
+    }
+
+    .rating .star:hover,
+    .rating .star.active {
+        color: orange;
+    }
+</style>
+
+</head>
+
 <body>
     <div class="page">
 
@@ -42,7 +78,6 @@
 
             <!-- HEADER -->
             <div class="header"></div>
-
             <div class="page-body content m-0">
 
                 <!-- BREADCRUMB -->
@@ -59,34 +94,36 @@
                         </li>
                     </ol>
 
+                    <!-- E-BOOK DETAILS -->
                     <div class="row">
-                        <div class=" col-md-12  col-lg-9 justify-content-center d-flex flex-column ">
-                            <div class="title d-flex align-items-center ">
-                                <h1 id="header" style="padding-top:1rem;"></h1>
+                        <div class="col-md-12 col-lg-9 justify-content-center d-flex flex-column">
+                            <div class="title d-flex align-items-center">
+                                <h1 id="header"></h1>
                             </div>
                             <div class="ps-1">
                                 <p class="author"></p>
                             </div>
                         </div>
-                        <div class="col-md-12  col-lg-3 d-flex align-items-center justify-content-center pb-3">
+                        <div class="col-md-12 col-lg-3 d-flex align-items-center justify-content-center pb-3">
                             <img class="ebook-image" src="" alt="">
                         </div>
                     </div>
 
+                    <!-- PROGRESS BAR -->
                     <div class="progress progress-sm mb-3" style="height: 8px;">
                         <div class="progress-bar" style="width: 57%;" role="progressbar" aria-valuenow="57"
                             aria-valuemin="0" aria-valuemax="100" aria-label="57% Complete">
                             <span class="visually-hidden">57% Complete</span>
                         </div>
                     </div>
+
+                    <!-- BUTTONS -->
                     <div class="customize d-flex flex-column flex-sm-row">
                         <div class="me-3">
-                            <select class="form-select mb-2" id="chapterSelect">
-                            </select>
+                            <select class="form-select mb-2" id="chapterSelect"></select>
                         </div>
                         <div class="size me-3 mb-2">
-                            <select class="form-select" id="fontSizeSelector">
-                            </select>
+                            <select class="form-select" id="fontSizeSelector"></select>
                         </div>
                         <div class="mt-2">
                             <div>
@@ -107,82 +144,54 @@
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid">
 
+                <!-- CHAPTER DETAILS -->
+                <div class="container-fluid">
                     <div id="textToResize" class="read d-flex flex-column p-3 mt-3 border overflow-auto"
-                        style=" height: 50rem;">
+                        style="height: 50rem;">
                         <div class="title align-self-center">
-                            <h1 id="heading">Hello</h1>
+                            <h1 id="heading"></h1>
                         </div>
+
                         <div class="ebook-content align-self-center px-2">
                         </div>
-
                     </div>
+
                     <div class="buttons d-flex justify-content-between">
                         <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
-                            <a href="#" class="btn btn-primary" id="prevButton" onclick="previousChapter()">
-                                Previous
-                            </a>
+                            <a href="#" class="btn btn-primary" id="prevButton" onclick="previousChapter()">Previous</a>
                         </div>
                         <div class="col-6 col-sm-4 col-md-2 col-xl py-3 d-flex justify-content-end">
-                            <a href="#" class="btn btn-primary align-self-end" id="nextButton" onclick="nextChapter()">
-                                Next
-                            </a>
+                            <a href="#" class="btn btn-primary" id="nextButton" onclick="nextChapter()">Next</a>
                         </div>
                     </div>
+
                 </div>
-                <div class="container">
+                <div class="container-fluid">
 
-                    <!-- Comments Section -->
-                    <div class="row">
-                        <div class="col">
-                            <h2>Comments</h2>
-                            <div class="comments">
+                    <!-- COMMENTS -->
+                    <div>
+                        <div class="response"></div>
 
-                                <!-- Single Comment -->
-                                <div class="comment mb-3 pb-3 border-bottom">
-                                    <div class="comment-author">
-                                        <img src="user-avatar.jpg" alt="User Avatar">
-                                        <span class="author-name">John Doe</span>
-                                    </div>
-                                    <div class="comment-content">
-                                        <p>This is a great article! Thanks for sharing.</p>
-                                    </div>
-                                </div>
-
-                                <!-- Single Comment -->
-                                <div class="comment mb-3 pb-3 border-bottom">
-                                    <div class="comment-author">
-                                        <img src="user-avatar.jpg" alt="User Avatar">
-                                        <span class="author-name">Jane Smith</span>
-                                    </div>
-                                    <div class="comment-content">
-                                        <p>Very informative. I learned a lot.</p>
-                                    </div>
-                                </div>
-
-                                <!-- Add your comments form here -->
-                                <form>
-                                    <textarea class="form-control" rows="3" placeholder="Add your comment"></textarea>
-                                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
-                                </form>
+                        <form id="form" action="" method="post">
+                            <label for="comment " class="form-label montserrat-semibold">Comment</label>
+                            <textarea type="text" name="comment" id="comment" class="form-control"
+                                autocomplete="off"></textarea>
+                            <div class="text-end pt-3">
+                                <button type="button" id="submitComment" class="btn btn-success">Comment</button>
                             </div>
-                        </div>
-
-                        <!-- Ratings Section -->
-                        <div class="rating">
-                            <input type="hidden" id="rating-value" value="0">
-                            <span class="star" data-value="1">&#9733;</span>
-                            <span class="star" data-value="2">&#9733;</span>
-                            <span class="star" data-value="3">&#9733;</span>
-                            <span class="star" data-value="4">&#9733;</span>
-                            <span class="star" data-value="5">&#9733;</span>
-                        </div>
-
-                        <div class="footer container-fluid"></div>
+                        </form>
+                    </div>
+                    <div class="mt-3">
+                        <div id="commentDisplay"></div>
                     </div>
                 </div>
+
+                <!-- FOOTER -->
+                <div class="footer container-fluid"></div>
             </div>
         </div>
+    </div>
 </body>
+
 </html>
