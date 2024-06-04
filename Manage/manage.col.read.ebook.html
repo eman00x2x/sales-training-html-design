@@ -20,6 +20,9 @@
     <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
     <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
 
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="../Cdn/css/manage.read.ebook.css">
+
     <!-- JQUERY -->
     <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
 
@@ -29,42 +32,45 @@
     <!-- CUSTOM JS -->
     <script src="../Cdn/js/script.js"></script>
     <script src="../Cdn/js/manage.col.read.ebook.js"></script>
-</head>
 
-<style>
-    .read {
-        background-color: #fff;
-        border-radius: 8px;
-        padding: 20px;
-    }
+    <style>
+        .read {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+        }
 
-    .comment-author img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        margin-right: 10px;
-    }
+        .comment-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
 
-    .comment-author .author-name {
-        font-weight: bold;
-    }
+        .comment-author .author-name {
+            font-weight: bold;
+        }
 
-    .comment-content {
-        flex: 1;
-    }
+        .comment-content {
+            flex: 1;
+        }
 
-    .rating .star {
-        font-size: 1.5rem;
-        color: gold;
-        cursor: pointer;
-    }
+        .rating {
+            direction: ltr;
+            display: inline-block;
+        }
 
-    .rating .star:hover,
-    .rating .star.active {
-        color: orange;
-    }
-</style>
+        .star {
+            font-size: 2em;
+            cursor: pointer;
+            color: gray;
+        }
 
+        .star.hover,
+        .star.selected {
+            color: gold;
+        }
+    </style>
 </head>
 
 <body>
@@ -94,7 +100,7 @@
                         </li>
                     </ol>
 
-                    <!-- E-BOOK DETAILS -->
+                    <!-- RATING -->
                     <div class="row">
                         <div class="col-md-12 col-lg-9 justify-content-center d-flex flex-column">
                             <div class="title d-flex align-items-center">
@@ -102,8 +108,18 @@
                             </div>
                             <div class="ps-1">
                                 <p class="author"></p>
+                                <div class="rating">
+                                    <input type="hidden" id="rating-value" value="0">
+                                    <span class="star" data-value="1">&#9733;</span>
+                                    <span class="star" data-value="2">&#9733;</span>
+                                    <span class="star" data-value="3">&#9733;</span>
+                                    <span class="star" data-value="4">&#9733;</span>
+                                    <span class="star" data-value="5">&#9733;</span>
+                                </div>
                             </div>
                         </div>
+
+                        <!-- E-BOOK DETAILS -->
                         <div class="col-md-12 col-lg-3 d-flex align-items-center justify-content-center pb-3">
                             <img class="ebook-image" src="" alt="">
                         </div>
@@ -116,8 +132,6 @@
                             <span class="visually-hidden">57% Complete</span>
                         </div>
                     </div>
-
-                    <!-- BUTTONS -->
                     <div class="customize d-flex flex-column flex-sm-row">
                         <div class="me-3">
                             <select class="form-select mb-2" id="chapterSelect"></select>
@@ -145,18 +159,17 @@
                     </div>
                 </div>
 
-                <!-- CHAPTER DETAILS -->
+                <!-- CONTENT -->
                 <div class="container-fluid">
                     <div id="textToResize" class="read d-flex flex-column p-3 mt-3 border overflow-auto"
                         style="height: 50rem;">
                         <div class="title align-self-center">
                             <h1 id="heading"></h1>
                         </div>
-
                         <div class="ebook-content align-self-center px-2">
+                            <!-- Content goes here -->
                         </div>
                     </div>
-
                     <div class="buttons d-flex justify-content-between">
                         <div class="col-6 col-sm-4 col-md-2 col-xl py-3">
                             <a href="#" class="btn btn-primary" id="prevButton" onclick="previousChapter()">Previous</a>
@@ -165,14 +178,12 @@
                             <a href="#" class="btn btn-primary" id="nextButton" onclick="nextChapter()">Next</a>
                         </div>
                     </div>
-
                 </div>
-                <div class="container-fluid">
 
-                    <!-- COMMENTS -->
+                <!-- COMMENT -->
+                <div class="container-fluid">
                     <div>
                         <div class="response"></div>
-
                         <form id="form" action="" method="post">
                             <label for="comment " class="form-label montserrat-semibold">Comment</label>
                             <textarea type="text" name="comment" id="comment" class="form-control"

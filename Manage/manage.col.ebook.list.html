@@ -20,6 +20,10 @@
     <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
     <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
 
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="/Cdn/css/manage.video.css">
+    <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
+
     <!-- JQUERY -->
     <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
 
@@ -30,131 +34,117 @@
     <script src="../Cdn/js/script.js"></script>
     <script src="/Cdn/js/manage.col.ebook.list.js"></script>
 
-    <style>
-        .card p {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .card:hover {
-
-            box-shadow: 5px 6px 6px 2px #e9ecef;
-            transform: scale(1.02);
-        }
-    </style>
-
 </head>
 
-
 <body>
+    <div class="page">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
-        style="background-color: #1c1c39 !important;" data-bs-theme="dark"></aside>
+        <!-- SIDEBAR -->
+        <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
+            style="background-color: #1c1c39 !important;" data-bs-theme="dark"></aside>
 
-    <div class="page-wrapper">
-
-        <!-- HEADER -->
-        <div class="header"></div>
-
-
-        <div class="container-fluid" style="background-color: white;">
-            <div class="container p-0">
+        <div class="page-wrapper">
+            <!-- HEADER -->
+            <div class="header"></div>
+            <div class="page-body content m-0">
 
                 <!-- BREADCRUMB -->
-                <ol class="breadcrumb breadcrumb-arrows pt-3" aria-label="breadcrumbs">
-                    <li class="breadcrumb-item montserrat-semibold "><a class="breadlink"
-                            href="manage.col.ebook.group.html" style="color: #b5adad;">E-book Collections</a></li>
-                    <li class="breadcrumb-item active montserrat-bold text-primary" aria-current="page"><a href="">View
-                            Available E-books</a></li>
-                </ol>
-
-                <div class="row pt-2">
-                    <div class="title col-lg-4">
-                        <p class="text-primary" style="font-size: 40px; font-weight: bold; font-family: Montserrat;">
-                            Available E-book
-                        </p>
+                <div class="banner w-100 bg-white p-3 shadow-sm">
+                    <ol class="breadcrumb breadcrumb-arrows pt-3" aria-label="breadcrumbs">
+                        <li class="breadcrumb-item montserrat-semibold "><a class="breadlink"
+                                href="manage.col.ebook.group.html" style="color: #b5adad;">E-book Collections</a></li>
+                        <li class="breadcrumb-item active montserrat-bold text-primary" aria-current="page"><a
+                                href="">View
+                                Available E-books</a></li>
+                    </ol>
+                    <div class="row pt-2">
+                        <div class="title col-lg-4">
+                            <p class="text-primary"
+                                style="font-size: 40px; font-weight: bold; font-family: Montserrat;">
+                                Available E-book
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- FUNCTION -->
+                <div class="container-fluid pt-3">
+                    <div class="container">
+                        <!-- SORT, FILTER AND SEARCH -->
+                        <div class="row pt-2">
+                            <div class="d-flex justify-content-start align-items-start  col-lg-8 pb-3">
+                                <div class="btn-sort dropdown montserrat-regular">
+                                    <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
+                                        data-bs-toggle="dropdown"></i>
+                                    <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
+                                        data-bs-toggle="dropdown">Sort by</a>
+                                    <div class="dropdown-menu">
+                                        <div
+                                            class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
+                                            <div class="btn-group1 col-7">
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-primary btn-sort-asc"><i
+                                                        class="bi bi-sort-alpha-up fs-2"></i></button>
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-primary btn-sort-desc"><i
+                                                        class="bi bi-sort-alpha-down-alt fs-2"></i></button>
+                                            </div>
+                                        </div>
+                                        <a class="dropdown-item dropdown-title" href="#">Title</a>
+                                        <a class="dropdown-item dropdown-created-date" href="#">Date Created</a>
 
-                <div class="row pt-2">
-                    <div class="d-flex justify-content-start align-items-start  col-lg-8 pb-3">
-                        <div class="btn-sort dropdown montserrat-regular">
-                            <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
-                                data-bs-toggle="dropdown"></i>
-                            <a href="#" class="btn dropdown-toggle montserrat-semibold d-none d-sm-block"
-                                data-bs-toggle="dropdown">Sort by</a>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-item d-flex justify-content-end align-items-center border-bottom">
-                                    <div class="btn-group1 col-7">
-                                        <button id="btnSortAsc" type="button"
-                                            class="btn btn-sm btn-outline-primary btn-sort-direction active"
-                                            onclick="updateSortDirection('asc')">
-                                            <i class="bi bi-sort-alpha-up fs-2"></i>
-                                        </button>
-                                        <button id="btnSortDesc" type="button"
-                                            class="btn btn-sm btn-outline-primary btn-sort-direction"
-                                            onclick="updateSortDirection('desc')">
-                                            <i class="bi bi-sort-alpha-down-alt fs-2"></i>
-                                        </button>
                                     </div>
                                 </div>
-                                <a id="sortByTitle" class="dropdown-item sort-by active" href="#"
-                                    onclick="updateSortBy('name')">Video Title</a>
-                                <a id="sortByDate" class="dropdown-item sort-by" href="#"
-                                    onclick="updateSortBy('category')">Category</a>
-                            </div>
-                        </div>
-                        <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
-                            placeholder="Search by Title" name="search" value="" onkeyup="search()" />
+                                <input type="text" class="search ms-1 form-control montserrat-regular" id="search"
+                                    placeholder="Search by Title" name="search" value="" />
 
-                        <div class="btn-sort dropdown montserrat-regular" style="margin-left: 3px;">
-                            <i class="bi bi-sliders2 fs-2 btn montserrat-semibold" data-bs-toggle="dropdown"></i>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-item montserrat-semibold border-bottom">FILTER BY
+
+                                <div class="btn-sort dropdown montserrat-regular ms-1">
+                                    <i class="bi bi-sliders2 fs-2 btn montserrat-semibold"
+                                        data-bs-toggle="dropdown"></i>
+                                    <div class="dropdown-menu">
+                                        <div class="dropdown-item montserrat-semibold border-bottom">FILTER BY
+                                        </div>
+                                        <div class="filter-list"></div>
+                                    </div>
                                 </div>
-                                <div class="filter-list"></div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- E-BOOK LIST CONTAINER -->
-                <div class="row ebook-list">
+                        <!-- E-BOOK LIST -->
+                        <div class="row ebook-list">
 
-                </div>
-
-                <!-- MODAL -->
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
-                    aria-labelledby="offcanvasRightLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasRightLabel"></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <div>
-                            <img class="thumb" src="" alt="">
                         </div>
-                        <p class="pt-4 text-body"> </p>
-                        <a href="" class="btn btn-primary watch-video">Read E-book</a>
-                    </div>
-                </div>
 
-                <!-- PAGINATION -->
-                <div
-                    class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular" style="margin-bottom: 15px;">
-                    <p id="page-numbers"></p>
-                    <div class="page-buttons btn-group">
+                        <!-- OFFCANVAS -->
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                            aria-labelledby="offcanvasRightLabel">
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasRightLabel"></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <div>
+                                    <img class="thumb" src="" alt="">
+                                </div>
+                                <p class="pt-4 text-body"> </p>
+                                <a href="" class="btn btn-primary read-ebook">Read E-book</a>
+                            </div>
+                        </div>
+
+                        <!-- PAGINATION -->
+                        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular"
+                            style="margin-bottom: 15px;">
+                            <p id="page-numbers"></p>
+                            <div class="page-buttons btn-group">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- FOOTER -->
-            <div class="footer"></div>
+            <div class="footer container-fluid"></div>
         </div>
     </div>
 </body>
