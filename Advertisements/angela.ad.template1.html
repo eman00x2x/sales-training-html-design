@@ -10,45 +10,53 @@
     <title>Ads Template 7</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    
-    <style>
 
+    <style>
         body {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
             margin: 0;
             padding: 0;
         }
 
         .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
             margin-top: 100px;
+            padding: 0 15px;
+        }
+
+        .videosection {
+            position: relative;
+            padding-top: 56.25%;
+            margin-bottom: 20px;
+        }
+
+        .videosection .video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .text-container {
             text-align: center;
+            margin-bottom: 50px;
         }
 
         .logo {
             height: 50px;
         }
 
-        .montserrat-regular {
-            font-family: "Montserrat", sans-serif !important;
-            font-weight: 400 !important;
-            font-style: normal !important;
-        }
-
         .montserrat-bold {
             font-family: "Montserrat", sans-serif !important;
             font-weight: 500 !important;
             font-style: normal !important;
-            font-size: 50px;
+            font-size: 24px;
+            line-height: 1.2;
+        }
+
+        .montserrat-regular {
+            font-family: "Montserrat", sans-serif !important;
+            font-weight: 400 !important;
+            font-style: normal !important;
         }
 
         .btn {
@@ -72,28 +80,61 @@
 
         footer {
             text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             height: 75px;
             background-color: #eee;
             margin-top: 3em;
-            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
         }
 
+        @media (min-width: 576px) {
+            .container {
+                padding: 0 30px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .videosection {
+                margin-bottom: 50px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                padding: 0 50px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1140px;
+                padding: 0;
+            }
+        }
     </style>
 </head>
 
 <body>
+
     <div class="container">
+
+        <div class="videosection">
+            <iframe class="video"
+                src="https://www.youtube.com/embed/4J4leq-vTeo?si=2Osl2pZ8KWj68K0O&amp;controls=0&amp;autoplay=1"
+                allow="autoplay" title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
         <div class="text-container">
             <img class="logo" src="../Cdn/images/navLogo.png">
-            <p class="montserrat-bold" style="margin-top: 5px;">Your Full Service <br> Real-Estate Partner </p>
+            <p class="montserrat-bold" style="margin-top: 5px; font-size: 50px;">Your Full Service <br> Real-Estate
+                Partner </p>
 
-            <p class="card-info montserrat-regular" style="margin-top: 20px;">Lorem ipsum dolor sit amet consectetur,
-                adipisicing elit. Lorem Ipsum </p>
-
-            <button class="btn info montserrat-bold">Join Now</button>
+            <p class="card-info montserrat-regular">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem
+                Ipsum </p>
         </div>
 
         <div class="row row-deck justify-content-center">
@@ -107,6 +148,8 @@
                         <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
                             deleniti fugit incidunt, iste, itaque minima neque pariatur perferendis sed suscipit velit
                             vitae voluptatem.</p>
+
+                        <button class="btn info montserrat-bold">I want to Sell</button>
                     </div>
                 </div>
             </div>
@@ -121,6 +164,8 @@
                         <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
                             deleniti fugit incidunt, iste, itaque minima neque pariatur perferendis sed suscipit velit
                             vitae voluptatem.</p>
+
+                        <button class="btn info montserrat-bold"> I want to Join</button>
                     </div>
                 </div>
             </div>
@@ -135,6 +180,8 @@
                         <p class="text-secondary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam
                             deleniti fugit incidunt, iste, itaque minima neque pariatur perferendis sed suscipit velit
                             vitae voluptatem.</p>
+
+                        <button class="btn info montserrat-bold">I want to Invest</button>
                     </div>
                 </div>
             </div>

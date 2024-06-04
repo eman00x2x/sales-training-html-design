@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashnoard</title>
+    <title>Dashboard</title>
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../Cdn/css/font.css">
-    <!-- BOOSTRAP ICONS -->
+    <!-- BOOTSTRAP ICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- TABLER CSS -->
     <link href="../Cdn/vendor/tabler/dist/css/tabler.min.css" rel="stylesheet" />
@@ -34,58 +34,55 @@
             style="background-color: #1c1c39 !important;" data-bs-theme="dark"></aside>
         <div class="page-wrapper">
             <!-- HERO BANNER -->
-            <div
-                style="background: url('../Cdn/images/hero-banner.png') no-repeat center center; background-size: cover; color: white; text-align: center; padding: 170px 20px; position: relative;">
+            <div class="hero-banner">
                 <div style="position: relative; z-index: 1;">
-                </div>
-                <div
-                    style="content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.1);">
+                    <!-- Additional content can go here -->
                 </div>
             </div>
             <!-- Contents -->
-            <div style="height: 37.44rem; display: flex; justify-content: center; align-items: center;">
+            <div style="height: 38.44rem; display: flex; justify-content: center; align-items: center;">
                 <div class="text" style="height: 90%; width: 80%;">
                     <div class="text" style="padding-top: 14px; padding-bottom: 14px;">
                         <h1 style="margin: 0;">Glad you're here, Rogu!</h1>
                         <p style="margin: 0;">Today is May 31, 2024</p>
                     </div>
-                    <div style="display: flex; justify-content: space-between; gap: 20px; margin-top: 20px;">
-                        <div style="position: relative; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 20rem; height: 25rem; overflow: hidden; display: flex; justify-content: center; align-items: center;">
-                            <img src="../Cdn/images/Card 1.jpg" alt="Hero Banner" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
-                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, #131C39 0%, #8A692A 100%); opacity: 0.6;"></div>
-                            <div style="color: white; padding: 40px; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: baseline;">
-                                <h2 style="margin-top: 0; color: #ffffff;">Card 1</h2>
-                                <p style="text-align: left;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas sapiente aperiam iste repellat, sequi corporis excepturi a totam quod repudiandae provident, iure et quibusdam iusto enim nulla alias expedita sit.</p>
-                                <button style="background-color: #E8A115; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Button</button>
+                    <div class="card-container">
+                        <div class="card">
+                            <img src="../Cdn/images/Card 1.jpg" alt="Card 1">
+                            <div class="card-overlay"></div>
+                            <div class="card-content">
+                                <h2>Card 1</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas sapiente aperiam iste repellat, sequi corporis excepturi a totam quod repudiandae provident, iure et quibusdam iusto enim nulla alias expedita sit.</p>
+                                <button>Button</button>
                             </div>
-                        </div>                        
-                        <div style="position: relative; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 20rem; height: 25rem; overflow: hidden; display: flex; justify-content: center; align-items: center;">
-                            <img src="../Cdn/images/Card 2.jpg" alt="Hero Banner" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
-                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, #131C39 0%, #8A692A 100%); opacity: 0.6;"></div>
-                            <div style="color: white; padding: 40px; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: baseline;">
-                                <h2 style="margin-top: 0; color: #ffffff;">Card 2</h2>
-                                <p style="text-align: left;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas sapiente aperiam iste repellat, sequi corporis excepturi a totam quod repudiandae provident, iure et quibusdam iusto enim nulla alias expedita sit.</p>
-                                <button style="background-color: #E8A115; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Button</button>
+                        </div>
+                        <div class="card">
+                            <img src="../Cdn/images/Card 2.jpg" alt="Card 2">
+                            <div class="card-overlay"></div>
+                            <div class="card-content">
+                                <h2>Card 2</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas sapiente aperiam iste repellat, sequi corporis excepturi a totam quod repudiandae provident, iure et quibusdam iusto enim nulla alias expedita sit.</p>
+                                <button>Button</button>
                             </div>
-                        </div>        
-                        <div style="position: relative; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 20rem; height: 25rem; overflow: hidden; display: flex; justify-content: center; align-items: center;">
-                            <img src="../Cdn/images/Card 3.jpg" alt="Hero Banner" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
-                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, #131C39 0%, #8A692A 100%); opacity: 0.6;"></div>
-                            <div style="color: white; padding: 40px; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: baseline;">
-                                <h2 style="margin-top: 0; color: #ffffff;">Card 3</h2>
-                                <p style="text-align: left;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas sapiente aperiam iste repellat, sequi corporis excepturi a totam quod repudiandae provident, iure et quibusdam iusto enim nulla alias expedita sit.</p>
-                                <button style="background-color: #E8A115; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Button</button>
+                        </div>
+                        <div class="card">
+                            <img src="../Cdn/images/Card 3.jpg" alt="Card 3">
+                            <div class="card-overlay"></div>
+                            <div class="card-content">
+                                <h2>Card 3</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas sapiente aperiam iste repellat, sequi corporis excepturi a totam quod repudiandae provident, iure et quibusdam iusto enim nulla alias expedita sit.</p>
+                                <button>Button</button>
                             </div>
-                        </div>        
-                        <div style="position: relative; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); width: 20rem; height: 25rem; overflow: hidden; display: flex; justify-content: center; align-items: center;">
-                            <img src="../Cdn/images/Card 4.jpg" alt="Hero Banner" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
-                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, #131C39 0%, #8A692A 100%); opacity: 0.6;"></div>
-                            <div style="color: white; padding: 40px; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: baseline;">
-                                <h2 style="margin-top: 0; color: #ffffff;">Card 4</h2>
-                                <p style="text-align: left;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas sapiente aperiam iste repellat, sequi corporis excepturi a totam quod repudiandae provident, iure et quibusdam iusto enim nulla alias expedita sit.</p>
-                                <button style="background-color: #E8A115; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Button</button>
+                        </div>
+                        <div class="card" >
+                            <img src="../Cdn/images/Card 4.jpg" alt="Card 4">
+                            <div class="card-overlay"></div>
+                            <div class="card-content">
+                                <h2>Card 4</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas sapiente aperiam iste repellat, sequi corporis excepturi a totam quod repudiandae provident, iure et quibusdam iusto enim nulla alias expedita sit.</p>
+                                <button>Button</button>
                             </div>
-                        </div>        
+                        </div>
                     </div>
                 </div>
             </div>
@@ -95,3 +92,124 @@
 </body>
 
 </html>
+
+<style>
+    body {
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .hero-banner {
+        background: url('../Cdn/images/hero-banner.png') no-repeat center center;
+        background-size: cover;
+        color: white;
+        text-align: center;
+        padding: 170px 20px;
+        position: relative;
+    }
+
+    .hero-banner::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    .card-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        position: relative;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 20rem;
+        height: 25rem;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        min-width: 280px;
+    }
+
+    .card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, #131C39 0%, #8A692A 100%);
+        opacity: 0.6;
+    }
+
+    .card-content {
+        color: white;
+        padding: 40px;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+    }
+
+    .card-content h2 {
+        margin-top: 0;
+        color: #ffffff;
+    }
+
+    .card-content button {
+        background-color: #E8A115;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    @media (max-width: 767px) {
+        
+        .text {
+            font-size: 0.8rem;
+        }
+
+        .card-container {
+            flex-direction: column;
+            align-items: center;
+            height: 55rem;
+            padding-bottom: 2rem;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+    .card-container {
+        justify-content: center;
+        padding-bottom: 2rem;
+    }
+    .card {
+        width: calc(50% - 10px);
+    }
+    }
+
+    @media (min-width: 992px) {
+    .card-container {
+        flex-direction: row;
+    }
+
+}
+</style>
