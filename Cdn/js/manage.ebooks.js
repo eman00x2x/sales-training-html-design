@@ -192,7 +192,7 @@ function displayEbooks(sortBy, order) {
         slicedData.forEach(ebook => {
             ebookListHtml += `
             <div class="col-lg-4 col-md-6 col-sm-12 mb-2">
-                <div class="card" data-ebook-id="${ebook.ebook_id}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="height:24rem;">
+                <div class="card" data-ebook-id="${ebook.ebook_id}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="height:24rem; cursor: pointer;">
                         <!-- Photo -->
                         <div class="img-container pt-2" style="height: 200px;">
                             <img src="${ebook.thumbnail_image}" class="card-img" alt="Image"
