@@ -1,6 +1,4 @@
-let currentPage = 1, search = '', order = '', sortBy = '',
-    filterData = [{ "status": ["Pending", "In Progress", "Completed"] }],
-    filterBy = [];
+
 
 $(document).ready(function () {
     getOrgVideoGroupData();

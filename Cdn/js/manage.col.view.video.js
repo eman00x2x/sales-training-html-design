@@ -112,7 +112,7 @@ function displayVideo() {
 
         recommendedVideos.forEach(video => {
             recommendedHtml += `
-                    <div class="card mt-3" data-ebook-id="${video.video_id}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="height:100%;">
+                    <div class="card mt-3" data-ebook-id="${video.video_id}" role="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="height:100%;">
                     <!-- Photo -->
                     <div class="img-container pt-2" style="height: 200px;">
                         <img src="${video.thumbnail_image}" class="card-img" alt="Image"

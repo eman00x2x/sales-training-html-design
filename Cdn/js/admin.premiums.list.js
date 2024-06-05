@@ -247,10 +247,6 @@ function getPremiumsData() {
                 "</td>";
             html +=
                 "<td class='align-middle text-truncate' style='max-width: 150px'>" +
-                data.script +
-                "</td>";
-            html +=
-                "<td class='align-middle text-truncate' style='max-width: 150px'>" +
                 data.duration +
                 "</td>";
             html +=

@@ -29,20 +29,22 @@
 </head>
 <style>
   .rating {
-      direction: ltr;
-      display: inline-block;
+    direction: ltr;
+    display: inline-block;
   }
- .star {
+
+  .star {
     font-size: 2em;
     cursor: pointer;
     color: gray;
-}
+  }
 
-.star.hover,
-.star.selected {
+  .star.hover,
+  .star.selected {
     color: gold;
-}
+  }
 </style>
+
 <body>
   <aside class="sidebar navbar navbar-vertical navbar-expand-lg navbar-transparent"
     style="background-color: #1c1c39 !important" data-bs-theme="dark"></aside>
@@ -68,8 +70,9 @@
 
           <div class="col-lg-8  p-3">
             <div class="ratio ratio-16x9">
-              <iframe src="https://www.youtube.com/embed/B247m3Q3dUQ?si=NvFq-yFrAMrDnzGx" title="YouTube video player"
-                frameborder="0"
+
+              <iframe src="https://www.youtube.com/embed/4J4leq-vTeo?si=2Osl2pZ8KWj68K0O&amp;controls=0&amp;autoplay=1"
+                title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
@@ -93,7 +96,7 @@
                             </div>
                         </form>
                     </div> -->
-                
+
             </div>
 
             <div>
@@ -103,19 +106,19 @@
                 <label for="comment " class="form-label montserrat-semibold">Comment</label>
                 <textarea type="text" name="comment" id="comment" class="form-control" autocomplete="off"></textarea>
                 <div class="text-end pt-3">
-                    <button type="button" id="submitComment" class="btn btn-success">Comment</button>
+                  <button type="button" id="submitComment" class="btn btn-success">Comment</button>
                 </div>
-            </form>
-              </div>
-              <div class="mt-3">
-                <div id="commentDisplay"></div>
+              </form>
+            </div>
+            <div class="mt-3">
+              <div id="commentDisplay"></div>
             </div>
           </div>
 
           <div class="col-lg-4 border p-3">
 
             <div class="reco ">
-<!-- 
+              <!-- 
               <h1 class="montserrat-semibold text-center">Recommended Videos</h1>
 
               <div class="card">
@@ -131,22 +134,21 @@
             </div>
 
           </div>
-          
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
-          aria-labelledby="offcanvasRightLabel">
-          <div class="offcanvas-header">
+
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
               <h5 class="offcanvas-title" id="offcanvasRightLabel"></h5>
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
+            </div>
+            <div class="offcanvas-body">
               <div>
-                  <img class="thumb" src="" alt="">
+                <img class="thumb" src="" alt="">
               </div>
               <p class="pt-4 text-body"> </p>
               <a href="" class="btn btn-primary watch-video">Watch Video</a>
+            </div>
           </div>
-      </div>
-        
+
         </div>
       </div>
     </div>
@@ -162,7 +164,7 @@
 
 
 
-</script>
+  </script>
 </body>
 
 </html>

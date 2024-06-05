@@ -5,11 +5,6 @@ let prof_ctr = 0;
 let work_ctr = 0;
 
 $(document).ready(function () {
-
-  // $("input").prop("readonly", true);
-  // $("input").prop("disabled", true);
-  // $("select").prop("disabled", true);
-
   $('#uploadImage').change(function () {
     var input = this;
     if (input.files && input.files[0]) {
@@ -20,6 +15,7 @@ $(document).ready(function () {
       reader.readAsDataURL(input.files[0]);
     }
   });
+
   $(".row-educ").removeClass();
 
   $.getJSON("../Cdn/js/data/profiles.json", function (response) {
@@ -65,20 +61,15 @@ $(document).ready(function () {
       profile.work_experience.map((item) => addWork(item));
       work_ctr = profile.work_experience.length;
 
-      $(".spec-skills-cert input, textarea").prop('readonly', true)
+      // $(".spec-skills-cert input, textarea").prop('readonly', true)
 
-      $(".profile-content input").prop("readonly", true);
-      $(".profile-content select").prop("disabled", true);
-
-
-
-
+      // $(".profile-content input").prop("readonly", true);
+      // $(".profile-content select").prop("disabled", true);
     } else {
       console.log("No profile found for the specified user ID.");
     }
   });
 });
-
 
 //ADD MOBILE
 $(document).on("click", ".btn-add-mobile", function () {
@@ -88,6 +79,7 @@ $(document).on("click", ".btn-add-mobile", function () {
   mobile_ctr += 1;
   console.log("nyaw");
 });
+
 //ADD EDUC
 $(document).on("click", ".btn-add-educ", function () {
   addEducation();
@@ -114,6 +106,7 @@ $(document).on("click", ".btn-add-cert", function () {
   $(".row-cert .div-remove-cert").removeClass("d-none");
   cert_ctr += 1;
 });
+
 //ADD PROFESSION
 $(document).on("click", ".btn-add-profession", function () {
   addProfession();
@@ -121,6 +114,7 @@ $(document).on("click", ".btn-add-profession", function () {
   $(".row-profession .div-remove-profession").removeClass("d-none");
   prof_ctr += 1;
 });
+
 //ADD WORK
 $(document).on("click", ".btn-add-work", function () {
   addWork();
@@ -181,28 +175,31 @@ $(document).on("click", ".editButton", function () {
 $(document).on("click", ".deleteMobileRow", function () {
   $(this).parents(".row-mobile").remove();
 });
+
 //DELETE EDUC
 $(document).on("click", ".deleteEducRow", function () {
   $(this).parents(".row-educ").remove();
 });
+
 //DELETE CERT
 $(document).on("click", ".deleteCertRow", function () {
   $(this).parents(".row-cert").remove();
 });
+
 //DELETE PROFESSION
 $(document).on("click", ".deleteProfRow", function () {
   $(this).parents(".row-profession").remove();
 });
+
 // DELETE WORK
 $(document).on("click", ".deleteWorkRow", function () {
   $(this).parents(".row-work").remove();
 });
+
 //DELETE SKILL
 $(document).on("click", "#deleteSkill", function () {
   $(this).parents("#row-skill").remove();
 });
-
-
 
 //SAVE 
 $(document).on("click", ".profileSaveButton", function (e) {
@@ -250,7 +247,6 @@ $(document).on("click", ".profileSaveButton", function (e) {
     "bg-light shadow-sm border mt-2 px-2 rounded"
   );
 
-
   // REMOVE UPLOAD IMAGE
   $(".upload-image-section").addClass("d-none");
 
@@ -266,6 +262,17 @@ $(document).on("click", ".profileSaveButton", function (e) {
   );
   $("html, body").animate({ scrollTop: 0 }, "slow");
 
+  let timeleft = 10;
+  let downloadTimer = setInterval(function () {
+    if (timeleft <= 0) {
+      clearInterval(downloadTimer);
+      window.location.href = '../../Manage/manage.dashboard.html?modal=false'
+    } else {
+      $('.countdown').html("Updated... Redirecting to Dashboard Page in " + timeleft);
+    }
+    timeleft -= 1;
+  }, 1000);
+
   setTimeout(function () {
     if ((message = validateInput(form.serializeArray()))) {
       const errorAlert =
@@ -275,12 +282,11 @@ $(document).on("click", ".profileSaveButton", function (e) {
       $(".response-profile").html(errorAlert);
     } else {
       const successAlert =
-        "<div class='response-profile alert alert-success alert-dismissible fade show mt-3' role='alert'><span>Submitted but nothing happened! form data" +
-        form.serialize() +
-        ". See <a href='../Cdn/js/script.js'>../Cdn/js/script.js</a></span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
+        "<div class='response-profile alert alert-success alert-dismissible fade show mt-3' role='alert'><span class='countdown'></span><button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>";
       $(".response-profile").html(successAlert);
     }
   }, 30);
+
 });
 
 
@@ -412,7 +418,6 @@ function addCertification(item = "") {
 
 //POPULATE PROFESSION
 function addProfession(item = "") {
-
   let input = `<div class="row-profession d-flex justify-content-between align-items-center gap-1 mb-2">
                       <input type="text" class="input text-black form-control montserrat-regular" name="profession" placeholder="Add Profession"  value="${item}">
                       <button type="button" class="deleteProfRow btn div-remove-profession btn-remove btn-outline btn-outline-danger d-none">

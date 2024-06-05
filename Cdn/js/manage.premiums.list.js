@@ -193,7 +193,7 @@ function displayPremiums(sortBy, order) {
                       </button>
                   </div>
                   <div class="col-6">
-                      <button class="btn btn-outline-secondary w-100 view-details" data-premium-id="${premium.premium_id}"> <i class="bi bi-cart-fill"></i> Preview</button>
+                      <button class="btn btn-outline-secondary w-100 view-details" data-premium-id="${premium.premium_id}"> <i class="bi bi-eye me-1"></i> Preview</button>
                   </div>
               </div>
           </div>

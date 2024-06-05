@@ -1,9 +1,11 @@
-// modal-script.js
-document.addEventListener('DOMContentLoaded', function () {
-    var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
-    myModal.show();
-});
+$(document).on("DOMContentLoaded", function () {
+    let modal = getParams('modal')
 
+    if(modal === undefined | modal === null){
+        var myModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+        myModal.show();
+    }
+});
 
 // ASCENDING BUTTON
 $(document).on("click", '.complete', function () {
