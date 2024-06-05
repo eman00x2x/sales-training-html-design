@@ -1,4 +1,6 @@
-
+let currentPageVideo = 1, searchVideo = '', orderVideo = '', sortByVideo = '',
+    filterDataVideo = [{ "status": ["Pending", "In Progress", "Completed"] }],
+    filterByVideo = [];
 
 $(document).ready(function () {
     getOrgVideoGroupData();
@@ -7,8 +9,8 @@ $(document).ready(function () {
 
 // SEARCH
 $(document).on("keyup", '.search', function () {
-    search = $(this).val().toLowerCase();
-    currentPage = 1
+    searchVideo = $(this).val().toLowerCase();
+    currentPageVideo = 1
     getOrgVideoGroupData();
 });
 
@@ -16,7 +18,7 @@ $(document).on("keyup", '.search', function () {
 $(document).on("click", '.btn-sort-asc', function () {
     $('.btn-sort-asc').addClass('active');
     $('.btn-sort-desc').removeClass('active');
-    order = 'asc'
+    orderVideo = 'asc'
     getOrgVideoGroupData();
 });
 
@@ -24,7 +26,7 @@ $(document).on("click", '.btn-sort-asc', function () {
 $(document).on("click", '.btn-sort-desc', function () {
     $('.btn-sort-desc').addClass('active');
     $('.btn-sort-asc').removeClass('active');
-    order = 'desc'
+    orderVideo = 'desc'
     getOrgVideoGroupData();
 });
 
@@ -33,7 +35,7 @@ $(document).on("click", '.dropdown-name', function () {
     $('.dropdown-name').addClass('active');
     $('.dropdown-id').removeClass('active')
     $('.dropdown-transact-id').removeClass('active');
-    sortBy = 'name'
+    sortByVideo = 'name'
     getOrgVideoGroupData();
 });
 
@@ -42,7 +44,7 @@ $(document).on("click", '.dropdown-id', function () {
     $('.dropdown-name').removeClass('active');
     $('.dropdown-id').addClass('active')
     $('.dropdown-transact-id').removeClass('active');
-    sortBy = 'vid_group_id'
+    sortByVideo = 'vid_group_id'
     getOrgVideoGroupData();
 });
 
@@ -51,13 +53,13 @@ $(document).on("click", '.dropdown-transact-id', function () {
     $('.dropdown-name').removeClass('active');
     $('.dropdown-id').removeClass('active')
     $('.dropdown-transact-id').addClass('active');
-    sortBy = 'transaction_id'
+    sortByVideo = 'transaction_id'
     getOrgVideoGroupData();
 });
 
 // PAGINATION
 $(document).on('click', '.btn-page', function (e) {
-    currentPage = $(this).data('num');
+    currentPageVideo = $(this).data('num');
     getOrgVideoGroupData();
 });
 
@@ -66,14 +68,14 @@ $(document).on('change', '.checklist-filter', function (e) {
 
     for (let i = 0; i < checkboxes.length; i++) {
         if (checkboxes[i].checked) {
-            if (!filterBy.includes(checkboxes[i])) { // Check if value already exists
-                filterBy.push(checkboxes[i]);
+            if (!filterByVideo.includes(checkboxes[i])) { // Check if value already exists
+                filterByVideo.push(checkboxes[i]);
             }
         }
         else {
-            const index = filterBy.indexOf(checkboxes[i]); // Find the index of the value
+            const index = filterByVideo.indexOf(checkboxes[i]); // Find the index of the value
             if (index > -1) {
-                filterBy.splice(index, 1); // Remove the value from the array
+                filterByVideo.splice(index, 1); // Remove the value from the array
             }
         }
     }
@@ -84,7 +86,7 @@ $(document).on('change', '.checklist-filter', function (e) {
 function printFilters() {
     let html = '';
 
-    for (const item of filterData) {
+    for (const item of filterDataVideo) {
         const regex = /[-_]/g;
         const key = Object.keys(item)[0];
         const replacedKey = Object.keys(item)[0].replace(regex, " ");
@@ -114,26 +116,26 @@ function lowerCase(str) {
 
 // FUNCTION TO RETURN DATA THAT IS SEARCHED, DEFAULT WILL BE THE RESPONSE DATA FROM JSON
 function isSearchQuery(data) {
-    const filterBySearch = search ? data.filter(item =>
-        lowerCase(item.name).includes(lowerCase(search)) ||
-        item.transaction_id == search ||
-        item.vid_group_id == search
+    const filterBySearch = searchVideo ? data.filter(item =>
+        lowerCase(item.name).includes(lowerCase(searchVideo)) ||
+        item.transaction_id == searchVideo ||
+        item.vid_group_id == searchVideo
         // || lowerCase(item.email).includes(lowerCase(search))
     ) : data;
 
-    const filter = filterBy.length > 0 ? filterBySearch.filter(item => {
+    const filter = filterByVideo.length > 0 ? filterBySearch.filter(item => {
         const { status } = item;
         // const { name } = organization;
         
-        return filterBy.some(filterItem => lowerCase(status).includes(lowerCase(filterItem.value)));
+        return filterByVideo.some(filterItem => lowerCase(status).includes(lowerCase(filterItem.value)));
     }) : filterBySearch;
 
     return filter;
 }
 
 // SORT BY ORDER AND ITS PROPERTY
-function sortData(data, order, property) {
-    switch (order) {
+function sortData(data, orderVideo, property) {
+    switch (orderVideo) {
         case "asc":
             if (property === "vid_group_id" || property === "transaction_id")
                 return data.sort((a, b) => a[property] - b[property])
@@ -163,28 +165,28 @@ function updatePagination(totalPages) {
 
     if (totalPages > 0) {
         paginationButtons += `
-        <button type="button" class="btn-page btn btn-outline-primary montserrat-semibold ${currentPage === 1 ? 'disabled' : ''}" data-num="${currentPage - 1}"">
+        <button type="button" class="btn-page btn btn-outline-primary montserrat-semibold ${currentPageVideo === 1 ? 'disabled' : ''}" data-num="${currentPageVideo - 1}"">
             <span class="d-none d-md-block">Previous</span>
             <i class="bi bi-chevron-double-left d-block d-md-none"></i>
         </button>`;
 
-        let startPage = Math.max(1, currentPage - 1);
+        let startPage = Math.max(1, currentPageVideo - 1);
         let endPage = Math.min(startPage + 2, totalPages);
 
         for (let i = startPage; i <= endPage; i++) {
-            const activeClass = i === currentPage ? 'active' : '';
+            const activeClass = i === currentPageVideo ? 'active' : '';
             paginationButtons += `<button type="button" class="btn-page btn btn-outline-primary ${activeClass}" data-num="${i}"">${i}</button>`;
         }
 
         paginationButtons += `
-        <button type="button" class="btn-page btn btn-outline-primary montserrat-semibold ${currentPage === totalPages ? 'disabled' : ''}" data-num="${currentPage + 1}">
+        <button type="button" class="btn-page btn btn-outline-primary montserrat-semibold ${currentPageVideo === totalPages ? 'disabled' : ''}" data-num="${currentPageVideo + 1}">
             <span class="d-none d-md-block">Next</span>
             <i class="bi bi-chevron-double-right d-block d-md-none"></i>
         </button>`;
     } else
         paginationButtons = '';
 
-    $('#page-numbers').html(totalPages > 0 ? `Showing ${currentPage} out of ${totalPages} pages` : 'Showing 0 out of 0 pages');
+    $('#page-numbers').html(totalPages > 0 ? `Showing ${currentPageVideo} out of ${totalPages} pages` : 'Showing 0 out of 0 pages');
     $('.page-buttons').html(paginationButtons);
 }
 
@@ -205,7 +207,7 @@ function getOrgVideoGroupData() {
     let html = "";
 
     const limit = 10;
-    const startIndex = (currentPage - 1) * limit;
+    const startIndex = (currentPageVideo - 1) * limit;
     const endIndex = startIndex + limit;
 
     $.when(
@@ -215,7 +217,7 @@ function getOrgVideoGroupData() {
         // https://stackoverflow.com/questions/47749932/merge-multiple-json-with-the-same-id
         let filterByID = returnFilteredData(data1[0].data, data2[0].data, "vid_group_id", "organization_id");
 
-        const sortedData = sortData(isSearchQuery(filterByID), order, sortBy);
+        const sortedData = sortData(isSearchQuery(filterByID), orderVideo, sortByVideo);
         const totalItems = sortedData.length;
         const totalPages = Math.ceil(totalItems / limit);
         updatePagination(totalPages);

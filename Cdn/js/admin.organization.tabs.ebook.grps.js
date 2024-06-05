@@ -1,4 +1,6 @@
-
+let currentPageEbook = 1, searchEbook = '', orderEbook = '', sortByEbook = '',
+    filterDataEbook = [{ "status": ["Pending", "In Progress", "Completed"] }],
+    filterByEbook = [];
 
 
 $(document).ready(function () {
@@ -9,8 +11,8 @@ $(document).ready(function () {
 
 // SEARCH
 $(document).on("keyup", '.search', function () {
-    search = $(this).val().toLowerCase();
-    currentPage = 1;
+    searchEbook = $(this).val().toLowerCase();
+    currentPageEbook = 1;
     getOrgEBookGroupData();
 });
 
@@ -18,7 +20,7 @@ $(document).on("keyup", '.search', function () {
 $(document).on("click", '.btn-sort-asc', function () {
     $('.btn-sort-asc').addClass('active');
     $('.btn-sort-desc').removeClass('active');
-    order = 'asc';
+    orderEbook = 'asc';
     getOrgEBookGroupData();
 });
 
@@ -26,7 +28,7 @@ $(document).on("click", '.btn-sort-asc', function () {
 $(document).on("click", '.btn-sort-desc', function () {
     $('.btn-sort-desc').addClass('active');
     $('.btn-sort-asc').removeClass('active');
-    order = 'desc';
+    orderEbook = 'desc';
     getOrgEBookGroupData();
 });
 
@@ -35,7 +37,7 @@ $(document).on("click", '.dropdown-name', function () {
     $('.dropdown-name').addClass('active');
     $('.dropdown-id').removeClass('active');
     $('.dropdown-transact-id').removeClass('active');
-    sortBy = 'name';
+    sortByEbook = 'name';
     getOrgEBookGroupData();
 });
 
@@ -44,7 +46,7 @@ $(document).on("click", '.dropdown-id', function () {
     $('.dropdown-name').removeClass('active');
     $('.dropdown-id').addClass('active');
     $('.dropdown-transact-id').removeClass('active');
-    sortBy = 'ebook_group_id';
+    sortByEbook = 'ebook_group_id';
     getOrgEBookGroupData();
 });
 
@@ -53,24 +55,24 @@ $(document).on("click", '.dropdown-transact-id', function () {
     $('.dropdown-name').removeClass('active');
     $('.dropdown-id').removeClass('active');
     $('.dropdown-transact-id').addClass('active');
-    sortBy = 'transaction_id';
+    sortByEbook = 'transaction_id';
     getOrgEBookGroupData();
 });
 
 // PAGINATION
 $(document).on('click', '.btn-page', function (e) {
-    currentPage = $(this).data('num');
+    currentPageEbook = $(this).data('num');
     getOrgEBookGroupData();
 });
 
 $(document).on('change', '.checklist-filter', function (e) {
     let checkboxes = $(".checklist-filter:checkbox");
 
-    filterBy = [];
+    filterByEbook = [];
 
     checkboxes.each(function () {
         if ($(this).is(':checked')) {
-            filterBy.push($(this).val());
+            filterByEbook.push($(this).val());
         }
     });
 
@@ -80,7 +82,7 @@ $(document).on('change', '.checklist-filter', function (e) {
 function printFilters() {
     let html = '';
 
-    for (const item of filterData) {
+    for (const item of filterDataEbook) {
         const regex = /[-_]/g;
         const key = Object.keys(item)[0];
         const replacedKey = Object.keys(item)[0].replace(regex, " ");
@@ -110,22 +112,22 @@ function lowerCase(str) {
 
 // FUNCTION TO RETURN DATA THAT IS SEARCHED, DEFAULT WILL BE THE RESPONSE DATA FROM JSON
 function isSearchQuery(data) {
-    const filterBySearch = search ? data.filter(item =>
-        lowerCase(item.name).includes(lowerCase(search)) ||
-        item.transaction_id == search ||
-        item.ebook_group_id == search
+    const filterBySearch = searchEbook ? data.filter(item =>
+        lowerCase(item.name).includes(lowerCase(searchEbook)) ||
+        item.transaction_id == searchEbook ||
+        item.ebook_group_id == searchEbook
     ) : data;
 
-    const filter = filterBy.length > 0 ? filterBySearch.filter(item =>
-        filterBy.includes(item.status)
+    const filter = filterByEbook.length > 0 ? filterBySearch.filter(item =>
+        filterByEbook.includes(item.status)
     ) : filterBySearch;
 
     return filter;
 }
 
 // SORT BY ORDER AND ITS PROPERTY
-function sortData(data, order, property) {
-    switch (order) {
+function sortData(data, orderEbook, property) {
+    switch (orderEbook) {
         case "asc":
             if (property === "ebook_group_id" || property === "transaction_id")
                 return data.sort((a, b) => a[property] - b[property]);
@@ -151,21 +153,21 @@ function updatePagination(totalPages) {
 
     if (totalPages > 0) {
         paginationButtons += `
-        <button type="button" class="btn-page btn btn-outline-primary montserrat-semibold ${currentPage === 1 ? 'disabled' : ''}" data-num="${currentPage - 1}">
+        <button type="button" class="btn-page btn btn-outline-primary montserrat-semibold ${currentPageEbook === 1 ? 'disabled' : ''}" data-num="${currentPageEbook - 1}">
             <span class="d-none d-md-block">Previous</span>
             <i class="bi bi-chevron-double-left d-block d-md-none"></i>
         </button>`;
 
-        let startPage = Math.max(1, currentPage - 1);
+        let startPage = Math.max(1, currentPageEbook - 1);
         let endPage = Math.min(startPage + 2, totalPages);
 
         for (let i = startPage; i <= endPage; i++) {
-            const activeClass = i === currentPage ? 'active' : '';
+            const activeClass = i === currentPageEbook ? 'active' : '';
             paginationButtons += `<button type="button" class="btn-page btn btn-outline-primary ${activeClass}" data-num="${i}">${i}</button>`;
         }
 
         paginationButtons += `
-        <button type="button" class="btn-page btn btn-outline-primary montserrat-semibold ${currentPage === totalPages ? 'disabled' : ''}" data-num="${currentPage + 1}">
+        <button type="button" class="btn-page btn btn-outline-primary montserrat-semibold ${currentPageEbook === totalPages ? 'disabled' : ''}" data-num="${currentPageEbook + 1}">
             <span class="d-none d-md-block">Next</span>
             <i class="bi bi-chevron-double-right d-block d-md-none"></i>
         </button>`;
@@ -193,7 +195,7 @@ function getOrgEBookGroupData() {
     let html = "";
 
     const limit = 10;
-    const startIndex = (currentPage - 1) * limit;
+    const startIndex = (currentPageEbook - 1) * limit;
     const endIndex = startIndex + limit;
 
     $.when(
@@ -203,7 +205,7 @@ function getOrgEBookGroupData() {
         // Merge multiple JSON with the same ID
         let filterByID = returnFilteredData(data1[0].data, data2[0].data, "ebook_group_id", "organization_id");
 
-        const sortedData = sortData(isSearchQuery(filterByID), order, sortBy);
+        const sortedData = sortData(isSearchQuery(filterByID), orderEbook, sortByEbook);
         const totalItems = sortedData.length;
         const totalPages = Math.ceil(totalItems / limit);
         updatePagination(totalPages);
