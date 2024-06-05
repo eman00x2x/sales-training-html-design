@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
   displaySteps();
 });
@@ -19,7 +21,7 @@ const steps = [
     number: 3,
     title: "Training Program",
     note: "Learn through different of modules which includes series of videos related to your desired agent type. There will be an examination per modules to test your knowledge.",
-    link: "/Manage/manage.col.video.groups.list.html",
+    link: "/Manage/manage.training.program.html",
   },
   {
     number: 4,
@@ -29,36 +31,67 @@ const steps = [
   }
 ];
 
+
+
 function displaySteps() {
   let html = "";
+  let stepParam = getParams('step');
 
   for (let i = 0; i < steps.length; i++) {
     let step = steps[i];
-    html +=
-      " <a href='" +
-      step.link +
-      "' class='container mx-5 mx-auto' style='text-decoration: none; color: #000;'>";
-    html += '<div class="steps shadow-sm rounded p-5 bg-white">';
-    html +=
-      '<div class="d-flex justify-content-start align-items-center mb-3">';
-    html += '<div class="step-number rounded-circle">';
-    html += "<p>" + step.number + "</p>";
-    html += "</div>";
-    html += '<div class="step-title my-auto d-flex">';
-    html += '<h2 class="ms-3 my-auto font-weight-bold">' + step.title + "</h2>";
-    html += "</div>";
-    html += "</div>";
-    html += '<div class="border-top border-dark"></div>';
-    html += '<div class="d-flex justify-content-start mt-3 mb-3">';
-    html += '<div class="step-note">';
-    html += '<p class="font-weight-bold">Note:</p>';
-    html += "</div>";
-    html += '<div class="ms-3">';
-    html += "<p>" + step.note + "</p>";
-    html += "</div>";
-    html += "</div>";
-    html += "</div>";
-    html += "</a>";
+    let lock = `<div class="container mx-5 mx-auto"
+    style="text-decoration: none; color: #000;">
+    <div class="steps shadow-lg rounded position-relative overflow-hidden border border-secondary-subtle">
+      <div class="unlock position-absolute w-100 h-100 z-2 d-flex justify-content-center align-items-center">
+        <i class="bi bi-lock-fill" style="font-size: 100px; color: #1c1c39"></i>
+      </div>
+      <div class="gradient p-5">
+        <div class="d-flex justify-content-start align-items-center mb-3">
+          <div class="step-number rounded-circle">
+            <p>${step.number}</p>
+          </div>
+          <div class="step-title my-auto d-flex">
+            <h2 class="ms-3 my-auto font-weight-bold">${step.title}</h2>
+          </div>
+        </div>
+        <div class="border-top border-dark"></div>
+        <div class="d-flex justify-content-start mt-3 mb-3">
+          <div class="step-note">
+            <p class="font-weight-bold">Note:</p>
+          </div>
+          <div class="ms-3">
+            <p>${step.note}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`
+
+    let unlock = `<a href=${step.link} class="container mx-5 mx-auto"
+    style="text-decoration: none; color: #000;">
+    <div class="steps shadow-lg rounded position-relative overflow-hidden border border-secondary-subtle">
+      <div class="p-5">
+        <div class="d-flex justify-content-start align-items-center mb-3">
+          <div class="step-number rounded-circle">
+            <p>${step.number}</p>
+          </div>
+          <div class="step-title my-auto d-flex">
+            <h2 class="ms-3 my-auto font-weight-bold">${step.title}</h2>
+          </div>
+        </div>
+        <div class="border-top border-dark"></div>
+        <div class="d-flex justify-content-start mt-3 mb-3">
+          <div class="step-note">
+            <p class="font-weight-bold">Note:</p>
+          </div>
+          <div class="ms-3">
+            <p>${step.note}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>`
+    html += i <= stepParam - 1 ? unlock : lock;
 
     if (i < steps.length - 1) {
       html += "<div class='line mx-auto'></div>";

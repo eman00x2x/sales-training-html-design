@@ -11,9 +11,6 @@ function displayExam() {
     $.getJSON('../Cdn/js/data/exam.json', function (examData) {
         let videoResponse = examData.data;
         let videoview = videoResponse.filter(video => video.type == 'VIDEO');
-
-
-
         let questionnaireHtml = ''; // Initialize the variable to hold the HTML content
         let questionIndex = 0; // Initialize question index outside the loop
         let selectedAnswers = {}; // Object to store selected answers
@@ -65,15 +62,9 @@ function displayExam() {
             });
         
             console.log(selectedAnswers);
-            alert("Form submitted successfully!");
-
+            window.location.href="../../Manage/manage.professions.html?step=2"
         }
         
         $('#submit-btn').click(submitAnswers);
-        
-        
-        
-        
-
     });
 }
