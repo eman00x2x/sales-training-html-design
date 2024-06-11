@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | Accounts</title>
+    <title>User | Referrals</title>
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +18,7 @@
     <link href="../Cdn/vendor/tabler/dist/css/tabler-vendors.min.css?1695847769" rel="stylesheet" />
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="../Cdn/css/admin.global.css" />
+    <link rel="stylesheet" href="../Cdn/css/manage.professions.css" />
     <!-- JQUERY -->
     <script src="../Cdn/vendor/jquery-3.7.1/jquery-3.7.1.min.js"></script>
     <!-- TABLER -->
@@ -38,17 +39,55 @@
             <div class="header"></div>
 
             <!-- CONTENT -->
-            <div class="page-body content">
-                <div class="container-fluid">
-                    <!-- TITLE -->
-                    <div class="d-flex flex-row align-items-center justify-content-start text-primary">
-                        <i class="bi bi-people fs-1"></i>
-                        <span class="fs-1 ms-2 montserrat-bold">Accounts</span>
+            <div class="page-body content m-0">
+                <div class="banner bg-white shadow shadow-sm">
+                    <!-- BANNER -->
+                    <div class="container-fluid">
+                        <div class="p-md-5 p-0 row w-100 d-flex align-items-center my-auto">
+                            <div class="d-flex flex-column my-auto">
+                                <div class="title ms-3">
+                                    <h1 class="text-white" id="header">REFERRALS</h1>
+                                    <p class="text-white">
+                                        See the latest referral that you've been shared with other people registered in
+                                        the system.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                        </div>
                     </div>
+                </div>
 
+                <div class="container-fluid">
+                    <div class="row row-deck row-cards mt-2">
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body text-center m-0 p-0" style="height: 10rem">
+                                    <h1 class="fs-3 rounded-top-2" style="background-color: #1c1c39; color: white">TOTAL NUMBER OF REFERRALS</h1>
+                                    <p class="fw-bold" style="font-size: 5em; line-height: 1.2;">99</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body text-center m-0 p-0" style="height: 10rem">
+                                    <h1 class="fs-3 rounded-top-2" style="background-color: #1c1c39; color: white">ACTIVE REFERRALS</h1>
+                                    <p class="fw-bold" style="font-size: 5em; line-height: 1.2;">44</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="card">
+                                <div class="card-body text-center m-0 p-0" style="height: 10rem">
+                                    <h1 class="fs-3 rounded-top-2" style="background-color: #1c1c39; color: white">INACTIVE REFERRALS</h1>
+                                    <p class="fw-bold" style="font-size: 5em; line-height: 1.2;">55</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- SORT, FILTER AND SEARCH -->
                     <div
-                        class="d-flex flex-column-reverse flex-sm-row justify-content-between align-items-center mb-3 mt-2 ">
+                        class="d-flex flex-column-reverse flex-sm-row justify-content-between align-items-center mb-3 mt-3 ">
                         <div class="d-flex justify-content-start align-items-center col col-12 col-sm-7 gap-1">
                             <div class="btn-sort dropdown montserrat-regular">
                                 <i class="bi bi-funnel btn dropdown-toggle montserrat-semibold d-block d-sm-none"
@@ -62,7 +101,8 @@
                                         <div class="btn-group col-7">
                                             <button type="button" class="btn btn-sm btn-outline-primary btn-sort-asc"><i
                                                     class="bi bi-sort-alpha-up fs-2"></i></button>
-                                            <button type="button" class="btn btn-sm btn-outline-primary btn-sort-desc"><i
+                                            <button type="button"
+                                                class="btn btn-sm btn-outline-primary btn-sort-desc"><i
                                                     class="bi bi-sort-alpha-down-alt fs-2"></i></button>
                                         </div>
                                     </div>
@@ -82,10 +122,10 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="button"
+                        <!-- <button type="button"
                             class="btn btn-md btn-add btn-outline-primary montserrat-semibold col col-12 col-sm-4 col-lg-3 mb-2 mb-sm-0">
                             <i class="bi bi-plus-circle"></i><span class="ms-2">Add Account</span>
-                        </button>
+                        </button> -->
                     </div>
 
                     <!-- TABLE LIST -->
@@ -118,10 +158,10 @@
                                             style="background-color: #1c1c39">
                                             Registered Date
                                         </th>
-                                        <th class="align-middle montserrat-semibold text-white"
+                                        <!-- <th class="align-middle montserrat-semibold text-white"
                                             style="background-color: #1c1c39">
                                             Actions
-                                        </th>
+                                        </th> -->
                                     </tr>
                                 </thead>
                                 <tbody class="data-container montserrat-regular"></tbody>
@@ -131,7 +171,7 @@
 
                     <!-- PAGINATION -->
                     <div
-                        class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 montserrat-regular">
+                        class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-between mt-3 mb-3 montserrat-regular">
                         <p id="page-numbers"></p>
                         <div class="page-buttons btn-group">
                         </div>
