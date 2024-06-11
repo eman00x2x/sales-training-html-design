@@ -3,11 +3,6 @@ $(document).ready(function () {
 });
 
 function displayExam() {
-
-    // const limit = 10;
-    // const startIndex = (currentPage - 1) * limit;
-    // const endIndex = startIndex + limit;
-
     $.getJSON('../Cdn/js/data/exam.json', function (examData) {
         let videoResponse = examData.data;
         let videoview = videoResponse.filter(video => video.type == 'VIDEO');
@@ -50,7 +45,7 @@ function displayExam() {
         $('.questionnaire-container').html(questionnaireHtml); // Insert the generated HTML into the designated container
         
         function submitAnswers() {
-            // Reset selected answers
+            // Collect selected answers
             selectedAnswers = {};
         
             $('input[type=radio]').each(function() {
@@ -62,7 +57,11 @@ function displayExam() {
             });
         
             console.log(selectedAnswers);
-            window.location.href="../../Manage/manage.professions.html?step=2"
+            
+            // Redirect back to reading page
+            const ebookId = getParams('ebook_id');
+            const ebookGroupId = getParams('ebook_group_id');
+            window.location.href = `manage.read.ebook.html?ebook_id=${ebookId}&ebook_group_id=${ebookGroupId}`;
         }
         
         $('#submit-btn').click(submitAnswers);
