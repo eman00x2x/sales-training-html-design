@@ -287,7 +287,7 @@ function getAccountsData() {
             html += "<td>";
             html += "<div class='btn-group'>";
             html += "<a class='btn border-primary bg-body text-primary' href='organization.user.view.html?id=" + data.profile_id + "'> <i class='bi bi-eye pe-1'></i> View</a>";
-            html += "<a class='btn border-danger bg-body text-danger' href='organization.user.delete.html?id=" + data.profile_id + "'> <i class='bi bi-trash'></i> Delete</a>";
+            html += "<a class='btn border-danger bg-body text-danger' href='organization.user.delete.html?org=" + orgId + "&id="+ data.profile_id +"'> <i class='bi bi-trash'></i> Delete</a>";
             html += "</div>";
             html += "</td>";
             html += "</tr>";

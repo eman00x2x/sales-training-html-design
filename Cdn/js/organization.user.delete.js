@@ -1,97 +1,57 @@
+let id;
+let org;
+
 $(document).ready(function () {
-    let params = new URL(document.location.toString()).searchParams;
-    let id = params.get("id");
-
-    $.getJSON("../Cdn/js/data/profiles.json", function (data) {
-
-
-      $.getJSON("../Cdn/js/data/accounts.json", function (account) { 
-
-      let response = data.data;
-      let accountResponse = account.data;
-      let userData = response.find((item) => item.profile_id == id);
-      let accountData =  accountResponse.find((item) => item.account_id == id);
-
-
-      console.log(accountData.account_type)
-
-      let fullName = `${userData.name.prefix} ${userData.name.firstname} ${userData.name.lastname} ${userData.name.suffix}`;
-      let permanentAddress = userData.address[0].permanent;
-      let fullAddress = `${permanentAddress.region}, ${permanentAddress.province}, ${permanentAddress.municipality}, ${permanentAddress.barangay}`;
-      let accType = "";
-
-      $('.link-bread').attr('href', `organization.user.list.html?id=${userData.organization_id}`);
-
-      $(".user-img").attr("src", userData.profile_image);
-      $("#lastname").val(userData.name.suffix);
-      $("#name").val(userData.name.firstname);
-      $("#address").val(fullAddress);
-      $("#contact").val(userData.contact_number);
-      $("#type").val(accountData.account_type)
-      $(".bread-title").text(fullName)
-      $(".breadlink").attr("href", `organization.user.list.html?id=${accountData.organization_id}`);
-      
-
-      });
+  id = getParams("id");
+  org = getParams("org");
+  $.when(
+    $.getJSON("../Cdn/js/data/profiles.json"),
+    $.getJSON("../Cdn/js/data/accounts.json"),
+    $.getJSON("../Cdn/js/data/organization.json")
+  ).done(function (data1, data2, data3) {
+    // MERGE PROFILE AND ACCOUNTS
+    let response = data1[0].data.map((a) =>
+      Object.assign(
+        a,
+        data2[0].data.find((b) => b.account_id == a.account_id)
+      )
+    );
+    // MERGE RESPONSE AND ORGANIZATION
+    let result = response.map((a) => ({
+      ...a,
+      organization: data3[0].data.find(
+        (b) => b.organization_id == a.organization_id
+      ),
+    }));
+    let f = result.keys(result).find((key) => result[key].account_id == id);
 
 
-
-   
-    });
+    $('.name').text(response[f].name.firstname + " " + response[f].name.lastname);
+    $('#acc-id').text(response[f].account_id);
+    $('#birthday').text(convertDate(response[f].birthday));
+    $('#username').text(response[f].username);
+    $('#email').text(response[f].email);
+    $('.acc-fb').text(response[f].social_profile.facebook);
+    $('.acc-linkedIn').text(response[f].social_profile.linkedIn);
+    $(".accLogo").attr("src", response[f].profile_image);
+    $(".accName").text(
+      `${response[f].name.prefix} ${response[f].name.firstname} ${response[f].name.lastname} ${response[f].name.suffix}`
+    );
+    $(".breadlink").attr("href", `organization.user.list.html?id=${org}`);
+    console.log(result[f]);
   });
 
+});
+
+$(document).on("click", "#back", function (e) {
+  window.location.href = `organization.user.list.html?id=${org}`;
+});
 
 $(document).on("change", "#logo", function (e) {
   var URL = window.URL || window.webkitURL;
   var file = e.target.files[0];
 
   if (file) {
-    $(".user-img").attr("src", URL.createObjectURL(file));
+    $(".orgLogo").attr("src", URL.createObjectURL(file));
   }
 });
-
-  function validateInput(input) {
-    let message = [];
-
-    const data = input.reduce(function (obj, item) {
-      obj[item.name] = item.value;
-      return obj;
-    }, {});
-
-    const validator = validate(
-      {
-        logo: data.logo,
-        lastname: data.lastname,
-        firstname: data.fname,
-        mname: data.mname,
-      },
-      {
-        logo: {
-          type: "image/png,image/jpeg",
-        },
-        lastname: {
-          type: "string",
-          length: { minimum: 4 },
-        },
-
-        firstname: {
-          type: "string",
-          length: { minimum: 4 },
-        },
-
-        lastname: {
-          type: "string",
-          length: { minimum: 4 },
-        },
-      }
-    );
-
-    if (validator !== undefined) {
-      for (key in validator) {
-        message.push(validator[key]);
-      }
-      return message.join(", ");
-    }
-
-    return false;
-  }
